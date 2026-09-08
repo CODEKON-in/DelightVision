@@ -33,7 +33,7 @@ export function SectionHeading({
          comes into view. It rides on background-position of a gradient
          clipped to the text, so nothing around it moves or reflows. */
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
       });
       tl.fromTo(
         el,

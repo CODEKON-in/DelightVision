@@ -59,7 +59,19 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* NO `scroll-behavior: smooth` here, deliberately.
+
+       ScrollTrigger measures by setting scrollTop and putting it back, and
+       `main.tsx` refreshes it once the web fonts land. A CSS-smooth
+       scroller turns each of those restores into an animation, so
+       ScrollTrigger never finds the page where it just put it and measures
+       again — with the scrubbed hero trigger reacting every time. Restoring
+       to 0 is a no-op, so this only bit when the page loaded already
+       scrolled: reloading on #packages or #contact locked the tab up.
+
+       The smooth glide is still there. `lib/router.ts` does it explicitly on
+       the anchor links that want it, which is one animation on a click
+       rather than a rule that hijacks every programmatic scroll. */
     scroll-padding-top: 5rem;
     background-color: var(--color-royal);
   }
@@ -84,12 +96,6 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 /* Horizontal scrollers (filter tabs, mobile gallery) keep the scroll,
    lose the scrollbar. */
 .no-scrollbar {
@@ -108,6 +114,26 @@
 /* Small uppercase gold label — a recurring premium micro-detail */
 .label-gold {
   @apply text-base font-semibold tracking-[0.22em] uppercase;
+}
+
+/* An opened decoration type settles in rather than snapping. Opacity and
+   transform only, so it costs nothing to composite, and the panel is in the
+   DOM either way — if the animation never runs the designs are still there. */
+.dv-panel-in {
+  animation: dv-panel-in 0.32s ease-out both;
+}
+
+@keyframes dv-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-panel-in {
+    animation: none;
+  }
 }
 
 

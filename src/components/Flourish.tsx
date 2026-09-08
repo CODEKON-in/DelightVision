@@ -31,7 +31,7 @@ export function Flourish({ onDark = true, className = "" }: Props) {
       });
 
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: el, start: "top 92%", once: true },
+        scrollTrigger: { trigger: el, start: "top 92%", toggleActions: "play none none none" },
       });
 
       tl.to(strokes, { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }).fromTo(

@@ -11,7 +11,6 @@ export function Footer() {
   const explore = [
     { href: "#services", label: ui.navServices },
     { href: "#packages", label: ui.footerComboPackages },
-    { href: "#gallery", label: ui.navGallery },
     { href: "#contact", label: ui.navContact },
   ];
 

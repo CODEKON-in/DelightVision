@@ -10,6 +10,9 @@ type ModalProps = {
   onClose: () => void;
   /* id of the element naming the dialog, for screen readers */
   labelledBy: string;
+  /* What the close button announces. Defaults to the service wording the
+     three older detail views already used. */
+  closeLabel?: string;
   children: ReactNode;
 };
 
@@ -18,7 +21,13 @@ const FOCUSABLE =
 
 /* Full-screen on mobile, centred panel on desktop.
    Closes on the X button, a click outside the panel, or Escape. */
-export function Modal({ open, onClose, labelledBy, children }: ModalProps) {
+export function Modal({
+  open,
+  onClose,
+  labelledBy,
+  closeLabel = ui.closeDetails,
+  children,
+}: ModalProps) {
   /* Read once — the animation branches on it in several places */
   const [reduced] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -183,7 +192,7 @@ export function Modal({ open, onClose, labelledBy, children }: ModalProps) {
             ref={closeRef}
             type="button"
             onClick={onClose}
-            aria-label={ui.closeDetails}
+            aria-label={closeLabel}
             className="absolute top-4 right-4 z-10 inline-flex size-12 items-center justify-center rounded-full bg-royal/90 text-ivory-light transition-colors hover:bg-royal"
           >
             <CloseIcon className="size-6" />

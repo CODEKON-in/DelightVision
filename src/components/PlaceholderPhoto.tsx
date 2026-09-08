@@ -56,7 +56,9 @@ export function PlaceholderPhoto({
     <div
       className={`relative overflow-hidden ${className}`}
       style={{ background: `linear-gradient(145deg, ${p.from} 0%, ${p.to} 100%)` }}
-      {...(!imageSrc ? { role: "img", "aria-label": label ?? `Wedding photo ${index + 1}` } : {})}
+      {...(!imageSrc
+        ? { role: "img", "aria-label": label ?? alt ?? `Wedding photo ${index + 1}` }
+        : {})}
     >
       {/* Decorative rings + floral mark, rotated per tile so a grid of
           fallbacks does not look like copies of one image. */}

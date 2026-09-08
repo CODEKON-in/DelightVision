@@ -56,7 +56,13 @@ export function Reveal({
           stagger: stagger ?? 0,
           ...(immediate
             ? {}
-            : { scrollTrigger: { trigger: el, start: "top 88%", once: true } }),
+            : {
+                scrollTrigger: {
+                  trigger: el,
+                  start: "top 88%",
+                  toggleActions: "play none none none",
+                },
+              }),
         }
       );
 

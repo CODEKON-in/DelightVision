@@ -31,6 +31,47 @@ export type Highlight = {
   level: number;
 };
 
+/* Optional showcase block.
+
+   The Decorations area of the Services section is driven by this. It hangs
+   off the service it belongs to, so it travels with `content/services.json`
+   — the file the content manager already reads, writes and publishes — and
+   no second content source is introduced. Every field is optional, so a
+   service without a showcase (all six of the others today) is unchanged,
+   and a showcase entry only renders the fields it actually carries. */
+export type ShowcaseSpec = {
+  label: LocalizedText;
+  value: LocalizedText;
+};
+
+export type ShowcaseItem = {
+  id: string;
+  name: LocalizedText;
+  description?: LocalizedText;
+  /* First image leads the card and the detail view; the rest become
+     thumbnails inside the detail view. */
+  images?: string[];
+  pricing?: PriceInfo;
+  includes?: LocalizedText[];
+  suitableFor?: LocalizedText[];
+  tags?: LocalizedText[];
+  style?: LocalizedText;
+  specifications?: ShowcaseSpec[];
+};
+
+export type ShowcaseType = {
+  id: string;
+  name: LocalizedText;
+  description?: LocalizedText;
+  image?: string;
+  items?: ShowcaseItem[];
+};
+
+export type Showcase = {
+  intro?: LocalizedText;
+  types: ShowcaseType[];
+};
+
 export type Service = {
   id: ServiceId;
   name: LocalizedText;
@@ -48,6 +89,7 @@ export type Service = {
     notice: LocalizedText;
     conditions: LocalizedText;
   };
+  showcase?: Showcase;
 };
 
 export type Combo = {

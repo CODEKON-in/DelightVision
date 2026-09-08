@@ -49,7 +49,13 @@ export function AnimatedIcon({ children, className = "", delay = 0, immediate = 
         delay,
         ...(immediate
           ? {}
-          : { scrollTrigger: { trigger: el, start: "top 94%", once: true } }),
+          : {
+              scrollTrigger: {
+                trigger: el,
+                start: "top 94%",
+                toggleActions: "play none none none",
+              },
+            }),
       });
 
       if (stroked.length) {

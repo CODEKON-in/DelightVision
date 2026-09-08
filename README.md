@@ -1,9 +1,12 @@
 # Delight Vision — Wedding Services Website
 
-A premium, mobile-first single-page site for **Delight Vision**, a wedding
-services business in Pandaravadai, Thanjavur. Built with React + Vite +
-TypeScript, Tailwind CSS v4 and GSAP. No backend, no CMS, no contact form —
-every call to action dials the phone or opens WhatsApp.
+A premium, mobile-first site for **Delight Vision**, a wedding services
+business in Pandaravadai, Thanjavur. Built with React + Vite + TypeScript,
+Tailwind CSS v4 and GSAP. No backend and no contact form — every call to
+action dials the phone or opens WhatsApp. Content is edited in the
+[CMA](#where-the-content-lives) and lives in `content/*.json`.
+
+Two pages: the main page at `/`, and Decorations at `/decorations`.
 
 ## Run it
 
@@ -40,34 +43,109 @@ through components.
 | Address | `business.addressLine1/2` | Pandaravadai, Thanjavur |
 | Map location | `business.mapQuery` | Feeds the Google Maps embed. Replace with an exact address or `lat,lng` once the shop is pinned |
 
-### `src/data/services.ts` — services, combos, gallery
+### `src/data/services.ts` — services, combos, decorations
 
-All seven services, their filter categories, and the full content for each
+All seven services, their categories, and the full content for each
 "View Service Details" modal (badge, subtitle, about text, highlights, tags,
-inclusions, availability notes). Also the three combo packages and the
-gallery tiles.
+inclusions, availability notes). Also the three combo packages, and the
+flattened view of the **decorations showcase** described below.
+
+This file only reshapes what is in `content/*.json` into plain English
+strings with formatted prices. The content itself is edited in the CMA.
 
 > **All prices are dummy placeholders.** Replace the `price` strings in
 > `services[]` and `combos[]` — e.g. `"Starting ₹25,000"` — with real
 > pricing. Every price in the UI reads from these two arrays.
 
-### Images
+### The decorations showcase
 
-Every service and gallery photo is a **dummy Unsplash image**, chosen by
-hand to match what it sits next to — a mandap for Decoration, an editing
-timeline for Video Editing, a sweets tray for the sweets counter.
+Decorations is the one service that shows its actual work on the page. It is
+driven by an optional `showcase` block hanging off the decoration service in
+`content/services.json`:
 
-All of them are one-liners in `src/data/services.ts`:
-
-```ts
-image: dummyPhoto("1587271636175-90d58cdad458"),
+```jsonc
+"showcase": {
+  "intro": { "en": "…" },
+  "types": [                      // the numbered menu: Wedding Stages, …
+    {
+      "id": "wedding-stages",
+      "name": { "en": "Wedding Stages" },
+      "description": { "en": "…" },
+      "image": "/images/…",       // optional; falls back to the first design
+      "items": [                  // the individual designs, may be empty
+        {
+          "id": "stage-and-mandap",
+          "name": { "en": "Stage & Mandap" },
+          "description": { "en": "…" },
+          "images": ["/images/…"], // first leads, the rest become thumbnails
+          "pricing": { … },        // optional — omitted means no price shown
+          "includes": [ … ],       // optional
+          "suitableFor": [ … ],    // optional
+          "tags": [ … ],           // optional
+          "style": { … },          // optional
+          "specifications": [ { "label": …, "value": … } ]  // optional
+        }
+      ]
+    }
+  ]
+}
 ```
 
-To use real photographs, drop files into `public/` and replace the call
-with the path — `image: "/decoration.jpg"`. Nothing else changes.
+**Everything below `items[]` is optional and the detail view only renders
+what is there.** A design with no price shows no price rather than a
+placeholder; a type with no designs yet shows its description and an enquiry
+button rather than an empty panel.
 
-Each tile paints a gradient and floral motif *underneath* the photo
-(`PlaceholderPhoto`), so a slow or failed image never leaves a blank box.
+The five decoration types come from the decoration service's own `includes`
+list. Of the ten designs under them, two — Stage & Mandap and Entrance Arch
+— carry the real text that used to live in the gallery; **the other eight
+are samples**, named and described to match their sample photograph so the
+page can be judged full rather than empty. None of them states a price,
+because the content does not carry one; the only real figure on the page is
+the service's own "Starting ₹25,000" at the top.
+
+It drives the whole `/decorations` page: one section per type, its designs
+underneath, everything on the page at once. There is nothing to open, filter
+or expand, so there is nothing to work out.
+
+It hangs off the service rather than living in its own file on purpose.
+`content/services.json` is already one of the five files the CMA reads,
+writes and publishes, so no new content file, publish entry or repository
+check was needed, and the CMA preserves the block untouched through an edit
+(it holds the whole service record in state and spreads it on save).
+
+**The CMA has no editor for it yet.** The client can publish the block but
+cannot change it from the app — adding a Decorations screen to the CMA is
+the follow-up that makes this content client-editable.
+
+### Images
+
+Every `image` in `content/*.json` is a path under `public/images/` — the
+folder the CMA uploads into.
+
+**Every photograph currently committed there is a sample**, not the
+business's own work. They are stock photographs, hand-matched to whatever
+each one sits next to — a mandap for Decoration, a camera for Photography, a
+sweets tray for the sweets counter — so the site can be looked at as it will
+actually appear. All are 1100x825 JPEGs, about 4MB for the set.
+
+Replacing one is a file copy: drop a real photograph over the same filename,
+or upload it through the CMA. No content or code changes, because the paths
+already point at these names. **Swap them all before the site goes live.**
+
+Each tile also paints a gradient and floral motif *underneath* the photo
+(`PlaceholderPhoto`), so a missing, slow or failed image never leaves a
+blank box — which is what the site looked like before these were added, and
+what it falls back to for any path with no file behind it.
+
+`PlaceholderPhoto` only builds a `srcset` for Unsplash URLs, so these local
+files are served at their full 1100px width whatever size they are painted
+at — a service card on a phone is about 160px wide. That is the one piece of
+the performance notes below that the committed samples do not honour, and it
+matters more once the real photographs arrive, which will not be smaller.
+Generating a couple of widths per file and teaching `buildSrcSet` about
+local paths is the fix; it needs a naming convention the CMA's uploader
+knows about too, which is why it has not been done yet.
 
 ---
 
@@ -76,16 +154,53 @@ Each tile paints a gradient and floral motif *underneath* the photo
 ```
 src/
   data/site.ts          business details
-  data/services.ts      services, modal content, combos, gallery
+  data/services.ts      services, modal content, combos, decorations
   data/copy.ts          buttons, headings and labels
   lib/motion.ts         the animation safety net (read before editing)
+  lib/router.ts         the two-page router (40 lines, no dependency)
   components/           Button, Card, SectionHeading, FilterTabs, Modal,
                         MobileMenu, Reveal, Header, Footer, icons,
                         AnimatedIcon, HeroOrnament, Flourish, Royal
-  sections/             Hero, Services, ServiceDetail, Combos,
-                        Gallery, Contact
+  sections/             Hero, Services, ServiceDetail, DecorationDetail,
+                        Combos, Contact
+  pages/                DecorationsPage
   index.css             design system (colours, fonts, shadows)
 ```
+
+`FilterTabs` is currently unused — the services grid no longer filters, so
+all seven cards are simply shown. It is kept because it is a general-purpose
+component, not because anything renders it today.
+
+### Routing
+
+`src/lib/router.ts` is the whole thing: a path read from
+`window.location.pathname`, a `useSyncExternalStore` subscription, and a
+`navigate()` that pushes state. No routing library, because two pages do not
+need one.
+
+Paths are **real paths, not hashes**, because the header, footer and phone
+menu already use `#services`-style hashes to jump around the main page and
+folding both meanings into one `#` would make each harder to follow.
+`netlify.toml` already serves index.html for any unknown path and Vite's dev
+server does the same, so `/decorations` can be loaded, bookmarked and shared
+directly.
+
+Two details worth keeping:
+
+- **The scroll after a navigation happens in a layout effect in `App`, not
+  in `navigate`.** The element being scrolled to does not exist until React
+  has rendered the new page. A `requestAnimationFrame` callback would also
+  run late enough, but rAF stops firing in a window that is not painting —
+  the same hazard `lib/motion.ts` exists for — and the visitor would land
+  part-way down the page they just left.
+- **`App` listens on `document` for clicks on `#` links, but only when the
+  visitor is away from the main page.** Those ids only exist there, so off
+  it the same link has to go home first and then jump. Listening on the
+  document rather than on a wrapper is deliberate: the phone menu is
+  portalled to `<body>` and would otherwise be missed. On the main page the
+  listener is not installed at all, so every one of those links keeps
+  exactly the behaviour it has always had, and `Header`, `Footer` and
+  `MobileMenu` needed no changes.
 
 ### Design system
 
@@ -115,9 +230,21 @@ Token names follow the palette: `bg-royal`, `text-plum`, `text-gold-soft`.
 request. Calling stays one tap away because the sticky header carries a
 Call button at every screen size, alongside a menu button on phones.
 
-**Section order is Hero → Services → Packages → Gallery → Contact.**
-Charcoal and ivory alternate. There is no testimonials section — it was
-removed at the client's request.
+**Section order is Hero → Services → Packages → Contact.** Charcoal and
+ivory alternate. There is no testimonials section and no gallery section —
+both were removed at the client's request. The photographs the gallery used
+to carry now sit inside the decoration they show, on the Decorations page,
+so a picture always says which service produced it.
+
+**One service card goes to a page instead of opening a dialog.** Services
+renders all seven cards identically, but a service carrying a `showcase`
+block navigates to `/decorations` rather than opening `ServiceDetail`. That
+is a data check, not a hardcoded id, so the second service to get a page of
+its own needs no change here.
+
+**There are no filter pills above the grid.** They were removed at the
+client's request — seven cards do not need filtering. `FilterTabs` still
+exists if they are ever wanted back.
 
 **Two headings are gradient-filled**: the hero (`.shimmer-text`, a slow
 looping sweep) and every section title (`.title-sheen`, one pass as it
@@ -138,17 +265,12 @@ at both ends of the range, not just that it looks right mid-sweep.
 `yPercent` against the hero's own scroll range. Transform only, and scrubbed
 rather than looping, so it costs nothing while the page is still.
 
-**Filter pills wrap and centre; they do not scroll sideways.** On phones
-each category shows a shorter label (`categories[].short`) so the pills
-settle into tidy rows, and the full names return from `sm` up.
-
-**Gallery photos open their own detail modal** (`GalleryDetail`), built on
-the same `Modal` as the service one, and each links back to the service that
-produced it.
-
-**Layout on phones is two columns.** Both the services grid and the gallery
-are `grid-cols-2` from the smallest screen up. The button reads "View
-Details" on phones and "View Service Details" from `sm` up.
+**Layout on phones is two columns** for the services grid, which is
+`grid-cols-2` from the smallest screen up. The button reads "View Details"
+on phones and "View Service Details" from `xs` up. Decoration designs on the
+Decorations page are the exception: one column on the narrowest phones and
+two from `xs` (400px), because a decoration photograph two-up on a 320px
+screen is too small to be worth showing.
 
 **Service cards line up without fixed heights.** Each leads with its photo,
 then a `line-clamp-2` heading with a small min-height (so descriptions start
@@ -179,8 +301,8 @@ Two consequences worth keeping in mind: package chips are **text only**
 fitted per row), and the footer does **not** relist the services — the
 Services section already does.
 
-**All three detail modals share one `Modal`**: `ServiceDetail`,
-`ComboDetail` and `GalleryDetail`. Each package card has its own "View Pack
+**All three detail views share one `Modal`**: `ServiceDetail`,
+`ComboDetail` and `DecorationDetail`. Each package card has its own "View Pack
 Details" view listing the bundled services with their one-line summaries,
 so someone can see exactly what a combo contains before calling.
 
@@ -193,6 +315,47 @@ then turn slowly, gold corner brackets draw onto the highlighted combo
 (`CornerOrnaments`), and gold motes drift through the dark sections
 (`GoldMotes`). The highlighted combo also carries a slow gold sheen and a
 breathing gold edge (`.royal-sheen`, `.royal-glow` in `index.css`).
+
+**Scroll-triggered animations use `toggleActions`, never `once: true`.**
+This one cost real time, so it is worth reading before touching
+`Reveal`, `AnimatedIcon`, `Flourish`, `SectionHeading` or `CornerOrnaments`.
+
+`once: true` kills the ScrollTrigger the moment it fires. Reload the page
+part way down — on Packages or Contact, say — and every trigger above the
+viewport is already past its start, so they all fire during ScrollTrigger's
+first refresh and delete themselves from its internal `_triggers` list. That
+refresh is midway through iterating that very list (`i` starts at
+`_triggers.indexOf(self)` and counts down), so it walks off the end of the
+now-shorter array, reads `.end` of `undefined` and throws. The throw comes
+out of a `useLayoutEffect`, so React unmounts the entire tree: the document
+collapses to viewport height and the page goes blank. It reads as a freeze.
+
+It only happens when the page loads already scrolled, because at the top
+almost nothing is past its trigger point and nothing self-kills. It affects
+the production build, not just dev.
+
+`toggleActions: "play none none none"` plays on the way in and does nothing
+on the way out or back — what `once` looked like — but leaves the trigger in
+the list, so the array never changes length underneath the loop. Verified by
+reloading at every section, on desktop and phone, in both `npm run dev` and
+the production build.
+
+**There is deliberately no `scroll-behavior: smooth` on `html`.** It looks
+like a free win and it is not: ScrollTrigger measures by setting `scrollTop`
+and putting it straight back, and `main.tsx` refreshes it once the web fonts
+land. A CSS-smooth scroller turns each of those restores into an animation,
+so ScrollTrigger never finds the page where it just put it and measures
+again — with the scrubbed hero trigger reacting every time. Restoring to `0`
+is a no-op, which is why it only bit when the page loaded already scrolled:
+reloading on `#packages` or `#contact` locked the tab up, while reloading at
+the top was fine. GSAP documents the incompatibility.
+
+The smooth glide is still there. `App` catches clicks on `#`-links at the
+document level and calls `scrollToHash` from `lib/router.ts`, which is one
+animation on a click rather than a rule that hijacks every programmatic
+scroll. `scroll-padding-top` still applies, so links land at the same offset
+they always did, and the handler falls back to an instant jump under
+`prefers-reduced-motion`. Do not put that CSS property back.
 
 **Animations must never gate content — and the safety net must not eat
 them either.** Every animation has a fallback that forces its end state if
@@ -230,8 +393,8 @@ of styles and then jumps at once. Two things smooth that out:
   section headings, the wordmark and section padding. These scale
   continuously with the viewport instead of snapping at a breakpoint.
 
-Column counts: services and gallery go 2 → 3 at `sm` (640) → gallery 4 at
-`lg`; packages go 1 → 2 at `sm` → 3 at `lg`. The inline header nav waits
+Column counts: services go 2 → 3 at `sm` (640); decoration designs go
+1 → 2 at `xs` (400) → 3 at `lg`; packages go 1 → 2 at `sm` → 3 at `lg`. The inline header nav waits
 until `lg` — at 768px the four links plus the brand and call button
 squeezed the business name into an ellipsis, and a tablet is perfectly
 happy with the menu button.

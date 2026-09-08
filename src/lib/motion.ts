@@ -1,3 +1,17 @@
+/* `toggleActions` rather than `once: true`, deliberately.
+
+   `once` kills the ScrollTrigger the moment it fires. Reload the page part
+   way down and every trigger above the viewport is already past its start,
+   so they all fire during ScrollTrigger's first refresh and delete
+   themselves from its internal list — while that same refresh is midway
+   through iterating it. The iteration walks off the end of the shortened
+   array, throws, and takes the whole React tree down with it: a blank page,
+   which is what "it freezes on reload" turned out to be.
+
+   These four actions mean play on the way in and do nothing on the way out
+   or back, which is what `once` looked like, but the trigger stays in the
+   list and the array never changes length underneath the loop. */
+
 /* Some environments never fire requestAnimationFrame — a backgrounded or
    occluded window, certain low-power modes. GSAP's ticker then never
    advances, which would leave artwork permanently half-drawn or invisible.

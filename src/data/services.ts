@@ -9,6 +9,10 @@ import {
   type GalleryItem as ContentGalleryItem,
   type Highlight as ContentHighlight,
   type Service as ContentService,
+  type Showcase as ContentShowcase,
+  type ShowcaseItem as ContentShowcaseItem,
+  type ShowcaseSpec as ContentShowcaseSpec,
+  type ShowcaseType as ContentShowcaseType,
   type Combo as ContentPackage,
 } from "../content";
 import { formatPrice } from "../utils/formatPrice";
@@ -30,6 +34,44 @@ export type CategoryId =
 
 export type Highlight = { label: string; value: string; level: number };
 
+/* ---- Decorations showcase -----------------------------------------------
+   The flattened, English view of a service's optional `showcase` block.
+   Every text field is a plain string and the price is already formatted, so
+   the components stay free of content plumbing. Fields the content does not
+   carry come through empty and the UI simply omits them — nothing is filled
+   in on the content's behalf. */
+export type DecorationSpec = { label: string; value: string };
+
+export type Decoration = {
+  id: string;
+  name: string;
+  /* The decoration type this design belongs to, carried on the design so a
+     detail view can name it without the caller passing it down. */
+  typeId: string;
+  typeName: string;
+  description: string;
+  images: string[];
+  /* Formatted, or "" when the content states no price for this design. */
+  price: string;
+  includes: string[];
+  suitableFor: string[];
+  tags: string[];
+  style: string;
+  specifications: DecorationSpec[];
+};
+
+export type DecorationType = {
+  id: string;
+  name: string;
+  description: string;
+  /* Falls back to the first image of the first design, so a type that has
+     designs always has something to show. */
+  image: string;
+  items: Decoration[];
+};
+
+export type Showcase = { intro: string; types: DecorationType[] };
+
 export type Service = {
   id: ServiceId;
   name: string;
@@ -47,6 +89,7 @@ export type Service = {
     notice: string;
     conditions: string;
   };
+  showcase?: Showcase;
 };
 
 export type Combo = {
@@ -94,6 +137,58 @@ const normalizeCategory = (category: ContentCategory): { id: CategoryId; label: 
   short: getLocalizedText(category.shortLabel ?? category.label, "en"),
 });
 
+const normalizeSpecs = (items: ContentShowcaseSpec[] = []): DecorationSpec[] =>
+  items
+    .map((item) => ({
+      label: getLocalizedText(item.label, "en"),
+      value: getLocalizedText(item.value, "en"),
+    }))
+    /* A half-filled row would print a label with nothing beside it. */
+    .filter((spec) => spec.label !== "" && spec.value !== "");
+
+const normalizeDecoration = (
+  item: ContentShowcaseItem,
+  type: ContentShowcaseType
+): Decoration => ({
+  id: item.id,
+  name: getLocalizedText(item.name, "en"),
+  typeId: type.id,
+  typeName: getLocalizedText(type.name, "en"),
+  description: getLocalizedText(item.description, "en"),
+  /* Blank entries would render as an empty thumbnail strip. */
+  images: (item.images ?? []).filter(Boolean),
+  price: item.pricing ? formatPrice(item.pricing, "en") : "",
+  includes: normalizeTextArray(item.includes),
+  suitableFor: normalizeTextArray(item.suitableFor),
+  tags: normalizeTextArray(item.tags),
+  style: getLocalizedText(item.style, "en"),
+  specifications: normalizeSpecs(item.specifications),
+});
+
+const normalizeShowcase = (showcase?: ContentShowcase): Showcase | undefined => {
+  if (!showcase || !Array.isArray(showcase.types) || showcase.types.length === 0) {
+    return undefined;
+  }
+
+  const types: DecorationType[] = showcase.types.map((type) => {
+    const items = (type.items ?? []).map((item) => normalizeDecoration(item, type));
+
+    return {
+      id: type.id,
+      name: getLocalizedText(type.name, "en"),
+      description: getLocalizedText(type.description, "en"),
+      image: type.image || items[0]?.images[0] || "",
+      items,
+    };
+  });
+
+  /* A type with no name has nothing to put in the menu. */
+  const named = types.filter((type) => type.name !== "");
+  if (named.length === 0) return undefined;
+
+  return { intro: getLocalizedText(showcase.intro, "en"), types: named };
+};
+
 export const categories = categoryCatalog.map(normalizeCategory);
 
 export const services: Service[] = serviceCatalog.map((service: ContentService) => ({
@@ -113,6 +208,7 @@ export const services: Service[] = serviceCatalog.map((service: ContentService) 
     notice: getLocalizedText(service.detail.notice, "en"),
     conditions: getLocalizedText(service.detail.conditions, "en"),
   },
+  showcase: normalizeShowcase(service.showcase),
 }));
 
 export const serviceById = Object.fromEntries(

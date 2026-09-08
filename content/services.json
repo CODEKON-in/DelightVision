@@ -121,6 +121,506 @@
         "en": "Theme colours and flower types can be changed on request",
         "ta": ""
       }
+    },
+    "showcase": {
+      "intro": {
+        "en": "We treat the venue as one picture rather than a set of separate decorations.",
+        "ta": ""
+      },
+      "types": [
+        {
+          "id": "wedding-stages",
+          "name": {
+            "en": "Wedding Stages",
+            "ta": ""
+          },
+          "description": {
+            "en": "The stage backdrop, built with floral and fabric work.",
+            "ta": ""
+          },
+          "image": "/images/gallery/gallery-01.jpg",
+          "items": [
+            {
+              "id": "stage-and-mandap",
+              "name": {
+                "en": "Stage & Mandap",
+                "ta": ""
+              },
+              "description": {
+                "en": "A full stage and mandap build for an evening wedding. Fresh garlands on the pillars, draped fabric behind the couple, and warm lighting angled so the photographs stay soft rather than washed out.",
+                "ta": ""
+              },
+              "images": [
+                "/images/gallery/gallery-01.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Stage Design",
+                  "ta": ""
+                },
+                {
+                  "en": "Mandap Setup",
+                  "ta": ""
+                },
+                {
+                  "en": "Floral Work",
+                  "ta": ""
+                },
+                {
+                  "en": "Warm Lighting",
+                  "ta": ""
+                }
+              ]
+            },
+            {
+              "id": "garden-stage",
+              "name": {
+                "en": "Garden Stage",
+                "ta": ""
+              },
+              "description": {
+                "en": "Two decorated seats set out on the lawn, with floral work across the chair backs and fresh flowers either side.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/draped-stage.jpg",
+                "/images/decorations/draped-stage-florals.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Stage Design",
+                  "ta": ""
+                },
+                {
+                  "en": "Outdoor Setup",
+                  "ta": ""
+                },
+                {
+                  "en": "Floral Work",
+                  "ta": ""
+                }
+              ],
+              "includes": [
+                {
+                  "en": "Two decorated seats",
+                  "ta": ""
+                },
+                {
+                  "en": "Floral work on the chair backs",
+                  "ta": ""
+                },
+                {
+                  "en": "Fresh flowers either side",
+                  "ta": ""
+                }
+              ],
+              "suitableFor": [
+                {
+                  "en": "Weddings",
+                  "ta": ""
+                },
+                {
+                  "en": "Receptions",
+                  "ta": ""
+                },
+                {
+                  "en": "Engagements",
+                  "ta": ""
+                }
+              ],
+              "style": {
+                "en": "Soft and floral",
+                "ta": ""
+              }
+            }
+          ]
+        },
+        {
+          "id": "mandap-setups",
+          "name": {
+            "en": "Mandap Setups",
+            "ta": ""
+          },
+          "description": {
+            "en": "The mandap itself, with pillars and a canopy.",
+            "ta": ""
+          },
+          "image": "/images/decorations/pillar-mandap.jpg",
+          "items": [
+            {
+              "id": "pillar-mandap",
+              "name": {
+                "en": "Pillar Mandap",
+                "ta": ""
+              },
+              "description": {
+                "en": "A four-pillar mandap with a covered canopy, garlanded down each pillar and finished with seating underneath.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/pillar-mandap.jpg",
+                "/images/decorations/pillar-mandap-florals.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Mandap Setup",
+                  "ta": ""
+                },
+                {
+                  "en": "Pillars",
+                  "ta": ""
+                },
+                {
+                  "en": "Canopy",
+                  "ta": ""
+                },
+                {
+                  "en": "Fresh Garlands",
+                  "ta": ""
+                }
+              ],
+              "includes": [
+                {
+                  "en": "Four decorated pillars",
+                  "ta": ""
+                },
+                {
+                  "en": "Covered canopy",
+                  "ta": ""
+                },
+                {
+                  "en": "Fresh garlands and floral work",
+                  "ta": ""
+                },
+                {
+                  "en": "Seating under the mandap",
+                  "ta": ""
+                }
+              ],
+              "suitableFor": [
+                {
+                  "en": "Weddings",
+                  "ta": ""
+                },
+                {
+                  "en": "Engagements",
+                  "ta": ""
+                }
+              ],
+              "specifications": [
+                {
+                  "label": {
+                    "en": "Footprint",
+                    "ta": ""
+                  },
+                  "value": {
+                    "en": "12 ft x 12 ft",
+                    "ta": ""
+                  }
+                },
+                {
+                  "label": {
+                    "en": "Height",
+                    "ta": ""
+                  },
+                  "value": {
+                    "en": "10 ft to the canopy",
+                    "ta": ""
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "entrance-decorations",
+          "name": {
+            "en": "Entrance Decorations",
+            "ta": ""
+          },
+          "description": {
+            "en": "The arch at the entrance and the pathway that leads your guests in.",
+            "ta": ""
+          },
+          "image": "/images/gallery/gallery-05.jpg",
+          "items": [
+            {
+              "id": "entrance-arch",
+              "name": {
+                "en": "Entrance Arch",
+                "ta": ""
+              },
+              "description": {
+                "en": "The entrance arch and pathway leading guests in. Built the morning of the function with flowers sourced that day, and matched to the colours used on the stage inside.",
+                "ta": ""
+              },
+              "images": [
+                "/images/gallery/gallery-05.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Floral Arch",
+                  "ta": ""
+                },
+                {
+                  "en": "Entrance Decor",
+                  "ta": ""
+                },
+                {
+                  "en": "Pathway",
+                  "ta": ""
+                }
+              ]
+            },
+            {
+              "id": "balloon-entrance",
+              "name": {
+                "en": "Balloon Entrance",
+                "ta": ""
+              },
+              "description": {
+                "en": "A balloon arch over the entrance, colours matched to the rest of the hall.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/balloon-entrance.jpg",
+                "/images/decorations/balloon-entrance-pink.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Entrance Decor",
+                  "ta": ""
+                },
+                {
+                  "en": "Balloon Arch",
+                  "ta": ""
+                }
+              ],
+              "suitableFor": [
+                {
+                  "en": "Receptions",
+                  "ta": ""
+                },
+                {
+                  "en": "Birthdays",
+                  "ta": ""
+                },
+                {
+                  "en": "Baby Showers",
+                  "ta": ""
+                }
+              ]
+            },
+            {
+              "id": "petal-walkway",
+              "name": {
+                "en": "Petal Walkway",
+                "ta": ""
+              },
+              "description": {
+                "en": "A petal-strewn walkway leading in from the entrance, laid the morning of the function.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/petal-walkway.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Pathway",
+                  "ta": ""
+                },
+                {
+                  "en": "Fresh Petals",
+                  "ta": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-and-seating",
+          "name": {
+            "en": "Table & Seating",
+            "ta": ""
+          },
+          "description": {
+            "en": "Table and seating arrangements, including the head table.",
+            "ta": ""
+          },
+          "image": "/images/decorations/head-table.jpg",
+          "items": [
+            {
+              "id": "head-table",
+              "name": {
+                "en": "Head Table Setting",
+                "ta": ""
+              },
+              "description": {
+                "en": "The head table laid with a greenery runner, candles and place settings for the family.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/head-table.jpg",
+                "/images/decorations/head-table-florals.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Head Table",
+                  "ta": ""
+                },
+                {
+                  "en": "Greenery Runner",
+                  "ta": ""
+                },
+                {
+                  "en": "Candles",
+                  "ta": ""
+                }
+              ],
+              "includes": [
+                {
+                  "en": "Greenery runner down the table",
+                  "ta": ""
+                },
+                {
+                  "en": "Candles and holders",
+                  "ta": ""
+                },
+                {
+                  "en": "Place settings and name cards",
+                  "ta": ""
+                }
+              ],
+              "suitableFor": [
+                {
+                  "en": "Weddings",
+                  "ta": ""
+                },
+                {
+                  "en": "Receptions",
+                  "ta": ""
+                }
+              ]
+            },
+            {
+              "id": "banquet-seating",
+              "name": {
+                "en": "Banquet Seating",
+                "ta": ""
+              },
+              "description": {
+                "en": "Round guest tables laid across the hall, with chair covers and a centrepiece on every table.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/banquet-seating.jpg",
+                "/images/decorations/banquet-seating-hall.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Guest Seating",
+                  "ta": ""
+                },
+                {
+                  "en": "Chair Covers",
+                  "ta": ""
+                },
+                {
+                  "en": "Centrepieces",
+                  "ta": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lighting-and-ambience",
+          "name": {
+            "en": "Lighting & Ambience",
+            "ta": ""
+          },
+          "description": {
+            "en": "LED and warm accent lighting, set across the stage and the hall.",
+            "ta": ""
+          },
+          "image": "/images/decorations/string-light-canopy.jpg",
+          "items": [
+            {
+              "id": "string-light-canopy",
+              "name": {
+                "en": "String Light Canopy",
+                "ta": ""
+              },
+              "description": {
+                "en": "Warm string lights run overhead across the seating area, so the hall keeps its light once the sun goes down.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/string-light-canopy.jpg",
+                "/images/decorations/string-lights-tables.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "String Lights",
+                  "ta": ""
+                },
+                {
+                  "en": "Warm Lighting",
+                  "ta": ""
+                },
+                {
+                  "en": "Evening Function",
+                  "ta": ""
+                }
+              ],
+              "suitableFor": [
+                {
+                  "en": "Receptions",
+                  "ta": ""
+                },
+                {
+                  "en": "Outdoor Functions",
+                  "ta": ""
+                }
+              ]
+            },
+            {
+              "id": "warm-hall-lighting",
+              "name": {
+                "en": "Warm Hall Lighting",
+                "ta": ""
+              },
+              "description": {
+                "en": "Warm overhead lighting through the hall, kept low enough that the stage and the tables both read well in photographs.",
+                "ta": ""
+              },
+              "images": [
+                "/images/decorations/warm-hall-lighting.jpg"
+              ],
+              "tags": [
+                {
+                  "en": "Warm Lighting",
+                  "ta": ""
+                },
+                {
+                  "en": "Indoor Hall",
+                  "ta": ""
+                }
+              ],
+              "suitableFor": [
+                {
+                  "en": "Receptions",
+                  "ta": ""
+                },
+                {
+                  "en": "Evening Functions",
+                  "ta": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   {

@@ -1,32 +1,29 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { AnimatedIcon } from "../components/AnimatedIcon";
 import { Button } from "../components/Button";
 import { Card } from "../components/Card";
-import { FilterTabs, type Tab } from "../components/FilterTabs";
 import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 import { Reveal } from "../components/Reveal";
 import { SectionHeading } from "../components/SectionHeading";
 import { iconFor } from "../components/serviceIcons";
 import { ui } from "../data/copy";
-import { categories, services, type CategoryId, type Service } from "../data/services";
+import { services, type Service } from "../data/services";
+import { DECORATIONS_PATH, navigate } from "../lib/router";
 import { ServiceDetail } from "./ServiceDetail";
 
-type FilterId = CategoryId | "all";
-
 export function Services() {
-  const [filter, setFilter] = useState<FilterId>("all");
-
-  const tabs: Tab<FilterId>[] = [
-    { id: "all", label: ui.allServices },
-    ...categories.map((c) => ({ id: c.id as FilterId, label: c.label, short: c.short })),
-  ];
-
   const [openService, setOpenService] = useState<Service | null>(null);
 
-  const visible = useMemo(
-    () => (filter === "all" ? services : services.filter((s) => s.category === filter)),
-    [filter]
-  );
+  /* A service with a showcase has a page of its own — today that is
+     Decorations — so its card goes there instead of opening the dialog.
+     Every other card behaves exactly as it always has. */
+  const openDetails = (service: Service) => {
+    if (service.showcase) {
+      navigate(DECORATIONS_PATH);
+      return;
+    }
+    setOpenService(service);
+  };
 
   return (
     <section id="services" className="scroll-mt-20 bg-ivory py-[clamp(3.5rem,9vw,6rem)]">
@@ -39,30 +36,18 @@ export function Services() {
           />
         </Reveal>
 
-        <Reveal className="mt-10 sm:mt-12">
-          <FilterTabs
-            tabs={tabs}
-            active={filter}
-            onChange={setFilter}
-            label={ui.filterServices}
-          />
-        </Reveal>
-
-        {/* `key` restarts the reveal animation when the filter changes */}
         <Reveal
-          key={filter}
           as="ul"
           stagger={0.07}
-          className="mt-10 grid grid-cols-2 items-stretch gap-3 sm:grid-cols-3 sm:gap-6"
+          className="mt-10 grid grid-cols-2 items-stretch gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-6"
         >
-          {visible.map((service, i) => {
+          {services.map((service, i) => {
             const Icon = iconFor(service.id);
 
             return (
               <li key={service.id} className="h-full">
                 <Card flush className="flex h-full flex-col">
                   <div className="relative">
-                    {/* DUMMY photo of this service - see src/data/services.ts */}
                     <PlaceholderPhoto
                       index={i}
                       src={service.image}
@@ -93,7 +78,6 @@ export function Services() {
                     </p>
 
                     <div className="mt-auto border-t border-cream-dark pt-3 sm:pt-4">
-                      {/* DUMMY PRICE - see src/data/services.ts */}
                       <p className="nums-lining font-serif text-xl leading-tight font-semibold text-plum xs:text-2xl sm:text-3xl">
                         {service.price}
                       </p>
@@ -103,7 +87,7 @@ export function Services() {
                         size="md"
                         fullWidth
                         className="mt-3 sm:mt-4"
-                        onClick={() => setOpenService(service)}
+                        onClick={() => openDetails(service)}
                       >
                         <span className="xs:hidden">{ui.viewDetailsShort}</span>
                         <span className="hidden xs:inline">{ui.viewDetailsLong}</span>

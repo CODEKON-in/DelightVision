@@ -10,7 +10,6 @@ export function Header() {
   const navLinks: NavLink[] = [
     { href: "#services", label: ui.navServices },
     { href: "#packages", label: ui.navPackages },
-    { href: "#gallery", label: ui.navGallery },
     { href: "#contact", label: ui.navContact },
   ];
 

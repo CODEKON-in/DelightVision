@@ -19,6 +19,12 @@ export const business = {
 
 export const telHref = `tel:${business.phoneDial}`;
 
+/* The same WhatsApp mechanism as everywhere else on the site, with the thing
+   the visitor was looking at written into the message — so the enquiry
+   arrives already saying which decoration it is about. */
+export const enquiryMessageFor = (subject: string) =>
+  `Hello Delight Vision! I saw ${subject} on your website and I would like to enquire about it.`;
+
 export const whatsappHrefFor = (message: string) =>
   `https://wa.me/${business.whatsappNumber}?text=${encodeURIComponent(message)}`;
 

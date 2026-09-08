@@ -29,7 +29,7 @@ export function CornerOrnaments() {
       });
 
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: el, start: "top 92%", once: true },
+        scrollTrigger: { trigger: el, start: "top 92%", toggleActions: "play none none none" },
       });
       tl.to(strokes, {
         strokeDashoffset: 0,

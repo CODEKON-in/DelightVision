@@ -7,11 +7,13 @@
    =================================================================== */
 
 export const ui = {
+  /* -- Page ---------------------------------------------------------- */
+  pageTitle: "Delight Vision — Complete Wedding Services, Thanjavur",
+
   /* -- Navigation & header ---------------------------------------- */
   mainNavigation: "Main navigation",
   navServices: "Services",
   navPackages: "Packages",
-  navGallery: "Gallery",
   navContact: "Contact",
   callNow: "Call Now",
   callBusiness: "Call Delight Vision",
@@ -27,12 +29,26 @@ export const ui = {
   servicesEyebrow: "What we do",
   servicesTitle: "Our Services",
   servicesSubtitle: "Book any single service, or let us handle your whole wedding. Tap a service to see exactly what it includes.",
-  allServices: "All Services",
   viewDetailsShort: "View Details",
   viewDetailsLong: "View Service Details",
-  filterServices: "Filter services by category",
 
-  /* -- Service & gallery detail modal ------------------------------ */
+  /* -- Decorations page ---------------------------------------------- */
+  decorationsTitle: "Decorations",
+  backToServices: "Back to Services",
+  fullServiceDetails: "Full service details",
+  decorationsFootnoteTitle: "Before you call",
+  noDesignsYet: "We build this for every hall we work in. Message us and we will design it around your venue and your colours.",
+  noDecorationsYet: "The decorations are being updated. Please call us and we will talk you through them.",
+  aboutThisDecoration: "About This Decoration",
+  idealFor: "Ideal For",
+  decorationStyle: "Style",
+  decorationDetails: "Details",
+  moreImages: "More images",
+  viewImage: "View image",
+  enquireAboutThis: "Enquire About This",
+  closeDecorationDetails: "Close decoration details",
+
+  /* -- Detail modals ----------------------------------------------- */
   aboutThisService: "About This Service",
   serviceHighlights: "Service Highlights",
   covers: "Covers",
@@ -42,9 +58,7 @@ export const ui = {
   callToBook: "Call to Book",
   whatsapp: "WhatsApp",
   closeDetails: "Close service details",
-  aboutThisPhoto: "About This Photo",
   shownHere: "Shown Here",
-  wantThis: "Want this for your wedding?",
 
   /* -- Combo packages ---------------------------------------------- */
   combosEyebrow: "Book together, pay less",
@@ -57,15 +71,6 @@ export const ui = {
   packageHighlights: "Package Highlights",
   servicesInPackage: "Services In This Package",
   combosFootnote: "Need a different mix of services? Just call — we will put a combo together for you.",
-
-  /* -- Gallery ------------------------------------------------------ */
-  galleryEyebrow: "Our work",
-  galleryTitle: "Weddings We Have Done",
-  gallerySubtitle: "A look at some of the celebrations we have set up, cooked for and filmed. Tap any photo to see more.",
-  allWork: "All Work",
-  filterGallery: "Filter gallery by category",
-  photoGallery: "Photo gallery",
-  viewDetailsOf: "View details",
 
   /* -- Contact ------------------------------------------------------ */
   contactEyebrow: "Ready when you are",
