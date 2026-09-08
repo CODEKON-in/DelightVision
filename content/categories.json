@@ -1,0 +1,46 @@
+[
+  {
+    "id": "photo-video",
+    "label": {
+      "en": "Photography & Video",
+      "ta": ""
+    },
+    "shortLabel": {
+      "en": "Photo & Video",
+      "ta": ""
+    }
+  },
+  {
+    "id": "decor-venue",
+    "label": {
+      "en": "Decoration & Venue",
+      "ta": ""
+    },
+    "shortLabel": {
+      "en": "Decoration",
+      "ta": ""
+    }
+  },
+  {
+    "id": "food-catering",
+    "label": {
+      "en": "Food & Catering",
+      "ta": ""
+    },
+    "shortLabel": {
+      "en": "Food",
+      "ta": ""
+    }
+  },
+  {
+    "id": "editing-design",
+    "label": {
+      "en": "Editing & Design",
+      "ta": ""
+    },
+    "shortLabel": {
+      "en": "Editing",
+      "ta": ""
+    }
+  }
+]

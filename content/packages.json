@@ -1,0 +1,86 @@
+[
+  {
+    "id": "complete",
+    "name": {
+      "en": "Complete Wedding Combo",
+      "ta": ""
+    },
+    "blurb": {
+      "en": "Everything for your wedding, handled by one team.",
+      "ta": ""
+    },
+    "services": ["decoration", "food", "photography", "videography", "album", "video-editing"],
+    "pricing": {
+      "type": "starting",
+      "amount": 85000,
+      "currency": "INR",
+      "unit": "package"
+    },
+    "popular": true,
+    "image": "/images/packages/complete.jpg",
+    "detail": {
+      "badge": { "en": "Most Popular", "ta": "" },
+      "subtitle": { "en": "Six services, one team, one number to call.", "ta": "" },
+      "about": { "en": "This is the package most families take, because it removes the job of coordinating separate vendors. Decoration, catering, photography, video, the printed album and the edit all run off one plan and one schedule, so the caterer knows when the ceremony will overrun and the photographer knows when the food is being served. You deal with one person throughout, and there is nobody left to chase on the day.", "ta": "" },
+      "highlights": [
+        { "label": { "en": "Services Included", "ta": "" }, "value": { "en": "All six, one schedule", "ta": "" }, "level": 5 },
+        { "label": { "en": "Team On The Day", "ta": "" }, "value": { "en": "One coordinator, one contact", "ta": "" }, "level": 5 },
+        { "label": { "en": "Booking Notice", "ta": "" }, "value": { "en": "6 weeks in advance", "ta": "" }, "level": 3 }
+      ],
+      "notice": { "en": "Booking notice: 6 weeks in advance", "ta": "" },
+      "conditions": { "en": "Photo editing can be added; any service can be swapped out on a call", "ta": "" }
+    }
+  },
+  {
+    "id": "photo-video",
+    "name": { "en": "Photo & Video Combo", "ta": "" },
+    "blurb": { "en": "Every memory captured, edited and printed.", "ta": "" },
+    "services": ["photography", "videography", "album", "photo-editing", "video-editing"],
+    "pricing": {
+      "type": "starting",
+      "amount": 55000,
+      "currency": "INR",
+      "unit": "package"
+    },
+    "popular": false,
+    "image": "/images/packages/photo-video.jpg",
+    "detail": {
+      "badge": { "en": "For The Memories", "ta": "" },
+      "subtitle": { "en": "Everything that outlives the day, from shoot to printed album.", "ta": "" },
+      "about": { "en": "Take this when the hall and the food are already arranged and you only need the recording side handled. The same team shoots the photographs and the video, which matters more than it sounds — two crews from different companies end up standing in each other's frames. Editing and the printed album are included, so nothing is left half finished after the wedding.", "ta": "" },
+      "highlights": [
+        { "label": { "en": "Services Included", "ta": "" }, "value": { "en": "Shoot, edit and album", "ta": "" }, "level": 5 },
+        { "label": { "en": "Crew On The Day", "ta": "" }, "value": { "en": "One crew, photo and video", "ta": "" }, "level": 4 },
+        { "label": { "en": "Delivery Time", "ta": "" }, "value": { "en": "5-6 weeks for everything", "ta": "" }, "level": 4 }
+      ],
+      "notice": { "en": "Booking notice: 4 weeks in advance", "ta": "" },
+      "conditions": { "en": "Pre-wedding shoot and drone coverage available as add-ons", "ta": "" }
+    }
+  },
+  {
+    "id": "decor-catering",
+    "name": { "en": "Decor & Catering Combo", "ta": "" },
+    "blurb": { "en": "We dress the venue and feed your guests.", "ta": "" },
+    "services": ["decoration", "food"],
+    "pricing": {
+      "type": "starting",
+      "amount": 40000,
+      "currency": "INR",
+      "unit": "package"
+    },
+    "popular": false,
+    "image": "/images/packages/decor-catering.jpg",
+    "detail": {
+      "badge": { "en": "Venue & Guests", "ta": "" },
+      "subtitle": { "en": "The hall dressed and the guests fed, run by one team.", "ta": "" },
+      "about": { "en": "Decoration and catering are the two jobs that need the venue at the same time, and running them separately is where most wedding-day arguments start. Booked together, one team plans the floor: where the counters go, how the guests move, and which lighting is on while the food is served. Handy if you already have your own photographer.", "ta": "" },
+      "highlights": [
+        { "label": { "en": "Services Included", "ta": "" }, "value": { "en": "Full decor and catering", "ta": "" }, "level": 4 },
+        { "label": { "en": "Venue Planning", "ta": "" }, "value": { "en": "One floor plan for both", "ta": "" }, "level": 5 },
+        { "label": { "en": "Minimum Guests", "ta": "" }, "value": { "en": "100 plates", "ta": "" }, "level": 3 }
+      ],
+      "notice": { "en": "Booking notice: 3 weeks in advance", "ta": "" },
+      "conditions": { "en": "Guest count can be adjusted up to 3 days before the function", "ta": "" }
+    }
+  }
+]

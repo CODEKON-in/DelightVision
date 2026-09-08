@@ -1,0 +1,870 @@
+[
+  {
+    "id": "decoration",
+    "name": {
+      "en": "Decoration",
+      "ta": ""
+    },
+    "category": "decor-venue",
+    "description": {
+      "en": "Stage, mandap and flowers.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 25000,
+      "currency": "INR",
+      "unit": "service"
+    },
+    "image": "/images/services/decoration.jpg",
+    "detail": {
+      "badge": {
+        "en": "Signature Service",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "Stage, mandap, entrance and florals — your whole venue, dressed.",
+        "ta": ""
+      },
+      "about": {
+        "en": "We treat the venue as one picture rather than a set of separate decorations. Our team visits the hall beforehand, measures the stage and entrance, and plans the colours around your outfits and the time of day the function starts. Fresh flowers are sourced the morning of the event so nothing looks tired by evening, and the full setup is finished and cleaned up well before your first guests arrive.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Setup Time",
+            "ta": ""
+          },
+          "value": {
+            "en": "6-8 hours before the event",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Floral Work",
+            "ta": ""
+          },
+          "value": {
+            "en": "Fresh flowers, sourced same day",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Team Size",
+            "ta": ""
+          },
+          "value": {
+            "en": "8-12 people on site",
+            "ta": ""
+          },
+          "level": 4
+        }
+      ],
+      "tags": [
+        {
+          "en": "Stage Design",
+          "ta": ""
+        },
+        {
+          "en": "Floral Arch",
+          "ta": ""
+        },
+        {
+          "en": "Mandap Setup",
+          "ta": ""
+        },
+        {
+          "en": "LED Lighting",
+          "ta": ""
+        },
+        {
+          "en": "Entrance Decor",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Stage backdrop with floral and fabric work",
+          "ta": ""
+        },
+        {
+          "en": "Mandap setup with pillars and canopy",
+          "ta": ""
+        },
+        {
+          "en": "Entrance arch and pathway decoration",
+          "ta": ""
+        },
+        {
+          "en": "Table and seating arrangements for the head table",
+          "ta": ""
+        },
+        {
+          "en": "LED and warm accent lighting across the stage",
+          "ta": ""
+        },
+        {
+          "en": "Full removal and clean-up after the function",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Booking notice: 3 weeks in advance",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Theme colours and flower types can be changed on request",
+        "ta": ""
+      }
+    }
+  },
+  {
+    "id": "food",
+    "name": {
+      "en": "Food & Catering",
+      "ta": ""
+    },
+    "category": "food-catering",
+    "description": {
+      "en": "Catering with menu planning.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 350,
+      "currency": "INR",
+      "unit": "plate"
+    },
+    "image": "/images/services/food.jpg",
+    "detail": {
+      "badge": {
+        "en": "Most Booked",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "A full menu planned with you, cooked on site and served hot.",
+        "ta": ""
+      },
+      "about": {
+        "en": "We sit down with you to build the menu around the tastes of your family and the traditions of the function, rather than handing you a fixed list. Cooking happens at the venue on the day so nothing is reheated, and our serving team is briefed on the running order so food goes out at the right moment. Guest counts can be adjusted up to three days before the event.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Menu Planning",
+            "ta": ""
+          },
+          "value": {
+            "en": "Sit-down session included",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Serving Style",
+            "ta": ""
+          },
+          "value": {
+            "en": "Buffet or table service",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Minimum Guests",
+            "ta": ""
+          },
+          "value": {
+            "en": "100 plates",
+            "ta": ""
+          },
+          "level": 3
+        }
+      ],
+      "tags": [
+        {
+          "en": "Menu Planning",
+          "ta": ""
+        },
+        {
+          "en": "Live Counters",
+          "ta": ""
+        },
+        {
+          "en": "Buffet Setup",
+          "ta": ""
+        },
+        {
+          "en": "Sweets & Desserts",
+          "ta": ""
+        },
+        {
+          "en": "Serving Staff",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Menu planning session with tasting for the main dishes",
+          "ta": ""
+        },
+        {
+          "en": "On-site cooking team for the day of the function",
+          "ta": ""
+        },
+        {
+          "en": "Buffet counters with serving staff in uniform",
+          "ta": ""
+        },
+        {
+          "en": "Traditional sweets and dessert counter",
+          "ta": ""
+        },
+        {
+          "en": "Water, welcome drinks and buttermilk service",
+          "ta": ""
+        },
+        {
+          "en": "Crockery, serving vessels and full clean-up",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Final guest count needed 3 days before",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Live counters and speciality dishes available as add-ons",
+        "ta": ""
+      }
+    }
+  },
+  {
+    "id": "photography",
+    "name": {
+      "en": "Photography",
+      "ta": ""
+    },
+    "category": "photo-video",
+    "description": {
+      "en": "Full-day photo coverage.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 20000,
+      "currency": "INR",
+      "unit": "service"
+    },
+    "image": "/images/services/photography.jpg",
+    "detail": {
+      "badge": {
+        "en": "Client Favourite",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "Two photographers, the full day, from morning rituals to send-off.",
+        "ta": ""
+      },
+      "about": {
+        "en": "Our approach is to stay out of the way and let the day happen. Two photographers work the function together so that one is always on the couple while the other covers family, guests and the small moments in between. We shoot the traditional posed portraits your family will want framed, but the bulk of the collection is candid work. Every delivered photo is colour corrected by hand.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Coverage Hours",
+            "ta": ""
+          },
+          "value": {
+            "en": "10-12 hours, full day",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Photographers",
+            "ta": ""
+          },
+          "value": {
+            "en": "2 on site",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Delivery Time",
+            "ta": ""
+          },
+          "value": {
+            "en": "3-4 weeks",
+            "ta": ""
+          },
+          "level": 4
+        }
+      ],
+      "tags": [
+        {
+          "en": "Candid Coverage",
+          "ta": ""
+        },
+        {
+          "en": "Family Portraits",
+          "ta": ""
+        },
+        {
+          "en": "Traditional Shots",
+          "ta": ""
+        },
+        {
+          "en": "Getting Ready",
+          "ta": ""
+        },
+        {
+          "en": "Reception",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Two photographers for the full day of the function",
+          "ta": ""
+        },
+        {
+          "en": "Morning preparation and getting-ready coverage",
+          "ta": ""
+        },
+        {
+          "en": "Complete ceremony and ritual coverage",
+          "ta": ""
+        },
+        {
+          "en": "Posed family and group portraits",
+          "ta": ""
+        },
+        {
+          "en": "Reception and send-off coverage",
+          "ta": ""
+        },
+        {
+          "en": "400+ hand-corrected photographs delivered online",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Booking notice: 4 weeks in advance",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Pre-wedding and reception-day shoots available on request",
+        "ta": ""
+      }
+    }
+  },
+  {
+    "id": "videography",
+    "name": {
+      "en": "Videography",
+      "ta": ""
+    },
+    "category": "photo-video",
+    "description": {
+      "en": "A cinematic wedding film.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 25000,
+      "currency": "INR",
+      "unit": "service"
+    },
+    "image": "/images/services/videography.jpg",
+    "detail": {
+      "badge": {
+        "en": "Premium Craft",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "A cinematic record of the day, shot to be watched years later.",
+        "ta": ""
+      },
+      "about": {
+        "en": "We film the wedding the way a short film is made, with attention to sound, light and pacing, not just a running record of events. The team works with stabilised cameras for movement and places discreet microphones so the vows, speeches and blessings are actually audible. You receive both a short highlight film for sharing and the longer full-ceremony cut for the family.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Coverage Hours",
+            "ta": ""
+          },
+          "value": {
+            "en": "10-12 hours, full day",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Camera Team",
+            "ta": ""
+          },
+          "value": {
+            "en": "2 operators, stabilised rigs",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Delivery Time",
+            "ta": ""
+          },
+          "value": {
+            "en": "5-6 weeks",
+            "ta": ""
+          },
+          "level": 3
+        }
+      ],
+      "tags": [
+        {
+          "en": "Cinematic Film",
+          "ta": ""
+        },
+        {
+          "en": "Highlight Reel",
+          "ta": ""
+        },
+        {
+          "en": "Full Ceremony",
+          "ta": ""
+        },
+        {
+          "en": "Drone Optional",
+          "ta": ""
+        },
+        {
+          "en": "Live Audio",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Two camera operators for the full day",
+          "ta": ""
+        },
+        {
+          "en": "Stabilised camera work for movement and detail shots",
+          "ta": ""
+        },
+        {
+          "en": "Clip-on and ambient microphones for vows and speeches",
+          "ta": ""
+        },
+        {
+          "en": "5-8 minute cinematic highlight film",
+          "ta": ""
+        },
+        {
+          "en": "Full-length ceremony recording, lightly edited",
+          "ta": ""
+        },
+        {
+          "en": "Delivered online plus a copy on a USB drive",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Booking notice: 4 weeks in advance",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Drone coverage available as an add-on, subject to venue permission",
+        "ta": ""
+      }
+    }
+  },
+  {
+    "id": "album",
+    "name": {
+      "en": "Album Design",
+      "ta": ""
+    },
+    "category": "editing-design",
+    "description": {
+      "en": "A hand-designed album.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 8000,
+      "currency": "INR",
+      "unit": "service"
+    },
+    "image": "/images/services/album.jpg",
+    "detail": {
+      "badge": {
+        "en": "Handmade",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "A printed album laid out by hand, page by page, not by template.",
+        "ta": ""
+      },
+      "about": {
+        "en": "The album is designed around your photographs rather than dropped into a template. We shortlist the strongest images with you, then lay out each spread so the story of the day reads in order from morning to send-off. Printing is done on thick photographic paper with a lay-flat binding, so a portrait across two pages is not cut in half by the spine.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Page Count",
+            "ta": ""
+          },
+          "value": {
+            "en": "40 pages, 20 spreads",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Print Quality",
+            "ta": ""
+          },
+          "value": {
+            "en": "Lay-flat, thick photo paper",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Delivery Time",
+            "ta": ""
+          },
+          "value": {
+            "en": "3-4 weeks after selection",
+            "ta": ""
+          },
+          "level": 4
+        }
+      ],
+      "tags": [
+        {
+          "en": "Hand Layout",
+          "ta": ""
+        },
+        {
+          "en": "Lay-Flat Binding",
+          "ta": ""
+        },
+        {
+          "en": "Hard Cover",
+          "ta": ""
+        },
+        {
+          "en": "Photo Selection",
+          "ta": ""
+        },
+        {
+          "en": "Parent Copies",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Photo shortlisting session with your family",
+          "ta": ""
+        },
+        {
+          "en": "Hand-designed layout for every spread",
+          "ta": ""
+        },
+        {
+          "en": "40-page album on thick lay-flat photographic paper",
+          "ta": ""
+        },
+        {
+          "en": "Hard cover with your names and the wedding date",
+          "ta": ""
+        },
+        {
+          "en": "One round of layout changes before printing",
+          "ta": ""
+        },
+        {
+          "en": "Protective box for storage",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Turnaround: 3-4 weeks after photos are selected",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Smaller duplicate copies for parents available on request",
+        "ta": ""
+      }
+    }
+  },
+  {
+    "id": "video-editing",
+    "name": {
+      "en": "Video Editing",
+      "ta": ""
+    },
+    "category": "editing-design",
+    "description": {
+      "en": "Cut, graded and scored.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 15000,
+      "currency": "INR",
+      "unit": "service"
+    },
+    "image": "/images/services/video-editing.jpg",
+    "detail": {
+      "badge": {
+        "en": "Studio Work",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "Your footage cut, graded and scored into a film worth rewatching.",
+        "ta": ""
+      },
+      "about": {
+        "en": "Bring us footage from any source — our shoot, another videographer, or family phone recordings — and we will build it into a proper film. The work covers cutting for pace, colour grading so shots from different cameras match, cleaning up the audio on vows and speeches, and scoring the piece to music you choose. You see a first cut and can request changes before the final version.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Final Runtime",
+            "ta": ""
+          },
+          "value": {
+            "en": "5-10 minute highlight film",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Revisions",
+            "ta": ""
+          },
+          "value": {
+            "en": "2 rounds of changes included",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Delivery Time",
+            "ta": ""
+          },
+          "value": {
+            "en": "3-4 weeks",
+            "ta": ""
+          },
+          "level": 4
+        }
+      ],
+      "tags": [
+        {
+          "en": "Colour Grading",
+          "ta": ""
+        },
+        {
+          "en": "Audio Cleanup",
+          "ta": ""
+        },
+        {
+          "en": "Music Scoring",
+          "ta": ""
+        },
+        {
+          "en": "Highlight Cut",
+          "ta": ""
+        },
+        {
+          "en": "Titles",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Review and sorting of all supplied footage",
+          "ta": ""
+        },
+        {
+          "en": "Colour grading so every camera matches",
+          "ta": ""
+        },
+        {
+          "en": "Audio cleanup on vows, speeches and blessings",
+          "ta": ""
+        },
+        {
+          "en": "Background score from a music track you choose",
+          "ta": ""
+        },
+        {
+          "en": "Opening and closing titles with your names",
+          "ta": ""
+        },
+        {
+          "en": "Two rounds of revisions before the final file",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Turnaround: 3-4 weeks from receiving footage",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Works with footage from any camera or phone",
+        "ta": ""
+      }
+    }
+  },
+  {
+    "id": "photo-editing",
+    "name": {
+      "en": "Photo Editing",
+      "ta": ""
+    },
+    "category": "editing-design",
+    "description": {
+      "en": "Retouching and grading.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 5000,
+      "currency": "INR",
+      "unit": "service"
+    },
+    "image": "/images/services/photo-editing.jpg",
+    "detail": {
+      "badge": {
+        "en": "Finishing Touch",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "Careful retouching that still looks like you on the day.",
+        "ta": ""
+      },
+      "about": {
+        "en": "Editing is done photo by photo rather than by applying one filter across the set. We correct exposure and white balance so skin tones look natural under hall lighting, even out colour differences between cameras, and retouch distractions in the frame. Retouching on faces is kept light by default — the aim is a photograph your family recognises, not a repainted one.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Photos Included",
+            "ta": ""
+          },
+          "value": {
+            "en": "150 fully edited images",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Retouch Level",
+            "ta": ""
+          },
+          "value": {
+            "en": "Natural by default, your call",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Delivery Time",
+            "ta": ""
+          },
+          "value": {
+            "en": "2-3 weeks",
+            "ta": ""
+          },
+          "level": 5
+        }
+      ],
+      "tags": [
+        {
+          "en": "Colour Grading",
+          "ta": ""
+        },
+        {
+          "en": "Skin Retouching",
+          "ta": ""
+        },
+        {
+          "en": "Object Removal",
+          "ta": ""
+        },
+        {
+          "en": "Exposure Fixes",
+          "ta": ""
+        },
+        {
+          "en": "Black & White",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Exposure and white balance correction on every photo",
+          "ta": ""
+        },
+        {
+          "en": "Colour grading for a consistent look across the set",
+          "ta": ""
+        },
+        {
+          "en": "Natural skin retouching on portraits",
+          "ta": ""
+        },
+        {
+          "en": "Removal of distracting objects in the background",
+          "ta": ""
+        },
+        {
+          "en": "Black and white versions of selected portraits",
+          "ta": ""
+        },
+        {
+          "en": "Full-resolution files delivered online",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Turnaround: 2-3 weeks from receiving photos",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Heavier retouching and restoration priced separately",
+        "ta": ""
+      }
+    }
+  }
+]

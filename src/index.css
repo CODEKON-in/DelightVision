@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Design system — "luxury boutique"
+   Tailwind v4 defines theme tokens in CSS (this @theme block) rather
+   than in tailwind.config.js. Every token below is a normal utility,
+   e.g. bg-royal / text-gold-soft / font-serif / shadow-glow.
+
+   The page alternates deep royal and warm ivory sections. Colours
+   come in pairs: *-deep tones are for text on ivory, *-soft tones are
+   for text on royal. Both were checked to WCAG AA.
+   --------------------------------------------------------------- */
+@theme {
+  /* Dark base — deep royal purple, the signature of the theme */
+  --color-royal: #1e1033;
+  --color-royal-deep: #150b24;   /* footer, deepest panels */
+  --color-royal-light: #2c1b4a;  /* elevated cards on dark */
+  --color-royal-line: #443062;   /* hairline borders on dark */
+
+  /* Light base — champagne, not stark white */
+  --color-ivory: #fbf7f0;
+  --color-ivory-light: #fffdf8;
+  --color-cream: #f3eada;
+  --color-cream-dark: #e4d5bc;
+
+  /* Accent — royal amethyst */
+  --color-plum: #5b2a86;
+  --color-plum-dark: #401d5f;
+  --color-plum-light: #7038a8;
+
+  /* Highlight — antique gold */
+  --color-gold: #d4af37;        /* decorative: rules, borders, fills */
+  --color-gold-soft: #f2dc9b;   /* text on royal — 12:1 */
+  --color-gold-deep: #7a5a0f;   /* text on champagne — 5.7:1 */
+
+  /* WhatsApp green, darkened so white text passes AA */
+  --color-whatsapp: #0e7a3c;
+  --color-whatsapp-dark: #0a6431;
+
+  /* Text */
+  --color-ink: #241a33;         /* body text on champagne */
+  --color-muted: #5e5270;       /* secondary text on champagne */
+  --color-muted-soft: #c6b8d8;  /* secondary text on royal */
+
+  /* Phones vary from 320px to 430px; Tailwind's first stop is 640px.
+     This adds a step for the larger phones. */
+  --breakpoint-xs: 400px;
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Elevation */
+  --shadow-soft: 0 2px 8px rgb(30 16 51 / 0.07), 0 12px 32px rgb(30 16 51 / 0.10);
+  --shadow-lift: 0 4px 12px rgb(30 16 51 / 0.12), 0 20px 48px rgb(30 16 51 / 0.18);
+  --shadow-glow: 0 0 0 1px rgb(212 175 55 / 0.30), 0 18px 50px rgb(212 175 55 / 0.12);
+  --shadow-modal: 0 32px 80px rgb(10 5 20 / 0.55);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    background-color: var(--color-royal);
+  }
+
+  body {
+    /* 16px minimum body size for readability */
+    @apply bg-ivory text-ink font-sans text-base leading-relaxed antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif;
+    /* Cormorant defaults to old-style figures, which read poorly for
+       prices and phone numbers. Force lining figures wherever digits
+       carry meaning. */
+    font-variant-numeric: lining-nums;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Horizontal scrollers (filter tabs, mobile gallery) keep the scroll,
+   lose the scrollbar. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Serif digits that must be easy to read: prices, phone numbers */
+.nums-lining {
+  font-variant-numeric: lining-nums;
+}
+
+/* Small uppercase gold label — a recurring premium micro-detail */
+.label-gold {
+  @apply text-base font-semibold tracking-[0.22em] uppercase;
+}
+
+
+
+/* Slow gold sweep across the hero headline. The plain colour is set first
+   so the text is still readable if background-clip:text is unsupported. */
+.shimmer-text {
+  color: var(--color-ivory-light);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .shimmer-text {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-ivory-light) 0%,
+      var(--color-ivory-light) 38%,
+      var(--color-gold-soft) 50%,
+      var(--color-ivory-light) 62%,
+      var(--color-ivory-light) 100%
+    );
+    background-size: 250% 100%;
+    /* Kept inside 0%-100%: outside that a 250%-wide image no longer covers
+       the element on its own. It survives today only because it tiles, and
+       that is not something to rely on. */
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: dv-shimmer 8s linear infinite;
+  }
+}
+
+@keyframes dv-shimmer {
+  to {
+    background-position: 0% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text {
+    animation: none;
+  }
+}
+
+/* A slow gleam crossing the highlighted card.
+
+   The gradient runs ACROSS the band (to right) so it fades to nothing at
+   the band's own left and right edges. An angled gradient looks correct on
+   a square, but this band is narrow and as tall as the card, so an angled
+   colour axis is almost vertical: the colour barely changes across the
+   width and the band's edges show up as two hard vertical seams sweeping
+   over the card. The diagonal look comes from skewing the band instead.
+
+   Only transform is animated, so this stays on the compositor. The card
+   clips its own overflow, so the vertical overshoot never shows. */
+.royal-sheen::after {
+  content: "";
+  position: absolute;
+  top: -25%;
+  bottom: -25%;
+  left: -60%;
+  width: 40%;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(212 175 55 / 0.16),
+    transparent
+  );
+  transform: skewX(-16deg) translateX(0);
+  animation: dv-sheen 7s ease-in-out 1.5s infinite;
+}
+
+@keyframes dv-sheen {
+  40%,
+  100% {
+    transform: skewX(-16deg) translateX(460%);
+  }
+}
+
+/* The gold edge breathes, so the highlighted combo draws the eye without
+   anything moving or jumping. The shadow is painted once and only its
+   opacity animates. */
+.royal-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgb(212 175 55 / 0.55),
+    0 18px 60px rgb(212 175 55 / 0.22);
+  opacity: 0.45;
+  animation: dv-glow 5s ease-in-out infinite;
+}
+
+@keyframes dv-glow {
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .royal-sheen::after,
+  .royal-glow::before {
+    animation: none;
+  }
+}
+
+/* One pass of gold through a section title as it scrolls in. The gradient
+   is clipped to the glyphs and only its background-position animates, so
+   the heading never moves and nothing around it reflows. The plain colour
+   is set first, so the title is readable if background-clip is missing. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .title-sheen {
+    background-size: 260% 100%;
+    /* Only 0%-100% keeps a 260%-wide image over the element; anything
+       outside that leaves the text with no background to clip to, which
+       means no visible text at all. */
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .title-sheen-light {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-plum) 0%,
+      var(--color-plum) 42%,
+      var(--color-gold-deep) 50%,
+      var(--color-plum) 58%,
+      var(--color-plum) 100%
+    );
+  }
+
+  .title-sheen-dark {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-ivory-light) 0%,
+      var(--color-ivory-light) 42%,
+      var(--color-gold-soft) 50%,
+      var(--color-ivory-light) 58%,
+      var(--color-ivory-light) 100%
+    );
+  }
+}

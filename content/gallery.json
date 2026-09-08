@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "category": "decor-venue",
+    "caption": {
+      "en": "Stage & Mandap",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Venue Decor",
+      "ta": ""
+    },
+    "description": {
+      "en": "A full stage and mandap build for an evening wedding. Fresh garlands on the pillars, draped fabric behind the couple, and warm lighting angled so the photographs stay soft rather than washed out.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Stage Design",
+        "ta": ""
+      },
+      {
+        "en": "Mandap Setup",
+        "ta": ""
+      },
+      {
+        "en": "Floral Work",
+        "ta": ""
+      },
+      {
+        "en": "Warm Lighting",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-01.jpg",
+    "serviceId": "decoration"
+  },
+  {
+    "id": 2,
+    "category": "photo-video",
+    "caption": {
+      "en": "Ceremony",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Full-Day Coverage",
+      "ta": ""
+    },
+    "description": {
+      "en": "Taken during the ceremony itself. One photographer stays on the couple while the second works the family side, so the rituals and the reactions are both covered without anyone being asked to pose.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Candid",
+        "ta": ""
+      },
+      {
+        "en": "Ceremony",
+        "ta": ""
+      },
+      {
+        "en": "Two Photographers",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-02.jpg",
+    "serviceId": "photography"
+  },
+  {
+    "id": 3,
+    "category": "food-catering",
+    "caption": {
+      "en": "Buffet Setup",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Catering",
+      "ta": ""
+    },
+    "description": {
+      "en": "Buffet counters laid out before the guests arrive. Everything is cooked on site the same day, and the counters are arranged so two lines can move at once and the queue never backs up.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Buffet Setup",
+        "ta": ""
+      },
+      {
+        "en": "Live Counters",
+        "ta": ""
+      },
+      {
+        "en": "Serving Staff",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-03.jpg",
+    "serviceId": "food"
+  },
+  {
+    "id": 4,
+    "category": "photo-video",
+    "caption": {
+      "en": "Couple Portrait",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Portraits",
+      "ta": ""
+    },
+    "description": {
+      "en": "A posed portrait taken in the quiet half hour between the ceremony and the reception. We keep these sessions short and relaxed, and light them so the outfits keep their real colour.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Portraits",
+        "ta": ""
+      },
+      {
+        "en": "Natural Light",
+        "ta": ""
+      },
+      {
+        "en": "Couple Session",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-04.jpg",
+    "serviceId": "photography"
+  },
+  {
+    "id": 5,
+    "category": "decor-venue",
+    "caption": {
+      "en": "Entrance Arch",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Venue Decor",
+      "ta": ""
+    },
+    "description": {
+      "en": "The entrance arch and pathway leading guests in. Built the morning of the function with flowers sourced that day, and matched to the colours used on the stage inside.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Floral Arch",
+        "ta": ""
+      },
+      {
+        "en": "Entrance Decor",
+        "ta": ""
+      },
+      {
+        "en": "Pathway",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-05.jpg",
+    "serviceId": "decoration"
+  },
+  {
+    "id": 6,
+    "category": "editing-design",
+    "caption": {
+      "en": "Album Spread",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Printed Album",
+      "ta": ""
+    },
+    "description": {
+      "en": "A finished spread from a wedding album. Laid out by hand so the story runs in order, and printed lay-flat, which is why the portrait crosses both pages without being cut by the spine.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Hand Layout",
+        "ta": ""
+      },
+      {
+        "en": "Lay-Flat Print",
+        "ta": ""
+      },
+      {
+        "en": "Hard Cover",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-06.jpg",
+    "serviceId": "album"
+  },
+  {
+    "id": 7,
+    "category": "photo-video",
+    "caption": {
+      "en": "Family Portrait",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Group Photos",
+      "ta": ""
+    },
+    "description": {
+      "en": "The full family group, arranged and lit properly. We plan these before the day so the list is known, everyone is called in order, and the whole set is done in under twenty minutes.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Family Groups",
+        "ta": ""
+      },
+      {
+        "en": "Traditional",
+        "ta": ""
+      },
+      {
+        "en": "Planned Shot List",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-07.jpg",
+    "serviceId": "photography"
+  },
+  {
+    "id": 8,
+    "category": "food-catering",
+    "caption": {
+      "en": "Sweets Counter",
+      "ta": ""
+    },
+    "badge": {
+      "en": "Catering",
+      "ta": ""
+    },
+    "description": {
+      "en": "The traditional sweets and dessert counter, set up separately so it does not slow the main buffet. Prepared fresh and replenished through the evening rather than laid out all at once.",
+      "ta": ""
+    },
+    "tags": [
+      {
+        "en": "Sweets",
+        "ta": ""
+      },
+      {
+        "en": "Dessert Counter",
+        "ta": ""
+      },
+      {
+        "en": "Fresh Daily",
+        "ta": ""
+      }
+    ],
+    "image": "/images/gallery/gallery-08.jpg",
+    "serviceId": "food"
+  }
+]
