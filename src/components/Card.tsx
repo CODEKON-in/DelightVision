@@ -23,7 +23,7 @@ export function Card({
         "relative rounded-3xl transition-shadow duration-300",
         flush ? "overflow-hidden" : "p-6 sm:p-8",
         featured
-          ? "bg-ivory-light royal-sheen royal-glow border-2 border-gold"
+          ? "bg-ivory-light gold-sheen gold-glow border-2 border-gold"
           : "bg-ivory-light border border-cream-dark shadow-soft hover:shadow-lift",
         className,
       ].join(" ")}

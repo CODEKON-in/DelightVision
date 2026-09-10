@@ -67,7 +67,7 @@ export function CornerOrnaments() {
           <path
             d={CORNER}
             fill="none"
-            stroke="#d4af37"
+            className="stroke-gold"
             strokeWidth="1.6"
             strokeLinecap="round"
           />

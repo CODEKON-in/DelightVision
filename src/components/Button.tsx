@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "whatsapp";
+type Variant = "primary" | "secondary" | "onDark" | "whatsapp";
 type Size = "md" | "lg";
 
 /* Tap targets are deliberately large (56px / 64px tall) — this site is
@@ -11,11 +11,18 @@ const sizes: Record<Size, string> = {
 };
 
 const variants: Record<Variant, string> = {
+  /* Charcoal rather than gold. The brand's black is what carries a call to
+     action here; gold only ever trims one. */
   primary:
-    "bg-plum text-ivory-light shadow-soft hover:bg-plum-light active:bg-plum-dark",
+    "bg-charcoal text-ivory-light shadow-soft hover:bg-graphite active:bg-obsidian",
   /* Light chip for use on ivory sections */
   secondary:
-    "bg-ivory-light text-plum border-2 border-plum/25 shadow-soft hover:border-plum/50 hover:bg-cream/60 active:bg-cream",
+    "bg-ivory-light text-charcoal border-2 border-charcoal/25 shadow-soft hover:border-charcoal/50 hover:bg-cream/60 active:bg-cream",
+  /* The primary inverted, for the hero and the phone menu. A charcoal fill
+     on a near-black ground is barely a button at all, so on the dark
+     sections the same action becomes light-on-dark with a gold edge. */
+  onDark:
+    "bg-ivory-light text-charcoal border border-gold/45 shadow-soft hover:bg-cream hover:border-gold/70 active:bg-cream-dark",
   whatsapp:
     "bg-whatsapp text-white shadow-soft hover:bg-whatsapp-dark active:bg-whatsapp-dark",
 };

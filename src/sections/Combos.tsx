@@ -3,7 +3,7 @@ import { Button } from "../components/Button";
 import { Card } from "../components/Card";
 import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 import { Reveal } from "../components/Reveal";
-import { CornerOrnaments, GoldMotes } from "../components/Royal";
+import { CornerOrnaments } from "../components/Royal";
 import { SectionHeading } from "../components/SectionHeading";
 import { PhoneIcon } from "../components/icons";
 import { ui } from "../data/copy";
@@ -17,14 +17,12 @@ export function Combos() {
   return (
     <section
       id="packages"
-      className="relative scroll-mt-20 overflow-hidden bg-royal py-[clamp(3.5rem,9vw,6rem)]"
+      className="relative scroll-mt-20 overflow-hidden bg-cream py-[clamp(3.5rem,9vw,6rem)]"
     >
-      <GoldMotes />
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
         <Reveal>
           <SectionHeading
-            onDark
             eyebrow={ui.combosEyebrow}
             title={ui.combosTitle}
             subtitle={ui.combosSubtitle}
@@ -49,10 +47,10 @@ export function Combos() {
                   {combo.popular && (
                     <>
                       <div
-                        className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-royal/60 to-transparent"
+                        className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-obsidian/60 to-transparent"
                         aria-hidden="true"
                       />
-                      <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1.5 text-base font-bold tracking-wide whitespace-nowrap text-plum-dark uppercase shadow-soft">
+                      <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1.5 text-base font-bold tracking-wide whitespace-nowrap text-obsidian uppercase shadow-soft">
                         {ui.mostPopular}
                       </span>
                     </>
@@ -60,7 +58,7 @@ export function Combos() {
                 </div>
 
                 <div className="flex grow flex-col p-5 sm:p-6">
-                  <h3 className="text-xl leading-tight font-semibold break-words text-plum sm:text-2xl">
+                  <h3 className="text-xl leading-tight font-semibold break-words text-charcoal sm:text-2xl">
                     {combo.name}
                   </h3>
 
@@ -87,7 +85,7 @@ export function Combos() {
 
                   <div className="mt-auto border-t border-cream-dark pt-4">
                     {/* DUMMY PRICE - see src/data/services.ts */}
-                    <p className="nums-lining font-serif text-3xl font-semibold text-plum">
+                    <p className="nums-lining font-serif text-3xl font-semibold text-charcoal">
                       {combo.price}
                     </p>
 
@@ -121,7 +119,7 @@ export function Combos() {
         </Reveal>
 
         <Reveal>
-          <p className="mt-10 text-center text-base text-muted-soft">{ui.combosFootnote}</p>
+          <p className="mt-10 text-center text-base text-muted">{ui.combosFootnote}</p>
         </Reveal>
       </div>
 

@@ -19,7 +19,7 @@ function BackToServices({ className = "" }: { className?: string }) {
     <button
       type="button"
       onClick={() => navigate(`${HOME_PATH}#services`)}
-      className={`inline-flex min-h-12 items-center gap-2 text-base font-semibold text-plum transition-colors hover:text-plum-light ${className}`}
+      className={`inline-flex min-h-12 items-center gap-2 text-base font-semibold text-charcoal transition-colors hover:text-graphite ${className}`}
     >
       <span aria-hidden="true">&larr;</span>
       {ui.backToServices}
@@ -42,7 +42,7 @@ function DecorationGroup({ type, offset, onOpen }: GroupProps) {
   return (
     <section className="border-t border-cream-dark pt-10 sm:pt-12">
       <Reveal>
-        <h2 className="font-serif text-[clamp(1.6rem,5.5vw,2.25rem)] leading-tight font-semibold text-plum">
+        <h2 className="font-serif text-[clamp(1.6rem,5.5vw,2.25rem)] leading-tight font-semibold text-charcoal">
           {type.name}
         </h2>
         {type.description && (
@@ -88,7 +88,7 @@ function DecorationGroup({ type, offset, onOpen }: GroupProps) {
                   className="aspect-4/3 w-full rounded-2xl ring-1 ring-cream-dark transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
                 />
 
-                <h3 className="mt-4 font-serif text-2xl leading-tight font-semibold text-plum transition-colors group-hover:text-plum-light">
+                <h3 className="mt-4 font-serif text-2xl leading-tight font-semibold text-charcoal transition-colors group-hover:text-graphite">
                   {decoration.name}
                 </h3>
 
@@ -134,24 +134,25 @@ export function DecorationsPage() {
 
   return (
     <>
-      {/* The same royal band the main page opens with, so arriving here
-          reads as the next page of the same site rather than a new one. */}
-      <section className="relative overflow-hidden bg-royal py-[clamp(3rem,8vw,4.5rem)]">
+      {/* The page opens on the quieter of the two light surfaces, so the
+          band reads as a title block rather than a second hero. The black
+          header above it is the brand presence this page needs. */}
+      <section className="relative overflow-hidden bg-cream py-[clamp(3rem,8vw,4.5rem)]">
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <Reveal immediate>
-            <p className="label-gold text-gold-soft">{service.detail.badge}</p>
+            <p className="label-gold text-gold-deep">{service.detail.badge}</p>
 
-            <h1 className="mt-3 font-serif text-[clamp(2.25rem,8vw,3.5rem)] leading-tight font-semibold text-ivory-light">
+            <h1 className="mt-3 font-serif text-[clamp(2.25rem,8vw,3.5rem)] leading-tight font-semibold text-charcoal">
               {ui.decorationsTitle}
             </h1>
 
-            <Flourish onDark className="mt-5" />
+            <Flourish className="mt-5" />
 
-            <p className="mt-6 max-w-2xl font-serif text-xl text-gold-soft italic sm:text-2xl">
+            <p className="mt-6 max-w-2xl font-serif text-xl text-muted italic sm:text-2xl">
               {service.detail.subtitle}
             </p>
 
-            <p className="nums-lining mt-7 font-serif text-3xl leading-none font-semibold text-ivory-light">
+            <p className="nums-lining mt-7 font-serif text-3xl leading-none font-semibold text-charcoal">
               {service.price}
             </p>
           </Reveal>
@@ -184,7 +185,7 @@ export function DecorationsPage() {
               as plain links rather than more buttons. */}
           <div className="mt-16 border-t border-cream-dark pt-10">
             <Reveal>
-              <h2 className="font-serif text-[clamp(1.5rem,5vw,2rem)] leading-tight font-semibold text-plum">
+              <h2 className="font-serif text-[clamp(1.5rem,5vw,2rem)] leading-tight font-semibold text-charcoal">
                 {ui.decorationsFootnoteTitle}
               </h2>
 
@@ -217,7 +218,7 @@ export function DecorationsPage() {
                 <button
                   type="button"
                   onClick={() => setDetailOpen(true)}
-                  className="inline-flex min-h-12 items-center text-base font-semibold text-plum underline underline-offset-4 transition-colors hover:text-plum-light"
+                  className="inline-flex min-h-12 items-center text-base font-semibold text-charcoal underline underline-offset-4 transition-colors hover:text-graphite"
                 >
                   {ui.fullServiceDetails}
                 </button>

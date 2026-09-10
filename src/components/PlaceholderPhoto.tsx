@@ -4,13 +4,16 @@ import { useState } from "react";
    image is missing, slow or fails to load, the tile still looks designed
    rather than blank. Pass `src` to show a photograph on top. */
 
+/* Warm neutrals only — six steps between ivory and sand, with the motif
+   drawn in champagne or warm grey. A tile has to sit in a white card on a
+   warm-ivory page without introducing a colour the palette does not have. */
 const palettes = [
-  { from: "#efe6f5", to: "#cdb8de", ink: "#4a2a63" },
-  { from: "#f7efdc", to: "#e0cb9a", ink: "#6b5210" },
-  { from: "#f3e4ea", to: "#d9b3c3", ink: "#6d2a45" },
-  { from: "#e8e6f5", to: "#bdb8dc", ink: "#3c3670" },
-  { from: "#e7f0ec", to: "#bcd4c6", ink: "#2f5544" },
-  { from: "#f5e8e2", to: "#dcbcab", ink: "#6f4433" },
+  { from: "#f4f1ea", to: "#ddd4c2", ink: "#7e6329" },
+  { from: "#f1efe9", to: "#d5cfc2", ink: "#6f6b64" },
+  { from: "#f6f2e9", to: "#e2d7bf", ink: "#8a6a2b" },
+  { from: "#eeece7", to: "#cdc8bd", ink: "#5c584f" },
+  { from: "#f3efe5", to: "#d9ceb6", ink: "#7e6329" },
+  { from: "#f0eee8", to: "#d2cbbc", ink: "#6f6b64" },
 ];
 
 /* Unsplash resizes on the fly, so hand the browser a set of widths and let

@@ -54,7 +54,7 @@ export function Services() {
                       alt={service.name}
                       className="aspect-16/10 w-full sm:aspect-4/3"
                     />
-                    <AnimatedIcon className="absolute top-3 left-3 inline-flex size-9 items-center justify-center rounded-xl bg-ivory-light/95 text-plum shadow-soft ring-1 ring-gold/50 xs:size-10 sm:size-12 sm:backdrop-blur-sm">
+                    <AnimatedIcon className="absolute top-3 left-3 inline-flex size-9 items-center justify-center rounded-xl bg-ivory-light/95 text-charcoal shadow-soft ring-1 ring-gold/50 xs:size-10 sm:size-12 sm:backdrop-blur-sm">
                       <Icon className="size-[1.15rem] xs:size-5 sm:size-6" />
                     </AnimatedIcon>
                   </div>
@@ -63,7 +63,7 @@ export function Services() {
                       ends up the same height and the prices and buttons line
                       up however long the copy runs. */}
                   <div className="flex grow flex-col p-3.5 xs:p-4 sm:p-6">
-                    <h3 className="line-clamp-2 min-h-[2.4em] text-lg leading-tight font-semibold break-words text-plum xs:text-xl sm:text-2xl">
+                    <h3 className="line-clamp-2 min-h-[2.4em] text-lg leading-tight font-semibold break-words text-charcoal xs:text-xl sm:text-2xl">
                       {service.name}
                     </h3>
 
@@ -78,7 +78,7 @@ export function Services() {
                     </p>
 
                     <div className="mt-auto border-t border-cream-dark pt-3 sm:pt-4">
-                      <p className="nums-lining font-serif text-xl leading-tight font-semibold text-plum xs:text-2xl sm:text-3xl">
+                      <p className="nums-lining font-serif text-xl leading-tight font-semibold text-charcoal xs:text-2xl sm:text-3xl">
                         {service.price}
                       </p>
 

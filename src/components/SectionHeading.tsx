@@ -10,7 +10,7 @@ type SectionHeadingProps = {
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  /* Renders light-on-dark, for use over the royal sections */
+  /* Renders light-on-dark, for use over the obsidian sections */
   onDark?: boolean;
 };
 
@@ -67,7 +67,7 @@ export function SectionHeading({
         ref={titleRef}
         className={[
           "title-sheen text-[clamp(1.75rem,6.5vw,2.25rem)] leading-tight font-semibold",
-          onDark ? "title-sheen-dark text-ivory-light" : "title-sheen-light text-plum",
+          onDark ? "title-sheen-dark text-ivory-light" : "title-sheen-light text-charcoal",
         ].join(" ")}
       >
         {title}

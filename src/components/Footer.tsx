@@ -15,10 +15,10 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-royal">
+    <footer className="relative overflow-hidden bg-charcoal">
       {/* Hairline that separates the footer from the section above */}
       <div
-        className="h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+        className="gold-rule h-px w-full"
         aria-hidden="true"
       />
 
@@ -101,7 +101,7 @@ export function Footer() {
         </Reveal>
 
         {/* Bottom bar */}
-        <div className="mt-12 border-t border-royal-line pt-6">
+        <div className="mt-12 border-t border-dark-line pt-6">
           <p className="text-center text-base text-muted-soft">
             &copy; {new Date().getFullYear()} {business.name}. {ui.rightsReserved}
           </p>

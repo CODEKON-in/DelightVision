@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { Button } from "../components/Button";
 import { HeroOrnament, Rosette } from "../components/HeroOrnament";
+import { GoldMotes } from "../components/Royal";
 import { Reveal } from "../components/Reveal";
 import { PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
@@ -72,16 +73,21 @@ export function Hero() {
   const whatsappHref = whatsappHrefFor(business.whatsappMessage);
 
   return (
-    <section id="top" className="relative overflow-hidden bg-royal">
-      {/* Warm glow behind the headline, standing in for a hero photograph */}
+    <section id="top" className="hero-surface relative overflow-hidden">
+      {/* A whisper of champagne from above. The ground already lifts to
+          graphite from below, so this only has to suggest light falling on
+          the black — anything stronger reads as a glow. */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(125% 85% at 50% 0%, rgba(212,175,55,0.18) 0%, rgba(91,42,134,0.22) 36%, rgba(30,16,51,0) 74%)",
+            "radial-gradient(120% 80% at 50% 0%, rgba(184,148,79,0.10) 0%, rgba(184,148,79,0.03) 34%, rgba(8,8,8,0) 72%)",
         }}
         aria-hidden="true"
       />
+
+      {/* The same drifting gold specks the dark sections used to carry */}
+      <GoldMotes />
 
       <HeroOrnament />
 
@@ -90,14 +96,14 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[65%]"
         style={{
           background:
-            "radial-gradient(62% 50% at 50% 30%, rgba(30,16,51,0.78) 0%, rgba(30,16,51,0) 100%)",
+            "radial-gradient(62% 50% at 50% 30%, rgba(8,8,8,0.78) 0%, rgba(8,8,8,0) 100%)",
         }}
         aria-hidden="true"
       />
 
       {/* Fades the artwork out into the section below */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-royal"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-charcoal"
         aria-hidden="true"
       />
 
@@ -128,10 +134,10 @@ export function Hero() {
         <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4">
           <Button
             href={telHref}
-            variant="primary"
+            variant="onDark"
             size="lg"
             fullWidth
-            className="border-2 border-gold/50 sm:w-auto sm:min-w-56"
+            className="sm:w-auto sm:min-w-56"
             icon={<PhoneIcon className="size-6" />}
           >
             {ui.callNow}

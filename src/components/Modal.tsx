@@ -172,7 +172,7 @@ export function Modal({
     <div className="fixed inset-0 z-60" role="dialog" aria-modal="true" aria-labelledby={labelledBy}>
       <div
         ref={backdropRef}
-        className="absolute inset-0 bg-royal/90 sm:bg-royal/80 sm:backdrop-blur-sm"
+        className="absolute inset-0 bg-obsidian/90 sm:bg-obsidian/80 sm:backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -193,7 +193,7 @@ export function Modal({
             type="button"
             onClick={onClose}
             aria-label={closeLabel}
-            className="absolute top-4 right-4 z-10 inline-flex size-12 items-center justify-center rounded-full bg-royal/90 text-ivory-light transition-colors hover:bg-royal"
+            className="absolute top-4 right-4 z-10 inline-flex size-12 items-center justify-center rounded-full bg-obsidian/90 text-ivory-light transition-colors hover:bg-obsidian"
           >
             <CloseIcon className="size-6" />
           </button>

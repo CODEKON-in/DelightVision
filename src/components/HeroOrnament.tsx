@@ -73,13 +73,13 @@ export function Rosette({ className = "" }: { className?: string }) {
             d={PETAL}
             transform={`rotate(${i * 45}) translate(0 6)`}
             fill="none"
-            stroke="#d4af37"
+            className="stroke-gold"
             strokeOpacity="0.8"
             strokeWidth="2.2"
           />
         ))}
       </g>
-      <circle data-core cx="0" cy="0" r="5" fill="#f2dc9b" />
+      <circle data-core cx="0" cy="0" r="5" className="fill-gold-soft" />
     </svg>
   );
 }
@@ -168,9 +168,9 @@ export function HeroOrnament() {
     >
       <defs>
         <linearGradient id="dv-arch" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d4af37" stopOpacity="0.75" />
-          <stop offset="55%" stopColor="#d4af37" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
+          <stop offset="0%" style={{ stopColor: "var(--color-gold)" }} stopOpacity="0.75" />
+          <stop offset="55%" style={{ stopColor: "var(--color-gold)" }} stopOpacity="0.3" />
+          <stop offset="100%" style={{ stopColor: "var(--color-gold)" }} stopOpacity="0" />
         </linearGradient>
       </defs>
 
@@ -201,8 +201,8 @@ export function HeroOrnament() {
       ].map(([cx, cy, r], i) => (
         <g key={i} data-bloom>
           <g data-float>
-            <circle cx={cx} cy={cy} r={r} fill="#f2dc9b" fillOpacity="0.5" />
-            <circle cx={cx} cy={cy} r={r * 2.2} fill="none" stroke="#d4af37" strokeOpacity="0.25" />
+            <circle cx={cx} cy={cy} r={r} className="fill-gold-soft" fillOpacity="0.5" />
+            <circle cx={cx} cy={cy} r={r * 2.2} fill="none" className="stroke-gold" strokeOpacity="0.25" />
           </g>
         </g>
       ))}
@@ -220,7 +220,7 @@ export function HeroOrnament() {
               d={PETAL}
               transform={`translate(${x} ${y}) rotate(${rot}) scale(0.5)`}
               fill="none"
-              stroke="#d4af37"
+              className="stroke-gold"
               strokeOpacity="0.38"
               strokeWidth="1.6"
             />

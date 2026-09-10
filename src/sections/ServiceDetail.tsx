@@ -29,7 +29,7 @@ function DetailBody({ service }: { service: Service }) {
           sizes="(min-width: 640px) 672px, 100vw"
           className="aspect-4/3 w-full sm:aspect-16/9"
         />
-        <span className="absolute top-4 left-4 rounded-full bg-plum px-4 py-2 text-base font-bold tracking-[0.14em] text-ivory-light uppercase shadow-soft">
+        <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 text-base font-bold tracking-[0.14em] text-ivory-light uppercase shadow-soft">
           {d.badge}
         </span>
       </div>
@@ -39,19 +39,19 @@ function DetailBody({ service }: { service: Service }) {
         <div>
           <div className="flex items-center gap-3">
             <AnimatedIcon immediate>
-              <Icon className="size-6 text-plum" />
+              <Icon className="size-6 text-charcoal" />
             </AnimatedIcon>
             <p className="label-gold text-gold-deep">{category ? category.label : ""}</p>
           </div>
 
           <h2
             id={`service-title-${service.id}`}
-            className="mt-3 font-serif text-4xl leading-tight font-semibold text-plum sm:text-5xl"
+            className="mt-3 font-serif text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
           >
             {service.name}
           </h2>
 
-          <p className="mt-3 font-serif text-xl text-plum-light italic">{d.subtitle}</p>
+          <p className="mt-3 font-serif text-xl text-graphite italic">{d.subtitle}</p>
 
           <p className="nums-lining mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg font-semibold text-ink">
             {/* DUMMY PRICE */}

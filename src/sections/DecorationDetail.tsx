@@ -55,7 +55,7 @@ function DetailBody({ decoration, index }: { decoration: Decoration; index: numb
           sizes="(min-width: 640px) 672px, 100vw"
           className="aspect-4/3 w-full sm:aspect-16/10"
         />
-        <span className="absolute top-4 left-4 rounded-full bg-plum px-4 py-2 text-base font-bold tracking-[0.14em] text-ivory-light uppercase shadow-soft">
+        <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 text-base font-bold tracking-[0.14em] text-ivory-light uppercase shadow-soft">
           {decoration.typeName}
         </span>
       </div>
@@ -77,7 +77,7 @@ function DetailBody({ decoration, index }: { decoration: Decoration; index: numb
                     "block size-20 overflow-hidden rounded-xl transition-shadow sm:size-24",
                     i === shot
                       ? "ring-2 ring-gold ring-offset-2 ring-offset-ivory-light"
-                      : "ring-1 ring-cream-dark hover:ring-gold/60",
+                      : "ring-1 ring-cream-strong hover:ring-gold",
                   ].join(" ")}
                 >
                   <PlaceholderPhoto
@@ -100,7 +100,7 @@ function DetailBody({ decoration, index }: { decoration: Decoration; index: numb
               is not repeated here. */}
           <h2
             id={`decoration-title-${decoration.id}`}
-            className="font-serif text-4xl leading-tight font-semibold text-plum sm:text-5xl"
+            className="font-serif text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
           >
             {decoration.name}
           </h2>

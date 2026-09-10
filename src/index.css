@@ -1,46 +1,54 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   Design system — "luxury boutique"
-   Tailwind v4 defines theme tokens in CSS (this @theme block) rather
-   than in tailwind.config.js. Every token below is a normal utility,
-   e.g. bg-royal / text-gold-soft / font-serif / shadow-glow.
+   Design system — Delight Vision
 
-   The page alternates deep royal and warm ivory sections. Colours
-   come in pairs: *-deep tones are for text on ivory, *-soft tones are
-   for text on royal. Both were checked to WCAG AA.
+   Black is the brand's presence, gold is its signature, light is the
+   website's canvas. The page is a warm-ivory document that the brand
+   punctuates: a black hero at the top, a charcoal footer at the bottom,
+   and champagne gold used only in small doses in between.
+
+   Tailwind v4 defines theme tokens in CSS (this @theme block) rather than
+   in tailwind.config.js. Every token below is a normal utility, e.g.
+   bg-obsidian / text-gold-deep / border-cream-dark / font-serif.
+
+   Colours come in pairs: *-deep tones are for text on the light canvas,
+   *-soft tones for text on the dark sections. Every pairing in use was
+   measured against WCAG AA rather than guessed — the ratios are noted.
    --------------------------------------------------------------- */
 @theme {
-  /* Dark base — deep royal purple, the signature of the theme */
-  --color-royal: #1e1033;
-  --color-royal-deep: #150b24;   /* footer, deepest panels */
-  --color-royal-light: #2c1b4a;  /* elevated cards on dark */
-  --color-royal-line: #443062;   /* hairline borders on dark */
+  /* Dark — the brand's presence. The hero gradient runs across all three. */
+  --color-obsidian: #080808;   /* dominant black: hero base, header, menu */
+  --color-charcoal: #171717;   /* footer, primary buttons, body text */
+  --color-graphite: #2a2a2a;   /* the hero's grey, and button hover */
+  --color-dark-line: #302f2c;  /* hairline borders on dark */
 
-  /* Light base — champagne, not stark white */
-  --color-ivory: #fbf7f0;
-  --color-ivory-light: #fffdf8;
-  --color-cream: #f3eada;
-  --color-cream-dark: #e4d5bc;
+  /* Light — the website's canvas. Three warm steps, so surfaces read
+     apart from each other without needing shadows. */
+  --color-ivory: #f7f5f0;        /* page and major sections */
+  --color-ivory-light: #ffffff;  /* cards */
+  --color-cream: #f0eee9;        /* alternating sections, quiet panels */
+  --color-cream-dark: #e5e1d9;   /* borders and dividers */
+  --color-cream-strong: #d8d3c9; /* the border that needs to be seen */
 
-  /* Accent — royal amethyst */
-  --color-plum: #5b2a86;
-  --color-plum-dark: #401d5f;
-  --color-plum-light: #7038a8;
+  /* Gold — the signature, and never more than a signature.
+     `gold` is decorative only: rules, borders, small marks. Text needs
+     `gold-deep` on light (5.2:1) or `gold-soft` on dark (11.8:1); the
+     champagne itself is 2.6:1 on ivory and fails as text. */
+  --color-gold: #b8944f;       /* champagne — decorative */
+  --color-gold-soft: #d8c59d;  /* light gold — text and marks on dark */
+  --color-gold-deep: #7e6329;  /* deep champagne — text on light */
 
-  /* Highlight — antique gold */
-  --color-gold: #d4af37;        /* decorative: rules, borders, fills */
-  --color-gold-soft: #f2dc9b;   /* text on royal — 12:1 */
-  --color-gold-deep: #7a5a0f;   /* text on champagne — 5.7:1 */
-
-  /* WhatsApp green, darkened so white text passes AA */
+  /* WhatsApp green, darkened so white text passes AA (5.4:1) */
   --color-whatsapp: #0e7a3c;
   --color-whatsapp-dark: #0a6431;
 
   /* Text */
-  --color-ink: #241a33;         /* body text on champagne */
-  --color-muted: #5e5270;       /* secondary text on champagne */
-  --color-muted-soft: #c6b8d8;  /* secondary text on royal */
+  --color-ink: #171717;        /* body on light — 16.5:1 */
+  --color-muted: #6f6b64;      /* secondary on light — 4.9:1 */
+  --color-muted-soft: #b3ada2; /* secondary on dark — 6.4:1 on graphite */
+  --color-muted-faint: #918c83;/* the brand's muted grey. Decorative only:
+                                  it is 3.1:1 on ivory and fails as text. */
 
   /* Phones vary from 320px to 430px; Tailwind's first stop is 640px.
      This adds a step for the larger phones. */
@@ -50,11 +58,12 @@
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* Elevation */
-  --shadow-soft: 0 2px 8px rgb(30 16 51 / 0.07), 0 12px 32px rgb(30 16 51 / 0.10);
-  --shadow-lift: 0 4px 12px rgb(30 16 51 / 0.12), 0 20px 48px rgb(30 16 51 / 0.18);
-  --shadow-glow: 0 0 0 1px rgb(212 175 55 / 0.30), 0 18px 50px rgb(212 175 55 / 0.12);
-  --shadow-modal: 0 32px 80px rgb(10 5 20 / 0.55);
+  /* Elevation — warm neutral, low opacity, wide blur. Depth on this site
+     comes from the three light surfaces, not from heavy shadows. */
+  --shadow-soft: 0 1px 2px rgb(23 23 23 / 0.04), 0 8px 24px rgb(23 23 23 / 0.06);
+  --shadow-lift: 0 2px 6px rgb(23 23 23 / 0.07), 0 16px 40px rgb(23 23 23 / 0.10);
+  --shadow-glow: 0 0 0 1px rgb(184 148 79 / 0.45);
+  --shadow-modal: 0 24px 70px rgb(8 8 8 / 0.45);
 }
 
 @layer base {
@@ -73,7 +82,7 @@
        the anchor links that want it, which is one animation on a click
        rather than a rule that hijacks every programmatic scroll. */
     scroll-padding-top: 5rem;
-    background-color: var(--color-royal);
+    background-color: var(--color-obsidian);
   }
 
   body {
@@ -90,7 +99,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-gold);
+    outline: 3px solid var(--color-gold-deep);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -137,6 +146,37 @@
 }
 
 
+
+/* The hero's ground: black at the top so it meets the header seamlessly,
+   warming to graphite at the foot. The radial sits low and centred, which
+   lifts the middle of the section just enough to feel lit rather than
+   flat. Soft and slow — no metallic banding, no glow. */
+.hero-surface {
+  background-color: var(--color-obsidian);
+  background-image:
+    radial-gradient(
+      120% 78% at 50% 112%,
+      var(--color-graphite) 0%,
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-obsidian) 0%,
+      var(--color-obsidian) 42%,
+      var(--color-charcoal) 100%
+    );
+}
+
+/* A hairline of gold where a dark section meets the light page. The only
+   full-width gold on the site, and it is one pixel of it. */
+.gold-rule {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(184 148 79 / 0.55),
+    transparent
+  );
+}
 
 /* Slow gold sweep across the hero headline. The plain colour is set first
    so the text is still readable if background-clip:text is unsupported. */
@@ -189,7 +229,7 @@
 
    Only transform is animated, so this stays on the compositor. The card
    clips its own overflow, so the vertical overshoot never shows. */
-.royal-sheen::after {
+.gold-sheen::after {
   content: "";
   position: absolute;
   top: -25%;
@@ -200,7 +240,7 @@
   background-image: linear-gradient(
     to right,
     transparent,
-    rgb(212 175 55 / 0.16),
+    rgb(184 148 79 / 0.10),
     transparent
   );
   transform: skewX(-16deg) translateX(0);
@@ -217,16 +257,14 @@
 /* The gold edge breathes, so the highlighted combo draws the eye without
    anything moving or jumping. The shadow is painted once and only its
    opacity animates. */
-.royal-glow::before {
+.gold-glow::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  box-shadow:
-    0 0 0 1px rgb(212 175 55 / 0.55),
-    0 18px 60px rgb(212 175 55 / 0.22);
-  opacity: 0.45;
+  box-shadow: 0 0 0 1px rgb(184 148 79 / 0.7);
+  opacity: 0.35;
   animation: dv-glow 5s ease-in-out infinite;
 }
 
@@ -237,8 +275,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .royal-sheen::after,
-  .royal-glow::before {
+  .gold-sheen::after,
+  .gold-glow::before {
     animation: none;
   }
 }
@@ -263,11 +301,11 @@
   .title-sheen-light {
     background-image: linear-gradient(
       100deg,
-      var(--color-plum) 0%,
-      var(--color-plum) 42%,
+      var(--color-charcoal) 0%,
+      var(--color-charcoal) 42%,
       var(--color-gold-deep) 50%,
-      var(--color-plum) 58%,
-      var(--color-plum) 100%
+      var(--color-charcoal) 58%,
+      var(--color-charcoal) 100%
     );
   }
 

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
-  /* Gold on royal, or the deeper gold used on ivory */
+  /* Gold on obsidian, or the deeper gold used on ivory */
   onDark?: boolean;
   className?: string;
 };
@@ -51,8 +51,12 @@ export function Flourish({ onDark = true, className = "" }: Props) {
     };
   }, []);
 
-  const line = onDark ? "#d4af37" : "#7a5a0f";
-  const gem = onDark ? "#f2dc9b" : "#d4af37";
+  /* Tailwind builds these from the same --color-* tokens as everything
+     else, so the rule follows the palette. Classes rather than `stroke=`
+     attributes because a presentation attribute will not resolve a CSS
+     variable — and because GSAP wants the inline style to itself. */
+  const line = onDark ? "stroke-gold" : "stroke-gold-deep";
+  const gem = onDark ? "fill-gold-soft" : "fill-gold";
 
   return (
     <svg
@@ -67,7 +71,7 @@ export function Flourish({ onDark = true, className = "" }: Props) {
         data-draw
         d="M120 12H74c-8 0-12-5-20-5"
         fill="none"
-        stroke={line}
+        className={line}
         strokeOpacity="0.65"
         strokeWidth="1.2"
         strokeLinecap="round"
@@ -76,7 +80,7 @@ export function Flourish({ onDark = true, className = "" }: Props) {
         data-draw
         d="M120 12h46c8 0 12-5 20-5"
         fill="none"
-        stroke={line}
+        className={line}
         strokeOpacity="0.65"
         strokeWidth="1.2"
         strokeLinecap="round"
@@ -88,10 +92,10 @@ export function Flourish({ onDark = true, className = "" }: Props) {
           width="10"
           height="10"
           transform="rotate(45 120 12)"
-          fill={gem}
+          className={gem}
         />
-        <circle cx="96" cy="12" r="1.6" fill={gem} fillOpacity="0.7" />
-        <circle cx="144" cy="12" r="1.6" fill={gem} fillOpacity="0.7" />
+        <circle cx="96" cy="12" r="1.6" className={gem} fillOpacity="0.7" />
+        <circle cx="144" cy="12" r="1.6" className={gem} fillOpacity="0.7" />
       </g>
     </svg>
   );

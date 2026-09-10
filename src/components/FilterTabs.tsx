@@ -10,7 +10,7 @@ type FilterTabsProps<T extends string> = {
   tabs: Tab<T>[];
   active: T;
   onChange: (id: T) => void;
-  /* Styles for royal sections instead of ivory ones */
+  /* Styles for obsidian sections instead of ivory ones */
   onDark?: boolean;
   label: string;
 };
@@ -35,10 +35,10 @@ export function FilterTabs<T extends string>({
         const isActive = tab.id === active;
 
         const activeCls = onDark
-          ? "bg-gold text-royal border-gold"
-          : "bg-plum text-ivory-light border-plum";
+          ? "bg-gold text-obsidian border-gold"
+          : "bg-charcoal text-ivory-light border-charcoal";
         const idleCls = onDark
-          ? "bg-transparent text-muted-soft border-royal-line hover:border-gold/50 hover:text-gold-soft"
+          ? "bg-transparent text-muted-soft border-dark-line hover:border-gold/50 hover:text-gold-soft"
           : "bg-ivory-light text-muted border-cream-dark hover:border-gold hover:text-ink";
 
         return (

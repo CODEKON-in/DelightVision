@@ -1,7 +1,6 @@
 import { AnimatedIcon } from "../components/AnimatedIcon";
 import { Button } from "../components/Button";
 import { Reveal } from "../components/Reveal";
-import { GoldMotes } from "../components/Royal";
 import { SectionHeading } from "../components/SectionHeading";
 import { ClockIcon, LocationIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
@@ -11,12 +10,10 @@ export function Contact() {
   const whatsappHref = whatsappHrefFor(business.whatsappMessage);
 
   return (
-    <section id="contact" className="relative scroll-mt-20 overflow-hidden bg-royal py-[clamp(3.5rem,9vw,6rem)]">
-      <GoldMotes />
+    <section id="contact" className="relative scroll-mt-20 overflow-hidden bg-ivory py-[clamp(3.5rem,9vw,6rem)]">
       <div className="relative mx-auto max-w-3xl px-5 lg:px-8">
         <Reveal>
           <SectionHeading
-            onDark
             eyebrow={ui.contactEyebrow}
             title={ui.contactTitle}
             subtitle={ui.contactSubtitle}
@@ -26,10 +23,10 @@ export function Contact() {
         {/* The number itself is the biggest tappable thing here — a caller
             should never have to hunt for an icon. */}
         <Reveal className="mt-12 text-center">
-          <p className="label-gold text-gold-soft">{ui.callUsOn}</p>
+          <p className="label-gold text-gold-deep">{ui.callUsOn}</p>
           <a
             href={telHref}
-            className="nums-lining mt-2 inline-block px-4 py-2 font-serif text-4xl font-semibold break-words text-gold-soft underline decoration-gold decoration-2 underline-offset-8 sm:text-5xl"
+            className="nums-lining mt-2 inline-block px-4 py-2 font-serif text-4xl font-semibold break-words text-charcoal underline decoration-gold decoration-2 underline-offset-8 transition-colors hover:text-graphite sm:text-5xl"
           >
             {business.phoneDisplay}
           </a>
@@ -61,24 +58,24 @@ export function Contact() {
         </Reveal>
 
         <Reveal className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div className="flex gap-4 rounded-2xl border border-royal-line bg-royal-light p-6">
+          <div className="flex gap-4 rounded-2xl border border-cream-dark bg-ivory-light p-6">
             <AnimatedIcon className="shrink-0">
-              <LocationIcon className="size-7 text-gold-soft" />
+              <LocationIcon className="size-7 text-gold-deep" />
             </AnimatedIcon>
             <div>
-              <p className="text-base font-semibold text-ivory-light">{ui.visitUs}</p>
-              <p className="mt-1 text-base text-muted-soft">{business.addressLine1}</p>
-              <p className="text-base text-muted-soft">{business.addressLine2}</p>
+              <p className="text-base font-semibold text-charcoal">{ui.visitUs}</p>
+              <p className="mt-1 text-base text-muted">{business.addressLine1}</p>
+              <p className="text-base text-muted">{business.addressLine2}</p>
             </div>
           </div>
 
-          <div className="flex gap-4 rounded-2xl border border-royal-line bg-royal-light p-6">
+          <div className="flex gap-4 rounded-2xl border border-cream-dark bg-ivory-light p-6">
             <AnimatedIcon className="shrink-0">
-              <ClockIcon className="size-7 text-gold-soft" />
+              <ClockIcon className="size-7 text-gold-deep" />
             </AnimatedIcon>
             <div>
-              <p className="text-base font-semibold text-ivory-light">{ui.timings}</p>
-              <p className="mt-1 text-base text-muted-soft">{business.hours}</p>
+              <p className="text-base font-semibold text-charcoal">{ui.timings}</p>
+              <p className="mt-1 text-base text-muted">{business.hours}</p>
             </div>
           </div>
         </Reveal>
@@ -99,7 +96,7 @@ export function Contact() {
             href={mapLinkHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex min-h-12 items-center gap-2 px-4 text-base font-semibold text-gold-soft underline decoration-gold decoration-2 underline-offset-4"
+            className="mt-3 inline-flex min-h-12 items-center gap-2 px-4 text-base font-semibold text-gold-deep underline decoration-gold decoration-2 underline-offset-4 transition-colors hover:text-charcoal"
           >
             <LocationIcon className="size-5" />
             {ui.openInMaps}

@@ -22,7 +22,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-royal-line bg-royal sm:bg-royal/95 sm:backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-dark-line bg-obsidian sm:bg-obsidian/95 sm:backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-1.5 px-4 xs:gap-2 xs:px-5 sm:h-20 sm:gap-3 lg:px-8">
         <a href="#top" className="flex min-h-11 min-w-0 items-center gap-2.5">
           <span aria-hidden="true" className="size-2.5 shrink-0 rotate-45 bg-gold" />
@@ -50,7 +50,7 @@ export function Header() {
           <a
             href={telHref}
             aria-label={ui.callBusiness}
-            className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-gold/50 bg-plum px-3 font-semibold text-ivory-light transition-colors hover:bg-plum-light sm:px-5 md:px-6"
+            className="inline-flex min-h-12 items-center gap-2 rounded-full border border-gold/50 bg-graphite px-3 font-semibold text-ivory-light transition-colors hover:border-gold hover:bg-charcoal sm:px-5 md:px-6"
           >
             <PhoneIcon className="size-5 shrink-0" />
             <span className="hidden xs:inline">{ui.callNow}</span>
@@ -62,7 +62,7 @@ export function Header() {
             aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-royal-line text-ivory-light transition-colors active:bg-royal-light lg:hidden"
+            className="inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-dark-line text-ivory-light transition-colors active:bg-graphite lg:hidden"
           >
             {menuOpen ? <CloseIcon className="size-6" /> : <MenuIcon className="size-6" />}
           </button>

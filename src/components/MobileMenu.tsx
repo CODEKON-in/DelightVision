@@ -106,14 +106,14 @@ export function MobileMenu({ open, onClose, links }: Props) {
     <div className="fixed inset-x-0 top-16 bottom-0 z-50 sm:top-20 lg:hidden" id="mobile-menu">
       <div
         ref={scrimRef}
-        className="absolute inset-0 bg-royal/85 sm:bg-royal/70 sm:backdrop-blur-sm"
+        className="absolute inset-0 bg-obsidian/85 sm:bg-obsidian/70 sm:backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
 
       <div
         ref={sheetRef}
-        className="relative max-h-full overflow-y-auto overscroll-contain border-b border-royal-line bg-royal px-5 pt-2 pb-8 shadow-modal"
+        className="relative max-h-full overflow-y-auto overscroll-contain border-b border-dark-line bg-obsidian px-5 pt-2 pb-8 shadow-modal"
       >
         <nav aria-label={ui.mainNavigation}>
           <ul className="flex flex-col">
@@ -122,7 +122,7 @@ export function MobileMenu({ open, onClose, links }: Props) {
                 <a
                   href={link.href}
                   onClick={onClose}
-                  className="flex min-h-16 items-center justify-between border-b border-royal-line font-serif text-2xl font-semibold text-ivory-light transition-colors active:text-gold-soft"
+                  className="flex min-h-16 items-center justify-between border-b border-dark-line font-serif text-2xl font-semibold text-ivory-light transition-colors active:text-gold-soft"
                 >
                   {link.label}
                   <span aria-hidden="true" className="text-gold">
@@ -137,10 +137,9 @@ export function MobileMenu({ open, onClose, links }: Props) {
         <div data-menu-item className="mt-7 flex flex-col gap-3">
           <Button
             href={telHref}
-            variant="primary"
+            variant="onDark"
             size="lg"
             fullWidth
-            className="border-2 border-gold/50"
             icon={<PhoneIcon className="size-6" />}
             onClick={onClose}
           >
