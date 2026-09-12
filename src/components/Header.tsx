@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import logo from "../assets/logo-white.png";
 import { MobileMenu, type NavLink } from "./MobileMenu";
 import { CloseIcon, MenuIcon, PhoneIcon } from "./icons";
 import { ui } from "../data/copy";
@@ -24,13 +25,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-dark-line bg-obsidian sm:bg-obsidian/95 sm:backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-1.5 px-4 xs:gap-2 xs:px-5 sm:h-20 sm:gap-3 lg:px-8">
-        <a href="#top" className="flex min-h-11 min-w-0 items-center gap-2.5">
-          <span aria-hidden="true" className="size-2.5 shrink-0 rotate-45 bg-gold" />
-          {/* Fluid: a 320px phone has roughly a third less room in the
-              header than a 430px one. */}
-          <span className="truncate font-serif text-[clamp(1.05rem,4.4vw,1.5rem)] font-semibold text-ivory-light">
-            {business.name}
-          </span>
+        <a href="#top" className="flex min-h-11 min-w-0 shrink-0 items-center">
+          <img src={logo} alt={business.name} className="h-10 w-auto sm:h-12" />
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label={ui.mainNavigation}>

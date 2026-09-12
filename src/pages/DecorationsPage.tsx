@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
-import { Flourish } from "../components/Flourish";
-import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
+import { MaterialCard } from "../components/MaterialCard";
 import { Reveal } from "../components/Reveal";
 import { PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
-import { business, enquiryMessageFor, telHref, whatsappHrefFor } from "../data/site";
-import { services, type Decoration, type DecorationType } from "../data/services";
+import { business, telHref, whatsappHrefFor } from "../data/site";
+import { services } from "../data/services";
 import { HOME_PATH, navigate } from "../lib/router";
-import { DecorationDetail } from "../sections/DecorationDetail";
 import { ServiceDetail } from "../sections/ServiceDetail";
 
 /* Back to where the visitor came from. Written out in words rather than
@@ -27,94 +25,15 @@ function BackToServices({ className = "" }: { className?: string }) {
   );
 }
 
-type GroupProps = {
-  type: DecorationType;
-  /* Keeps the placeholder tile colours varying down the page rather than
-     restarting at every heading. */
-  offset: number;
-  onOpen: (decoration: Decoration, index: number) => void;
-};
-
-/* One decoration type: its heading, then the designs it holds. Everything is
-   on the page at once — there is nothing to open or filter, so there is
-   nothing to work out. */
-function DecorationGroup({ type, offset, onOpen }: GroupProps) {
-  return (
-    <section className="border-t border-cream-dark pt-10 sm:pt-12">
-      <Reveal>
-        <h2 className="font-serif text-[clamp(1.6rem,5.5vw,2.25rem)] leading-tight font-semibold text-charcoal">
-          {type.name}
-        </h2>
-        {type.description && (
-          <p className="mt-2 max-w-2xl text-lg text-muted">{type.description}</p>
-        )}
-      </Reveal>
-
-      {type.items.length === 0 ? (
-        /* Nothing photographed for this type yet. Saying so plainly, with the
-           same way to ask about it, beats an empty space. */
-        <Reveal className="mt-6">
-          <p className="max-w-xl text-lg text-muted">{ui.noDesignsYet}</p>
-          <Button
-            href={whatsappHrefFor(enquiryMessageFor(type.name.toLowerCase()))}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-            size="md"
-            className="mt-5"
-            icon={<WhatsAppIcon className="size-5" />}
-          >
-            {ui.enquireAboutThis}
-          </Button>
-        </Reveal>
-      ) : (
-        <Reveal
-          as="ul"
-          stagger={0.07}
-          className="mt-8 grid grid-cols-1 gap-8 xs:grid-cols-2 lg:grid-cols-3"
-        >
-          {type.items.map((decoration, i) => (
-            <li key={decoration.id}>
-              <button
-                type="button"
-                onClick={() => onOpen(decoration, offset + i)}
-                className="group block w-full text-left"
-              >
-                <PlaceholderPhoto
-                  index={offset + i}
-                  src={decoration.images[0]}
-                  alt={decoration.name}
-                  sizes="(min-width: 1024px) 30vw, (min-width: 400px) 45vw, 90vw"
-                  className="aspect-4/3 w-full rounded-2xl ring-1 ring-cream-dark transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
-                />
-
-                <h3 className="mt-4 font-serif text-2xl leading-tight font-semibold text-charcoal transition-colors group-hover:text-graphite">
-                  {decoration.name}
-                </h3>
-
-                {decoration.price && (
-                  <p className="nums-lining mt-1 text-base text-muted">{decoration.price}</p>
-                )}
-              </button>
-            </li>
-          ))}
-        </Reveal>
-      )}
-    </section>
-  );
-}
-
 export function DecorationsPage() {
-  const [open, setOpen] = useState<{ decoration: Decoration; index: number } | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
 
   /* The page is the decoration service's showcase. If the content ever
-     stops carrying one, the page says so rather than rendering an empty
-     shell. */
-  const service = services.find((item) => item.showcase);
-  const showcase = service?.showcase;
+     stops carrying the service at all, the page says so rather than
+     rendering an empty shell. */
+  const service = services.find((item) => item.id === "decoration");
 
-  if (!service || !showcase) {
+  if (!service) {
     return (
       <div className="mx-auto max-w-5xl px-5 py-24 text-center lg:px-8">
         <p className="text-lg text-muted">{ui.noDecorationsYet}</p>
@@ -123,69 +42,50 @@ export function DecorationsPage() {
     );
   }
 
-  /* Each group is told how many designs came before it, so the fallback tile
-     colours keep changing down the page instead of every group restarting
-     from the same one. Worked out up front rather than counted during
-     render. */
-  const groups = showcase.types.map((type, i) => ({
-    type,
-    offset: showcase.types.slice(0, i).reduce((n, before) => n + before.items.length, 0),
-  }));
-
   return (
     <>
-      {/* The page opens on the quieter of the two light surfaces, so the
-          band reads as a title block rather than a second hero. The black
-          header above it is the brand presence this page needs. */}
-      <section className="relative overflow-hidden bg-cream py-[clamp(3rem,8vw,4.5rem)]">
-        <div className="mx-auto max-w-5xl px-5 lg:px-8">
-          <Reveal immediate>
-            <p className="label-gold text-gold-deep">{service.detail.badge}</p>
-
-            <h1 className="mt-3 font-serif text-[clamp(2.25rem,8vw,3.5rem)] leading-tight font-semibold text-charcoal">
-              {ui.decorationsTitle}
-            </h1>
-
-            <Flourish className="mt-5" />
-
-            <p className="mt-6 max-w-2xl font-serif text-xl text-muted italic sm:text-2xl">
-              {service.detail.subtitle}
-            </p>
-
-            <p className="nums-lining mt-7 font-serif text-3xl leading-none font-semibold text-charcoal">
-              {service.price}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-ivory py-[clamp(3rem,8vw,5rem)]">
+      {/* No title band above this — the page opens straight on the
+          materials grid, which is the reason anyone lands here. */}
+      <section className="bg-ivory py-[clamp(2.5rem,7vw,4rem)]">
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <Reveal immediate>
             <BackToServices />
-
-            {showcase.intro && (
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{showcase.intro}</p>
-            )}
           </Reveal>
 
-          <div className="mt-12 flex flex-col gap-14 sm:mt-14 sm:gap-16">
-            {groups.map(({ type, offset }) => (
-              <DecorationGroup
-                key={type.id}
-                type={type}
-                offset={offset}
-                onOpen={(decoration, index) => setOpen({ decoration, index })}
-              />
-            ))}
-          </div>
+          {/* Materials, shown as a product listing — photo, name, note and
+              price per row, like a shopping app's search results — so a
+              visitor can see roughly what each option costs before
+              calling. This doubles as the page's heading now that the
+              title band above it is gone. */}
+          {service.materials.length > 0 && (
+            <section className="mt-8 sm:mt-10">
+              <Reveal immediate>
+                <h1 className="font-heading text-[clamp(2rem,7vw,3rem)] leading-tight font-semibold text-charcoal">
+                  {ui.materialsHeading}
+                </h1>
+                <p className="mt-3 max-w-2xl text-lg text-muted">{ui.materialsSubtitle}</p>
+              </Reveal>
+
+              <Reveal
+                as="ul"
+                stagger={0.04}
+                className="mt-6 flex max-w-2xl flex-col divide-y divide-cream-dark"
+              >
+                {service.materials.map((material, i) => (
+                  <li key={material.id}>
+                    <MaterialCard material={material} index={i} />
+                  </li>
+                ))}
+              </Reveal>
+            </section>
+          )}
 
           {/* One closing block: the two practical notes the service already
               carries, the site's usual pair of actions, and the ways onward
               as plain links rather than more buttons. */}
           <div className="mt-16 border-t border-cream-dark pt-10">
             <Reveal>
-              <h2 className="font-serif text-[clamp(1.5rem,5vw,2rem)] leading-tight font-semibold text-charcoal">
+              <h2 className="font-heading text-[clamp(1.5rem,5vw,2rem)] leading-tight font-semibold text-charcoal">
                 {ui.decorationsFootnoteTitle}
               </h2>
 
@@ -227,12 +127,6 @@ export function DecorationsPage() {
           </div>
         </div>
       </section>
-
-      <DecorationDetail
-        decoration={open?.decoration ?? null}
-        index={open?.index ?? 0}
-        onClose={() => setOpen(null)}
-      />
 
       {/* Everything the service itself promises — about, highlights and the
           full inclusions — in the same dialog the rest of the site uses. */}

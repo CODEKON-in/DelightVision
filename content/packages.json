@@ -29,7 +29,32 @@
       ],
       "notice": { "en": "Booking notice: 6 weeks in advance", "ta": "" },
       "conditions": { "en": "Photo editing can be added; any service can be swapped out on a call", "ta": "" }
-    }
+    },
+    "priceTiers": [
+      {
+        "name": { "en": "Bronze", "ta": "" },
+        "blurb": { "en": "The four essentials: decoration, catering, photography and videography.", "ta": "" },
+        "price": { "en": "₹85,000", "ta": "" },
+        "about": { "en": "The essential four — your venue decorated, your guests fed, and the ceremony photographed and filmed, all run off one coordinated schedule. The printed album and video edit aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
+        "services": ["decoration", "food", "photography", "videography"]
+      },
+      {
+        "name": { "en": "Silver", "ta": "" },
+        "blurb": { "en": "Everything in Bronze, plus a designed and printed photo album.", "ta": "" },
+        "price": { "en": "₹1,15,000", "ta": "" },
+        "about": { "en": "Builds on the Bronze essentials by adding a professionally designed and printed photo album, so the day is kept in print as well as on screen — still all coordinated by one team.", "ta": "" },
+        "services": ["decoration", "food", "photography", "videography", "album"],
+        "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
+      },
+      {
+        "name": { "en": "Gold", "ta": "" },
+        "blurb": { "en": "The complete package — every service, including full photo and video editing.", "ta": "" },
+        "price": { "en": "₹1,50,000", "ta": "" },
+        "about": { "en": "Nothing left to arrange separately: decoration, catering, photography, videography, the printed album, and both photo and video editing, all run by one team on one schedule. Built for couples who want the entire day handled end to end.", "ta": "" },
+        "services": ["decoration", "food", "photography", "videography", "album", "video-editing", "photo-editing"],
+        "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
+      }
+    ]
   },
   {
     "id": "photo-video",
@@ -55,7 +80,32 @@
       ],
       "notice": { "en": "Booking notice: 4 weeks in advance", "ta": "" },
       "conditions": { "en": "Pre-wedding shoot and drone coverage available as add-ons", "ta": "" }
-    }
+    },
+    "priceTiers": [
+      {
+        "name": { "en": "Bronze", "ta": "" },
+        "blurb": { "en": "Photography and videography coverage for the day.", "ta": "" },
+        "price": { "en": "₹55,000", "ta": "" },
+        "about": { "en": "Just the shoot — one crew covering both photography and video for the ceremony and reception. Editing and the album aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
+        "services": ["photography", "videography"]
+      },
+      {
+        "name": { "en": "Silver", "ta": "" },
+        "blurb": { "en": "Adds full photo and video editing to the shoot.", "ta": "" },
+        "price": { "en": "₹75,000", "ta": "" },
+        "about": { "en": "Everything in Bronze, with both the photographs and the video professionally edited afterward — colour-corrected stills and a finished, edited film rather than raw footage.", "ta": "" },
+        "services": ["photography", "videography", "photo-editing", "video-editing"],
+        "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
+      },
+      {
+        "name": { "en": "Gold", "ta": "" },
+        "blurb": { "en": "The complete package — shoot, full editing, and a printed album.", "ta": "" },
+        "price": { "en": "₹95,000", "ta": "" },
+        "about": { "en": "The full photo-and-video experience: the shoot, complete editing for both photos and video, and a printed album to finish it off. Nothing from the day is left unedited or undelivered.", "ta": "" },
+        "services": ["photography", "videography", "photo-editing", "video-editing", "album"],
+        "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
+      }
+    ]
   },
   {
     "id": "decor-catering",
@@ -81,6 +131,29 @@
       ],
       "notice": { "en": "Booking notice: 3 weeks in advance", "ta": "" },
       "conditions": { "en": "Guest count can be adjusted up to 3 days before the function", "ta": "" }
-    }
+    },
+    "priceTiers": [
+      {
+        "name": { "en": "Bronze", "ta": "" },
+        "blurb": { "en": "Standard decor and a set menu for up to 100 guests.", "ta": "" },
+        "price": { "en": "₹40,000", "ta": "" },
+        "about": { "en": "Standard decoration for the stage and entrance, paired with a set catering menu for up to 100 guests, run by one team on one floor plan.", "ta": "" },
+        "services": ["decoration", "food"]
+      },
+      {
+        "name": { "en": "Silver", "ta": "" },
+        "blurb": { "en": "Fuller venue decor and an expanded menu.", "ta": "" },
+        "price": { "en": "₹55,000", "ta": "" },
+        "about": { "en": "Decoration extended to cover more of the venue — pillars and additional seating areas — alongside a catering menu expanded with more dishes and a live counter.", "ta": "" },
+        "services": ["decoration", "food"]
+      },
+      {
+        "name": { "en": "Gold", "ta": "" },
+        "blurb": { "en": "Full venue decor and a premium multi-course menu.", "ta": "" },
+        "price": { "en": "₹72,000", "ta": "" },
+        "about": { "en": "The full venue dressed top to bottom, paired with a premium multi-course menu including live counters and dessert stations — the complete decor-and-catering experience for a larger guest list.", "ta": "" },
+        "services": ["decoration", "food"]
+      }
+    ]
   }
 ]

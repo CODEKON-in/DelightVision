@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatedIcon } from "../components/AnimatedIcon";
 import { Button } from "../components/Button";
 import { LevelDots } from "../components/LevelDots";
+import { MaterialCard } from "../components/MaterialCard";
 import { Modal } from "../components/Modal";
 import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 import { CheckIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
@@ -46,7 +47,7 @@ function DetailBody({ service }: { service: Service }) {
 
           <h2
             id={`service-title-${service.id}`}
-            className="mt-3 font-serif text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
+            className="mt-3 font-heading text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
           >
             {service.name}
           </h2>
@@ -113,6 +114,25 @@ function DetailBody({ service }: { service: Service }) {
             ))}
           </ul>
         </section>
+
+        {/* Materials, shown as a product listing — photo, name, note and
+            price per row, like a shopping app's search results — for
+            services that carry one. Nothing renders here for a service
+            with no materials list. */}
+        {service.materials.length > 0 && (
+          <section>
+            <h3 className="label-gold text-gold-deep">{ui.materialsHeading}</h3>
+            <p className="mt-2 text-base text-muted">{ui.materialsSubtitle}</p>
+
+            <ul className="mt-2 flex flex-col divide-y divide-cream-dark">
+              {service.materials.map((material, i) => (
+                <li key={material.id}>
+                  <MaterialCard material={material} index={i} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* Footer info row */}
         <section className="flex flex-col gap-3 rounded-2xl bg-cream/60 p-5 sm:flex-row sm:gap-6">

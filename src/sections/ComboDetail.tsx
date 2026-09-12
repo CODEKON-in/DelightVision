@@ -35,7 +35,7 @@ function DetailBody({ combo }: { combo: Combo }) {
         <div>
           <h2
             id={`combo-title-${combo.id}`}
-            className="font-serif text-4xl leading-tight font-semibold break-words text-charcoal sm:text-5xl"
+            className="font-heading text-4xl leading-tight font-semibold break-words text-charcoal sm:text-5xl"
           >
             {combo.name}
           </h2>

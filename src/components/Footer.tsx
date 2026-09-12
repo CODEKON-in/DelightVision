@@ -2,6 +2,7 @@ import { AnimatedIcon } from "./AnimatedIcon";
 import { Flourish } from "./Flourish";
 import { Reveal } from "./Reveal";
 import { ClockIcon, LocationIcon, PhoneIcon, WhatsAppIcon } from "./icons";
+import logo from "../assets/logo-white.png";
 import { ui } from "../data/copy";
 import { business, telHref, whatsappHrefFor } from "../data/site";
 
@@ -25,11 +26,8 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 pt-14 pb-10 lg:px-8">
         {/* Brand */}
         <Reveal className="flex flex-col items-center text-center">
-          <span aria-hidden="true" className="size-3 rotate-45 bg-gold" />
-          <p className="mt-5 font-serif text-4xl font-semibold text-ivory-light sm:text-5xl">
-            {business.name}
-          </p>
-          <p className="mt-3 font-serif text-xl text-gold-soft italic">{business.tagline}</p>
+          <img src={logo} alt={business.name} className="h-16 w-auto sm:h-20" />
+          <p className="mt-4 font-serif text-xl text-gold-soft italic">{business.tagline}</p>
           <Flourish className="mt-5" />
         </Reveal>
 
@@ -60,7 +58,7 @@ export function Footer() {
 
             <a
               href={telHref}
-              className="nums-lining mt-4 inline-flex min-h-12 items-center gap-2 font-serif text-2xl font-semibold text-gold-soft underline decoration-gold decoration-2 underline-offset-4"
+              className="nums-lining mt-4 inline-flex min-h-12 items-center gap-2 font-heading text-2xl font-semibold text-gold-soft underline decoration-gold decoration-2 underline-offset-4"
             >
               <AnimatedIcon>
                 <PhoneIcon className="size-5" />

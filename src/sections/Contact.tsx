@@ -26,7 +26,7 @@ export function Contact() {
           <p className="label-gold text-gold-deep">{ui.callUsOn}</p>
           <a
             href={telHref}
-            className="nums-lining mt-2 inline-block px-4 py-2 font-serif text-4xl font-semibold break-words text-charcoal underline decoration-gold decoration-2 underline-offset-8 transition-colors hover:text-graphite sm:text-5xl"
+            className="nums-lining mt-2 inline-block px-4 py-2 font-heading text-4xl font-semibold break-words text-charcoal underline decoration-gold decoration-2 underline-offset-8 transition-colors hover:text-graphite sm:text-5xl"
           >
             {business.phoneDisplay}
           </a>

@@ -2,14 +2,19 @@ import { useEffect, useLayoutEffect } from "react";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ui } from "./data/copy";
+import { combos } from "./data/services";
 import {
   HOME_PATH,
+  comboIdFromPath,
   consumePendingScroll,
   navigate,
+  routeName,
   scrollToHash,
-  useRoute,
+  tierNameFromPath,
+  useRoutePath,
 } from "./lib/router";
 import { DecorationsPage } from "./pages/DecorationsPage";
+import { PackageDetailPage } from "./pages/PackageDetailPage";
 import { Combos } from "./sections/Combos";
 import { Contact } from "./sections/Contact";
 import { Hero } from "./sections/Hero";
@@ -27,8 +32,11 @@ function Home() {
 }
 
 export default function App() {
-  const route = useRoute();
+  const path = useRoutePath();
+  const route = routeName(path);
   const onHome = route === "home";
+  const comboId = comboIdFromPath(path);
+  const tierName = tierNameFromPath(path);
 
   /* Every `#services`-style link on the site goes through here: the header,
      the footer, the phone menu and the skip link.
@@ -82,13 +90,21 @@ export default function App() {
      the visitor would land halfway down the previous page's scroll. */
   useLayoutEffect(consumePendingScroll, [route]);
 
-  /* So a bookmarked or shared Decorations link is named properly, and the
-     browser's own back button shows something meaningful in its history. */
+  /* So a bookmarked or shared Decorations/package link is named properly,
+     and the browser's own back button shows something meaningful in its
+     history. */
   useEffect(() => {
-    document.title = onHome
-      ? ui.pageTitle
-      : `${ui.decorationsTitle} — ${ui.pageTitle}`;
-  }, [onHome]);
+    if (onHome) {
+      document.title = ui.pageTitle;
+      return;
+    }
+    if (route === "decorations") {
+      document.title = `${ui.decorationsTitle} — ${ui.pageTitle}`;
+      return;
+    }
+    const combo = comboId ? combos.find((c) => c.id === comboId) : undefined;
+    document.title = combo ? `${combo.name} — ${ui.pageTitle}` : ui.pageTitle;
+  }, [onHome, route, comboId]);
 
   return (
     <div className="min-h-screen bg-ivory">
@@ -101,7 +117,15 @@ export default function App() {
 
       <Header />
 
-      <main>{onHome ? <Home /> : <DecorationsPage />}</main>
+      <main>
+        {onHome ? (
+          <Home />
+        ) : route === "decorations" ? (
+          <DecorationsPage />
+        ) : (
+          <PackageDetailPage comboId={comboId} tierName={tierName} />
+        )}
+      </main>
 
       <Footer />
     </div>

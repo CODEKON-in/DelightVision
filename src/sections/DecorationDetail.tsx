@@ -100,7 +100,7 @@ function DetailBody({ decoration, index }: { decoration: Decoration; index: numb
               is not repeated here. */}
           <h2
             id={`decoration-title-${decoration.id}`}
-            className="font-serif text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
+            className="font-heading text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
           >
             {decoration.name}
           </h2>

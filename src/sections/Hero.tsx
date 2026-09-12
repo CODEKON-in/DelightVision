@@ -122,7 +122,11 @@ export function Hero() {
           className="label-gold mt-4 text-gold-soft sm:mt-5"
         />
 
-        <h1 className="shimmer-text mt-3 font-serif text-[clamp(2.75rem,13vw,6rem)] leading-[1.06] font-semibold sm:mt-4">
+        {/* font-heading (Orbitron) for brand consistency, but kept in its
+            normal case and a lighter weight — the site's other headings
+            use this same medium-semibold weight — so the name still reads
+            as a wedding brand rather than a tech logotype. */}
+        <h1 className="shimmer-text font-heading mt-3 text-[clamp(2.5rem,12vw,5.25rem)] leading-[1.15] font-semibold sm:mt-4">
           {business.name}
         </h1>
 
@@ -160,7 +164,7 @@ export function Hero() {
         <div className="mt-7">
           <a
             href={telHref}
-            className="nums-lining mt-1 inline-flex min-h-14 items-center px-4 font-serif text-[clamp(1.5rem,7vw,2.25rem)] font-semibold text-gold-soft underline decoration-gold decoration-2 underline-offset-8"
+            className="nums-lining mt-1 inline-flex min-h-14 items-center px-4 font-heading text-[clamp(1.5rem,7vw,2.25rem)] font-semibold text-gold-soft underline decoration-gold decoration-2 underline-offset-8"
           >
             {business.phoneDisplay}
           </a>

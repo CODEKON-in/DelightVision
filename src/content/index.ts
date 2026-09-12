@@ -72,6 +72,63 @@ export type Showcase = {
   types: ShowcaseType[];
 };
 
+/* Optional materials block — a small product-style catalogue of the raw
+   materials a service is built from (e.g. plastic vs. fresh flowers for
+   decoration), each with its own price. Hangs off the service the same way
+   `showcase` does, so it travels with `content/services.json` and only
+   renders where the content actually carries it. */
+export type MaterialItem = {
+  id: string;
+  name: LocalizedText;
+  /* DUMMY photo — falls back to the painted tile when absent */
+  image?: string;
+  pricing: PriceInfo;
+  note?: LocalizedText;
+  /* Longer paragraph shown in the "View Details" popup, beyond the short
+     row-level note — what it's made of, how it behaves, why you'd pick it. */
+  details?: LocalizedText;
+  /* Small badge on the photo, e.g. "Most Popular" or "Budget Pick" */
+  tag?: LocalizedText;
+  /* A couple of quick label/value facts shown under the note — "Best for",
+     "Care", "Colours", that kind of thing. Same shape as a showcase
+     design's specifications, reused rather than duplicated. */
+  specs?: ShowcaseSpec[];
+  /* Optional fuller pricing picture beyond the single `pricing` rate —
+     volume tiers, a minimum order, extra charges, and a couple of
+     worked examples so a customer can picture a real total. Shown in the
+     material's detail popup; a material with none of these just shows
+     its plain `pricing` rate as today. */
+  priceStructure?: MaterialPriceStructure;
+};
+
+export type MaterialPriceTier = {
+  /* e.g. "Small — entrance or one photo corner" */
+  range: LocalizedText;
+  /* e.g. "₹3,000" — a formatted string, not a PriceInfo, since a tier
+     is a display row rather than something formatPrice() needs to build. */
+  price: LocalizedText;
+  /* Optional real-world quantity the flat price covers, in an easy metric
+     unit — e.g. "≈ 5 m²" or "≈ 15 m" or "≈ 2 kg" — so a size name like
+     "Small" is backed by something concrete rather than a guess. */
+  quantity?: LocalizedText;
+};
+
+export type MaterialPriceExample = {
+  /* e.g. "Photo backdrop (100 sq ft)" */
+  label: LocalizedText;
+  /* e.g. "≈ ₹6,000" */
+  amount: LocalizedText;
+};
+
+export type MaterialPriceStructure = {
+  /* e.g. "50 sq ft" */
+  minimumOrder?: LocalizedText;
+  /* e.g. ["Setup & removal: ₹500 flat", "Rush order (under 48 hrs): +10%"] */
+  extraCharges?: LocalizedText[];
+  tiers?: MaterialPriceTier[];
+  examples?: MaterialPriceExample[];
+};
+
 export type Service = {
   id: ServiceId;
   name: LocalizedText;
@@ -90,6 +147,32 @@ export type Service = {
     conditions: LocalizedText;
   };
   showcase?: Showcase;
+  materials?: MaterialItem[];
+};
+
+/* A Bronze/Silver/Gold pricing choice within one combo — the combo itself
+   stays a single card in the Combo Packages grid, and its own detail
+   dialog is where a customer picks which of the three to go with. */
+export type ComboPriceTier = {
+  /* "Bronze" / "Silver" / "Gold" */
+  name: LocalizedText;
+  /* One-line summary of what's different at this tier, shown on its card */
+  blurb: LocalizedText;
+  /* e.g. "₹85,000" — a formatted string, like a material's price tier */
+  price: LocalizedText;
+  /* Fuller paragraph shown when the customer taps "View Details" on this
+     specific tier */
+  about?: LocalizedText;
+  /* Which services this tier includes — lets Bronze/Silver/Gold cover a
+     different slice of the combo's full service list (e.g. Bronze just
+     the core services, Gold the complete set). Falls back to the combo's
+     own `services` list when a tier doesn't specify its own. */
+  services?: ServiceId[];
+  /* Extra items shown as chips alongside the resolved services, for
+     something specific to this combo/tier that isn't part of the site's
+     main service catalog — e.g. "Tour Photography" (a pre-wedding couple
+     shoot) added only at the higher tiers of a particular combo. */
+  extras?: LocalizedText[];
 };
 
 export type Combo = {
@@ -108,6 +191,10 @@ export type Combo = {
     notice: LocalizedText;
     conditions: LocalizedText;
   };
+  /* Optional Bronze/Silver/Gold pricing choice, shown in the combo's own
+     detail dialog. A combo with none just shows its plain `pricing` rate
+     as before. */
+  priceTiers?: ComboPriceTier[];
 };
 
 export type GalleryItem = {

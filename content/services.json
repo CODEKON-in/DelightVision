@@ -621,7 +621,860 @@
           ]
         }
       ]
-    }
+    },
+    "materials": [
+      {
+        "id": "plastic-flowers",
+        "name": {
+          "en": "Plastic / Artificial Flowers",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1645188084363-b4327a4aade1?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 3000,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Long-lasting silk & plastic blooms — reusable, colour-fast, and doesn't wilt through a long event.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Made from UV-treated silk and plastic, these blooms hold their colour and shape through a full day outdoors without wilting, drooping or shedding petals. Because they're reusable, they're the most economical way to cover large areas — stage backdrops, pillars, entrance arches — for a flat package price rather than a cost that climbs the more you cover, the way fresh flowers do. Best matched with uplighting or fairy lights to soften the sheen under photos.",
+          "ta": ""
+        },
+        "tag": {
+          "en": "Budget Pick",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Daytime events, reused across bookings",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Care",
+              "ta": ""
+            },
+            "value": {
+              "en": "Wipes clean, dust-resistant",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Setup & removal: ₹500 flat within city limits",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — entrance or one photo corner",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹3,000",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — stage backdrop or mandap",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹8,000",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — full venue (stage, entrance & pillars)",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹16,500",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "natural-flowers",
+        "name": {
+          "en": "Natural / Fresh Flowers",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1572454591674-2739f30d8c40?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 7500,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Fresh roses, jasmine and marigold sourced the morning of the event for real fragrance and colour.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Sourced fresh on the morning of the event from local flower markets, so colour and fragrance are at their peak for the ceremony. Best suited to the mandap, bridal bouquet, and any close-up area where guests will actually smell and touch the flowers — fresh stock has a shorter working life than artificial, so it's usually paired with plastic or fabric for the larger background areas.",
+          "ta": ""
+        },
+        "tag": {
+          "en": "Most Popular",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Mandap, bridal bouquet, fragrance",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Freshness",
+              "ta": ""
+            },
+            "value": {
+              "en": "Sourced the morning of the event",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Rush order (under 48 hrs notice): +10%",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — bridal mandap only",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹7,500",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — mandap + stage",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹18,000",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — mandap + stage + entrance",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹30,000",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "marigold-garlands",
+        "name": {
+          "en": "Marigold Garlands",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1699764681875-dd04ce36b1c3?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 2000,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Classic orange marigold strings for pillars, entrances and mandap edges.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Traditional strung marigold garlands in the classic orange-and-yellow combination, sold as a flat-price package sized to cover a doorway, a run of pillars, or the full mandap edge. A staple of South Indian wedding decor that pairs naturally with fresh flowers and fabric drapes, and reads well in both daylight and warm evening light.",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Pillars, doorways, entrance strings",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Colour",
+              "ta": ""
+            },
+            "value": {
+              "en": "Classic orange and yellow",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Hanging hardware & fixing: included",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — entrance archway",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹2,000",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — entrance + pillars",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹5,000",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — entrance + pillars + mandap edges",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹9,000",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "rose-petals",
+        "name": {
+          "en": "Loose Rose Petals",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1571506534699-c76894c03ce7?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 250,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "For petal walkways, welcome showers and table scatter.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Freshly separated rose petals used for the walkway the couple enters on, a welcome shower over the entrance, or scattered across guest tables and the stage. Sold as a flat-price package sized to how thickly you want them scattered, from a short walkway up to a full walkway-plus-shower-plus-table-scatter combination.",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Petal walkway, welcome shower",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Coverage",
+              "ta": ""
+            },
+            "value": {
+              "en": "About 1kg per 10 ft of walkway",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — short walkway",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹250",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — walkway + welcome shower",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹650",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — walkway + shower + table scatter",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹1,400",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "fabric-drapes",
+        "name": {
+          "en": "Fabric Drapes & Backdrop",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1642698983228-4c6b336e6ab0?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 3000,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Flowing cloth backdrops in your chosen colour palette.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Floor-to-ceiling fabric panels draped across the stage or a dedicated photo corner, available in any colour to match your event's palette. Sold as a flat-price package sized to the area you're covering — a full stage backdrop is usually one of the larger line items on a decoration quote — and pairs well with fairy lights woven through the folds.",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Stage backdrop, photo booth",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Colours",
+              "ta": ""
+            },
+            "value": {
+              "en": "Any shade to match your theme",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Custom colour dyeing: +₹1,000 flat",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — photo corner backdrop",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹3,000",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — stage backdrop",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹6,500",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — backdrop + photo booth + entrance",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹12,000",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "led-fairy-lights",
+        "name": {
+          "en": "LED Fairy Lights",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1511461744085-90a4d1c66be3?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 800,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Warm string lighting woven through florals and drapes for evening glow.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Warm-white plug-in LED strings, run through floral arrangements, fabric drapes or a canopy overhead to carry the decor from daylight into evening. Sold as a flat-price package sized to the length of run you need — a small add-on to any of the other materials rather than a standalone look, but it's the detail that shows up most in evening photographs.",
+          "ta": ""
+        },
+        "tag": {
+          "en": "Add-on",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Evening glow, canopy, tree wrap",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Light",
+              "ta": ""
+            },
+            "value": {
+              "en": "Warm white, plug-in",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Power point setup: ₹300 flat if none nearby",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — photo corner or entrance",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹800",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — canopy or stage wrap",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹1,800",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — full venue string lighting",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹3,200",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "balloon-decor",
+        "name": {
+          "en": "Balloon Arch & Clusters",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1707589338174-dc1ddc18945a?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 350,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Colour-matched balloon arches and clusters for entrances and photo corners.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Air- or helium-filled balloons arranged into arches over an entrance or clustered as a backdrop for a photo corner, in any colour combination you request. Sold as a flat-price package sized to the cluster or arch you want — a compact photo-corner cluster and a full entrance arch are priced as two very different packages rather than a per-balloon calculation.",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Entrance, photo corner",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Colours",
+              "ta": ""
+            },
+            "value": {
+              "en": "Any combination on request",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Helium fill (floating balloons): +₹300 flat",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — photo corner cluster",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹350",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — small entrance cluster",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹800",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — full entrance arch",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹1,500",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "mandap-pillars",
+        "name": {
+          "en": "Mandap Pillars & Canopy",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 14000,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Decorated pillars and the canopy frame the mandap itself is built from.",
+          "ta": ""
+        },
+        "details": {
+          "en": "The structural frame the whole mandap is built around — pillars plus the overhead canopy, sold as a flat-price package by pillar count and decorated to match whatever material scheme you choose for flowers and drapes elsewhere. This is the one material that's effectively mandatory for a mandap-style ceremony rather than optional decor, since it's the frame everything else is applied to.",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "The mandap structure itself",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Includes",
+              "ta": ""
+            },
+            "value": {
+              "en": "4 pillars plus the canopy frame",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Extended canopy fabric: +₹2,000 flat",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — standard mandap",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹14,000",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — extended mandap",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹19,800",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — grand mandap",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹24,800",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "stage-uplighting",
+        "name": {
+          "en": "Stage Uplighting",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1576514129883-2f1d47a65da6?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 1200,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Coloured LED wash lights along the stage backdrop for depth in photos.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Colour-changeable RGB wash lights aimed up along the stage backdrop, adding depth and a wash of colour behind the couple that a flat backdrop alone doesn't give you in photos. Sold as a flat-price package by light count, spaced evenly across the backdrop width, and colours can usually be matched to your event's theme on request.",
+          "ta": ""
+        },
+        "tag": {
+          "en": "Add-on",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Stage backdrop depth in photos",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Colours",
+              "ta": ""
+            },
+            "value": {
+              "en": "RGB, colour-changeable",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "DMX colour-sync controller: +₹1,500 flat",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — basic stage wash",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹1,200",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — standard stage",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹2,200",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — grand stage",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹3,100",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "thermocol-props",
+        "name": {
+          "en": "Thermocol & Foam Props",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1774796425304-a0e9d3fd5bc1?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "pricing": {
+          "type": "starting",
+          "amount": 700,
+          "currency": "INR",
+          "unit": "package"
+        },
+        "note": {
+          "en": "Lightweight carved shapes for stage motifs and entrance signage.",
+          "ta": ""
+        },
+        "details": {
+          "en": "Thermocol and foam cut and carved into stage motifs, entrance signage lettering, or decorative shapes, then painted or covered to match the event palette. Sold as a flat-price package sized to the carved surface you need — lightweight enough to mount on a backdrop or freestanding frame without extra structural support, and easy to touch up between events.",
+          "ta": ""
+        },
+        "specs": [
+          {
+            "label": {
+              "en": "Best for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Stage motifs, entrance signage",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Weight",
+              "ta": ""
+            },
+            "value": {
+              "en": "Lightweight, easy to mount",
+              "ta": ""
+            }
+          }
+        ],
+        "priceStructure": {
+          "extraCharges": [
+            {
+              "en": "Complex 3D lettering or motifs: +₹500 flat",
+              "ta": ""
+            }
+          ],
+          "tiers": [
+            {
+              "range": {
+                "en": "Small — entrance signage",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹700",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Medium — stage motif set",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹1,800",
+                "ta": ""
+              }
+            },
+            {
+              "range": {
+                "en": "Large — stage + entrance + photo props",
+                "ta": ""
+              },
+              "price": {
+                "en": "₹3,500",
+                "ta": ""
+              }
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "id": "food",

@@ -12,8 +12,13 @@ import { useSyncExternalStore } from "react";
 
 export const HOME_PATH = "/";
 export const DECORATIONS_PATH = "/decorations";
+/* One combo package's own detail page, e.g. "/packages/complete" — the
+   Combo Packages section's "View Package Details" button sends visitors
+   here instead of opening a popup, so each package gets a real,
+   bookmarkable page listing its Bronze/Silver/Gold tiers. */
+export const PACKAGES_PATH_PREFIX = "/packages/";
 
-export type RouteName = "home" | "decorations";
+export type RouteName = "home" | "decorations" | "package";
 
 const listeners = new Set<() => void>();
 
@@ -55,12 +60,57 @@ function snapshot() {
   return currentPath;
 }
 
+/* Builds/reads the "/packages/<comboId>" path, optionally with a second
+   segment naming which Bronze/Silver/Gold tier was selected on the Combo
+   Packages section — e.g. "/packages/complete/Silver" — so "View Package
+   Details" opens straight onto the tier a visitor was already looking at,
+   instead of always starting from the first one. Kept as one small family
+   of functions so the prefix and the two-segment shape are only ever
+   spelled out once. */
+export function packagePathFor(comboId: string, tierName?: string): string {
+  const base = `${PACKAGES_PATH_PREFIX}${comboId}`;
+  return tierName ? `${base}/${encodeURIComponent(tierName)}` : base;
+}
+
+function packagePathRest(path: string): string | null {
+  return path.startsWith(PACKAGES_PATH_PREFIX) && path.length > PACKAGES_PATH_PREFIX.length
+    ? path.slice(PACKAGES_PATH_PREFIX.length)
+    : null;
+}
+
+export function comboIdFromPath(path: string): string | null {
+  const rest = packagePathRest(path);
+  if (rest === null) return null;
+  const slash = rest.indexOf("/");
+  return slash === -1 ? rest : rest.slice(0, slash);
+}
+
+/* null when the path doesn't name a tier — the page then falls back to the
+   combo's first tier, exactly as it did before tiers were addressable. */
+export function tierNameFromPath(path: string): string | null {
+  const rest = packagePathRest(path);
+  if (rest === null) return null;
+  const slash = rest.indexOf("/");
+  if (slash === -1) return null;
+  const tier = rest.slice(slash + 1);
+  return tier ? decodeURIComponent(tier) : null;
+}
+
 export function routeName(path: string): RouteName {
-  return path === DECORATIONS_PATH ? "decorations" : "home";
+  if (path === DECORATIONS_PATH) return "decorations";
+  if (comboIdFromPath(path)) return "package";
+  return "home";
 }
 
 export function useRoute(): RouteName {
   return routeName(useSyncExternalStore(subscribe, snapshot, snapshot));
+}
+
+/* The raw current path, for a caller (just App.tsx today) that needs more
+   than the route's name — e.g. which combo a "/packages/<id>" page is
+   for. */
+export function useRoutePath(): string {
+  return useSyncExternalStore(subscribe, snapshot, snapshot);
 }
 
 /* Smooth unless the visitor has asked for less motion. Read per call rather

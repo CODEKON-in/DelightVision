@@ -8,6 +8,11 @@ import {
   type Category as ContentCategory,
   type GalleryItem as ContentGalleryItem,
   type Highlight as ContentHighlight,
+  type MaterialItem as ContentMaterialItem,
+  type MaterialPriceExample as ContentMaterialPriceExample,
+  type MaterialPriceStructure as ContentMaterialPriceStructure,
+  type MaterialPriceTier as ContentMaterialPriceTier,
+  type ComboPriceTier as ContentComboPriceTier,
   type Service as ContentService,
   type Showcase as ContentShowcase,
   type ShowcaseItem as ContentShowcaseItem,
@@ -15,7 +20,7 @@ import {
   type ShowcaseType as ContentShowcaseType,
   type Combo as ContentPackage,
 } from "../content";
-import { formatPrice } from "../utils/formatPrice";
+import { formatPrice, formatPriceAmount } from "../utils/formatPrice";
 
 export type ServiceId =
   | "decoration"
@@ -72,6 +77,42 @@ export type DecorationType = {
 
 export type Showcase = { intro: string; types: DecorationType[] };
 
+/* A single material/product a service is built from, priced on its own —
+   e.g. plastic vs. natural flowers for decoration. */
+export type Material = {
+  id: string;
+  name: string;
+  image: string;
+  /* Full formatted price WITH its unit ("₹60/sq ft") — shown in the detail
+     popup. Formatted, or "" when the content states no price. */
+  price: string;
+  /* Bare number only ("₹60"), no unit — shown in the listing row. */
+  priceValue: string;
+  note: string;
+  /* Longer paragraph for the detail popup — "" when the content carries
+     none, in which case the popup just shows the short note instead. */
+  details: string;
+  tag: string;
+  /* A couple of quick facts — "Best for", "Care", "Colours" — shown under
+     the note. Empty when the content carries none. */
+  specs: DecorationSpec[];
+  /* Fuller pricing picture for the detail popup — volume tiers, minimum
+     order, extra charges, worked examples. Every array empty and every
+     string "" when the content carries none, so the popup just omits the
+     section entirely. */
+  priceStructure: MaterialPriceStructureDisplay;
+};
+
+export type MaterialPriceTier = { range: string; price: string; quantity: string };
+export type MaterialPriceExample = { label: string; amount: string };
+
+export type MaterialPriceStructureDisplay = {
+  minimumOrder: string;
+  extraCharges: string[];
+  tiers: MaterialPriceTier[];
+  examples: MaterialPriceExample[];
+};
+
 export type Service = {
   id: ServiceId;
   name: string;
@@ -90,6 +131,21 @@ export type Service = {
     conditions: string;
   };
   showcase?: Showcase;
+  materials: Material[];
+};
+
+export type ComboPriceTier = {
+  name: string;
+  blurb: string;
+  price: string;
+  about: string;
+  /* Which services this tier covers — falls back to the combo's own full
+     service list when the tier's content doesn't specify one. */
+  includes: ServiceId[];
+  /* Extra chip labels for this tier beyond the resolved services — for
+     something combo-specific that isn't in the site's main service
+     catalog, e.g. "Tour Photography". */
+  extras: string[];
 };
 
 export type Combo = {
@@ -108,6 +164,7 @@ export type Combo = {
     notice: string;
     conditions: string;
   };
+  priceTiers: ComboPriceTier[];
 };
 
 export type GalleryItem = {
@@ -189,6 +246,62 @@ const normalizeShowcase = (showcase?: ContentShowcase): Showcase | undefined => 
   return { intro: getLocalizedText(showcase.intro, "en"), types: named };
 };
 
+const normalizeTiers = (items: ContentMaterialPriceTier[] = []): MaterialPriceTier[] =>
+  items
+    .map((item) => ({
+      range: getLocalizedText(item.range, "en"),
+      price: getLocalizedText(item.price, "en"),
+      quantity: getLocalizedText(item.quantity, "en"),
+    }))
+    .filter((tier) => tier.range !== "" && tier.price !== "");
+
+const normalizeExamples = (items: ContentMaterialPriceExample[] = []): MaterialPriceExample[] =>
+  items
+    .map((item) => ({
+      label: getLocalizedText(item.label, "en"),
+      amount: getLocalizedText(item.amount, "en"),
+    }))
+    .filter((example) => example.label !== "" && example.amount !== "");
+
+const normalizeComboPriceTiers = (
+  items: ContentComboPriceTier[] = [],
+  fallbackServices: ServiceId[] = []
+): ComboPriceTier[] =>
+  items
+    .map((item) => ({
+      name: getLocalizedText(item.name, "en"),
+      blurb: getLocalizedText(item.blurb, "en"),
+      price: getLocalizedText(item.price, "en"),
+      about: getLocalizedText(item.about, "en"),
+      includes: (item.services as ServiceId[] | undefined) ?? fallbackServices,
+      extras: (item.extras ?? []).map((extra) => getLocalizedText(extra, "en")).filter(Boolean),
+    }))
+    .filter((tier) => tier.name !== "" && tier.price !== "");
+
+const normalizePriceStructure = (structure?: ContentMaterialPriceStructure): MaterialPriceStructureDisplay => ({
+  minimumOrder: getLocalizedText(structure?.minimumOrder, "en"),
+  extraCharges: (structure?.extraCharges ?? []).map((charge) => getLocalizedText(charge, "en")).filter(Boolean),
+  tiers: normalizeTiers(structure?.tiers),
+  examples: normalizeExamples(structure?.examples),
+});
+
+const normalizeMaterials = (items: ContentMaterialItem[] = []): Material[] =>
+  items
+    .map((item) => ({
+      id: item.id,
+      name: getLocalizedText(item.name, "en"),
+      image: item.image ?? "",
+      price: item.pricing ? formatPrice(item.pricing, "en") : "",
+      priceValue: item.pricing ? formatPriceAmount(item.pricing, "en") : "",
+      note: getLocalizedText(item.note, "en"),
+      details: getLocalizedText(item.details, "en"),
+      tag: getLocalizedText(item.tag, "en"),
+      specs: normalizeSpecs(item.specs),
+      priceStructure: normalizePriceStructure(item.priceStructure),
+    }))
+    /* A nameless entry has nothing to show in the grid. */
+    .filter((material) => material.name !== "");
+
 export const categories = categoryCatalog.map(normalizeCategory);
 
 export const services: Service[] = serviceCatalog.map((service: ContentService) => ({
@@ -209,6 +322,7 @@ export const services: Service[] = serviceCatalog.map((service: ContentService) 
     conditions: getLocalizedText(service.detail.conditions, "en"),
   },
   showcase: normalizeShowcase(service.showcase),
+  materials: normalizeMaterials(service.materials),
 }));
 
 export const serviceById = Object.fromEntries(
@@ -231,6 +345,7 @@ export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => ({
     notice: getLocalizedText(combo.detail.notice, "en"),
     conditions: getLocalizedText(combo.detail.conditions, "en"),
   },
+  priceTiers: normalizeComboPriceTiers(combo.priceTiers, combo.services as ServiceId[]),
 }));
 
 export const galleryItems: GalleryItem[] = galleryData.map((item: ContentGalleryItem) => ({

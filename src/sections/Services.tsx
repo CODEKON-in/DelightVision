@@ -78,7 +78,7 @@ export function Services() {
                     </p>
 
                     <div className="mt-auto border-t border-cream-dark pt-3 sm:pt-4">
-                      <p className="nums-lining font-serif text-xl leading-tight font-semibold text-charcoal xs:text-2xl sm:text-3xl">
+                      <p className="nums-lining font-heading text-xl leading-tight font-semibold text-charcoal xs:text-2xl sm:text-3xl">
                         {service.price}
                       </p>
 
