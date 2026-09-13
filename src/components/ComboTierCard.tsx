@@ -41,7 +41,7 @@ export function ComboTierCard({ combo, tier, index }: Props) {
           className="size-32 rounded-xl sm:size-44"
         />
         <span
-          className="absolute top-2 left-2 rounded-md px-2 py-1 text-[0.7rem] font-bold tracking-wide uppercase shadow-soft sm:text-xs"
+          className="absolute top-2 left-2 rounded-md px-2 py-1 type-caption text-[0.7rem] shadow-soft sm:text-xs"
           style={{ background: accent.bg, color: accent.text }}
         >
           {tier.name}
@@ -49,7 +49,7 @@ export function ComboTierCard({ combo, tier, index }: Props) {
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <h3 className="text-lg leading-snug font-semibold text-charcoal sm:text-2xl">
+        <h3 className="type-title text-lg leading-snug text-charcoal sm:text-2xl">
           {tier.name}
         </h3>
 
@@ -73,7 +73,7 @@ export function ComboTierCard({ combo, tier, index }: Props) {
         )}
 
         {tier.price && (
-          <p className="nums-lining mt-2.5 text-2xl leading-none font-bold text-charcoal sm:mt-4 sm:text-4xl">
+          <p className="type-price mt-2.5 text-2xl leading-none text-charcoal sm:mt-4 sm:text-4xl">
             {tier.price}
           </p>
         )}

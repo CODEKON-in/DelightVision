@@ -48,7 +48,7 @@ export function FilterTabs<T extends string>({
             onClick={() => onChange(tab.id)}
             aria-pressed={isActive}
             className={[
-              "min-h-11 rounded-full border-2 px-4 text-base font-semibold break-words sm:min-h-12 sm:px-6",
+              "min-h-11 rounded-full border-2 px-4 type-button text-base break-words sm:min-h-12 sm:px-6",
               "transition-colors duration-200",
               isActive ? activeCls : idleCls,
             ].join(" ")}

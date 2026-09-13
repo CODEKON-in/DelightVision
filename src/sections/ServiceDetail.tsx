@@ -30,7 +30,7 @@ function DetailBody({ service }: { service: Service }) {
           sizes="(min-width: 640px) 672px, 100vw"
           className="aspect-4/3 w-full sm:aspect-16/9"
         />
-        <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 text-base font-bold tracking-[0.14em] text-ivory-light uppercase shadow-soft">
+        <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 type-caption text-base text-ivory-light shadow-soft">
           {d.badge}
         </span>
       </div>
@@ -47,14 +47,14 @@ function DetailBody({ service }: { service: Service }) {
 
           <h2
             id={`service-title-${service.id}`}
-            className="mt-3 font-heading text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
+            className="mt-3 type-heading text-4xl leading-tight text-charcoal sm:text-5xl"
           >
             {service.name}
           </h2>
 
-          <p className="mt-3 font-serif text-xl text-graphite italic">{d.subtitle}</p>
+          <p className="mt-3 type-subheading text-xl text-graphite">{d.subtitle}</p>
 
-          <p className="nums-lining mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg font-semibold text-ink">
+          <p className="type-price mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg text-ink">
             {/* DUMMY PRICE */}
             {service.price}
           </p>
@@ -137,12 +137,12 @@ function DetailBody({ service }: { service: Service }) {
         {/* Footer info row */}
         <section className="flex flex-col gap-3 rounded-2xl bg-cream/60 p-5 sm:flex-row sm:gap-6">
           <div className="flex-1">
-            <p className="text-base font-semibold tracking-wide text-muted uppercase">{ui.availability}</p>
+            <p className="text-base type-label text-muted">{ui.availability}</p>
             <p className="mt-1 text-base text-ink">{d.notice}</p>
           </div>
           <div className="hidden w-px bg-cream-dark sm:block" aria-hidden="true" />
           <div className="flex-1">
-            <p className="text-base font-semibold tracking-wide text-muted uppercase">{ui.goodToKnow}</p>
+            <p className="text-base type-label text-muted">{ui.goodToKnow}</p>
             <p className="mt-1 text-base text-ink">{d.conditions}</p>
           </div>
         </section>

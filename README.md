@@ -206,21 +206,87 @@ Two details worth keeping:
 
 Tailwind v4 defines theme tokens in CSS rather than in `tailwind.config.js`,
 so the palette lives in the `@theme` block at the top of `src/index.css`.
-Each token is a normal utility — `bg-royal`, `text-gold-soft`,
-`font-serif`.
+Each token is a normal utility — `bg-obsidian`, `text-gold-deep`,
+`font-display`.
 
-The theme is **royal purple, antique gold and champagne**. The page
-alternates deep royal and champagne sections. Accent colours come in pairs:
-`gold-deep` for text on champagne, `gold-soft` for text on royal. Both were
-measured, not guessed.
+**Colour.** Black is the brand's presence, gold its signature, light the
+canvas: a black-to-graphite hero, warm-ivory content sections, a charcoal
+footer, champagne gold in small doses. Gold comes in pairs — `gold-deep` for
+text on light, `gold-soft` for text on dark — and every pairing was measured
+against WCAG AA; the ratios are noted beside the tokens.
 
-- **Dark base** royal `#1e1033`, deep `#150b24`, elevated `#2c1b4a`
-- **Light base** champagne ivory `#fbf7f0`, cream `#f3eada`
-- **Accent** amethyst `#5b2a86`
-- **Highlight** gold `#d4af37` decorative, `#f2dc9b` / `#7a5a0f` for text
-- **Type** Cormorant Garamond headings, Inter body
+- **Dark** obsidian `#080808`, charcoal `#171717`, graphite `#2a2a2a`
+- **Light** ivory `#f7f5f0`, white `#ffffff`, cream `#f0eee9`
+- **Gold** champagne `#b8944f` decorative, `#d8c59d` / `#7e6329` for text
 
-Token names follow the palette: `bg-royal`, `text-plum`, `text-gold-soft`.
+### Typography
+
+Three families, each with one job, all set as tokens in `index.css`:
+
+| Token | Family | Used for |
+|---|---|---|
+| `font-display` | Cormorant Garamond | Card and package names, dialog subtitles |
+| `font-body` | Inter | Everything functional: body, navigation, buttons, labels, **prices**, phone numbers |
+| `font-over-there` | Over There (logo face) | The brand name — the hero's "Delight Vision" (`type-brand-name`) |
+| `font-warpen` | Warpen (slogan face) | The slogan (`type-slogan`) and section/page/dialog titles (`type-heading`) |
+
+The logo itself is an image (`public/images/DV LOGO p.png`) and is never
+recreated in type.
+
+**The brand font files live in `fonts/` at the project root** —
+`fonts/Over There.ttf` and `fonts/Warpen.ttf`. The `@font-face` rules at the
+bottom of `src/index.css` reference them by relative path, so Vite bundles
+them into `dist/assets/` with a content hash; replace a file under the same
+name and every visitor gets the new one. Both are single-weight (Regular)
+faces, and both brand roles set `font-synthesis: none`, so the browser never
+fakes a bold or italic they do not have. Cormorant Garamond stays in each
+stack as the fallback while a font loads.
+
+> **Licence:** the files in `fonts/` are the free downloads, which are
+> personal-use only. The commercial licences are being arranged; when they
+> arrive, drop the licensed files in under the same names.
+
+**Over There needs its own sizes in the hero.** It is about two and a half
+times as wide as Cormorant, and its T is unusual: the crossbar rises about
+0.4em above the other capitals and reaches about 1.4em past the letter's
+own width. Two consequences, both handled in `Hero.tsx`:
+
+- The gold shimmer (`background-clip: text`) only paints inside the
+  heading's box, so anything outside it is invisible. The heading carries
+  padding on all sides, cancelled by matching negative margins, so the
+  painted box takes in the whole T without the text moving. Without it the
+  name read "DELIGHI".
+- The crossbar reaches into the next word, so the name has extra
+  `word-spacing` to stop it reading as "DELIGHTVISION".
+
+Anywhere else Over There is used with a gradient fill will need the same
+padding.
+
+Beyond the families, text is set through **roles** — `type-display`,
+`type-heading`, `type-title`, `type-subheading`, `type-body`,
+`type-body-small`, `type-label`, `type-nav`, `type-button`, `type-caption`,
+`type-price`, `type-brand-name`, `type-slogan`. A role sets family, weight, tracking and case,
+**never size or line height**: sizes stay on the element, where the fluid
+`clamp()` values and breakpoint steps already live. Use a role rather than
+reaching for `font-*` and `tracking-*` classes by hand.
+
+Rules worth keeping:
+
+- **Prices and phone numbers are always Inter** (`type-price`). A figure
+  someone is about to dial or pay must be unmistakable.
+- **Only the weights `index.html` loads**: Cormorant 400/500/600, Inter
+  400/500/600. There is no 700 anywhere — a missing weight gets
+  synthesised by the browser, and faux-bold is the heavy look this avoids.
+  Load a weight before using it.
+- **Cormorant 600 is only for small titles** (`type-title`, cards at
+  18–24px), where its low x-height needs the extra weight beside Inter.
+  Larger headings use 500.
+- **Brand faces are for brand moments.** Over There and Warpen never set
+  body copy, navigation, buttons or prices.
+- **Italic is reserved for the slogan**, so it still means something.
+  Subtitles are upright Cormorant.
+- **Uppercase is for labels, captions and badges**, with modest tracking
+  (0.08–0.12em). Headings stay in natural case.
 
 ---
 
@@ -455,8 +521,9 @@ browser rather than by eye:
   scrim, so the headline never competes with decoration.
 - The modal traps focus, closes on Escape / backdrop / X, restores focus to
   the card that opened it, and locks the page behind it.
-- Serif digits are forced to lining figures, so prices and phone numbers
-  don't render in hard-to-read old-style numerals.
+- Prices and phone numbers are set in Inter, and every serif heading is
+  forced to lining figures, so no number renders in hard-to-read old-style
+  numerals.
 - Every animation is skipped under `prefers-reduced-motion`, and content is
   present in the DOM before GSAP runs, so nothing disappears if JavaScript
   fails.

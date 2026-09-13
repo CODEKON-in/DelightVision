@@ -122,7 +122,7 @@ export function MobileMenu({ open, onClose, links }: Props) {
                 <a
                   href={link.href}
                   onClick={onClose}
-                  className="flex min-h-16 items-center justify-between border-b border-dark-line font-heading text-2xl font-semibold text-ivory-light transition-colors active:text-gold-soft"
+                  className="flex min-h-16 items-center justify-between border-b border-dark-line type-nav text-2xl text-ivory-light transition-colors active:text-gold-soft"
                 >
                   {link.label}
                   <span aria-hidden="true" className="text-gold">
@@ -167,7 +167,7 @@ export function MobileMenu({ open, onClose, links }: Props) {
           type="button"
           onClick={onClose}
           data-menu-item
-          className="mx-auto mt-5 flex min-h-12 items-center gap-2 px-5 text-base font-semibold text-muted-soft"
+          className="mx-auto mt-5 flex min-h-12 items-center gap-2 px-5 type-nav text-base text-muted-soft"
         >
           <CloseIcon className="size-5" />
           {ui.closeMenu}

@@ -23,7 +23,7 @@ function DetailBody({ material, index }: { material: Material; index: number }) 
           className="aspect-4/3 w-full sm:aspect-16/10"
         />
         {material.tag && (
-          <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 text-base font-bold tracking-[0.14em] text-ivory-light uppercase shadow-soft">
+          <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 type-caption text-base text-ivory-light shadow-soft">
             {material.tag}
           </span>
         )}
@@ -33,13 +33,13 @@ function DetailBody({ material, index }: { material: Material; index: number }) 
         <div>
           <h2
             id={`material-title-${material.id}`}
-            className="font-heading text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
+            className="type-heading text-4xl leading-tight text-charcoal sm:text-5xl"
           >
             {material.name}
           </h2>
 
           {material.price && (
-            <p className="nums-lining mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg font-semibold text-ink">
+            <p className="type-price mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg text-ink">
               {material.price}
             </p>
           )}
@@ -75,7 +75,7 @@ function DetailBody({ material, index }: { material: Material; index: number }) 
             <div className="mt-4 flex flex-col gap-5">
               {tiers.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold tracking-wide text-muted uppercase">
+                  <h4 className="text-sm type-label text-muted">
                     {ui.volumePricingLabel}
                   </h4>
                   <dl className="mt-2 flex flex-col gap-2">
@@ -88,7 +88,7 @@ function DetailBody({ material, index }: { material: Material; index: number }) 
                           {tier.range}
                           {tier.quantity && <span className="mt-0.5 block text-sm text-muted">{tier.quantity}</span>}
                         </dt>
-                        <dd className="nums-lining text-base font-semibold text-charcoal">{tier.price}</dd>
+                        <dd className="type-price text-base text-charcoal">{tier.price}</dd>
                       </div>
                     ))}
                   </dl>
@@ -103,7 +103,7 @@ function DetailBody({ material, index }: { material: Material; index: number }) 
 
               {extraCharges.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold tracking-wide text-muted uppercase">
+                  <h4 className="text-sm type-label text-muted">
                     {ui.extraChargesLabel}
                   </h4>
                   <ul className="mt-2 flex flex-col gap-1">
@@ -118,7 +118,7 @@ function DetailBody({ material, index }: { material: Material; index: number }) 
 
               {examples.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold tracking-wide text-muted uppercase">
+                  <h4 className="text-sm type-label text-muted">
                     {ui.costExamplesLabel}
                   </h4>
                   <dl className="mt-2 flex flex-col gap-2">
@@ -128,7 +128,7 @@ function DetailBody({ material, index }: { material: Material; index: number }) 
                         className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-cream-dark pb-2 last:border-0 last:pb-0"
                       >
                         <dt className="text-base text-ink">{example.label}</dt>
-                        <dd className="nums-lining text-base font-semibold text-charcoal">{example.amount}</dd>
+                        <dd className="type-price text-base text-charcoal">{example.amount}</dd>
                       </div>
                     ))}
                   </dl>

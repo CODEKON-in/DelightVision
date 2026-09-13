@@ -63,7 +63,7 @@ export function Services() {
                       ends up the same height and the prices and buttons line
                       up however long the copy runs. */}
                   <div className="flex grow flex-col p-3.5 xs:p-4 sm:p-6">
-                    <h3 className="line-clamp-2 min-h-[2.4em] text-lg leading-tight font-semibold break-words text-charcoal xs:text-xl sm:text-2xl">
+                    <h3 className="type-title line-clamp-2 min-h-[2.4em] text-lg leading-tight break-words text-charcoal xs:text-xl sm:text-2xl">
                       {service.name}
                     </h3>
 
@@ -78,7 +78,7 @@ export function Services() {
                     </p>
 
                     <div className="mt-auto border-t border-cream-dark pt-3 sm:pt-4">
-                      <p className="nums-lining font-heading text-xl leading-tight font-semibold text-charcoal xs:text-2xl sm:text-3xl">
+                      <p className="type-price text-xl leading-tight text-charcoal xs:text-2xl sm:text-3xl">
                         {service.price}
                       </p>
 

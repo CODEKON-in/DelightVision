@@ -28,7 +28,7 @@ const variants: Record<Variant, string> = {
 };
 
 const base = [
-  "inline-flex items-center justify-center gap-3 rounded-full font-semibold tracking-wide",
+  "type-button inline-flex items-center justify-center gap-3 rounded-full",
   "transition-transform transition-colors duration-200 ease-out motion-safe:hover:-translate-y-0.5",
 ].join(" ");
 

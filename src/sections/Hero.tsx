@@ -122,15 +122,30 @@ export function Hero() {
           className="label-gold mt-4 text-gold-soft sm:mt-5"
         />
 
-        {/* font-heading (Orbitron) for brand consistency, but kept in its
-            normal case and a lighter weight — the site's other headings
-            use this same medium-semibold weight — so the name still reads
-            as a wedding brand rather than a tech logotype. */}
-        <h1 className="shimmer-text font-heading mt-3 text-[clamp(2.5rem,12vw,5.25rem)] leading-[1.15] font-semibold sm:mt-4">
+        {/* The brand name in Over There, the logo's own face, and the
+            slogan below it in Warpen — the two brand moments on the page.
+
+            Over There is roughly two and a half times as wide as the serif
+            this used to be set in, so it has its own sizes: one line from
+            `sm` up, sized to the column; two lines on a phone, sized so
+            "Delight" fits.
+
+            The gold shimmer only paints inside the heading's own box, and
+            Over There's T breaks out of that box two ways: its crossbar
+            rises about 0.4em above the other capitals, and it reaches about
+            1.4em past its own advance. Clipped, the name read "DELIGHI".
+            The padding widens and heightens the painted box to take in the
+            whole T; the matching negative margins cancel it, so the text
+            sits exactly where it would without the padding.
+
+            The same crossbar reaches over the space and into the "V", so
+            on one line the name ran together as "DELIGHTVISION"; the extra
+            word spacing clears it. */}
+        <h1 className="shimmer-text type-brand-name -mx-[0.75em] mt-[calc(0.75rem-0.5em)] mb-[-0.5em] px-[0.75em] py-[0.5em] text-[clamp(1.625rem,9vw,2.5rem)] leading-[1.2] [word-spacing:0.8em] sm:mt-[calc(1rem-0.5em)] sm:text-[clamp(2.25rem,6vw,2.875rem)] sm:whitespace-nowrap">
           {business.name}
         </h1>
 
-        <p className="mt-4 font-serif text-[clamp(1.35rem,5.5vw,1.875rem)] leading-snug text-gold-soft italic sm:mt-5">
+        <p className="mt-4 type-slogan text-[clamp(1.35rem,5.5vw,1.875rem)] leading-snug text-gold-soft sm:mt-5">
           {business.tagline}
         </p>
 
@@ -164,7 +179,7 @@ export function Hero() {
         <div className="mt-7">
           <a
             href={telHref}
-            className="nums-lining mt-1 inline-flex min-h-14 items-center px-4 font-heading text-[clamp(1.5rem,7vw,2.25rem)] font-semibold text-gold-soft underline decoration-gold decoration-2 underline-offset-8"
+            className="type-price mt-1 inline-flex min-h-14 items-center px-4 text-[clamp(1.5rem,7vw,2.25rem)] text-gold-soft underline decoration-gold decoration-2 underline-offset-8"
           >
             {business.phoneDisplay}
           </a>

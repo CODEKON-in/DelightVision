@@ -33,7 +33,7 @@ function BackToPackages({ className = "" }: { className?: string }) {
     <button
       type="button"
       onClick={() => navigate(`${HOME_PATH}#packages`)}
-      className={`inline-flex min-h-12 items-center gap-2 text-base font-semibold text-charcoal transition-colors hover:text-graphite ${className}`}
+      className={`inline-flex min-h-12 items-center gap-2 type-nav text-base text-charcoal transition-colors hover:text-graphite ${className}`}
     >
       <span aria-hidden="true">&larr;</span>
       {ui.backToPackages}
@@ -94,7 +94,7 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
           </Reveal>
 
           <Reveal immediate>
-            <h1 className="font-heading text-[clamp(2rem,7vw,3rem)] leading-tight font-semibold text-charcoal">
+            <h1 className="type-heading text-[clamp(2rem,7vw,3rem)] leading-tight text-charcoal">
               {combo.name}
             </h1>
             <p className="mt-3 max-w-2xl text-lg text-muted">{combo.blurb}</p>
@@ -130,12 +130,12 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
                       ].join(" ")}
                     >
                       <span
-                        className="rounded-full px-2.5 py-1 text-xs font-bold tracking-wide uppercase"
+                        className="rounded-full px-2.5 py-1 type-caption text-xs"
                         style={{ background: accent.bg, color: accent.text }}
                       >
                         {t.name}
                       </span>
-                      <p className="nums-lining mt-3 text-2xl leading-none font-bold text-charcoal">
+                      <p className="type-price mt-3 text-2xl leading-none text-charcoal">
                         {t.price}
                       </p>
                       <p className="mt-1.5 text-sm text-muted">{t.blurb}</p>
@@ -208,7 +208,7 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
               Decorations page's footer. */}
           <div className="mt-16 border-t border-cream-dark pt-10">
             <Reveal>
-              <h2 className="font-heading text-[clamp(1.5rem,5vw,2rem)] leading-tight font-semibold text-charcoal">
+              <h2 className="type-heading text-[clamp(1.5rem,5vw,2rem)] leading-tight text-charcoal">
                 {ui.packagesFootnoteTitle}
               </h2>
 
@@ -241,7 +241,7 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
                 <button
                   type="button"
                   onClick={() => setOverviewOpen(true)}
-                  className="inline-flex min-h-12 items-center text-base font-semibold text-charcoal underline underline-offset-4 transition-colors hover:text-graphite"
+                  className="inline-flex min-h-12 items-center type-nav text-base text-charcoal underline underline-offset-4 transition-colors hover:text-graphite"
                 >
                   {ui.fullPackageOverview}
                 </button>

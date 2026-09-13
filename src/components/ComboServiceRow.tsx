@@ -50,7 +50,7 @@ export function ComboServiceRow({ service, index, onViewDetails }: Props) {
         )}
 
         {service.price && (
-          <p className="nums-lining mt-1.5 text-base leading-none font-bold break-words text-charcoal sm:text-lg">
+          <p className="type-price mt-1.5 text-base leading-none break-words text-charcoal sm:text-lg">
             {service.price}
           </p>
         )}
@@ -59,7 +59,7 @@ export function ComboServiceRow({ service, index, onViewDetails }: Props) {
           <button
             type="button"
             onClick={onViewDetails}
-            className="inline-flex min-h-8 items-center rounded-full border-2 border-charcoal/25 bg-ivory-light px-3 py-1 text-xs font-semibold text-charcoal transition-colors hover:border-charcoal/50 hover:bg-cream/60"
+            className="inline-flex min-h-8 items-center rounded-full border-2 border-charcoal/25 bg-ivory-light px-3 py-1 type-button text-xs text-charcoal transition-colors hover:border-charcoal/50 hover:bg-cream/60"
           >
             {ui.viewDetailsShort}
           </button>
@@ -68,7 +68,7 @@ export function ComboServiceRow({ service, index, onViewDetails }: Props) {
             href={enquiryHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-8 items-center gap-1.5 rounded-full bg-whatsapp px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-whatsapp-dark"
+            className="inline-flex min-h-8 items-center gap-1.5 rounded-full bg-whatsapp px-3 py-1 type-button text-xs text-white transition-colors hover:bg-whatsapp-dark"
           >
             <WhatsAppIcon className="size-3.5" />
             {ui.askAboutThis}

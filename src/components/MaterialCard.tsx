@@ -35,14 +35,14 @@ export function MaterialCard({ material, index }: Props) {
           className="size-32 rounded-xl sm:size-44"
         />
         {material.tag && (
-          <span className="absolute top-2 left-2 rounded-md bg-charcoal px-2 py-1 text-[0.7rem] font-bold tracking-wide text-ivory-light uppercase shadow-soft sm:text-xs">
+          <span className="absolute top-2 left-2 rounded-md bg-charcoal px-2 py-1 type-caption text-[0.7rem] text-ivory-light shadow-soft sm:text-xs">
             {material.tag}
           </span>
         )}
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <h3 className="text-lg leading-snug font-semibold text-charcoal sm:text-2xl">{material.name}</h3>
+        <h3 className="type-title text-lg leading-snug text-charcoal sm:text-2xl">{material.name}</h3>
 
         {material.note && (
           <p className="mt-1.5 text-sm leading-snug text-muted sm:mt-2 sm:text-lg">{material.note}</p>
@@ -60,7 +60,7 @@ export function MaterialCard({ material, index }: Props) {
         )}
 
         {material.priceValue && (
-          <p className="nums-lining mt-2.5 text-2xl leading-none font-bold text-charcoal sm:mt-4 sm:text-4xl">
+          <p className="type-price mt-2.5 text-2xl leading-none text-charcoal sm:mt-4 sm:text-4xl">
             {material.priceValue}
           </p>
         )}
@@ -69,7 +69,7 @@ export function MaterialCard({ material, index }: Props) {
           <button
             type="button"
             onClick={() => setDetailOpen(true)}
-            className="inline-flex min-h-10 items-center rounded-full border-2 border-charcoal/25 bg-ivory-light px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-charcoal/50 hover:bg-cream/60 sm:min-h-12 sm:px-5 sm:text-base"
+            className="inline-flex min-h-10 items-center rounded-full border-2 border-charcoal/25 bg-ivory-light px-4 py-2 type-button text-sm text-charcoal transition-colors hover:border-charcoal/50 hover:bg-cream/60 sm:min-h-12 sm:px-5 sm:text-base"
           >
             {ui.viewDetailsShort}
           </button>
@@ -78,7 +78,7 @@ export function MaterialCard({ material, index }: Props) {
             href={enquiryHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-whatsapp px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark sm:min-h-12 sm:px-5 sm:text-base"
+            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-whatsapp px-4 py-2 type-button text-sm text-white transition-colors hover:bg-whatsapp-dark sm:min-h-12 sm:px-5 sm:text-base"
           >
             <WhatsAppIcon className="size-4 sm:size-5" />
             {ui.askAboutThis}

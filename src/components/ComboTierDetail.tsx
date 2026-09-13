@@ -45,7 +45,7 @@ function DetailBody({
           className="aspect-4/3 w-full sm:aspect-16/10"
         />
         <span
-          className="absolute top-4 left-4 rounded-full px-4 py-2 text-base font-bold tracking-[0.14em] uppercase shadow-soft"
+          className="absolute top-4 left-4 rounded-full px-4 py-2 type-caption text-base shadow-soft"
           style={{ background: accent.bg, color: accent.text }}
         >
           {tier.name}
@@ -56,15 +56,15 @@ function DetailBody({
         <div>
           <h2
             id={`combo-tier-title-${combo.id}-${tier.name}`}
-            className="font-heading text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
+            className="type-heading text-4xl leading-tight text-charcoal sm:text-5xl"
           >
             {combo.name}
           </h2>
 
-          <p className="mt-2 font-serif text-xl text-graphite italic">{tier.name} package</p>
+          <p className="mt-2 type-subheading text-xl text-graphite">{tier.name} package</p>
 
           {tier.price && (
-            <p className="nums-lining mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg font-semibold text-ink">
+            <p className="type-price mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg text-ink">
               {tier.price}
             </p>
           )}

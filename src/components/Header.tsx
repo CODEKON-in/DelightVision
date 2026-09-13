@@ -34,7 +34,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="inline-flex min-h-11 items-center text-base font-medium text-muted-soft transition-colors hover:text-gold-soft"
+              className="type-nav inline-flex min-h-11 items-center text-base text-muted-soft transition-colors hover:text-gold-soft"
             >
               {link.label}
             </a>
@@ -46,7 +46,7 @@ export function Header() {
           <a
             href={telHref}
             aria-label={ui.callBusiness}
-            className="inline-flex min-h-12 items-center gap-2 rounded-full border border-gold/50 bg-graphite px-3 font-semibold text-ivory-light transition-colors hover:border-gold hover:bg-charcoal sm:px-5 md:px-6"
+            className="inline-flex min-h-12 items-center gap-2 rounded-full border border-gold/50 bg-graphite px-3 type-button text-ivory-light transition-colors hover:border-gold hover:bg-charcoal sm:px-5 md:px-6"
           >
             <PhoneIcon className="size-5 shrink-0" />
             <span className="hidden xs:inline">{ui.callNow}</span>

@@ -56,7 +56,7 @@ function TierSwitcher({
               onClick={() => onSelect(name)}
               aria-pressed={active}
               className={[
-                "rounded-full px-3.5 py-2 text-sm font-bold tracking-wide uppercase transition-colors sm:px-6 sm:py-2.5 sm:text-base",
+                "rounded-full px-3.5 py-2 type-caption text-sm transition-colors sm:px-6 sm:py-2.5 sm:text-base",
                 active ? "shadow-soft" : "text-ink hover:bg-cream",
               ].join(" ")}
               style={active ? { background: accent.bg, color: accent.text } : undefined}
@@ -105,7 +105,7 @@ function ComboCard({
               className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-obsidian/60 to-transparent"
               aria-hidden="true"
             />
-            <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1.5 text-base font-bold tracking-wide whitespace-nowrap text-obsidian uppercase shadow-soft">
+            <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1.5 type-caption text-base whitespace-nowrap text-obsidian shadow-soft">
               {ui.mostPopular}
             </span>
           </>
@@ -113,7 +113,7 @@ function ComboCard({
       </div>
 
       <div className="flex grow flex-col p-5 sm:p-6">
-        <h3 className="text-xl leading-tight font-semibold break-words text-charcoal sm:text-2xl">
+        <h3 className="type-title text-xl leading-tight break-words text-charcoal sm:text-2xl">
           {combo.name}
         </h3>
 
@@ -152,7 +152,7 @@ function ComboCard({
 
         <div className="mt-auto border-t border-cream-dark pt-4">
           {/* DUMMY PRICE - see src/data/services.ts */}
-          <p className="nums-lining font-heading text-3xl font-semibold text-charcoal">
+          <p className="type-price text-3xl text-charcoal">
             {selectedTier ? selectedTier.price : combo.price}
           </p>
 

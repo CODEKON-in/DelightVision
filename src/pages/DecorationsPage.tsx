@@ -17,7 +17,7 @@ function BackToServices({ className = "" }: { className?: string }) {
     <button
       type="button"
       onClick={() => navigate(`${HOME_PATH}#services`)}
-      className={`inline-flex min-h-12 items-center gap-2 text-base font-semibold text-charcoal transition-colors hover:text-graphite ${className}`}
+      className={`inline-flex min-h-12 items-center gap-2 type-nav text-base text-charcoal transition-colors hover:text-graphite ${className}`}
     >
       <span aria-hidden="true">&larr;</span>
       {ui.backToServices}
@@ -60,7 +60,7 @@ export function DecorationsPage() {
           {service.materials.length > 0 && (
             <section className="mt-8 sm:mt-10">
               <Reveal immediate>
-                <h1 className="font-heading text-[clamp(2rem,7vw,3rem)] leading-tight font-semibold text-charcoal">
+                <h1 className="type-heading text-[clamp(2rem,7vw,3rem)] leading-tight text-charcoal">
                   {ui.materialsHeading}
                 </h1>
                 <p className="mt-3 max-w-2xl text-lg text-muted">{ui.materialsSubtitle}</p>
@@ -85,7 +85,7 @@ export function DecorationsPage() {
               as plain links rather than more buttons. */}
           <div className="mt-16 border-t border-cream-dark pt-10">
             <Reveal>
-              <h2 className="font-heading text-[clamp(1.5rem,5vw,2rem)] leading-tight font-semibold text-charcoal">
+              <h2 className="type-heading text-[clamp(1.5rem,5vw,2rem)] leading-tight text-charcoal">
                 {ui.decorationsFootnoteTitle}
               </h2>
 
@@ -118,7 +118,7 @@ export function DecorationsPage() {
                 <button
                   type="button"
                   onClick={() => setDetailOpen(true)}
-                  className="inline-flex min-h-12 items-center text-base font-semibold text-charcoal underline underline-offset-4 transition-colors hover:text-graphite"
+                  className="inline-flex min-h-12 items-center type-nav text-base text-charcoal underline underline-offset-4 transition-colors hover:text-graphite"
                 >
                   {ui.fullServiceDetails}
                 </button>

@@ -27,7 +27,7 @@ export function Footer() {
         {/* Brand */}
         <Reveal className="flex flex-col items-center text-center">
           <img src={logo} alt={business.name} className="h-16 w-auto sm:h-20" />
-          <p className="mt-4 font-serif text-xl text-gold-soft italic">{business.tagline}</p>
+          <p className="mt-4 type-slogan text-xl text-gold-soft">{business.tagline}</p>
           <Flourish className="mt-5" />
         </Reveal>
 
@@ -58,7 +58,7 @@ export function Footer() {
 
             <a
               href={telHref}
-              className="nums-lining mt-4 inline-flex min-h-12 items-center gap-2 font-heading text-2xl font-semibold text-gold-soft underline decoration-gold decoration-2 underline-offset-4"
+              className="type-price mt-4 inline-flex min-h-12 items-center gap-2 text-2xl text-gold-soft underline decoration-gold decoration-2 underline-offset-4"
             >
               <AnimatedIcon>
                 <PhoneIcon className="size-5" />

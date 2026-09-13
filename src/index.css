@@ -10,7 +10,7 @@
 
    Tailwind v4 defines theme tokens in CSS (this @theme block) rather than
    in tailwind.config.js. Every token below is a normal utility, e.g.
-   bg-obsidian / text-gold-deep / border-cream-dark / font-heading.
+   bg-obsidian / text-gold-deep / border-cream-dark / font-display.
 
    Colours come in pairs: *-deep tones are for text on the light canvas,
    *-soft tones for text on the dark sections. Every pairing in use was
@@ -54,18 +54,30 @@
      This adds a step for the larger phones. */
   --breakpoint-xs: 400px;
 
-  /* Typography */
-  /* Cormorant stays only on italic taglines/subtitles — everywhere else
-     that used to read in it now reads in font-heading instead (below). */
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  /* The bold, geometric technical face the logo's own lettering uses —
-     every heading, section title, price and phone number site-wide reads
-     in this now, so the whole site speaks in one voice with the mark.
-     Body copy and italic taglines/subtitles stay in the serif/sans pair
-     above, since this face has no italic and reads poorly at long-form
-     paragraph lengths. */
-  --font-heading: "Orbitron", "Inter", ui-sans-serif, sans-serif;
+  /* Typography — three families, each with one job.
+
+     display  Cormorant Garamond. Editorial character: section titles,
+              page and dialog titles, card titles. Never prices, never
+              anything a visitor has to operate.
+     body     Inter. Everything functional: body copy, navigation,
+              buttons, labels, prices, phone numbers, forms.
+     Plus the agency's two brand faces, for brand moments only — never
+     body copy, navigation, buttons or prices:
+
+     over-there  Over There, the logo face. The brand name.
+     warpen      Warpen, the slogan face. The slogan.
+
+     Both are ordinary utilities (`font-over-there`, `font-warpen`), and
+     both have a role below (`type-brand-name`, `type-slogan`). Their
+     @font-face rules and files are described at the bottom of this file.
+     Cormorant Garamond stays in each stack as the fallback while the font
+     is loading. */
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-over-there: "Over There", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-warpen: "Warpen", "Cormorant Garamond", ui-serif, Georgia, serif;
+  /* Tailwind's preflight reads --font-sans for the page default. */
+  --font-sans: var(--font-body);
 
   /* Elevation — warm neutral, low opacity, wide blur. Depth on this site
      comes from the three light surfaces, not from heavy shadows. */
@@ -96,15 +108,16 @@
 
   body {
     /* 16px minimum body size for readability */
-    @apply bg-ivory text-ink font-sans text-base leading-relaxed antialiased;
+    @apply bg-ivory text-ink font-body text-base leading-relaxed antialiased;
   }
 
+  /* Headings default to the editorial face at a calm weight. Anything
+     given a role below (type-label on a heading, say) overrides this. */
   h1, h2, h3 {
-    @apply font-heading;
-    /* Cormorant defaulted to old-style figures, which read poorly for
-       prices and phone numbers. Force lining figures wherever digits
-       carry meaning — Orbitron is lining by default, but this is cheap
-       insurance if that ever changes. */
+    font-family: var(--font-display);
+    font-weight: 500;
+    /* Cormorant defaults to old-style figures, which read poorly in a
+       title with a number in it. */
     font-variant-numeric: lining-nums;
   }
 
@@ -130,9 +143,133 @@
   font-variant-numeric: lining-nums;
 }
 
-/* Small uppercase gold label — a recurring premium micro-detail */
+/* ---------------------------------------------------------------
+   Text roles
+
+   Each role sets family, weight, tracking and case — never size or line
+   height. Sizes stay on the element, where the existing fluid clamp() and
+   breakpoint steps already live, so applying a role changes how a line of
+   text is set without moving anything on the page.
+
+   Weights are limited to what index.html loads: Cormorant 400/500/600 and
+   Inter 400/500/600. Nothing is bold-700; a missing weight would be
+   synthesised by the browser, and faux-bold is exactly the heavy look
+   this system avoids.
+   --------------------------------------------------------------- */
+
+/* The hero name. Large, so it can afford the lighter medium weight and
+   a touch of negative tracking; the letterforms carry the elegance. */
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  font-variant-numeric: lining-nums;
+}
+
+/* Section, page and dialog titles. */
+@utility type-heading {
+  font-family: var(--font-warpen);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-variant-numeric: lining-nums;
+}
+
+/* Short titles that sit small — card and package names. Cormorant's
+   x-height is low, so at 18-24px it needs the semibold to hold its own
+   next to Inter; this is the one place 600 is used on the serif. */
+@utility type-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums;
+}
+
+/* A restrained supporting line under a title. Upright: italics are kept
+   for the slogan so they still mean something. */
+@utility type-subheading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+@utility type-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-body-small {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+/* Small uppercase labels: section eyebrows, detail-view headings. */
+@utility type-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@utility type-nav {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+@utility type-button {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Tiny uppercase badges laid over photographs and tabs. A notch heavier
+   than a label, because they often sit on an image. */
+@utility type-caption {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Prices and phone numbers. Inter, never the serif: a figure a visitor
+   is about to dial or pay has to be unmistakable at a glance. */
+@utility type-price {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-variant-numeric: lining-nums;
+}
+
+/* The brand name in the logo face, e.g. the hero's "Delight Vision".
+   `font-synthesis: none` stops the browser faking a bold or italic Over
+   There does not have — it renders the real face, at its own weight. The
+   500 is for the Cormorant fallback, so the name looks unchanged until
+   the font files arrive. */
+@utility type-brand-name {
+  font-family: var(--font-over-there);
+  font-weight: 500;
+  font-synthesis: none;
+  letter-spacing: normal;
+  font-variant-numeric: lining-nums;
+}
+
+/* The slogan in Warpen. The italic only takes on the Cormorant fallback,
+   which has a real italic; `font-synthesis: none` stops the browser
+   slanting Warpen itself, which has no italic of its own. */
+@utility type-slogan {
+  font-family: var(--font-warpen);
+  font-weight: 400;
+  font-style: italic;
+  font-synthesis: none;
+  letter-spacing: 0;
+}
+
+/* The gold eyebrow used across the site — the label role in gold. */
 .label-gold {
-  @apply text-base font-semibold tracking-[0.22em] uppercase;
+  @apply type-label text-base;
 }
 
 /* An opened decoration type settles in rather than snapping. Opacity and
@@ -329,4 +466,43 @@
       var(--color-ivory-light) 100%
     );
   }
+}
+
+/* ---------------------------------------------------------------
+   Brand faces — Over There and Warpen
+
+   The files live in `fonts/` at the project root. They are referenced by
+   relative path, so Vite bundles them into the build with a content hash
+   in the filename — replace a file and every visitor gets the new one, no
+   stale cache. A copy installed on the visitor's own machine is tried
+   first, to save the download.
+
+   Both are single-weight faces (Regular, 400). The roles that use them
+   set `font-synthesis: none`, so the browser never fakes a bold or italic
+   they do not have.
+
+   Licensing: the files currently in `fonts/` are the free downloads,
+   which are personal-use only. When the commercial licence arrives, swap
+   in the licensed files under the same names.
+   --------------------------------------------------------------- */
+@font-face {
+  font-family: "Over There";
+  src:
+    local("Over There"),
+    local("OverThere"),
+    url("../fonts/Over There.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Warpen";
+  src:
+    local("Warpen"),
+    local("WarpenRegular"),
+    url("../fonts/Warpen.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }

@@ -55,7 +55,7 @@ function DetailBody({ decoration, index }: { decoration: Decoration; index: numb
           sizes="(min-width: 640px) 672px, 100vw"
           className="aspect-4/3 w-full sm:aspect-16/10"
         />
-        <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 text-base font-bold tracking-[0.14em] text-ivory-light uppercase shadow-soft">
+        <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 type-caption text-base text-ivory-light shadow-soft">
           {decoration.typeName}
         </span>
       </div>
@@ -100,13 +100,13 @@ function DetailBody({ decoration, index }: { decoration: Decoration; index: numb
               is not repeated here. */}
           <h2
             id={`decoration-title-${decoration.id}`}
-            className="font-heading text-4xl leading-tight font-semibold text-charcoal sm:text-5xl"
+            className="type-heading text-4xl leading-tight text-charcoal sm:text-5xl"
           >
             {decoration.name}
           </h2>
 
           {decoration.price && (
-            <p className="nums-lining mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg font-semibold text-ink">
+            <p className="type-price mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg text-ink">
               {decoration.price}
             </p>
           )}

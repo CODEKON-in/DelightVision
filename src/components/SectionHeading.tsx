@@ -66,7 +66,7 @@ export function SectionHeading({
       <h2
         ref={titleRef}
         className={[
-          "title-sheen text-[clamp(1.75rem,6.5vw,2.25rem)] leading-tight font-semibold",
+          "title-sheen type-heading text-[clamp(1.75rem,6.5vw,2.25rem)] leading-tight",
           onDark ? "title-sheen-dark text-ivory-light" : "title-sheen-light text-charcoal",
         ].join(" ")}
       >
