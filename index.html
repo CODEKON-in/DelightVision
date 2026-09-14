@@ -11,20 +11,15 @@
     />
     <title>Delight Vision — Complete Wedding Services, Thanjavur</title>
 
-    <!-- DUMMY service and gallery photos are served from Unsplash -->
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Two families, the weights the type system uses and no others:
          Cormorant Garamond 400/500/600 (+ italic 400/500 for the slogan)
          for editorial headings, Inter 400/500/600 for everything a visitor
          reads or presses. See "Typography" in src/index.css. The brand's
-         own faces, Over There and Warpen, live in the logo image. -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+         own faces, Over There and Warpen, live in src/index.css.
+
+         Both families are self-hosted and imported in src/main.tsx, so the
+         page never waits on a third party to render its text and the site
+         works the same on a slow connection. Nothing here to preconnect. -->
   </head>
   <body>
     <div id="root"></div>

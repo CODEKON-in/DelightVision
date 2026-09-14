@@ -39,7 +39,11 @@ export function Services() {
         <Reveal
           as="ul"
           stagger={0.07}
-          className="mt-10 grid grid-cols-2 items-stretch gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-6"
+          /* Seven services divide badly: two columns leave one card alone
+             on the last row, three columns leave it alone with two empty
+             cells beside it. Centring the last row puts the odd card under
+             the middle of the grid instead of stranding it hard left. */
+          className="dv-orphan-grid mt-10 grid grid-cols-2 items-stretch gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-6"
         >
           {services.map((service, i) => {
             const Icon = iconFor(service.id);

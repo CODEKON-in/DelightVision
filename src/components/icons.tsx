@@ -155,6 +155,14 @@ export function CloseIcon(props: IconProps) {
   );
 }
 
+export function ExpandIcon(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5" />
+    </Stroke>
+  );
+}
+
 export function ArrowLeftIcon(props: IconProps) {
   return (
     <Stroke strokeWidth={2} {...props}>

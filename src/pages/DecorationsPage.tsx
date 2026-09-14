@@ -47,33 +47,33 @@ export function DecorationsPage() {
       {/* No title band above this — the page opens straight on the
           materials grid, which is the reason anyone lands here. */}
       <section className="bg-ivory py-[clamp(2.5rem,7vw,4rem)]">
-        <div className="mx-auto max-w-5xl px-5 lg:px-8">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8">
           <Reveal immediate>
             <BackToServices />
           </Reveal>
 
-          {/* Materials, shown as a product listing — photo, name, note and
-              price per row, like a shopping app's search results — so a
-              visitor can see roughly what each option costs before
-              calling. This doubles as the page's heading now that the
-              title band above it is gone. */}
+          {/* The decorations as photographs and nothing else. Everything
+              written about one — name, note, specs, price, and the two ways
+              to get in touch — lives in the dialog a tile opens, so the page
+              itself is something to look through rather than read. The
+              heading below doubles as the page's own, now that the title
+              band above it is gone. */}
           {service.materials.length > 0 && (
             <section className="mt-8 sm:mt-10">
               <Reveal immediate>
                 <h1 className="type-heading text-[clamp(2rem,7vw,3rem)] leading-tight text-charcoal">
-                  {ui.materialsHeading}
+                  {ui.decorationsTitle}
                 </h1>
-                <p className="mt-3 max-w-2xl text-lg text-muted">{ui.materialsSubtitle}</p>
               </Reveal>
 
               <Reveal
                 as="ul"
                 stagger={0.04}
-                className="mt-6 flex max-w-2xl flex-col divide-y divide-cream-dark"
+                className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4"
               >
                 {service.materials.map((material, i) => (
                   <li key={material.id}>
-                    <MaterialCard material={material} index={i} />
+                    <MaterialCard material={material} index={i} layout="tile" />
                   </li>
                 ))}
               </Reveal>

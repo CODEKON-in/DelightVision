@@ -141,7 +141,13 @@ export function Hero() {
             The same crossbar reaches over the space and into the "V", so
             on one line the name ran together as "DELIGHTVISION"; the extra
             word spacing clears it. */}
-        <h1 className="shimmer-text type-brand-name -mx-[0.75em] mt-[calc(0.75rem-0.5em)] mb-[-0.5em] px-[0.75em] py-[0.5em] text-[clamp(1.625rem,9vw,2.5rem)] leading-[1.2] [word-spacing:0.8em] sm:mt-[calc(1rem-0.5em)] sm:text-[clamp(2.25rem,6vw,2.875rem)] sm:whitespace-nowrap">
+        {/* 7.25vw, not 9: at 9vw the painted box (the name plus the 0.75em
+            of padding the T's crossbar needs) came out 6px wider than a
+            390px phone on each side, and the section's own overflow-hidden
+            sliced the crossbar off — the name ended in a cut-short T. At
+            7.25vw the whole box, crossbar included, clears the gutter on
+            every phone from 320px up. */}
+        <h1 className="shimmer-text type-brand-name -mx-[0.75em] mt-[calc(0.75rem-0.5em)] mb-[-0.5em] px-[0.75em] py-[0.5em] text-[clamp(1.375rem,7.25vw,2.5rem)] leading-[1.2] [word-spacing:0.8em] sm:mt-[calc(1rem-0.5em)] sm:text-[clamp(2.25rem,6vw,2.875rem)] sm:whitespace-nowrap">
           {business.name}
         </h1>
 

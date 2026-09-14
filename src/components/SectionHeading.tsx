@@ -66,7 +66,10 @@ export function SectionHeading({
       <h2
         ref={titleRef}
         className={[
-          "title-sheen type-heading text-[clamp(1.75rem,6.5vw,2.25rem)] leading-tight",
+          /* Cormorant's x-height is low, so a section title needs more
+             point size than a sans would to carry the same weight on the
+             page. leading-[1.15] keeps a two-line title from opening up. */
+          "title-sheen type-heading text-[clamp(2.125rem,8vw,3rem)] leading-[1.15]",
           onDark ? "title-sheen-dark text-ivory-light" : "title-sheen-light text-charcoal",
         ].join(" ")}
       >

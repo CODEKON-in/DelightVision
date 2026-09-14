@@ -629,7 +629,7 @@
           "en": "Plastic / Artificial Flowers",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1645188084363-b4327a4aade1?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/artificial-flowers.jpg",
         "pricing": {
           "type": "starting",
           "amount": 3000,
@@ -717,7 +717,7 @@
           "en": "Natural / Fresh Flowers",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1572454591674-2739f30d8c40?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/draped-stage-florals.jpg",
         "pricing": {
           "type": "starting",
           "amount": 7500,
@@ -805,7 +805,7 @@
           "en": "Marigold Garlands",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1699764681875-dd04ce36b1c3?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/pillar-mandap-florals.jpg",
         "pricing": {
           "type": "starting",
           "amount": 2000,
@@ -889,7 +889,7 @@
           "en": "Loose Rose Petals",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1571506534699-c76894c03ce7?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/petal-walkway.jpg",
         "pricing": {
           "type": "starting",
           "amount": 250,
@@ -968,7 +968,7 @@
           "en": "Fabric Drapes & Backdrop",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1642698983228-4c6b336e6ab0?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/draped-stage.jpg",
         "pricing": {
           "type": "starting",
           "amount": 3000,
@@ -1052,7 +1052,7 @@
           "en": "LED Fairy Lights",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1511461744085-90a4d1c66be3?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/string-light-canopy.jpg",
         "pricing": {
           "type": "starting",
           "amount": 800,
@@ -1140,7 +1140,7 @@
           "en": "Balloon Arch & Clusters",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1707589338174-dc1ddc18945a?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/balloon-entrance.jpg",
         "pricing": {
           "type": "starting",
           "amount": 350,
@@ -1224,7 +1224,7 @@
           "en": "Mandap Pillars & Canopy",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/pillar-mandap.jpg",
         "pricing": {
           "type": "starting",
           "amount": 14000,
@@ -1308,7 +1308,7 @@
           "en": "Stage Uplighting",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1576514129883-2f1d47a65da6?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/warm-hall-lighting.jpg",
         "pricing": {
           "type": "starting",
           "amount": 1200,
@@ -1396,7 +1396,7 @@
           "en": "Thermocol & Foam Props",
           "ta": ""
         },
-        "image": "https://images.unsplash.com/photo-1774796425304-a0e9d3fd5bc1?q=80&w=1200&h=1200&fit=crop&auto=format",
+        "image": "/images/decorations/banquet-seating-hall.jpg",
         "pricing": {
           "type": "starting",
           "amount": 700,

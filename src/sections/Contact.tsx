@@ -82,11 +82,25 @@ export function Contact() {
 
         {/* Google Maps embed — keyless search embed, no API key needed */}
         <Reveal className="mt-8">
-          <div className="overflow-hidden rounded-3xl border border-gold/25 shadow-soft">
+          {/* The address sits behind the iframe rather than beside it. An
+              embed that is slow, blocked by the visitor's browser, or
+              refused by Google left a large empty panel here with nothing
+              in it; now the same panel still names the place, and the
+              iframe simply covers it once it loads. */}
+          <div className="relative overflow-hidden rounded-3xl border border-gold/25 bg-cream shadow-soft">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
+              <LocationIcon className="size-8 text-gold-deep" />
+              <p className="type-title text-xl text-charcoal">{business.name}</p>
+              <p className="text-base text-muted">
+                {business.addressLine1}
+                <br />
+                {business.addressLine2}
+              </p>
+            </div>
             <iframe
               title={`${ui.mapTitle}: ${business.name}, ${business.addressLine1}, ${business.addressLine2}`}
               src={mapEmbedSrc}
-              className="h-72 w-full border-0 sm:h-96"
+              className="relative h-72 w-full border-0 sm:h-96"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

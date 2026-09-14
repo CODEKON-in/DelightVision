@@ -31,11 +31,15 @@ export function Footer() {
           <Flourish className="mt-5" />
         </Reveal>
 
-        {/* Three columns of links and details */}
+        {/* Two columns of links and details. They only hold a short menu
+            and a few lines of contact detail, so left across the full
+            6xl container they sat in the left half with a dead third to
+            the right. Capping the pair at 3xl and centring it under the
+            brand keeps the footer balanced on a wide screen. */}
         <Reveal
           as="div"
           stagger={0.08}
-          className="mt-12 grid grid-cols-1 gap-10 text-center sm:grid-cols-2 sm:gap-8 sm:text-left"
+          className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-10 text-center sm:grid-cols-2 sm:gap-8 sm:text-left"
         >
           <div>
             <h2 className="label-gold text-gold-soft">{ui.footerExplore}</h2>

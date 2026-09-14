@@ -166,11 +166,17 @@
   font-variant-numeric: lining-nums;
 }
 
-/* Section, page and dialog titles. */
+/* Section, page and dialog titles. Cormorant, as the type system says —
+   these are the words a visitor navigates by, so they belong to the
+   editorial face, not to a brand face. Warpen's capitals are geometric
+   enough that "BOOK YOUR DATE" read as "3OOK YOUR DAT2" at heading size;
+   the brand faces stay where they mean something, on the logo and the
+   slogan. 600 because these sit large and centred and need the weight to
+   hold the page. */
 @utility type-heading {
-  font-family: var(--font-warpen);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.005em;
   font-variant-numeric: lining-nums;
 }
 
@@ -275,6 +281,38 @@
 /* An opened decoration type settles in rather than snapping. Opacity and
    transform only, so it costs nothing to composite, and the panel is in the
    DOM either way — if the animation never runs the designs are still there. */
+/* Seven services divide badly into a grid: two columns leave the last card
+   alone on its own row, three columns strand it hard left with two empty
+   cells beside it. When the final card is the only one on its row, it spans
+   the row and centres itself at one column's width, so the block still
+   reads as a grid rather than as something that ran out.
+
+   Written here rather than as arbitrary variants on the element because the
+   two breakpoints' rules overlap — with seven cards the last child is both
+   :nth-child(odd) and :nth-child(3n+1) — and cascade order has to be
+   certain. The narrow rule comes first; the sm rule overrides it. */
+.dv-orphan-grid > li:last-child:nth-child(odd) {
+  grid-column: span 2 / span 2;
+  width: calc(50% - 0.375rem);
+  justify-self: center;
+}
+
+@media (width >= 40rem) {
+  /* Back to a normal cell first, whatever the narrow rule did … */
+  .dv-orphan-grid > li:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  /* … then centre it only when three columns genuinely leave it alone. */
+  .dv-orphan-grid > li:last-child:nth-child(3n + 1) {
+    grid-column: span 3 / span 3;
+    width: calc(33.333% - 1rem);
+    justify-self: center;
+  }
+}
+
 .dv-panel-in {
   animation: dv-panel-in 0.32s ease-out both;
 }

@@ -44,6 +44,8 @@ export const ui = {
   decorationStyle: "Style",
   decorationDetails: "Details",
   moreImages: "More images",
+  viewFullImage: "View full image",
+  closeFullImage: "Close full image",
   viewImage: "View image",
   enquireAboutThis: "Enquire About This",
   closeDecorationDetails: "Close decoration details",

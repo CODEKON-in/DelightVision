@@ -1,28 +1,14 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
-import { ComboServiceRow } from "../components/ComboServiceRow";
+import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 import { Reveal } from "../components/Reveal";
-import { PhoneIcon, WhatsAppIcon } from "../components/icons";
+import { CheckIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
 import { business, telHref, whatsappHrefFor } from "../data/site";
 import { combos, serviceById, type Service } from "../data/services";
 import { HOME_PATH, navigate, packagePathFor } from "../lib/router";
 import { ComboDetail } from "../sections/ComboDetail";
 import { ServiceDetail } from "../sections/ServiceDetail";
-
-/* Bronze / Silver / Gold get their own accent colour on the tier badge —
-   same colours the Combo Packages section and its cards use, duplicated
-   here rather than shared because each usage styles a differently-shaped
-   badge. */
-const TIER_ACCENTS: Record<string, { bg: string; text: string }> = {
-  Bronze: { bg: "#a9713f", text: "#fff7ec" },
-  Silver: { bg: "#93938d", text: "#fff" },
-  Gold: { bg: "#d4af37", text: "#2a1f08" },
-};
-
-function tierAccent(name: string) {
-  return TIER_ACCENTS[name] ?? { bg: "#3a3632", text: "#fff" };
-}
 
 /* Back to where the visitor came from. Written out in words rather than
    left to the browser's back button, and repeated at the foot of the page
@@ -100,49 +86,68 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
             <p className="mt-3 max-w-2xl text-lg text-muted">{combo.blurb}</p>
           </Reveal>
 
-          {/* Every tier's price side by side, so a visitor sees how the
-              three compare before reading one tier's own services below.
-              Tapping a tier switches the whole page to it — the tier
-              that's active is outlined in its own accent colour. */}
+          {/* The levels as rows rather than three boxes: name, what that
+              level covers, and its price against it, so the prices line up
+              in a column the eye can run down — the same shape the
+              decoration pricing uses. Each row is still the selector;
+              tapping one switches the whole page to that level, and the
+              chosen row is filled and ringed so it is obvious which is
+              active. */}
           {combo.priceTiers.length > 0 && (
             <Reveal immediate className="mt-8 sm:mt-10">
               <h2 className="label-gold text-gold-deep">{ui.pricingOptionsHeading}</h2>
-              <Reveal
-                as="div"
-                immediate
-                stagger={0.06}
-                className="mt-3 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3"
-              >
+
+              <ul className="mt-4 flex max-w-2xl flex-col">
                 {combo.priceTiers.map((t) => {
                   const active = t.name === tier?.name;
-                  const accent = tierAccent(t.name);
                   return (
-                    <button
-                      key={t.name}
-                      type="button"
-                      onClick={() => navigate(packagePathFor(combo.id, t.name))}
-                      aria-pressed={active}
-                      className={[
-                        "flex flex-col items-start rounded-2xl border-2 p-4 text-left transition-colors",
-                        active
-                          ? "border-gold bg-cream/60 shadow-soft"
-                          : "border-cream-dark bg-ivory-light hover:border-charcoal/30 hover:bg-cream/40",
-                      ].join(" ")}
-                    >
-                      <span
-                        className="rounded-full px-2.5 py-1 type-caption text-xs"
-                        style={{ background: accent.bg, color: accent.text }}
+                    <li key={t.name} className="border-b border-cream-dark last:border-0">
+                      <button
+                        type="button"
+                        onClick={() => navigate(packagePathFor(combo.id, t.name))}
+                        aria-pressed={active}
+                        className={[
+                          "flex w-full items-baseline justify-between gap-4 rounded-xl px-3 py-3.5 text-left transition-colors",
+                          active
+                            ? "bg-cream/70 ring-1 ring-gold"
+                            : "hover:bg-cream/40",
+                        ].join(" ")}
                       >
-                        {t.name}
-                      </span>
-                      <p className="type-price mt-3 text-2xl leading-none text-charcoal">
-                        {t.price}
-                      </p>
-                      <p className="mt-1.5 text-sm text-muted">{t.blurb}</p>
-                    </button>
+                        <div className="min-w-0">
+                          <p className="flex items-center gap-2 text-base font-semibold text-ink sm:text-lg">
+                            {t.name}
+                            {active && (
+                              <CheckIcon className="size-4 shrink-0 text-gold-deep" aria-hidden="true" />
+                            )}
+                          </p>
+                          {t.blurb && (
+                            <p className="mt-0.5 text-sm text-muted sm:text-base">{t.blurb}</p>
+                          )}
+                        </div>
+                        {/* shrink-0 so a long blurb never pushes the price
+                            onto a second line — the number is the point. */}
+                        <p className="type-price shrink-0 text-xl leading-none text-charcoal sm:text-2xl">
+                          {t.price}
+                        </p>
+                      </button>
+                    </li>
                   );
                 })}
-              </Reveal>
+              </ul>
+            </Reveal>
+          )}
+
+          {/* The chosen level, described — and it comes after the prices,
+              not before them: a visitor picks a level by what it costs,
+              then reads what that level actually means. Every tier carries
+              this paragraph in the content and the page had never shown it,
+              so the only way to read it was to open the overview dialog.
+              Keyed on the tier name so switching Bronze/Silver/Gold plays
+              the reveal again instead of silently swapping the text. */}
+          {tier?.about && (
+            <Reveal key={`${tier.name}-about`} immediate className="mt-8 sm:mt-10">
+              <h2 className="label-gold text-gold-deep">{ui.aboutThisPackageOption}</h2>
+              <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink">{tier.about}</p>
             </Reveal>
           )}
 
@@ -166,19 +171,32 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
                   list rather than replacing it. */}
               <Reveal
                 key={`${tier?.name}-services`}
-                as="div"
+                as="ul"
                 immediate
                 stagger={0.06}
-                className="mt-3 flex max-w-2xl flex-col divide-y divide-cream-dark"
+                className="dv-orphan-grid mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4"
               >
-                {tierServices.map((id, i) => (
-                  <ComboServiceRow
-                    key={id}
-                    service={serviceById[id]}
-                    index={i}
-                    onViewDetails={() => setOpenService(serviceById[id])}
-                  />
-                ))}
+                {tierServices.map((id, i) => {
+                  const service = serviceById[id];
+                  return (
+                    <li key={id}>
+                      <button
+                        type="button"
+                        onClick={() => setOpenService(service)}
+                        aria-label={service.name}
+                        className="group relative block w-full overflow-hidden rounded-2xl border border-cream-dark bg-ivory-light shadow-soft transition-shadow duration-300 hover:shadow-lift focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-deep"
+                      >
+                        <PlaceholderPhoto
+                          index={i}
+                          src={service.image || undefined}
+                          alt={service.name}
+                          sizes="(min-width: 1024px) 24vw, (min-width: 640px) 30vw, 45vw"
+                          className="aspect-square w-full transition-transform duration-500 group-hover:scale-[1.04]"
+                        />
+                      </button>
+                    </li>
+                  );
+                })}
               </Reveal>
 
               {tierExtras.length > 0 && (
