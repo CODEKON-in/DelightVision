@@ -34,7 +34,7 @@ function buildSrcSet(src: string): string | undefined {
 
 type Props = {
   index: number;
-  /* DUMMY photo URL  see src/data/services.ts */
+  /* Sample photos are placeholders — the real ones are set in content/*.json */
   src?: string;
   alt?: string;
   label?: string;

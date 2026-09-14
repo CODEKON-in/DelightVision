@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
-import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 import { Reveal } from "../components/Reveal";
+import { ServiceCard } from "../components/ServiceCard";
 import { CheckIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
 import { business, telHref, whatsappHrefFor } from "../data/site";
@@ -151,12 +151,12 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
             </Reveal>
           )}
 
-          {/* What this package includes, one row per service — same
-              product-listing pattern the Combo Packages cards use, so a
-              visitor sees the same photo/description/price/actions
-              whether they're comparing cards or looking at one package
-              on its own page. Rows cascade in one at a time rather than
-              fading in as one flat block. */}
+          {/* What this package includes, as the same cards the Services
+              section shows — photo, name, description, price and "View
+              Service Details" — so a service looks the same wherever a
+              visitor meets it. Same columns and gaps as that grid too,
+              which the orphan-centring rules in index.css are measured
+              against. Cards cascade in one at a time. */}
           {tierServices.length > 0 && (
             <Reveal immediate className="mt-8 sm:mt-10">
               <h2 className="label-gold text-gold-deep">{ui.servicesInPackage}</h2>
@@ -174,29 +174,13 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
                 as="ul"
                 immediate
                 stagger={0.06}
-                className="dv-orphan-grid mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4"
+                className="dv-orphan-grid mt-4 grid grid-cols-2 items-stretch gap-3 sm:grid-cols-3 sm:gap-6"
               >
-                {tierServices.map((id, i) => {
-                  const service = serviceById[id];
-                  return (
-                    <li key={id}>
-                      <button
-                        type="button"
-                        onClick={() => setOpenService(service)}
-                        aria-label={service.name}
-                        className="group relative block w-full overflow-hidden rounded-2xl border border-cream-dark bg-ivory-light shadow-soft transition-shadow duration-300 hover:shadow-lift focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-deep"
-                      >
-                        <PlaceholderPhoto
-                          index={i}
-                          src={service.image || undefined}
-                          alt={service.name}
-                          sizes="(min-width: 1024px) 24vw, (min-width: 640px) 30vw, 45vw"
-                          className="aspect-square w-full transition-transform duration-500 group-hover:scale-[1.04]"
-                        />
-                      </button>
-                    </li>
-                  );
-                })}
+                {tierServices.map((id, i) => (
+                  <li key={id} className="h-full">
+                    <ServiceCard service={serviceById[id]} index={i} onOpen={setOpenService} />
+                  </li>
+                ))}
               </Reveal>
 
               {tierExtras.length > 0 && (

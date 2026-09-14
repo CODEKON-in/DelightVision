@@ -3,7 +3,7 @@
    ===================================================================
    Buttons, headings and labels, in one place so wording can be changed
    without going hunting through components. Content that belongs to the
-   business - services, packages, gallery captions - lives in src/data.
+  business, services and package copy lives in src/data.
    =================================================================== */
 
 export const ui = {
@@ -37,17 +37,14 @@ export const ui = {
   backToServices: "Back to Services",
   fullServiceDetails: "Full service details",
   decorationsFootnoteTitle: "Before you call",
-  noDesignsYet: "We build this for every hall we work in. Message us and we will design it around your venue and your colours.",
   noDecorationsYet: "The decorations are being updated. Please call us and we will talk you through them.",
-  aboutThisDecoration: "About This Decoration",
-  idealFor: "Ideal For",
-  decorationStyle: "Style",
+  /* Names a design that has no title of its own */
+  decorationDesignTitle: "Decoration Design",
+  pricingHeading: "Pricing",
   decorationDetails: "Details",
-  moreImages: "More images",
+  customizationLabel: "Customisation",
   viewFullImage: "View full image",
   closeFullImage: "Close full image",
-  viewImage: "View image",
-  enquireAboutThis: "Enquire About This",
   closeDecorationDetails: "Close decoration details",
 
   /* -- Detail modals ----------------------------------------------- */
@@ -55,20 +52,13 @@ export const ui = {
   serviceHighlights: "Service Highlights",
   covers: "Covers",
   whatsIncluded: "What's Included",
-  materialsHeading: "Materials We Use",
-  materialsSubtitle: "The main materials behind this service, priced individually — mix and match on a call.",
   askAboutThis: "Ask About This",
   pricingDetailsHeading: "Pricing Details",
-  volumePricingLabel: "Pricing options",
-  minimumOrderLabel: "Minimum order",
-  extraChargesLabel: "Additional charges",
-  costExamplesLabel: "Estimated cost examples",
   availability: "Availability",
   goodToKnow: "Good to Know",
   callToBook: "Call to Book",
   whatsapp: "WhatsApp",
   closeDetails: "Close service details",
-  shownHere: "Shown Here",
 
   /* -- Combo packages ---------------------------------------------- */
   combosEyebrow: "Book together, pay less",
@@ -82,8 +72,6 @@ export const ui = {
   servicesInPackage: "Services In This Package",
   combosFootnote: "Need a different mix of services? Just call — we will put a combo together for you.",
   pricingOptionsHeading: "Pricing Options",
-  chooseAPackageOption: "Choose an option",
-  backToPackage: "Back",
   aboutThisPackageOption: "About This Option",
   backToPackages: "Back to Packages",
   packagesFootnoteTitle: "Before you call",

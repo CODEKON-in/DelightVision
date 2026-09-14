@@ -1,4 +1,4 @@
-Put imported images here (logo, hero photograph, gallery shots) and import
+Put imported images here (for example, the logo or hero photograph) and import
 them in a component:
 
     import hero from "../assets/hero.jpg";

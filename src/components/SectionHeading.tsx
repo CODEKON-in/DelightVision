@@ -10,15 +10,12 @@ type SectionHeadingProps = {
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  /* Renders light-on-dark, for use over the obsidian sections */
-  onDark?: boolean;
 };
 
 export function SectionHeading({
   eyebrow,
   title,
   subtitle,
-  onDark = false,
 }: SectionHeadingProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -53,14 +50,7 @@ export function SectionHeading({
   return (
     <div className="mx-auto max-w-2xl text-center">
       {eyebrow && (
-        <p
-          className={[
-            "label-gold mb-3",
-            onDark ? "text-gold-soft" : "text-gold-deep",
-          ].join(" ")}
-        >
-          {eyebrow}
-        </p>
+        <p className="label-gold mb-3 text-gold-deep">{eyebrow}</p>
       )}
 
       <h2
@@ -69,8 +59,7 @@ export function SectionHeading({
           /* Cormorant's x-height is low, so a section title needs more
              point size than a sans would to carry the same weight on the
              page. leading-[1.15] keeps a two-line title from opening up. */
-          "title-sheen type-heading text-[clamp(2.125rem,8vw,3rem)] leading-[1.15]",
-          onDark ? "title-sheen-dark text-ivory-light" : "title-sheen-light text-charcoal",
+          "title-sheen title-sheen-light type-heading text-[clamp(2.125rem,8vw,3rem)] leading-[1.15] text-charcoal",
         ].join(" ")}
       >
         {title}
@@ -78,18 +67,13 @@ export function SectionHeading({
 
       {/* Animated gold rule — the recurring decorative motif of the site */}
       <div className="mt-4 flex justify-center">
-        <Flourish onDark={onDark} />
+        {/* Flourish defaults to its dark variant; every heading sits on
+            the light page. */}
+        <Flourish onDark={false} />
       </div>
 
       {subtitle && (
-        <p
-          className={[
-            "mt-5 text-lg",
-            onDark ? "text-muted-soft" : "text-muted",
-          ].join(" ")}
-        >
-          {subtitle}
-        </p>
+        <p className="mt-5 text-lg text-muted">{subtitle}</p>
       )}
     </div>
   );

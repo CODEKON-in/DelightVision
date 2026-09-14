@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AnimatedIcon } from "../components/AnimatedIcon";
 import { Button } from "../components/Button";
 import { LevelDots } from "../components/LevelDots";
-import { MaterialCard } from "../components/MaterialCard";
 import { Modal } from "../components/Modal";
 import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 import { CheckIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
@@ -22,7 +21,7 @@ function DetailBody({ service }: { service: Service }) {
     <>
       {/* Header image with the badge pill */}
       <div className="relative shrink-0">
-        {/* DUMMY photo — see src/data/services.ts */}
+        {/* Sample photo — set in content/*.json */}
         <PlaceholderPhoto
           index={photoIndex}
           src={service.image}
@@ -55,7 +54,7 @@ function DetailBody({ service }: { service: Service }) {
           <p className="mt-3 type-subheading text-xl text-graphite">{d.subtitle}</p>
 
           <p className="type-price mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg text-ink">
-            {/* DUMMY PRICE */}
+            {/* Sample price — set in content/*.json */}
             {service.price}
           </p>
         </div>
@@ -114,25 +113,6 @@ function DetailBody({ service }: { service: Service }) {
             ))}
           </ul>
         </section>
-
-        {/* Materials, shown as a product listing — photo, name, note and
-            price per row, like a shopping app's search results — for
-            services that carry one. Nothing renders here for a service
-            with no materials list. */}
-        {service.materials.length > 0 && (
-          <section>
-            <h3 className="label-gold text-gold-deep">{ui.materialsHeading}</h3>
-            <p className="mt-2 text-base text-muted">{ui.materialsSubtitle}</p>
-
-            <ul className="mt-2 flex flex-col divide-y divide-cream-dark">
-              {service.materials.map((material, i) => (
-                <li key={material.id}>
-                  <MaterialCard material={material} index={i} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
 
         {/* Footer info row */}
         <section className="flex flex-col gap-3 rounded-2xl bg-cream/60 p-5 sm:flex-row sm:gap-6">

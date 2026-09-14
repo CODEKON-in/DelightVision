@@ -20,7 +20,7 @@ function DetailBody({ combo }: { combo: Combo }) {
   return (
     <>
       <div className="relative shrink-0">
-        {/* DUMMY photo — see src/data/services.ts */}
+        {/* Sample photo — set in content/*.json */}
         <PlaceholderPhoto
           index={photoIndex}
           src={combo.image}
@@ -67,7 +67,7 @@ function DetailBody({ combo }: { combo: Combo }) {
           <p className="mt-3 type-subheading text-xl text-graphite">{d.subtitle}</p>
 
           <p className="type-price mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg text-ink">
-            {/* DUMMY PRICE */}
+            {/* Sample price — set in content/*.json */}
             {combo.price}
           </p>
         </div>

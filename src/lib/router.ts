@@ -102,13 +102,8 @@ export function routeName(path: string): RouteName {
   return "home";
 }
 
-export function useRoute(): RouteName {
-  return routeName(useSyncExternalStore(subscribe, snapshot, snapshot));
-}
-
-/* The raw current path, for a caller (just App.tsx today) that needs more
-   than the route's name — e.g. which combo a "/packages/<id>" page is
-   for. */
+/* The current path. App.tsx reads it to pick the page (via routeName) and,
+   on a "/packages/<id>" page, which combo and tier to show. */
 export function useRoutePath(): string {
   return useSyncExternalStore(subscribe, snapshot, snapshot);
 }

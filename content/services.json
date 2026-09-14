@@ -122,1356 +122,484 @@
         "ta": ""
       }
     },
-    "showcase": {
-      "intro": {
-        "en": "We treat the venue as one picture rather than a set of separate decorations.",
-        "ta": ""
-      },
-      "types": [
-        {
-          "id": "wedding-stages",
-          "name": {
-            "en": "Wedding Stages",
-            "ta": ""
-          },
-          "description": {
-            "en": "The stage backdrop, built with floral and fabric work.",
-            "ta": ""
-          },
-          "image": "/images/gallery/gallery-01.jpg",
-          "items": [
-            {
-              "id": "stage-and-mandap",
-              "name": {
-                "en": "Stage & Mandap",
-                "ta": ""
-              },
-              "description": {
-                "en": "A full stage and mandap build for an evening wedding. Fresh garlands on the pillars, draped fabric behind the couple, and warm lighting angled so the photographs stay soft rather than washed out.",
-                "ta": ""
-              },
-              "images": [
-                "/images/gallery/gallery-01.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Stage Design",
-                  "ta": ""
-                },
-                {
-                  "en": "Mandap Setup",
-                  "ta": ""
-                },
-                {
-                  "en": "Floral Work",
-                  "ta": ""
-                },
-                {
-                  "en": "Warm Lighting",
-                  "ta": ""
-                }
-              ]
-            },
-            {
-              "id": "garden-stage",
-              "name": {
-                "en": "Garden Stage",
-                "ta": ""
-              },
-              "description": {
-                "en": "Two decorated seats set out on the lawn, with floral work across the chair backs and fresh flowers either side.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/draped-stage.jpg",
-                "/images/decorations/draped-stage-florals.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Stage Design",
-                  "ta": ""
-                },
-                {
-                  "en": "Outdoor Setup",
-                  "ta": ""
-                },
-                {
-                  "en": "Floral Work",
-                  "ta": ""
-                }
-              ],
-              "includes": [
-                {
-                  "en": "Two decorated seats",
-                  "ta": ""
-                },
-                {
-                  "en": "Floral work on the chair backs",
-                  "ta": ""
-                },
-                {
-                  "en": "Fresh flowers either side",
-                  "ta": ""
-                }
-              ],
-              "suitableFor": [
-                {
-                  "en": "Weddings",
-                  "ta": ""
-                },
-                {
-                  "en": "Receptions",
-                  "ta": ""
-                },
-                {
-                  "en": "Engagements",
-                  "ta": ""
-                }
-              ],
-              "style": {
-                "en": "Soft and floral",
-                "ta": ""
-              }
-            }
-          ]
-        },
-        {
-          "id": "mandap-setups",
-          "name": {
-            "en": "Mandap Setups",
-            "ta": ""
-          },
-          "description": {
-            "en": "The mandap itself, with pillars and a canopy.",
-            "ta": ""
-          },
-          "image": "/images/decorations/pillar-mandap.jpg",
-          "items": [
-            {
-              "id": "pillar-mandap",
-              "name": {
-                "en": "Pillar Mandap",
-                "ta": ""
-              },
-              "description": {
-                "en": "A four-pillar mandap with a covered canopy, garlanded down each pillar and finished with seating underneath.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/pillar-mandap.jpg",
-                "/images/decorations/pillar-mandap-florals.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Mandap Setup",
-                  "ta": ""
-                },
-                {
-                  "en": "Pillars",
-                  "ta": ""
-                },
-                {
-                  "en": "Canopy",
-                  "ta": ""
-                },
-                {
-                  "en": "Fresh Garlands",
-                  "ta": ""
-                }
-              ],
-              "includes": [
-                {
-                  "en": "Four decorated pillars",
-                  "ta": ""
-                },
-                {
-                  "en": "Covered canopy",
-                  "ta": ""
-                },
-                {
-                  "en": "Fresh garlands and floral work",
-                  "ta": ""
-                },
-                {
-                  "en": "Seating under the mandap",
-                  "ta": ""
-                }
-              ],
-              "suitableFor": [
-                {
-                  "en": "Weddings",
-                  "ta": ""
-                },
-                {
-                  "en": "Engagements",
-                  "ta": ""
-                }
-              ],
-              "specifications": [
-                {
-                  "label": {
-                    "en": "Footprint",
-                    "ta": ""
-                  },
-                  "value": {
-                    "en": "12 ft x 12 ft",
-                    "ta": ""
-                  }
-                },
-                {
-                  "label": {
-                    "en": "Height",
-                    "ta": ""
-                  },
-                  "value": {
-                    "en": "10 ft to the canopy",
-                    "ta": ""
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "entrance-decorations",
-          "name": {
-            "en": "Entrance Decorations",
-            "ta": ""
-          },
-          "description": {
-            "en": "The arch at the entrance and the pathway that leads your guests in.",
-            "ta": ""
-          },
-          "image": "/images/gallery/gallery-05.jpg",
-          "items": [
-            {
-              "id": "entrance-arch",
-              "name": {
-                "en": "Entrance Arch",
-                "ta": ""
-              },
-              "description": {
-                "en": "The entrance arch and pathway leading guests in. Built the morning of the function with flowers sourced that day, and matched to the colours used on the stage inside.",
-                "ta": ""
-              },
-              "images": [
-                "/images/gallery/gallery-05.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Floral Arch",
-                  "ta": ""
-                },
-                {
-                  "en": "Entrance Decor",
-                  "ta": ""
-                },
-                {
-                  "en": "Pathway",
-                  "ta": ""
-                }
-              ]
-            },
-            {
-              "id": "balloon-entrance",
-              "name": {
-                "en": "Balloon Entrance",
-                "ta": ""
-              },
-              "description": {
-                "en": "A balloon arch over the entrance, colours matched to the rest of the hall.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/balloon-entrance.jpg",
-                "/images/decorations/balloon-entrance-pink.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Entrance Decor",
-                  "ta": ""
-                },
-                {
-                  "en": "Balloon Arch",
-                  "ta": ""
-                }
-              ],
-              "suitableFor": [
-                {
-                  "en": "Receptions",
-                  "ta": ""
-                },
-                {
-                  "en": "Birthdays",
-                  "ta": ""
-                },
-                {
-                  "en": "Baby Showers",
-                  "ta": ""
-                }
-              ]
-            },
-            {
-              "id": "petal-walkway",
-              "name": {
-                "en": "Petal Walkway",
-                "ta": ""
-              },
-              "description": {
-                "en": "A petal-strewn walkway leading in from the entrance, laid the morning of the function.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/petal-walkway.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Pathway",
-                  "ta": ""
-                },
-                {
-                  "en": "Fresh Petals",
-                  "ta": ""
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "table-and-seating",
-          "name": {
-            "en": "Table & Seating",
-            "ta": ""
-          },
-          "description": {
-            "en": "Table and seating arrangements, including the head table.",
-            "ta": ""
-          },
-          "image": "/images/decorations/head-table.jpg",
-          "items": [
-            {
-              "id": "head-table",
-              "name": {
-                "en": "Head Table Setting",
-                "ta": ""
-              },
-              "description": {
-                "en": "The head table laid with a greenery runner, candles and place settings for the family.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/head-table.jpg",
-                "/images/decorations/head-table-florals.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Head Table",
-                  "ta": ""
-                },
-                {
-                  "en": "Greenery Runner",
-                  "ta": ""
-                },
-                {
-                  "en": "Candles",
-                  "ta": ""
-                }
-              ],
-              "includes": [
-                {
-                  "en": "Greenery runner down the table",
-                  "ta": ""
-                },
-                {
-                  "en": "Candles and holders",
-                  "ta": ""
-                },
-                {
-                  "en": "Place settings and name cards",
-                  "ta": ""
-                }
-              ],
-              "suitableFor": [
-                {
-                  "en": "Weddings",
-                  "ta": ""
-                },
-                {
-                  "en": "Receptions",
-                  "ta": ""
-                }
-              ]
-            },
-            {
-              "id": "banquet-seating",
-              "name": {
-                "en": "Banquet Seating",
-                "ta": ""
-              },
-              "description": {
-                "en": "Round guest tables laid across the hall, with chair covers and a centrepiece on every table.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/banquet-seating.jpg",
-                "/images/decorations/banquet-seating-hall.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Guest Seating",
-                  "ta": ""
-                },
-                {
-                  "en": "Chair Covers",
-                  "ta": ""
-                },
-                {
-                  "en": "Centrepieces",
-                  "ta": ""
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "lighting-and-ambience",
-          "name": {
-            "en": "Lighting & Ambience",
-            "ta": ""
-          },
-          "description": {
-            "en": "LED and warm accent lighting, set across the stage and the hall.",
-            "ta": ""
-          },
-          "image": "/images/decorations/string-light-canopy.jpg",
-          "items": [
-            {
-              "id": "string-light-canopy",
-              "name": {
-                "en": "String Light Canopy",
-                "ta": ""
-              },
-              "description": {
-                "en": "Warm string lights run overhead across the seating area, so the hall keeps its light once the sun goes down.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/string-light-canopy.jpg",
-                "/images/decorations/string-lights-tables.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "String Lights",
-                  "ta": ""
-                },
-                {
-                  "en": "Warm Lighting",
-                  "ta": ""
-                },
-                {
-                  "en": "Evening Function",
-                  "ta": ""
-                }
-              ],
-              "suitableFor": [
-                {
-                  "en": "Receptions",
-                  "ta": ""
-                },
-                {
-                  "en": "Outdoor Functions",
-                  "ta": ""
-                }
-              ]
-            },
-            {
-              "id": "warm-hall-lighting",
-              "name": {
-                "en": "Warm Hall Lighting",
-                "ta": ""
-              },
-              "description": {
-                "en": "Warm overhead lighting through the hall, kept low enough that the stage and the tables both read well in photographs.",
-                "ta": ""
-              },
-              "images": [
-                "/images/decorations/warm-hall-lighting.jpg"
-              ],
-              "tags": [
-                {
-                  "en": "Warm Lighting",
-                  "ta": ""
-                },
-                {
-                  "en": "Indoor Hall",
-                  "ta": ""
-                }
-              ],
-              "suitableFor": [
-                {
-                  "en": "Receptions",
-                  "ta": ""
-                },
-                {
-                  "en": "Evening Functions",
-                  "ta": ""
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "materials": [
+    "designs": [
       {
-        "id": "plastic-flowers",
-        "name": {
-          "en": "Plastic / Artificial Flowers",
+        "id": "design-001",
+        "title": {
+          "en": "Traditional Wedding Stage",
           "ta": ""
         },
         "image": "/images/decorations/artificial-flowers.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 3000,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Long-lasting silk & plastic blooms — reusable, colour-fast, and doesn't wilt through a long event.",
+        "badge": {
+          "en": "Popular",
           "ta": ""
         },
-        "details": {
-          "en": "Made from UV-treated silk and plastic, these blooms hold their colour and shape through a full day outdoors without wilting, drooping or shedding petals. Because they're reusable, they're the most economical way to cover large areas — stage backdrops, pillars, entrance arches — for a flat package price rather than a cost that climbs the more you cover, the way fresh flowers do. Best matched with uplighting or fairy lights to soften the sheen under photos.",
-          "ta": ""
-        },
-        "tag": {
-          "en": "Budget Pick",
-          "ta": ""
-        },
-        "specs": [
+        "pricing": [
           {
             "label": {
-              "en": "Best for",
+              "en": "Decoration Setup",
+              "ta": ""
+            },
+            "price": 15000
+          },
+          {
+            "label": {
+              "en": "Artificial Flowers",
+              "ta": ""
+            },
+            "price": 3000
+          },
+          {
+            "label": {
+              "en": "Natural Flowers",
+              "ta": ""
+            },
+            "price": 7000
+          }
+        ],
+        "description": {
+          "en": "A traditional wedding stage with layered drapes, a monogram arch, floral columns and a couple's seat, designed for wedding ceremonies and receptions.",
+          "ta": ""
+        },
+        "customization": {
+          "en": "Colour combinations and minor design adjustments can be made to suit your preference, at no extra cost.",
+          "ta": ""
+        },
+        "details": [
+          {
+            "label": {
+              "en": "Suitable for",
               "ta": ""
             },
             "value": {
-              "en": "Daytime events, reused across bookings",
+              "en": "Weddings, receptions, engagements",
               "ta": ""
             }
           },
           {
             "label": {
-              "en": "Care",
+              "en": "Design elements",
               "ta": ""
             },
             "value": {
-              "en": "Wipes clean, dust-resistant",
-              "ta": ""
-            }
-          }
-        ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Setup & removal: ₹500 flat within city limits",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — entrance or one photo corner",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹3,000",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — stage backdrop or mandap",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹8,000",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — full venue (stage, entrance & pillars)",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹16,500",
-                "ta": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "natural-flowers",
-        "name": {
-          "en": "Natural / Fresh Flowers",
-          "ta": ""
-        },
-        "image": "/images/decorations/draped-stage-florals.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 7500,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Fresh roses, jasmine and marigold sourced the morning of the event for real fragrance and colour.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Sourced fresh on the morning of the event from local flower markets, so colour and fragrance are at their peak for the ceremony. Best suited to the mandap, bridal bouquet, and any close-up area where guests will actually smell and touch the flowers — fresh stock has a shorter working life than artificial, so it's usually paired with plastic or fabric for the larger background areas.",
-          "ta": ""
-        },
-        "tag": {
-          "en": "Most Popular",
-          "ta": ""
-        },
-        "specs": [
-          {
-            "label": {
-              "en": "Best for",
-              "ta": ""
-            },
-            "value": {
-              "en": "Mandap, bridal bouquet, fragrance",
+              "en": "Layered drapes, monogram arch, floral columns, stage seating",
               "ta": ""
             }
           },
           {
             "label": {
-              "en": "Freshness",
+              "en": "Setup",
               "ta": ""
             },
             "value": {
-              "en": "Sourced the morning of the event",
+              "en": "Installed and removed by our team on the day",
               "ta": ""
             }
           }
-        ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Rush order (under 48 hrs notice): +10%",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — bridal mandap only",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹7,500",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — mandap + stage",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹18,000",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — mandap + stage + entrance",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹30,000",
-                "ta": ""
-              }
-            }
-          ]
-        }
+        ]
       },
       {
-        "id": "marigold-garlands",
-        "name": {
-          "en": "Marigold Garlands",
-          "ta": ""
-        },
-        "image": "/images/decorations/pillar-mandap-florals.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 2000,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Classic orange marigold strings for pillars, entrances and mandap edges.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Traditional strung marigold garlands in the classic orange-and-yellow combination, sold as a flat-price package sized to cover a doorway, a run of pillars, or the full mandap edge. A staple of South Indian wedding decor that pairs naturally with fresh flowers and fabric drapes, and reads well in both daylight and warm evening light.",
-          "ta": ""
-        },
-        "specs": [
-          {
-            "label": {
-              "en": "Best for",
-              "ta": ""
-            },
-            "value": {
-              "en": "Pillars, doorways, entrance strings",
-              "ta": ""
-            }
-          },
-          {
-            "label": {
-              "en": "Colour",
-              "ta": ""
-            },
-            "value": {
-              "en": "Classic orange and yellow",
-              "ta": ""
-            }
-          }
-        ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Hanging hardware & fixing: included",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — entrance archway",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹2,000",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — entrance + pillars",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹5,000",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — entrance + pillars + mandap edges",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹9,000",
-                "ta": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "rose-petals",
-        "name": {
-          "en": "Loose Rose Petals",
-          "ta": ""
-        },
-        "image": "/images/decorations/petal-walkway.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 250,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "For petal walkways, welcome showers and table scatter.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Freshly separated rose petals used for the walkway the couple enters on, a welcome shower over the entrance, or scattered across guest tables and the stage. Sold as a flat-price package sized to how thickly you want them scattered, from a short walkway up to a full walkway-plus-shower-plus-table-scatter combination.",
-          "ta": ""
-        },
-        "specs": [
-          {
-            "label": {
-              "en": "Best for",
-              "ta": ""
-            },
-            "value": {
-              "en": "Petal walkway, welcome shower",
-              "ta": ""
-            }
-          },
-          {
-            "label": {
-              "en": "Coverage",
-              "ta": ""
-            },
-            "value": {
-              "en": "About 1kg per 10 ft of walkway",
-              "ta": ""
-            }
-          }
-        ],
-        "priceStructure": {
-          "extraCharges": [],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — short walkway",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹250",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — walkway + welcome shower",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹650",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — walkway + shower + table scatter",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹1,400",
-                "ta": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "fabric-drapes",
-        "name": {
-          "en": "Fabric Drapes & Backdrop",
-          "ta": ""
-        },
-        "image": "/images/decorations/draped-stage.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 3000,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Flowing cloth backdrops in your chosen colour palette.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Floor-to-ceiling fabric panels draped across the stage or a dedicated photo corner, available in any colour to match your event's palette. Sold as a flat-price package sized to the area you're covering — a full stage backdrop is usually one of the larger line items on a decoration quote — and pairs well with fairy lights woven through the folds.",
-          "ta": ""
-        },
-        "specs": [
-          {
-            "label": {
-              "en": "Best for",
-              "ta": ""
-            },
-            "value": {
-              "en": "Stage backdrop, photo booth",
-              "ta": ""
-            }
-          },
-          {
-            "label": {
-              "en": "Colours",
-              "ta": ""
-            },
-            "value": {
-              "en": "Any shade to match your theme",
-              "ta": ""
-            }
-          }
-        ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Custom colour dyeing: +₹1,000 flat",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — photo corner backdrop",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹3,000",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — stage backdrop",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹6,500",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — backdrop + photo booth + entrance",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹12,000",
-                "ta": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "led-fairy-lights",
-        "name": {
-          "en": "LED Fairy Lights",
-          "ta": ""
-        },
-        "image": "/images/decorations/string-light-canopy.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 800,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Warm string lighting woven through florals and drapes for evening glow.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Warm-white plug-in LED strings, run through floral arrangements, fabric drapes or a canopy overhead to carry the decor from daylight into evening. Sold as a flat-price package sized to the length of run you need — a small add-on to any of the other materials rather than a standalone look, but it's the detail that shows up most in evening photographs.",
-          "ta": ""
-        },
-        "tag": {
-          "en": "Add-on",
-          "ta": ""
-        },
-        "specs": [
-          {
-            "label": {
-              "en": "Best for",
-              "ta": ""
-            },
-            "value": {
-              "en": "Evening glow, canopy, tree wrap",
-              "ta": ""
-            }
-          },
-          {
-            "label": {
-              "en": "Light",
-              "ta": ""
-            },
-            "value": {
-              "en": "Warm white, plug-in",
-              "ta": ""
-            }
-          }
-        ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Power point setup: ₹300 flat if none nearby",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — photo corner or entrance",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹800",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — canopy or stage wrap",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹1,800",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — full venue string lighting",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹3,200",
-                "ta": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "balloon-decor",
-        "name": {
-          "en": "Balloon Arch & Clusters",
-          "ta": ""
-        },
-        "image": "/images/decorations/balloon-entrance.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 350,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Colour-matched balloon arches and clusters for entrances and photo corners.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Air- or helium-filled balloons arranged into arches over an entrance or clustered as a backdrop for a photo corner, in any colour combination you request. Sold as a flat-price package sized to the cluster or arch you want — a compact photo-corner cluster and a full entrance arch are priced as two very different packages rather than a per-balloon calculation.",
-          "ta": ""
-        },
-        "specs": [
-          {
-            "label": {
-              "en": "Best for",
-              "ta": ""
-            },
-            "value": {
-              "en": "Entrance, photo corner",
-              "ta": ""
-            }
-          },
-          {
-            "label": {
-              "en": "Colours",
-              "ta": ""
-            },
-            "value": {
-              "en": "Any combination on request",
-              "ta": ""
-            }
-          }
-        ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Helium fill (floating balloons): +₹300 flat",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — photo corner cluster",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹350",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — small entrance cluster",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹800",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — full entrance arch",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹1,500",
-                "ta": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "mandap-pillars",
-        "name": {
-          "en": "Mandap Pillars & Canopy",
+        "id": "design-002",
+        "title": {
+          "en": "Outdoor Floral Mandap",
           "ta": ""
         },
         "image": "/images/decorations/pillar-mandap.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 14000,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Decorated pillars and the canopy frame the mandap itself is built from.",
+        "badge": {
+          "en": "New",
           "ta": ""
         },
-        "details": {
-          "en": "The structural frame the whole mandap is built around — pillars plus the overhead canopy, sold as a flat-price package by pillar count and decorated to match whatever material scheme you choose for flowers and drapes elsewhere. This is the one material that's effectively mandatory for a mandap-style ceremony rather than optional decor, since it's the frame everything else is applied to.",
-          "ta": ""
-        },
-        "specs": [
+        "pricing": [
           {
             "label": {
-              "en": "Best for",
+              "en": "Decoration Setup",
+              "ta": ""
+            },
+            "price": 22000
+          },
+          {
+            "label": {
+              "en": "Artificial Flowers",
+              "ta": ""
+            },
+            "price": 4000
+          },
+          {
+            "label": {
+              "en": "Natural Flowers",
+              "ta": ""
+            },
+            "price": 9500
+          }
+        ],
+        "description": {
+          "en": "A garden mandap framed by white pillars and floral garlands, with seating for the ceremony, suited to outdoor and lawn venues.",
+          "ta": ""
+        },
+        "customization": {
+          "en": "Colour combinations and minor design adjustments can be made to suit your preference, at no extra cost.",
+          "ta": ""
+        },
+        "details": [
+          {
+            "label": {
+              "en": "Suitable for",
               "ta": ""
             },
             "value": {
-              "en": "The mandap structure itself",
+              "en": "Outdoor weddings, garden ceremonies",
               "ta": ""
             }
           },
           {
             "label": {
-              "en": "Includes",
+              "en": "Design elements",
               "ta": ""
             },
             "value": {
-              "en": "4 pillars plus the canopy frame",
+              "en": "Pillar mandap, floral garlands, ceremony seating",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Setup",
+              "ta": ""
+            },
+            "value": {
+              "en": "Needs level ground; our team checks the venue beforehand",
               "ta": ""
             }
           }
+        ]
+      },
+      {
+        "id": "design-003",
+        "title": {
+          "en": "Garden Ceremony Setup",
+          "ta": ""
+        },
+        "image": "/images/decorations/draped-stage.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Decoration Setup",
+              "ta": ""
+            },
+            "price": 9000
+          },
+          {
+            "label": {
+              "en": "Artificial Flowers",
+              "ta": ""
+            },
+            "price": 1500
+          },
+          {
+            "label": {
+              "en": "Fresh Roses",
+              "ta": ""
+            },
+            "price": 3500
+          }
         ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Extended canopy fabric: +₹2,000 flat",
+        "description": {
+          "en": "A simple open-air ceremony setting with decorated chairs for the couple and floral accents, for intimate lawn and beachside functions.",
+          "ta": ""
+        },
+        "details": [
+          {
+            "label": {
+              "en": "Suitable for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Intimate weddings, vow renewals",
               "ta": ""
             }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — standard mandap",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹14,000",
-                "ta": ""
-              }
+          },
+          {
+            "label": {
+              "en": "Design elements",
+              "ta": ""
             },
-            {
-              "range": {
-                "en": "Medium — extended mandap",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹19,800",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — grand mandap",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹24,800",
-                "ta": ""
-              }
+            "value": {
+              "en": "Decorated couple chairs, floral chair accents",
+              "ta": ""
             }
-          ]
+          }
+        ]
+      },
+      {
+        "id": "design-004",
+        "title": {
+          "en": "Floral Reception Table",
+          "ta": ""
+        },
+        "image": "/images/decorations/head-table-florals.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Decoration Setup",
+              "ta": ""
+            },
+            "price": 12000
+          },
+          {
+            "label": {
+              "en": "Artificial Flowers",
+              "ta": ""
+            },
+            "price": 2500
+          },
+          {
+            "label": {
+              "en": "Natural Flowers",
+              "ta": ""
+            },
+            "price": 6000
+          }
+        ],
+        "description": {
+          "en": "A long reception table dressed with floral centrepieces and soft linen, for family dinners and the head table at a reception.",
+          "ta": ""
+        },
+        "customization": {
+          "en": "Colour combinations and minor design adjustments can be made to suit your preference, at no extra cost.",
+          "ta": ""
+        },
+        "details": [
+          {
+            "label": {
+              "en": "Suitable for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Receptions, family dinners",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Design elements",
+              "ta": ""
+            },
+            "value": {
+              "en": "Floral centrepieces, table linen, glassware styling",
+              "ta": ""
+            }
+          }
+        ]
+      },
+      {
+        "id": "design-005",
+        "title": {
+          "en": "Minimal Greenery Table Setting",
+          "ta": ""
+        },
+        "image": "/images/decorations/head-table.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Decoration Setup",
+              "ta": ""
+            },
+            "price": 8000
+          }
+        ],
+        "description": {
+          "en": "A minimalist table setting with a greenery runner, candles and neutral tableware, for couples who prefer a calm, understated look.",
+          "ta": ""
+        },
+        "customization": {
+          "en": "Colour combinations and minor design adjustments can be made to suit your preference, at no extra cost.",
+          "ta": ""
+        },
+        "details": [
+          {
+            "label": {
+              "en": "Suitable for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Receptions, engagements, small gatherings",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Design elements",
+              "ta": ""
+            },
+            "value": {
+              "en": "Greenery runner, candles, neutral tableware",
+              "ta": ""
+            }
+          }
+        ]
+      },
+      {
+        "id": "design-006",
+        "title": {
+          "en": "Reception Hall Decoration",
+          "ta": ""
+        },
+        "image": "/images/decorations/banquet-seating.jpg",
+        "badge": {
+          "en": "Premium",
+          "ta": ""
+        },
+        "pricing": [
+          {
+            "label": {
+              "en": "Decoration Setup",
+              "ta": ""
+            },
+            "price": 35000
+          },
+          {
+            "label": {
+              "en": "Chandelier Lighting",
+              "ta": ""
+            },
+            "price": 8000
+          }
+        ],
+        "description": {
+          "en": "A full reception hall setting with dressed round tables, chair covers and warm chandelier lighting across the room, for large receptions. This design is set up across the whole hall, so it is planned around the venue's layout and guest count before the day.",
+          "ta": ""
+        },
+        "details": [
+          {
+            "label": {
+              "en": "Suitable for",
+              "ta": ""
+            },
+            "value": {
+              "en": "Large receptions",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Design elements",
+              "ta": ""
+            },
+            "value": {
+              "en": "Round table styling, chair covers, chandelier lighting",
+              "ta": ""
+            }
+          },
+          {
+            "label": {
+              "en": "Setup",
+              "ta": ""
+            },
+            "value": {
+              "en": "Planned around the hall layout and guest count",
+              "ta": ""
+            }
+          }
+        ]
+      },
+      {
+        "id": "design-007",
+        "title": {
+          "en": "Balloon Decoration",
+          "ta": ""
+        },
+        "image": "/images/decorations/balloon-entrance.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Decoration Setup",
+              "ta": ""
+            },
+            "price": 5000
+          }
+        ],
+        "description": {
+          "en": "A colourful balloon arrangement for entrances and photo corners, suited to birthdays, baby showers and reception entrances.",
+          "ta": ""
+        },
+        "customization": {
+          "en": "Balloon colours can be chosen to match your theme.",
+          "ta": ""
         }
       },
       {
-        "id": "stage-uplighting",
-        "name": {
-          "en": "Stage Uplighting",
-          "ta": ""
-        },
-        "image": "/images/decorations/warm-hall-lighting.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 1200,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Coloured LED wash lights along the stage backdrop for depth in photos.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Colour-changeable RGB wash lights aimed up along the stage backdrop, adding depth and a wash of colour behind the couple that a flat backdrop alone doesn't give you in photos. Sold as a flat-price package by light count, spaced evenly across the backdrop width, and colours can usually be matched to your event's theme on request.",
-          "ta": ""
-        },
-        "tag": {
-          "en": "Add-on",
-          "ta": ""
-        },
-        "specs": [
+        "id": "design-008",
+        "image": "/images/decorations/string-light-canopy.jpg",
+        "pricing": [
           {
             "label": {
-              "en": "Best for",
+              "en": "Decoration Setup",
               "ta": ""
             },
-            "value": {
-              "en": "Stage backdrop depth in photos",
-              "ta": ""
-            }
+            "price": 7000
           },
           {
             "label": {
-              "en": "Colours",
+              "en": "Warm String Lighting",
+              "ta": ""
+            },
+            "price": 2500
+          }
+        ],
+        "description": {
+          "en": "Warm string lights hung overhead to create a soft glow over the seating area, for evening functions indoors or outdoors.",
+          "ta": ""
+        },
+        "details": [
+          {
+            "label": {
+              "en": "Suitable for",
               "ta": ""
             },
             "value": {
-              "en": "RGB, colour-changeable",
+              "en": "Evening receptions, sangeet, outdoor dinners",
               "ta": ""
             }
           }
-        ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "DMX colour-sync controller: +₹1,500 flat",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — basic stage wash",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹1,200",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — standard stage",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹2,200",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — grand stage",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹3,100",
-                "ta": ""
-              }
-            }
-          ]
-        }
+        ]
       },
       {
-        "id": "thermocol-props",
-        "name": {
-          "en": "Thermocol & Foam Props",
+        "id": "design-009",
+        "title": {
+          "en": "Premium Floral Arrangement",
           "ta": ""
         },
-        "image": "/images/decorations/banquet-seating-hall.jpg",
-        "pricing": {
-          "type": "starting",
-          "amount": 700,
-          "currency": "INR",
-          "unit": "package"
-        },
-        "note": {
-          "en": "Lightweight carved shapes for stage motifs and entrance signage.",
-          "ta": ""
-        },
-        "details": {
-          "en": "Thermocol and foam cut and carved into stage motifs, entrance signage lettering, or decorative shapes, then painted or covered to match the event palette. Sold as a flat-price package sized to the carved surface you need — lightweight enough to mount on a backdrop or freestanding frame without extra structural support, and easy to touch up between events.",
-          "ta": ""
-        },
-        "specs": [
+        "image": "/images/decorations/draped-stage-florals.jpg",
+        "pricing": [
           {
             "label": {
-              "en": "Best for",
+              "en": "Decoration Setup",
               "ta": ""
             },
-            "value": {
-              "en": "Stage motifs, entrance signage",
-              "ta": ""
-            }
+            "price": 6000
           },
           {
             "label": {
-              "en": "Weight",
+              "en": "Fresh Roses",
               "ta": ""
             },
-            "value": {
-              "en": "Lightweight, easy to mount",
+            "price": 4500
+          },
+          {
+            "label": {
+              "en": "Fresh Jasmine",
               "ta": ""
-            }
+            },
+            "price": 2000
           }
         ],
-        "priceStructure": {
-          "extraCharges": [
-            {
-              "en": "Complex 3D lettering or motifs: +₹500 flat",
-              "ta": ""
-            }
-          ],
-          "tiers": [
-            {
-              "range": {
-                "en": "Small — entrance signage",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹700",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Medium — stage motif set",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹1,800",
-                "ta": ""
-              }
-            },
-            {
-              "range": {
-                "en": "Large — stage + entrance + photo props",
-                "ta": ""
-              },
-              "price": {
-                "en": "₹3,500",
-                "ta": ""
-              }
-            }
-          ]
+        "description": {
+          "en": "Hand-arranged fresh flowers in soft, layered tones, used to finish a stage, entrance or couple's table.",
+          "ta": ""
+        },
+        "customization": {
+          "en": "Flower colours and the mix of blooms can be adjusted; the flower type you choose sets its price.",
+          "ta": ""
         }
       }
     ]

@@ -128,19 +128,14 @@
   }
 }
 
-/* Horizontal scrollers (filter tabs, mobile gallery) keep the scroll,
-   lose the scrollbar. */
+/* Scrollable panels (the detail dialogs) keep the scroll, lose the
+   scrollbar. */
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
-}
-
-/* Serif digits that must be easy to read: prices, phone numbers */
-.nums-lining {
-  font-variant-numeric: lining-nums;
 }
 
 /* ---------------------------------------------------------------
@@ -156,15 +151,6 @@
    synthesised by the browser, and faux-bold is exactly the heavy look
    this system avoids.
    --------------------------------------------------------------- */
-
-/* The hero name. Large, so it can afford the lighter medium weight and
-   a touch of negative tracking; the letterforms carry the elegance. */
-@utility type-display {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  font-variant-numeric: lining-nums;
-}
 
 /* Section, page and dialog titles. Cormorant, as the type system says —
    these are the words a visitor navigates by, so they belong to the
@@ -310,23 +296,6 @@
     grid-column: span 3 / span 3;
     width: calc(33.333% - 1rem);
     justify-self: center;
-  }
-}
-
-.dv-panel-in {
-  animation: dv-panel-in 0.32s ease-out both;
-}
-
-@keyframes dv-panel-in {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dv-panel-in {
-    animation: none;
   }
 }
 
@@ -491,17 +460,6 @@
       var(--color-gold-deep) 50%,
       var(--color-charcoal) 58%,
       var(--color-charcoal) 100%
-    );
-  }
-
-  .title-sheen-dark {
-    background-image: linear-gradient(
-      100deg,
-      var(--color-ivory-light) 0%,
-      var(--color-ivory-light) 42%,
-      var(--color-gold-soft) 50%,
-      var(--color-ivory-light) 58%,
-      var(--color-ivory-light) 100%
     );
   }
 }

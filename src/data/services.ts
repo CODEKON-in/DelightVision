@@ -1,26 +1,18 @@
 
 import {
   categories as categoryCatalog,
-  gallery as galleryData,
   getLocalizedText,
   packages as packageCatalog,
   services as serviceCatalog,
   type Category as ContentCategory,
-  type GalleryItem as ContentGalleryItem,
-  type Highlight as ContentHighlight,
-  type MaterialItem as ContentMaterialItem,
-  type MaterialPriceExample as ContentMaterialPriceExample,
-  type MaterialPriceStructure as ContentMaterialPriceStructure,
-  type MaterialPriceTier as ContentMaterialPriceTier,
   type ComboPriceTier as ContentComboPriceTier,
-  type Service as ContentService,
-  type Showcase as ContentShowcase,
-  type ShowcaseItem as ContentShowcaseItem,
-  type ShowcaseSpec as ContentShowcaseSpec,
-  type ShowcaseType as ContentShowcaseType,
   type Combo as ContentPackage,
+  type DecorationDesign as ContentDecorationDesign,
+  type DesignDetail as ContentDesignDetail,
+  type Highlight as ContentHighlight,
+  type Service as ContentService,
 } from "../content";
-import { formatPrice, formatPriceAmount } from "../utils/formatPrice";
+import { formatPrice } from "../utils/formatPrice";
 
 export type ServiceId =
   | "decoration"
@@ -39,78 +31,28 @@ export type CategoryId =
 
 export type Highlight = { label: string; value: string; level: number };
 
-/* ---- Decorations showcase -----------------------------------------------
-   The flattened, English view of a service's optional `showcase` block.
-   Every text field is a plain string and the price is already formatted, so
-   the components stay free of content plumbing. Fields the content does not
-   carry come through empty and the UI simply omits them — nothing is filled
-   in on the content's behalf. */
-export type DecorationSpec = { label: string; value: string };
+/* ---- Decoration designs --------------------------------------------------
+   The flattened, English view of a decoration design. Text fields are plain
+   strings and prices arrive formatted, so components stay free of content
+   plumbing. Anything the content leaves out comes through empty and the UI
+   omits it — nothing is filled in on the content's behalf. */
+export type DetailRow = { label: string; value: string };
 
-export type Decoration = {
-  id: string;
-  name: string;
-  /* The decoration type this design belongs to, carried on the design so a
-     detail view can name it without the caller passing it down. */
-  typeId: string;
-  typeName: string;
-  description: string;
-  images: string[];
-  /* Formatted, or "" when the content states no price for this design. */
-  price: string;
-  includes: string[];
-  suitableFor: string[];
-  tags: string[];
-  style: string;
-  specifications: DecorationSpec[];
-};
+/* One pricing line, ready to print. Rendered in order, whatever its label. */
+export type DesignPrice = { label: string; price: string };
 
-export type DecorationType = {
+export type DecorationDesign = {
   id: string;
-  name: string;
-  description: string;
-  /* Falls back to the first image of the first design, so a type that has
-     designs always has something to show. */
   image: string;
-  items: Decoration[];
-};
-
-export type Showcase = { intro: string; types: DecorationType[] };
-
-/* A single material/product a service is built from, priced on its own —
-   e.g. plastic vs. natural flowers for decoration. */
-export type Material = {
-  id: string;
-  name: string;
-  image: string;
-  /* Full formatted price WITH its unit ("₹60/sq ft") — shown in the detail
-     popup. Formatted, or "" when the content states no price. */
-  price: string;
-  /* Bare number only ("₹60"), no unit — shown in the listing row. */
-  priceValue: string;
-  note: string;
-  /* Longer paragraph for the detail popup — "" when the content carries
-     none, in which case the popup just shows the short note instead. */
-  details: string;
-  tag: string;
-  /* A couple of quick facts — "Best for", "Care", "Colours" — shown under
-     the note. Empty when the content carries none. */
-  specs: DecorationSpec[];
-  /* Fuller pricing picture for the detail popup — volume tiers, minimum
-     order, extra charges, worked examples. Every array empty and every
-     string "" when the content carries none, so the popup just omits the
-     section entirely. */
-  priceStructure: MaterialPriceStructureDisplay;
-};
-
-export type MaterialPriceTier = { range: string; price: string; quantity: string };
-export type MaterialPriceExample = { label: string; amount: string };
-
-export type MaterialPriceStructureDisplay = {
-  minimumOrder: string;
-  extraCharges: string[];
-  tiers: MaterialPriceTier[];
-  examples: MaterialPriceExample[];
+  /* "" when the design has no title — the photograph identifies it. */
+  title: string;
+  badge: string;
+  pricing: DesignPrice[];
+  /* The first pricing line's amount, e.g. "₹15,000" — "" if unpriced. */
+  basePrice: string;
+  description: string;
+  customization: string;
+  details: DetailRow[];
 };
 
 export type Service = {
@@ -130,8 +72,7 @@ export type Service = {
     notice: string;
     conditions: string;
   };
-  showcase?: Showcase;
-  materials: Material[];
+  designs: DecorationDesign[];
 };
 
 export type ComboPriceTier = {
@@ -167,17 +108,6 @@ export type Combo = {
   priceTiers: ComboPriceTier[];
 };
 
-export type GalleryItem = {
-  id: number;
-  category: CategoryId;
-  caption: string;
-  badge: string;
-  description: string;
-  tags: string[];
-  image: string;
-  service: ServiceId;
-};
-
 const normalizeHighlights = (items: ContentHighlight[] = []): Highlight[] =>
   items.map((item) => ({
     label: getLocalizedText(item.label, "en"),
@@ -188,80 +118,49 @@ const normalizeHighlights = (items: ContentHighlight[] = []): Highlight[] =>
 const normalizeTextArray = (items: Array<string | { en?: string; ta?: string }> = []): string[] =>
   items.map((item) => (typeof item === "string" ? item : getLocalizedText(item, "en")));
 
-const normalizeCategory = (category: ContentCategory): { id: CategoryId; label: string; short: string } => ({
+const normalizeCategory = (category: ContentCategory): { id: CategoryId; label: string } => ({
   id: category.id as CategoryId,
   label: getLocalizedText(category.label, "en"),
-  short: getLocalizedText(category.shortLabel ?? category.label, "en"),
 });
 
-const normalizeSpecs = (items: ContentShowcaseSpec[] = []): DecorationSpec[] =>
+const normalizeDetails = (items: ContentDesignDetail[] = []): DetailRow[] =>
   items
     .map((item) => ({
       label: getLocalizedText(item.label, "en"),
       value: getLocalizedText(item.value, "en"),
     }))
     /* A half-filled row would print a label with nothing beside it. */
-    .filter((spec) => spec.label !== "" && spec.value !== "");
+    .filter((row) => row.label !== "" && row.value !== "");
 
-const normalizeDecoration = (
-  item: ContentShowcaseItem,
-  type: ContentShowcaseType
-): Decoration => ({
-  id: item.id,
-  name: getLocalizedText(item.name, "en"),
-  typeId: type.id,
-  typeName: getLocalizedText(type.name, "en"),
-  description: getLocalizedText(item.description, "en"),
-  /* Blank entries would render as an empty thumbnail strip. */
-  images: (item.images ?? []).filter(Boolean),
-  price: item.pricing ? formatPrice(item.pricing, "en") : "",
-  includes: normalizeTextArray(item.includes),
-  suitableFor: normalizeTextArray(item.suitableFor),
-  tags: normalizeTextArray(item.tags),
-  style: getLocalizedText(item.style, "en"),
-  specifications: normalizeSpecs(item.specifications),
-});
-
-const normalizeShowcase = (showcase?: ContentShowcase): Showcase | undefined => {
-  if (!showcase || !Array.isArray(showcase.types) || showcase.types.length === 0) {
-    return undefined;
-  }
-
-  const types: DecorationType[] = showcase.types.map((type) => {
-    const items = (type.items ?? []).map((item) => normalizeDecoration(item, type));
-
-    return {
-      id: type.id,
-      name: getLocalizedText(type.name, "en"),
-      description: getLocalizedText(type.description, "en"),
-      image: type.image || items[0]?.images[0] || "",
-      items,
-    };
-  });
-
-  /* A type with no name has nothing to put in the menu. */
-  const named = types.filter((type) => type.name !== "");
-  if (named.length === 0) return undefined;
-
-  return { intro: getLocalizedText(showcase.intro, "en"), types: named };
-};
-
-const normalizeTiers = (items: ContentMaterialPriceTier[] = []): MaterialPriceTier[] =>
+/* A price line is shown as a plain amount — a design's price is fixed, so
+   nothing is prefixed with "Starting". Lines without a label or a usable
+   number are dropped rather than printed half-empty. */
+const normalizeDesigns = (items: ContentDecorationDesign[] = []): DecorationDesign[] =>
   items
-    .map((item) => ({
-      range: getLocalizedText(item.range, "en"),
-      price: getLocalizedText(item.price, "en"),
-      quantity: getLocalizedText(item.quantity, "en"),
-    }))
-    .filter((tier) => tier.range !== "" && tier.price !== "");
+    .map((item) => {
+      const pricing = (item.pricing ?? [])
+        .filter((entry) => Number.isFinite(entry.price))
+        .map((entry) => ({
+          label: getLocalizedText(entry.label, "en"),
+          price: formatPrice({ type: "fixed", amount: entry.price }, "en"),
+        }))
+        .filter((entry) => entry.label !== "");
 
-const normalizeExamples = (items: ContentMaterialPriceExample[] = []): MaterialPriceExample[] =>
-  items
-    .map((item) => ({
-      label: getLocalizedText(item.label, "en"),
-      amount: getLocalizedText(item.amount, "en"),
-    }))
-    .filter((example) => example.label !== "" && example.amount !== "");
+      return {
+        id: item.id,
+        image: item.image ?? "",
+        title: getLocalizedText(item.title, "en"),
+        badge: getLocalizedText(item.badge, "en"),
+        pricing,
+        basePrice: pricing[0]?.price ?? "",
+        description: getLocalizedText(item.description, "en"),
+        customization: getLocalizedText(item.customization, "en"),
+        details: normalizeDetails(item.details),
+      };
+    })
+    /* The photograph is the design, so an entry without one has nothing to
+       show in the grid. */
+    .filter((design) => design.image !== "");
 
 const normalizeComboPriceTiers = (
   items: ContentComboPriceTier[] = [],
@@ -277,30 +176,6 @@ const normalizeComboPriceTiers = (
       extras: (item.extras ?? []).map((extra) => getLocalizedText(extra, "en")).filter(Boolean),
     }))
     .filter((tier) => tier.name !== "" && tier.price !== "");
-
-const normalizePriceStructure = (structure?: ContentMaterialPriceStructure): MaterialPriceStructureDisplay => ({
-  minimumOrder: getLocalizedText(structure?.minimumOrder, "en"),
-  extraCharges: (structure?.extraCharges ?? []).map((charge) => getLocalizedText(charge, "en")).filter(Boolean),
-  tiers: normalizeTiers(structure?.tiers),
-  examples: normalizeExamples(structure?.examples),
-});
-
-const normalizeMaterials = (items: ContentMaterialItem[] = []): Material[] =>
-  items
-    .map((item) => ({
-      id: item.id,
-      name: getLocalizedText(item.name, "en"),
-      image: item.image ?? "",
-      price: item.pricing ? formatPrice(item.pricing, "en") : "",
-      priceValue: item.pricing ? formatPriceAmount(item.pricing, "en") : "",
-      note: getLocalizedText(item.note, "en"),
-      details: getLocalizedText(item.details, "en"),
-      tag: getLocalizedText(item.tag, "en"),
-      specs: normalizeSpecs(item.specs),
-      priceStructure: normalizePriceStructure(item.priceStructure),
-    }))
-    /* A nameless entry has nothing to show in the grid. */
-    .filter((material) => material.name !== "");
 
 export const categories = categoryCatalog.map(normalizeCategory);
 
@@ -321,8 +196,7 @@ export const services: Service[] = serviceCatalog.map((service: ContentService) 
     notice: getLocalizedText(service.detail.notice, "en"),
     conditions: getLocalizedText(service.detail.conditions, "en"),
   },
-  showcase: normalizeShowcase(service.showcase),
-  materials: normalizeMaterials(service.materials),
+  designs: normalizeDesigns(service.designs),
 }));
 
 export const serviceById = Object.fromEntries(
@@ -348,13 +222,3 @@ export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => ({
   priceTiers: normalizeComboPriceTiers(combo.priceTiers, combo.services as ServiceId[]),
 }));
 
-export const galleryItems: GalleryItem[] = galleryData.map((item: ContentGalleryItem) => ({
-  id: item.id,
-  category: item.category as CategoryId,
-  caption: getLocalizedText(item.caption, "en"),
-  badge: getLocalizedText(item.badge, "en"),
-  description: getLocalizedText(item.description, "en"),
-  tags: normalizeTextArray(item.tags),
-  image: item.image,
-  service: item.serviceId as ServiceId,
-}));

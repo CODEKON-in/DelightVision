@@ -91,7 +91,7 @@ function ComboCard({
       {combo.popular && <CornerOrnaments />}
 
       <div className="relative">
-        {/* DUMMY photo of this package - see src/data/services.ts */}
+        {/* Sample photo — set in content/packages.json */}
         <PlaceholderPhoto
           index={comboIndex}
           src={combo.image}
@@ -151,7 +151,7 @@ function ComboCard({
         </ul>
 
         <div className="mt-auto border-t border-cream-dark pt-4">
-          {/* DUMMY PRICE - see src/data/services.ts */}
+          {/* Sample price — set in content/packages.json */}
           <p className="type-price text-3xl text-charcoal">
             {selectedTier ? selectedTier.price : combo.price}
           </p>

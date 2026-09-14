@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
-import { MaterialCard } from "../components/MaterialCard";
+import { DecorationCard } from "../components/DecorationCard";
 import { Reveal } from "../components/Reveal";
 import { PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
@@ -28,7 +28,7 @@ function BackToServices({ className = "" }: { className?: string }) {
 export function DecorationsPage() {
   const [detailOpen, setDetailOpen] = useState(false);
 
-  /* The page is the decoration service's showcase. If the content ever
+  /* The page is the decoration service's gallery of designs. If the content ever
      stops carrying the service at all, the page says so rather than
      rendering an empty shell. */
   const service = services.find((item) => item.id === "decoration");
@@ -45,20 +45,19 @@ export function DecorationsPage() {
   return (
     <>
       {/* No title band above this — the page opens straight on the
-          materials grid, which is the reason anyone lands here. */}
+          designs grid, which is the reason anyone lands here. */}
       <section className="bg-ivory py-[clamp(2.5rem,7vw,4rem)]">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
           <Reveal immediate>
             <BackToServices />
           </Reveal>
 
-          {/* The decorations as photographs and nothing else. Everything
-              written about one — name, note, specs, price, and the two ways
-              to get in touch — lives in the dialog a tile opens, so the page
-              itself is something to look through rather than read. The
-              heading below doubles as the page's own, now that the title
-              band above it is gone. */}
-          {service.materials.length > 0 && (
+          {/* The decoration designs as photographs and nothing else.
+              Everything written about one — its price, description, details
+              and the two ways to get in touch — lives in the dialog a tile
+              opens, so the page itself is something to look through rather
+              than read. The heading below doubles as the page's own. */}
+          {service.designs.length > 0 && (
             <section className="mt-8 sm:mt-10">
               <Reveal immediate>
                 <h1 className="type-heading text-[clamp(2rem,7vw,3rem)] leading-tight text-charcoal">
@@ -71,9 +70,9 @@ export function DecorationsPage() {
                 stagger={0.04}
                 className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4"
               >
-                {service.materials.map((material, i) => (
-                  <li key={material.id}>
-                    <MaterialCard material={material} index={i} layout="tile" />
+                {service.designs.map((design, i) => (
+                  <li key={design.id}>
+                    <DecorationCard design={design} index={i} />
                   </li>
                 ))}
               </Reveal>

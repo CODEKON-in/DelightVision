@@ -48,7 +48,7 @@ through components.
 All seven services, their categories, and the full content for each
 "View Service Details" modal (badge, subtitle, about text, highlights, tags,
 inclusions, availability notes). Also the three combo packages, and the
-flattened view of the **decorations showcase** described below.
+flattened view of the **decoration designs** described below.
 
 This file only reshapes what is in `content/*.json` into plain English
 strings with formatted prices. The content itself is edited in the CMA.
@@ -57,66 +57,63 @@ strings with formatted prices. The content itself is edited in the CMA.
 > `services[]` and `combos[]` — e.g. `"Starting ₹25,000"` — with real
 > pricing. Every price in the UI reads from these two arrays.
 
-### The decorations showcase
+### Decoration designs
 
-Decorations is the one service that shows its actual work on the page. It is
-driven by an optional `showcase` block hanging off the decoration service in
+The client sells **decoration designs**, not decoration products: they show
+a customer a design, adjust it lightly, then set it up at the event. Each
+design is an entry in a `designs` list on the decoration service in
 `content/services.json`:
 
 ```jsonc
-"showcase": {
-  "intro": { "en": "…" },
-  "types": [                      // the numbered menu: Wedding Stages, …
-    {
-      "id": "wedding-stages",
-      "name": { "en": "Wedding Stages" },
-      "description": { "en": "…" },
-      "image": "/images/…",       // optional; falls back to the first design
-      "items": [                  // the individual designs, may be empty
-        {
-          "id": "stage-and-mandap",
-          "name": { "en": "Stage & Mandap" },
-          "description": { "en": "…" },
-          "images": ["/images/…"], // first leads, the rest become thumbnails
-          "pricing": { … },        // optional — omitted means no price shown
-          "includes": [ … ],       // optional
-          "suitableFor": [ … ],    // optional
-          "tags": [ … ],           // optional
-          "style": { … },          // optional
-          "specifications": [ { "label": …, "value": … } ]  // optional
-        }
-      ]
-    }
-  ]
-}
+"designs": [
+  {
+    "id": "design-001",
+    "image": "/images/decorations/….jpg",   // required — the design IS its photo
+    "title": { "en": "Wedding Stage Decoration" },  // optional
+    "badge": { "en": "Popular" },           // optional
+    "pricing": [                             // one or more lines, in order
+      { "label": { "en": "Decoration Setup" },   "price": 15000 },
+      { "label": { "en": "Artificial Flowers" }, "price": 3000 },
+      { "label": { "en": "Natural Flowers" },    "price": 7000 }
+    ],
+    "description": { "en": "…" },           // optional
+    "customization": { "en": "…" },         // optional
+    "details": [                             // optional label/value lines
+      { "label": { "en": "Suitable for" }, "value": { "en": "Weddings, receptions" } }
+    ]
+  }
+]
 ```
 
-**Everything below `items[]` is optional and the detail view only renders
-what is there.** A design with no price shows no price rather than a
-placeholder; a type with no designs yet shows its description and an enquiry
-button rather than an empty panel.
+How it renders:
 
-The five decoration types come from the decoration service's own `includes`
-list. Of the ten designs under them, two — Stage & Mandap and Entrance Arch
-— carry the real text that used to live in the gallery; **the other eight
-are samples**, named and described to match their sample photograph so the
-page can be judged full rather than empty. None of them states a price,
-because the content does not carry one; the only real figure on the page is
-the service's own "Starting ₹25,000" at the top.
+- **The Decorations page** (`/decorations`) is a grid of the photographs. A
+  tile opens the design's detail dialog.
+- **Titles are optional.** A design without one is titled "Decoration
+  Design" in its dialog, and its WhatsApp enquiry names it by `id`, so the
+  client still knows exactly which design is meant.
+- **Pricing is a generic list.** The site never reads a label — "Decoration
+  Setup", "Natural Flowers", "Lighting" are all just text — so the CMA can
+  offer a plain *+ Add price → Label / Price* editor and any label works
+  without a code change. The **first line is the headline price**, shown
+  under the title as a fixed amount (no "Starting"). A design with **two or
+  more lines** also gets a Pricing box listing every line; a design with one
+  line shows only the headline price.
+- **There is no size-based (Small / Medium / Large) pricing.** A design has a
+  constant price; flower type is expressed as extra pricing lines. Colour
+  changes and minor adjustments do not change the price — say so in
+  `customization`, which appears as the last line of the Details box.
+- Empty optional fields simply do not render.
 
-It drives the whole `/decorations` page: one section per type, its designs
-underneath, everything on the page at once. There is nothing to open, filter
-or expand, so there is nothing to work out.
+**The nine designs in the content are samples** — placeholder photographs,
+titles and prices for development. Replace them with the client's real
+designs.
 
-It hangs off the service rather than living in its own file on purpose.
-`content/services.json` is already one of the five files the CMA reads,
-writes and publishes, so no new content file, publish entry or repository
-check was needed, and the CMA preserves the block untouched through an edit
-(it holds the whole service record in state and spreads it on save).
-
-**The CMA has no editor for it yet.** The client can publish the block but
-cannot change it from the app — adding a Decorations screen to the CMA is
-the follow-up that makes this content client-editable.
+**The CMA has no editor for `designs` yet.** It lives in
+`content/services.json`, one of the five files the CMA reads, writes and
+publishes, and the CMA's service editor preserves fields it does not know
+through an edit and save. Adding a designs editor to the CMA is the
+follow-up that makes this list client-editable.
 
 ### Images
 
@@ -158,18 +155,16 @@ src/
   data/copy.ts          buttons, headings and labels
   lib/motion.ts         the animation safety net (read before editing)
   lib/router.ts         the two-page router (40 lines, no dependency)
-  components/           Button, Card, SectionHeading, FilterTabs, Modal,
-                        MobileMenu, Reveal, Header, Footer, icons,
-                        AnimatedIcon, HeroOrnament, Flourish, Royal
-  sections/             Hero, Services, ServiceDetail, DecorationDetail,
-                        Combos, Contact
-  pages/                DecorationsPage
+  components/           Button, Card, SectionHeading, Modal, MobileMenu,
+                        Reveal, Header, Footer, icons, AnimatedIcon,
+                        HeroOrnament, Flourish, Royal, LevelDots,
+                        PlaceholderPhoto, FullImageView,
+                        DecorationCard, DecorationDetail
+  sections/             Hero, Services, ServiceDetail, Combos,
+                        ComboDetail, Contact
+  pages/                DecorationsPage, PackageDetailPage
   index.css             design system (colours, fonts, shadows)
 ```
-
-`FilterTabs` is currently unused — the services grid no longer filters, so
-all seven cards are simply shown. It is kept because it is a general-purpose
-component, not because anything renders it today.
 
 ### Routing
 
@@ -262,8 +257,7 @@ own width. Two consequences, both handled in `Hero.tsx`:
 Anywhere else Over There is used with a gradient fill will need the same
 padding.
 
-Beyond the families, text is set through **roles** — `type-display`,
-`type-heading`, `type-title`, `type-subheading`, `type-body`,
+Beyond the families, text is set through **roles** — `type-heading`, `type-title`, `type-subheading`, `type-body`,
 `type-body-small`, `type-label`, `type-nav`, `type-button`, `type-caption`,
 `type-price`, `type-brand-name`, `type-slogan`. A role sets family, weight, tracking and case,
 **never size or line height**: sizes stay on the element, where the fluid
@@ -303,14 +297,13 @@ to carry now sit inside the decoration they show, on the Decorations page,
 so a picture always says which service produced it.
 
 **One service card goes to a page instead of opening a dialog.** Services
-renders all seven cards identically, but a service carrying a `showcase`
-block navigates to `/decorations` rather than opening `ServiceDetail`. That
+renders all seven cards identically, but a service with a `designs` list
+navigates to `/decorations` rather than opening `ServiceDetail`. That
 is a data check, not a hardcoded id, so the second service to get a page of
 its own needs no change here.
 
 **There are no filter pills above the grid.** They were removed at the
-client's request — seven cards do not need filtering. `FilterTabs` still
-exists if they are ever wanted back.
+client's request — seven cards do not need filtering.
 
 **Two headings are gradient-filled**: the hero (`.shimmer-text`, a slow
 looping sweep) and every section title (`.title-sheen`, one pass as it
@@ -333,10 +326,8 @@ rather than looping, so it costs nothing while the page is still.
 
 **Layout on phones is two columns** for the services grid, which is
 `grid-cols-2` from the smallest screen up. The button reads "View Details"
-on phones and "View Service Details" from `xs` up. Decoration designs on the
-Decorations page are the exception: one column on the narrowest phones and
-two from `xs` (400px), because a decoration photograph two-up on a 320px
-screen is too small to be worth showing.
+on phones and "View Service Details" from `xs` up. The Decorations page grid
+is two photographs across on phones, three from `sm` and four from `lg`.
 
 **Service cards line up without fixed heights.** Each leads with its photo,
 then a `line-clamp-2` heading with a small min-height (so descriptions start
@@ -460,7 +451,7 @@ of styles and then jumps at once. Two things smooth that out:
   continuously with the viewport instead of snapping at a breakpoint.
 
 Column counts: services go 2 → 3 at `sm` (640); decoration designs go
-1 → 2 at `xs` (400) → 3 at `lg`; packages go 1 → 2 at `sm` → 3 at `lg`. The inline header nav waits
+2 → 3 at `sm` → 4 at `lg`; packages go 1 → 2 at `sm` → 3 at `lg`. The inline header nav waits
 until `lg` — at 768px the four links plus the brand and call button
 squeezed the business name into an ellipsis, and a tablet is perfectly
 happy with the menu button.
