@@ -22,7 +22,8 @@ function AnimatedLabel({
 
   useLayoutEffect(() => {
     const el = ref.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
 
     let settle = 0;
     const ctx = gsap.context(() => {
@@ -37,7 +38,7 @@ function AnimatedLabel({
           ease: "power2.out",
           stagger: splitLetters ? 0.035 : 0,
           delay: 0.15,
-        }
+        },
       );
       settle = window.setTimeout(() => {
         if (tween.progress() === 0) tween.progress(1);
@@ -117,11 +118,6 @@ export function Hero() {
           <Rosette className="size-12 sm:size-14" />
         </div>
 
-        <AnimatedLabel
-          text={ui.heroEyebrow}
-          className="label-gold mt-4 text-gold-soft sm:mt-5"
-        />
-
         {/* The brand name in Over There, the logo's own face, and the
             slogan below it in Warpen — the two brand moments on the page.
 
@@ -150,10 +146,11 @@ export function Hero() {
         <h1 className="shimmer-text type-brand-name mx-[-0.75em] mt-[calc(0.75rem-0.5em)] mb-[-0.5em] px-[0.75em] py-[0.5em] text-[clamp(1.375rem,7.25vw,2.5rem)] leading-[1.2] [word-spacing:0.8em] sm:mt-[calc(1rem-0.5em)] sm:text-[clamp(2.25rem,6vw,2.875rem)] sm:whitespace-nowrap">
           {business.name}
         </h1>
-
-        <p className="mt-4 type-slogan text-[clamp(1.35rem,5.5vw,1.875rem)] leading-snug text-gold-soft sm:mt-5">
-          {business.tagline}
-        </p>
+        <div className="flex justify-end">
+          <p className="mt-4 type-slogan text-[clamp(1.35rem,5.5vw,1.875rem)] leading-snug text-gold-soft sm:mt-5 justify-end">
+            {business.tagline}
+          </p>
+        </div>
 
         {/* Call is the single most prominent element on the page */}
         <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4">
@@ -190,7 +187,6 @@ export function Hero() {
             {business.phoneDisplay}
           </a>
         </div>
-
       </Reveal>
     </section>
   );

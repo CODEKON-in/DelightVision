@@ -2,7 +2,6 @@ import { AnimatedIcon } from "./AnimatedIcon";
 import { Flourish } from "./Flourish";
 import { Reveal } from "./Reveal";
 import { ClockIcon, LocationIcon, PhoneIcon, WhatsAppIcon } from "./icons";
-import logo from "../assets/logo-white.png";
 import { ui } from "../data/copy";
 import { business, telHref, whatsappHrefFor } from "../data/site";
 
@@ -18,16 +17,29 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-charcoal">
       {/* Hairline that separates the footer from the section above */}
-      <div
-        className="gold-rule h-px w-full"
-        aria-hidden="true"
-      />
+      <div className="gold-rule h-px w-full" aria-hidden="true" />
 
       <div className="mx-auto max-w-6xl px-5 pt-14 pb-10 lg:px-8">
         {/* Brand */}
         <Reveal className="flex flex-col items-center text-center">
-          <img src={logo} alt={business.name} className="h-16 w-auto sm:h-20" />
-          <p className="mt-4 type-slogan text-xl text-gold-soft">{business.tagline}</p>
+          {/* The name and the tagline share one box as wide as the name, and
+              the tagline sits at its end, so "Wedding Planner" finishes
+              exactly where "Vision" does. The name's padding and matching
+              negative margins (room for the glyphs' overhang) cancel out,
+              so the box edge is the edge of the lettering itself.
+
+              That only works on one line, so the name never wraps. On a
+              phone it is sized to the screen instead: the name is about
+              15.1em wide, so dividing the width inside the page gutters by
+              15.5 keeps it on one line down to a 320px screen. */}
+          <div className="flex flex-col items-end">
+            <h1 className="shimmer-text type-brand-name mx-[-0.75em] mt-[calc(0.75rem-0.5em)] mb-[-0.5em] px-[0.75em] py-[0.5em] text-[clamp(1rem,calc((100vw_-_3rem)/15.5),2.5rem)] leading-[1.2] whitespace-nowrap [word-spacing:0.8em] sm:mt-[calc(1rem-0.5em)] sm:text-[clamp(2.25rem,6vw,2.875rem)]">
+              {business.name}
+            </h1>
+            <p className="mt-4 type-slogan text-xl text-gold-soft">
+              {business.tagline}
+            </p>
+          </div>
           <Flourish className="mt-5" />
         </Reveal>
 
@@ -105,7 +117,8 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 border-t border-dark-line pt-6">
           <p className="text-center text-base text-muted-soft">
-            &copy; {new Date().getFullYear()} {business.name}. {ui.rightsReserved}
+            &copy; {new Date().getFullYear()} {business.name}.{" "}
+            {ui.rightsReserved}
           </p>
         </div>
       </div>
