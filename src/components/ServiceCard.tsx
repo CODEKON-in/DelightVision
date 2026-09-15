@@ -6,15 +6,16 @@ import { PlaceholderPhoto } from "./PlaceholderPhoto";
 import { iconFor } from "./serviceIcons";
 import { ui } from "../data/copy";
 import type { Service } from "../data/services";
-import { DECORATIONS_PATH, navigate } from "../lib/router";
 
 type Props = {
   service: Service;
   /* Position in its grid — picks the fallback tile palette if the photo
      is missing. */
   index: number;
-  /* Opens the service's details dialog. Not called for a service that has
-     a page of its own — see below. */
+  /* What "View Service Details" does. Left to the page, because the
+     decoration service's card means different things in different places:
+     the whole Decorations catalogue from the Services section, the one
+     design a package includes from a package page. */
   onOpen: (service: Service) => void;
 };
 
@@ -23,22 +24,9 @@ type Props = {
    and a package's "Services in this package" grid, so a service looks the
    same wherever a visitor meets it.
 
-   A service with a gallery of designs — today that is Decorations — has a
-   page of its own, so its button goes there instead of opening the dialog.
-   That rule lives here rather than in each page, so the card behaves the
-   same in the Services section and inside a package.
-
    Render it inside an `h-full` grid item — the card fills that height so a
    row of cards lines up. */
 export function ServiceCard({ service, index, onOpen }: Props) {
-  const open = () => {
-    if (service.designs.length > 0) {
-      navigate(DECORATIONS_PATH);
-      return;
-    }
-    onOpen(service);
-  };
-
   return (
     <Card flush className="flex h-full flex-col">
       <div className="relative">
@@ -84,7 +72,7 @@ export function ServiceCard({ service, index, onOpen }: Props) {
             size="md"
             fullWidth
             className="mt-3 sm:mt-4"
-            onClick={open}
+            onClick={() => onOpen(service)}
           >
             <span className="xs:hidden">{ui.viewDetailsShort}</span>
             <span className="hidden xs:inline">{ui.viewDetailsLong}</span>

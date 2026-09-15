@@ -6,7 +6,7 @@ import { CheckIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
 import { business, telHref, whatsappHrefFor } from "../data/site";
 import { combos, serviceById, type Service } from "../data/services";
-import { HOME_PATH, navigate, packagePathFor } from "../lib/router";
+import { HOME_PATH, navigate, packageDecorationsPathFor, packagePathFor } from "../lib/router";
 import { ComboDetail } from "../sections/ComboDetail";
 import { ServiceDetail } from "../sections/ServiceDetail";
 
@@ -61,6 +61,23 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
      no tiers at all. */
   const tierServices = tier?.includes ?? combo?.includes ?? [];
   const tierExtras = tier?.extras ?? [];
+
+  /* The decoration designs this package offers — the selected tier's, or
+     the combo's own when it has no tiers. Resolved from the shared
+     decoration designs in src/data/services.ts. */
+  const packageDecorations = tier ? tier.decorations : (combo?.decorations ?? []);
+
+  /* The Decoration card opens this package's own Decorations page — the
+     same page as the catalogue, showing only the designs this tier offers.
+     With no designs to show it falls back to the service's own details,
+     like every other card. */
+  const openCard = (service: Service) => {
+    if (combo && service.designs.length > 0 && packageDecorations.length > 0) {
+      navigate(packageDecorationsPathFor(combo.id, tier?.name));
+      return;
+    }
+    setOpenService(service);
+  };
 
   if (!combo) {
     return (
@@ -178,7 +195,7 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
               >
                 {tierServices.map((id, i) => (
                   <li key={id} className="h-full">
-                    <ServiceCard service={serviceById[id]} index={i} onOpen={setOpenService} />
+                    <ServiceCard service={serviceById[id]} index={i} onOpen={openCard} />
                   </li>
                 ))}
               </Reveal>

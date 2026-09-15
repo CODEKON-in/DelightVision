@@ -38,18 +38,26 @@ function Pricing({ design }: { design: DecorationDesign }) {
   );
 }
 
-function DetailBody({ design, index }: { design: DecorationDesign; index: number }) {
+function DetailBody({
+  design,
+  index,
+  context,
+}: {
+  design: DecorationDesign;
+  index: number;
+  context?: DecorationContext;
+}) {
   const [fullImageOpen, setFullImageOpen] = useState(false);
   const title = design.title || ui.decorationDesignTitle;
 
   /* The enquiry names the design by its reference, so it arrives saying
-     exactly which one it is about even when the design has no title. */
+     exactly which one it is about even when the design has no title — and,
+     opened from a package, which package it came with. */
+  const designRef = design.title
+    ? `the decoration design "${design.title}" (ref: ${design.id})`
+    : `a decoration design (ref: ${design.id})`;
   const enquiryHref = whatsappHrefFor(
-    enquiryMessageFor(
-      design.title
-        ? `the decoration design "${design.title}" (ref: ${design.id})`
-        : `a decoration design (ref: ${design.id})`
-    )
+    enquiryMessageFor(context ? `${designRef}, included in the ${context.packageName}` : designRef)
   );
 
   /* Customisation is shown as one more line of the design's details rather
@@ -101,6 +109,13 @@ function DetailBody({ design, index }: { design: DecorationDesign; index: number
 
       <div className="flex flex-col gap-6 p-6 sm:p-8">
         <div>
+          {/* Opened from a package: which package this design comes with,
+              as the same small gold label the dialog's sections use. */}
+          {context && (
+            <p className="label-gold mb-2 text-gold-deep">
+              {ui.includedInPackage} {context.packageName}
+            </p>
+          )}
           <h2
             id={`decoration-title-${design.id}`}
             className="type-heading text-4xl leading-tight text-charcoal sm:text-5xl"
@@ -164,16 +179,25 @@ function DetailBody({ design, index }: { design: DecorationDesign; index: number
   );
 }
 
+/* Where the design was opened from, when that is a package rather than the
+   Decorations catalogue. */
+export type DecorationContext = {
+  /* e.g. "Silver Complete Wedding Combo" */
+  packageName: string;
+};
+
 type Props = {
   design: DecorationDesign | null;
   /* Picks the fallback tile palette if the photo is missing or fails */
   index: number;
+  context?: DecorationContext;
   onClose: () => void;
 };
 
 /* One decoration design, opened up: the photograph large, its price and
-   price lines, description and details. */
-export function DecorationDetail({ design, index, onClose }: Props) {
+   price lines, description and details. The same dialog whether it was
+   opened from the Decorations catalogue or from a package. */
+export function DecorationDetail({ design, index, context, onClose }: Props) {
   /* Hold the last design on screen while the modal animates closed,
      instead of blanking instantly. Derived during render, so no extra
      paint. */
@@ -187,7 +211,7 @@ export function DecorationDetail({ design, index, onClose }: Props) {
       labelledBy={shown ? `decoration-title-${shown.id}` : "decoration-title"}
       closeLabel={ui.closeDecorationDetails}
     >
-      {shown && <DetailBody design={shown} index={index} />}
+      {shown && <DetailBody design={shown} index={index} context={context} />}
     </Modal>
   );
 }

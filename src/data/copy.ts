@@ -35,6 +35,7 @@ export const ui = {
   /* -- Decorations page ---------------------------------------------- */
   decorationsTitle: "Decorations",
   backToServices: "Back to Services",
+  backToPackage: "Back to Package",
   fullServiceDetails: "Full service details",
   decorationsFootnoteTitle: "Before you call",
   noDecorationsYet: "The decorations are being updated. Please call us and we will talk you through them.",
@@ -46,6 +47,8 @@ export const ui = {
   viewFullImage: "View full image",
   closeFullImage: "Close full image",
   closeDecorationDetails: "Close decoration details",
+  /* Above a design opened from a package, followed by the package's name */
+  includedInPackage: "Included in the",
 
   /* -- Detail modals ----------------------------------------------- */
   aboutThisService: "About This Service",

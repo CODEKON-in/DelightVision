@@ -110,6 +110,12 @@ export type ComboPriceTier = {
      main service catalog — e.g. "Tour Photography" (a pre-wedding couple
      shoot) added only at the higher tiers of a particular combo. */
   extras?: LocalizedText[];
+  /* The decoration designs this tier offers — `id`s of the decoration
+     service's `designs`, in display order, never copies of them, so each
+     design's photo, pricing and details stay in one place. Only meaningful
+     when the tier includes the decoration service. Falls back to the
+     combo's own `decorationIds` when a tier doesn't name any. */
+  decorationIds?: string[];
 };
 
 export type Combo = {
@@ -132,6 +138,9 @@ export type Combo = {
      detail dialog. A combo with none just shows its plain `pricing` rate
      as before. */
   priceTiers?: ComboPriceTier[];
+  /* The decoration designs the combo offers, for a combo without tiers or
+     as the default for tiers that don't name their own. */
+  decorationIds?: string[];
 };
 
 export function getLocalizedText(value: LocalizedText | undefined, language: Language = "en"): string {

@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ui } from "./data/copy";
@@ -83,6 +84,22 @@ export default function App() {
     return () => document.removeEventListener("click", onClick);
   }, [onHome]);
 
+  /* The header and footer stay mounted from page to page, and so do their
+     scroll-triggered reveals — which keep the positions they measured on
+     the page before. Arriving on the short Decorations page from the long
+     main page left the footer waiting for a scroll position that no longer
+     exists, so its logo and links never appeared. Re-measure once the new
+     page has rendered; its own reveals were created in their layout effects
+     just before this one. Keyed on the path, not the route, because
+     switching a package's tier changes the page's height too.
+
+     Declared before the scroll below on purpose: a refresh puts back the
+     scroll position it last recorded, so run after it, it would undo the
+     jump to "#services". */
+  useLayoutEffect(() => {
+    ScrollTrigger.refresh();
+  }, [path]);
+
   /* Scrolling to the new page's starting point belongs here rather than in
      `navigate`, because the thing being scrolled to only exists once React
      has rendered the page. An effect runs after that commit; a rAF callback
@@ -103,7 +120,8 @@ export default function App() {
       return;
     }
     const combo = comboId ? combos.find((c) => c.id === comboId) : undefined;
-    document.title = combo ? `${combo.name} — ${ui.pageTitle}` : ui.pageTitle;
+    const name = combo && route === "package-decorations" ? `${ui.decorationsTitle} — ${combo.name}` : combo?.name;
+    document.title = name ? `${name} — ${ui.pageTitle}` : ui.pageTitle;
   }, [onHome, route, comboId]);
 
   return (
@@ -122,6 +140,11 @@ export default function App() {
           <Home />
         ) : route === "decorations" ? (
           <DecorationsPage />
+        ) : route === "package-decorations" ? (
+          /* Keyed on the path so moving from one tier's designs to
+             another's starts the page afresh — reveals play again and no
+             dialog carries over. */
+          <DecorationsPage key={path} comboId={comboId} tierName={tierName} />
         ) : (
           <PackageDetailPage comboId={comboId} tierName={tierName} />
         )}

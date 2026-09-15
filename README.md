@@ -109,6 +109,63 @@ How it renders:
 titles and prices for development. Replace them with the client's real
 designs.
 
+### Package decorations
+
+A combo package that includes decoration offers **its own set of designs**,
+not the whole catalogue, and each Bronze/Silver/Gold tier has a different
+set. A tier lists its designs by `id` — the designs themselves stay in
+`designs` on the decoration service, so their photos, pricing and details
+are never copied into a package:
+
+```jsonc
+// content/packages.json → a combo's priceTiers
+{
+  "name": { "en": "Silver" },
+  "decorationIds": ["design-001", "design-003", "design-009"],  // shown in this order
+  "services": ["decoration", "food", "photography"]            // unchanged: plain ids
+}
+```
+
+- **On a package page** the Decoration card opens that tier's own
+  Decorations page at `/packages/<combo>/<tier>/decorations` (or
+  `/packages/<combo>/decorations` for a combo without tiers). It is the same
+  `DecorationsPage` as the catalogue — same grid, cards and dialog — showing
+  only the tier's designs, labelled "Included in the Silver Complete Wedding
+  Combo", with "Back to Package". The dialogs carry the same label and their
+  WhatsApp enquiry names the package.
+- **From the Services section** the Decoration card still opens the full
+  catalogue at `/decorations`.
+- **A tier without `decorationIds` uses the combo's own** `decorationIds`,
+  if it has any — which is also where a combo with no tiers puts them.
+- **A new package or tier needs no code**: add it and give it
+  `decorationIds`.
+- **A wrong reference does not break the page.** An id that matches no
+  design is left out of the grid; if none are left, the Decoration card
+  falls back to the service's normal details dialog. The dev server logs a
+  `[packages]` warning naming the package, tier and id — also for a tier
+  that includes decoration but lists no designs, and for `decorationIds` on
+  a tier that does not include decoration.
+
+Current sample sets (all different within a combo):
+
+| Combo | Bronze | Silver | Gold |
+|---|---|---|---|
+| Complete Wedding | 007, 005, 008 | 001, 003, 009 | 002, 006, 004 |
+| Decor & Catering | 003, 005, 007 | 001, 004, 008 | 002, 006, 009 |
+
+Photo & Video has no decoration. Designs may be shared between packages.
+
+**The client picks the designs in the CMA.** The package editor has a
+**Decoration Designs** section with a tick-list of the designs from
+`services.json` for each Bronze/Silver/Gold option that includes decoration
+(or one list for a package without options). It stores only
+`decorationIds`, in the order they were ticked; **Clear** removes the key.
+The section is hidden when the package does not include decoration, and a
+saved id that matches no design stays ticked as "Unavailable design" with a
+warning rather than being silently dropped. Unticking Decoration drops any
+references left behind on save. Everything else in the package — including
+the `services` id lists — is saved exactly as loaded.
+
 **The CMA has no editor for `designs` yet.** It lives in
 `content/services.json`, one of the five files the CMA reads, writes and
 publishes, and the CMA's service editor preserves fields it does not know
@@ -162,7 +219,7 @@ src/
                         DecorationCard, DecorationDetail
   sections/             Hero, Services, ServiceDetail, Combos,
                         ComboDetail, Contact
-  pages/                DecorationsPage, PackageDetailPage
+  pages/                DecorationsPage (catalogue + per-package), PackageDetailPage
   index.css             design system (colours, fonts, shadows)
 ```
 
@@ -296,11 +353,12 @@ both were removed at the client's request. The photographs the gallery used
 to carry now sit inside the decoration they show, on the Decorations page,
 so a picture always says which service produced it.
 
-**One service card goes to a page instead of opening a dialog.** Services
-renders all seven cards identically, but a service with a `designs` list
-navigates to `/decorations` rather than opening `ServiceDetail`. That
-is a data check, not a hardcoded id, so the second service to get a page of
-its own needs no change here.
+**One service card goes somewhere else.** `ServiceCard` looks the same
+everywhere and only calls `onOpen`; the page decides what that means. In the
+Services section a service with a `designs` list navigates to
+`/decorations` rather than opening `ServiceDetail`; on a package page it
+opens that tier's own Decorations page (see *Package decorations*). Both are data
+checks, not hardcoded ids.
 
 **There are no filter pills above the grid.** They were removed at the
 client's request — seven cards do not need filtering.

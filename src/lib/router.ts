@@ -2,8 +2,9 @@ import { useSyncExternalStore } from "react";
 
 /* The whole router.
 
-   The site is two pages — the main page and Decorations — so it does not
-   need a routing library. Paths are real paths rather than hashes, because
+   The site is a handful of pages — the main page, Decorations, each package,
+   and each package's own decorations — so it does not need a routing
+   library. Paths are real paths rather than hashes, because
    the header, footer and menu already use `#services`-style hashes to jump
    around the main page, and folding both meanings into one `#` would make
    each harder to reason about. `netlify.toml` already serves index.html for
@@ -17,8 +18,11 @@ export const DECORATIONS_PATH = "/decorations";
    here instead of opening a popup, so each package gets a real,
    bookmarkable page listing its Bronze/Silver/Gold tiers. */
 export const PACKAGES_PATH_PREFIX = "/packages/";
+/* Last segment of a package's own decorations page, e.g.
+   "/packages/complete/Silver/decorations". */
+const DECORATIONS_SEGMENT = "decorations";
 
-export type RouteName = "home" | "decorations" | "package";
+export type RouteName = "home" | "decorations" | "package" | "package-decorations";
 
 const listeners = new Set<() => void>();
 
@@ -72,33 +76,41 @@ export function packagePathFor(comboId: string, tierName?: string): string {
   return tierName ? `${base}/${encodeURIComponent(tierName)}` : base;
 }
 
-function packagePathRest(path: string): string | null {
-  return path.startsWith(PACKAGES_PATH_PREFIX) && path.length > PACKAGES_PATH_PREFIX.length
-    ? path.slice(PACKAGES_PATH_PREFIX.length)
-    : null;
+/* The decoration designs a package tier offers, on a page of their own —
+   "/packages/complete/Silver/decorations", or "/packages/<id>/decorations"
+   for a combo without tiers. */
+export function packageDecorationsPathFor(comboId: string, tierName?: string): string {
+  return `${packagePathFor(comboId, tierName)}/${DECORATIONS_SEGMENT}`;
+}
+
+/* The segments after "/packages/": [comboId], [comboId, tier],
+   [comboId, "decorations"] or [comboId, tier, "decorations"]. */
+function packageSegments(path: string): string[] | null {
+  if (!path.startsWith(PACKAGES_PATH_PREFIX) || path.length <= PACKAGES_PATH_PREFIX.length) return null;
+  return path.slice(PACKAGES_PATH_PREFIX.length).split("/");
+}
+
+function isPackageDecorationsPath(segments: string[]): boolean {
+  return segments.length >= 2 && segments.length <= 3 && segments[segments.length - 1] === DECORATIONS_SEGMENT;
 }
 
 export function comboIdFromPath(path: string): string | null {
-  const rest = packagePathRest(path);
-  if (rest === null) return null;
-  const slash = rest.indexOf("/");
-  return slash === -1 ? rest : rest.slice(0, slash);
+  return packageSegments(path)?.[0] || null;
 }
 
 /* null when the path doesn't name a tier — the page then falls back to the
    combo's first tier, exactly as it did before tiers were addressable. */
 export function tierNameFromPath(path: string): string | null {
-  const rest = packagePathRest(path);
-  if (rest === null) return null;
-  const slash = rest.indexOf("/");
-  if (slash === -1) return null;
-  const tier = rest.slice(slash + 1);
-  return tier ? decodeURIComponent(tier) : null;
+  const segments = packageSegments(path);
+  if (!segments || segments.length < 2) return null;
+  if (segments.length === 2 && isPackageDecorationsPath(segments)) return null;
+  return segments[1] ? decodeURIComponent(segments[1]) : null;
 }
 
 export function routeName(path: string): RouteName {
   if (path === DECORATIONS_PATH) return "decorations";
-  if (comboIdFromPath(path)) return "package";
+  const segments = packageSegments(path);
+  if (segments?.[0]) return isPackageDecorationsPath(segments) ? "package-decorations" : "package";
   return "home";
 }
 

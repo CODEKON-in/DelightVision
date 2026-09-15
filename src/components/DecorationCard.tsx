@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DecorationDetail } from "./DecorationDetail";
+import { DecorationDetail, type DecorationContext } from "./DecorationDetail";
 import { PlaceholderPhoto } from "./PlaceholderPhoto";
 import { ui } from "../data/copy";
 import type { DecorationDesign } from "../data/services";
@@ -9,13 +9,15 @@ type Props = {
   /* Position in the grid — picks the fallback tile palette if the photo is
      missing, and names an untitled design for screen readers. */
   index: number;
+  /* Set when the grid is one package's designs — the dialog then says so. */
+  context?: DecorationContext;
 };
 
 /* One decoration design in the Decorations grid: the photograph alone, with
    its badge. The whole tile is the button that opens the design's detail
    dialog, where its price, description and details live — the page is for
    browsing by eye. */
-export function DecorationCard({ design, index }: Props) {
+export function DecorationCard({ design, index, context }: Props) {
   const [detailOpen, setDetailOpen] = useState(false);
   const label = design.title || `${ui.decorationDesignTitle} ${index + 1}`;
 
@@ -44,6 +46,7 @@ export function DecorationCard({ design, index }: Props) {
       <DecorationDetail
         design={detailOpen ? design : null}
         index={index}
+        context={context}
         onClose={() => setDetailOpen(false)}
       />
     </>

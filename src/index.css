@@ -264,9 +264,6 @@
   @apply type-label text-base;
 }
 
-/* An opened decoration type settles in rather than snapping. Opacity and
-   transform only, so it costs nothing to composite, and the panel is in the
-   DOM either way — if the animation never runs the designs are still there. */
 /* Seven services divide badly into a grid: two columns leave the last card
    alone on its own row, three columns strand it hard left with two empty
    cells beside it. When the final card is the only one on its row, it spans

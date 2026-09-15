@@ -87,6 +87,11 @@ export type ComboPriceTier = {
      something combo-specific that isn't in the site's main service
      catalog, e.g. "Tour Photography". */
   extras: string[];
+  /* The decoration designs this tier offers, looked up from the decoration
+     service's designs by the content's `decorationIds`, in that order. Empty
+     when the tier includes no decoration or names no design that exists —
+     its Decoration card then opens the service's own details instead. */
+  decorations: DecorationDesign[];
 };
 
 export type Combo = {
@@ -106,6 +111,8 @@ export type Combo = {
     conditions: string;
   };
   priceTiers: ComboPriceTier[];
+  /* As on a tier — used by a combo that has no tiers. */
+  decorations: DecorationDesign[];
 };
 
 const normalizeHighlights = (items: ContentHighlight[] = []): Highlight[] =>
@@ -162,19 +169,61 @@ const normalizeDesigns = (items: ContentDecorationDesign[] = []): DecorationDesi
        show in the grid. */
     .filter((design) => design.image !== "");
 
+/* A package points at its decoration designs by id; this turns the ids back
+   into the designs themselves. A reference that cannot be followed is left
+   out so the page still renders, and says why in development so a typo in
+   the content is not silently swallowed. */
+const warnInDev = (message: string) => {
+  if (import.meta.env.DEV) console.warn(`[packages] ${message}`);
+};
+
+const resolveDecorations = (
+  decorationIds: string[] | undefined,
+  includes: ServiceId[],
+  owner: string
+): DecorationDesign[] => {
+  const ids = decorationIds ?? [];
+  const includesDesigns = includes.some((id) => (serviceById[id]?.designs.length ?? 0) > 0);
+
+  if (!includesDesigns) {
+    if (ids.length > 0) warnInDev(`${owner} names decoration designs (${ids.join(", ")}) but does not include the decoration service, so they are not shown.`);
+    return [];
+  }
+
+  const designs = ids.flatMap((id) => {
+    const design = decorationDesignById[id];
+    if (!design) warnInDev(`${owner} names decoration design "${id}", which is not among the decoration designs in content/services.json (or has no image), so it is left out.`);
+    return design ? [design] : [];
+  });
+
+  if (designs.length === 0) {
+    warnInDev(`${owner} includes decoration but has no decoration designs to show (decorationIds); its Decoration card opens the service details instead.`);
+  }
+  return designs;
+};
+
 const normalizeComboPriceTiers = (
   items: ContentComboPriceTier[] = [],
-  fallbackServices: ServiceId[] = []
+  combo: ContentPackage
 ): ComboPriceTier[] =>
   items
-    .map((item) => ({
-      name: getLocalizedText(item.name, "en"),
-      blurb: getLocalizedText(item.blurb, "en"),
-      price: getLocalizedText(item.price, "en"),
-      about: getLocalizedText(item.about, "en"),
-      includes: (item.services as ServiceId[] | undefined) ?? fallbackServices,
-      extras: (item.extras ?? []).map((extra) => getLocalizedText(extra, "en")).filter(Boolean),
-    }))
+    .map((item) => {
+      const name = getLocalizedText(item.name, "en");
+      const includes = (item.services as ServiceId[] | undefined) ?? (combo.services as ServiceId[]);
+      return {
+        name,
+        blurb: getLocalizedText(item.blurb, "en"),
+        price: getLocalizedText(item.price, "en"),
+        about: getLocalizedText(item.about, "en"),
+        includes,
+        extras: (item.extras ?? []).map((extra) => getLocalizedText(extra, "en")).filter(Boolean),
+        decorations: resolveDecorations(
+          item.decorationIds ?? combo.decorationIds,
+          includes,
+          `Package "${combo.id}", tier "${name}",`
+        ),
+      };
+    })
     .filter((tier) => tier.name !== "" && tier.price !== "");
 
 export const categories = categoryCatalog.map(normalizeCategory);
@@ -203,22 +252,39 @@ export const serviceById = Object.fromEntries(
   services.map((service) => [service.id, service])
 ) as Record<ServiceId, Service>;
 
-export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => ({
-  id: combo.id,
-  name: getLocalizedText(combo.name, "en"),
-  blurb: getLocalizedText(combo.blurb, "en"),
-  includes: combo.services as ServiceId[],
-  price: formatPrice(combo.pricing, "en"),
-  popular: combo.popular,
-  image: combo.image,
-  detail: {
-    badge: getLocalizedText(combo.detail.badge, "en"),
-    subtitle: getLocalizedText(combo.detail.subtitle, "en"),
-    about: getLocalizedText(combo.detail.about, "en"),
-    highlights: normalizeHighlights(combo.detail.highlights),
-    notice: getLocalizedText(combo.detail.notice, "en"),
-    conditions: getLocalizedText(combo.detail.conditions, "en"),
-  },
-  priceTiers: normalizeComboPriceTiers(combo.priceTiers, combo.services as ServiceId[]),
-}));
+/* Every decoration design, in catalogue order — the one source packages
+   look their designs up in. */
+const decorationDesigns: DecorationDesign[] = services.flatMap((service) => service.designs);
 
+const decorationDesignById: Record<string, DecorationDesign> = Object.fromEntries(
+  decorationDesigns.map((design) => [design.id, design])
+);
+
+export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => {
+  const priceTiers = normalizeComboPriceTiers(combo.priceTiers, combo);
+
+  return {
+    id: combo.id,
+    name: getLocalizedText(combo.name, "en"),
+    blurb: getLocalizedText(combo.blurb, "en"),
+    includes: combo.services as ServiceId[],
+    price: formatPrice(combo.pricing, "en"),
+    popular: combo.popular,
+    image: combo.image,
+    detail: {
+      badge: getLocalizedText(combo.detail.badge, "en"),
+      subtitle: getLocalizedText(combo.detail.subtitle, "en"),
+      about: getLocalizedText(combo.detail.about, "en"),
+      highlights: normalizeHighlights(combo.detail.highlights),
+      notice: getLocalizedText(combo.detail.notice, "en"),
+      conditions: getLocalizedText(combo.detail.conditions, "en"),
+    },
+    priceTiers,
+    /* A combo with tiers resolves its design per tier; this is only for one
+       without, so a reference is not checked (and warned about) twice. */
+    decorations:
+      priceTiers.length > 0
+        ? []
+        : resolveDecorations(combo.decorationIds, combo.services as ServiceId[], `Package "${combo.id}"`),
+  };
+});
