@@ -264,15 +264,16 @@
   @apply type-label text-base;
 }
 
-/* Seven services divide badly into a grid: two columns leave the last card
-   alone on its own row, three columns strand it hard left with two empty
-   cells beside it. When the final card is the only one on its row, it spans
-   the row and centres itself at one column's width, so the block still
-   reads as a grid rather than as something that ran out.
+/* An odd number of cards divides badly into a grid: two columns leave the
+   last card alone on its own row, three columns can strand it hard left with
+   two empty cells beside it. When the final card is the only one on its row,
+   it spans the row and centres itself at one column's width, so the block
+   still reads as a grid rather than as something that ran out. Used by the
+   Services grid and a package's "Services in this package" grid.
 
    Written here rather than as arbitrary variants on the element because the
-   two breakpoints' rules overlap — with seven cards the last child is both
-   :nth-child(odd) and :nth-child(3n+1) — and cascade order has to be
+   two breakpoints' rules can overlap — seven cards, say, make the last child
+   both :nth-child(odd) and :nth-child(3n+1) — and cascade order has to be
    certain. The narrow rule comes first; the sm rule overrides it. */
 .dv-orphan-grid > li:last-child:nth-child(odd) {
   grid-column: span 2 / span 2;

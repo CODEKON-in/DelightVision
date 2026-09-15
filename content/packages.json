@@ -9,7 +9,7 @@
       "en": "Everything for your wedding, handled by one team.",
       "ta": ""
     },
-    "services": ["decoration", "food", "photography", "videography", "album", "video-editing"],
+    "services": ["decoration", "food", "photography-videography"],
     "pricing": {
       "type": "starting",
       "amount": 85000,
@@ -20,15 +20,15 @@
     "image": "/images/packages/complete.jpg",
     "detail": {
       "badge": { "en": "Most Popular", "ta": "" },
-      "subtitle": { "en": "Six services, one team, one number to call.", "ta": "" },
+      "subtitle": { "en": "Every service, one team, one number to call.", "ta": "" },
       "about": { "en": "This is the package most families take, because it removes the job of coordinating separate vendors. Decoration, catering, photography, video, the printed album and the edit all run off one plan and one schedule, so the caterer knows when the ceremony will overrun and the photographer knows when the food is being served. You deal with one person throughout, and there is nobody left to chase on the day.", "ta": "" },
       "highlights": [
-        { "label": { "en": "Services Included", "ta": "" }, "value": { "en": "All six, one schedule", "ta": "" }, "level": 5 },
+        { "label": { "en": "Services Included", "ta": "" }, "value": { "en": "All three, one schedule", "ta": "" }, "level": 5 },
         { "label": { "en": "Team On The Day", "ta": "" }, "value": { "en": "One coordinator, one contact", "ta": "" }, "level": 5 },
         { "label": { "en": "Booking Notice", "ta": "" }, "value": { "en": "6 weeks in advance", "ta": "" }, "level": 3 }
       ],
       "notice": { "en": "Booking notice: 6 weeks in advance", "ta": "" },
-      "conditions": { "en": "Photo editing can be added; any service can be swapped out on a call", "ta": "" }
+      "conditions": { "en": "Any service can be swapped out on a call", "ta": "" }
     },
     "priceTiers": [
       {
@@ -37,7 +37,7 @@
         "price": { "en": "₹85,000", "ta": "" },
         "about": { "en": "The essential four — your venue decorated, your guests fed, and the ceremony photographed and filmed, all run off one coordinated schedule. The printed album and video edit aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
         "decorationIds": ["design-007", "design-005", "design-008"],
-        "services": ["decoration", "food", "photography", "videography"]
+        "services": ["decoration", "food", "photography-videography"]
       },
       {
         "name": { "en": "Silver", "ta": "" },
@@ -45,7 +45,7 @@
         "price": { "en": "₹1,15,000", "ta": "" },
         "about": { "en": "Builds on the Bronze essentials by adding a professionally designed and printed photo album, so the day is kept in print as well as on screen — still all coordinated by one team.", "ta": "" },
         "decorationIds": ["design-001", "design-003", "design-009"],
-        "services": ["decoration", "food", "photography", "videography", "album"],
+        "services": ["decoration", "food", "photography-videography"],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       },
       {
@@ -54,7 +54,7 @@
         "price": { "en": "₹1,50,000", "ta": "" },
         "about": { "en": "Nothing left to arrange separately: decoration, catering, photography, videography, the printed album, and both photo and video editing, all run by one team on one schedule. Built for couples who want the entire day handled end to end.", "ta": "" },
         "decorationIds": ["design-002", "design-006", "design-004"],
-        "services": ["decoration", "food", "photography", "videography", "album", "video-editing", "photo-editing"],
+        "services": ["decoration", "food", "photography-videography"],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       }
     ]
@@ -63,7 +63,7 @@
     "id": "photo-video",
     "name": { "en": "Photo & Video Combo", "ta": "" },
     "blurb": { "en": "Every memory captured, edited and printed.", "ta": "" },
-    "services": ["photography", "videography", "album", "photo-editing", "video-editing"],
+    "services": ["photography-videography"],
     "pricing": {
       "type": "starting",
       "amount": 55000,
@@ -90,14 +90,14 @@
         "blurb": { "en": "Photography and videography coverage for the day.", "ta": "" },
         "price": { "en": "₹55,000", "ta": "" },
         "about": { "en": "Just the shoot — one crew covering both photography and video for the ceremony and reception. Editing and the album aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
-        "services": ["photography", "videography"]
+        "services": ["photography-videography"]
       },
       {
         "name": { "en": "Silver", "ta": "" },
         "blurb": { "en": "Adds full photo and video editing to the shoot.", "ta": "" },
         "price": { "en": "₹75,000", "ta": "" },
         "about": { "en": "Everything in Bronze, with both the photographs and the video professionally edited afterward — colour-corrected stills and a finished, edited film rather than raw footage.", "ta": "" },
-        "services": ["photography", "videography", "photo-editing", "video-editing"],
+        "services": ["photography-videography"],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       },
       {
@@ -105,7 +105,7 @@
         "blurb": { "en": "The complete package — shoot, full editing, and a printed album.", "ta": "" },
         "price": { "en": "₹95,000", "ta": "" },
         "about": { "en": "The full photo-and-video experience: the shoot, complete editing for both photos and video, and a printed album to finish it off. Nothing from the day is left unedited or undelivered.", "ta": "" },
-        "services": ["photography", "videography", "photo-editing", "video-editing", "album"],
+        "services": ["photography-videography"],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       }
     ]

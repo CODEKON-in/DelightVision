@@ -41,7 +41,9 @@ function DetailBody({ service }: { service: Service }) {
             <AnimatedIcon immediate>
               <Icon className="size-6 text-charcoal" />
             </AnimatedIcon>
-            <p className="label-gold text-gold-deep">{category ? category.label : ""}</p>
+            <p className="label-gold text-gold-deep">
+              {category ? category.label : ""}
+            </p>
           </div>
 
           <h2
@@ -51,7 +53,9 @@ function DetailBody({ service }: { service: Service }) {
             {service.name}
           </h2>
 
-          <p className="mt-3 type-subheading text-xl text-graphite">{d.subtitle}</p>
+          <p className="mt-3 type-subheading text-xl text-graphite">
+            {d.subtitle}
+          </p>
 
           <p className="type-price mt-5 inline-block rounded-full border border-gold/40 bg-cream/60 px-5 py-2 text-lg text-ink">
             {/* Sample price — set in content/*.json */}
@@ -65,6 +69,36 @@ function DetailBody({ service }: { service: Service }) {
           <p className="mt-3 text-lg leading-relaxed text-ink">{d.about}</p>
         </section>
 
+        {/* What the service is made up of — Photography, Album Design and so
+            on for Photography & Videography. Straight from the content, in
+            the same check-list style as "What's included" below, with each
+            entry's one-line description under its name. Omitted for a
+            service that is a single thing. */}
+        {service.subServices.length > 0 && (
+          <section>
+            <h3 className="label-gold text-gold-deep">{ui.servicesIncluded}</h3>
+            <ul className="mt-3 flex flex-col gap-4">
+              {service.subServices.map((sub) => (
+                <li key={sub.name} className="flex gap-3">
+                  <AnimatedIcon immediate delay={0.1} className="mt-1 shrink-0">
+                    <CheckIcon className="size-5 text-gold-deep" />
+                  </AnimatedIcon>
+                  <div>
+                    <p className="text-base font-semibold text-ink">
+                      {sub.name}
+                    </p>
+                    {sub.description && (
+                      <p className="mt-0.5 text-base text-muted">
+                        {sub.description}
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* Highlights / specs box */}
         <section className="rounded-2xl border border-cream-dark bg-ivory-light p-5 sm:p-6">
           <h3 className="label-gold text-gold-deep">{ui.serviceHighlights}</h3>
@@ -75,7 +109,9 @@ function DetailBody({ service }: { service: Service }) {
                 className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-cream-dark pb-4 last:border-0 last:pb-0"
               >
                 <div>
-                  <dt className="text-base font-semibold text-ink">{h.label}</dt>
+                  <dt className="text-base font-semibold text-ink">
+                    {h.label}
+                  </dt>
                   <dd className="text-base text-muted">{h.value}</dd>
                 </div>
                 <LevelDots level={h.level} />
@@ -120,7 +156,10 @@ function DetailBody({ service }: { service: Service }) {
             <p className="text-base type-label text-muted">{ui.availability}</p>
             <p className="mt-1 text-base text-ink">{d.notice}</p>
           </div>
-          <div className="hidden w-px bg-cream-dark sm:block" aria-hidden="true" />
+          <div
+            className="hidden w-px bg-cream-dark sm:block"
+            aria-hidden="true"
+          />
           <div className="flex-1">
             <p className="text-base type-label text-muted">{ui.goodToKnow}</p>
             <p className="mt-1 text-base text-ink">{d.conditions}</p>

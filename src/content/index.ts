@@ -14,8 +14,8 @@ export type PriceInfo = {
   label?: LocalizedText;
 };
 
-export type CategoryId = "photo-video" | "decor-venue" | "food-catering" | "editing-design";
-export type ServiceId = "decoration" | "food" | "photography" | "videography" | "album" | "video-editing" | "photo-editing";
+export type CategoryId = "photo-video" | "decor-venue" | "food-catering";
+export type ServiceId = "decoration" | "food" | "photography-videography";
 
 export type Category = {
   id: CategoryId;
@@ -66,6 +66,14 @@ export type DecorationDesign = {
   details?: DesignDetail[];
 };
 
+/* One capability inside a top-level service — Photography, Album Design and
+   so on inside Photography & Videography. Content, not code: the client adds,
+   renames or removes them without touching the site. */
+export type SubService = {
+  name: LocalizedText;
+  description: LocalizedText;
+};
+
 export type Service = {
   id: ServiceId;
   name: LocalizedText;
@@ -85,6 +93,9 @@ export type Service = {
   };
   /* The decoration service's gallery of designs. Other services omit it. */
   designs?: DecorationDesign[];
+  /* What the service is made up of, listed in its details dialog. Services
+     that are a single thing omit it. */
+  subServices?: SubService[];
 };
 
 /* A Bronze/Silver/Gold pricing choice within one combo — the combo itself

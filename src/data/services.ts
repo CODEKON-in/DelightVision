@@ -11,23 +11,13 @@ import {
   type DesignDetail as ContentDesignDetail,
   type Highlight as ContentHighlight,
   type Service as ContentService,
+  type SubService as ContentSubService,
 } from "../content";
 import { formatPrice } from "../utils/formatPrice";
 
-export type ServiceId =
-  | "decoration"
-  | "food"
-  | "photography"
-  | "videography"
-  | "album"
-  | "video-editing"
-  | "photo-editing";
+export type ServiceId = "decoration" | "food" | "photography-videography";
 
-export type CategoryId =
-  | "photo-video"
-  | "decor-venue"
-  | "food-catering"
-  | "editing-design";
+export type CategoryId = "photo-video" | "decor-venue" | "food-catering";
 
 export type Highlight = { label: string; value: string; level: number };
 
@@ -55,6 +45,10 @@ export type DecorationDesign = {
   details: DetailRow[];
 };
 
+/* A capability inside a service, e.g. Album Design inside Photography &
+   Videography. */
+export type SubService = { name: string; description: string };
+
 export type Service = {
   id: ServiceId;
   name: string;
@@ -73,6 +67,8 @@ export type Service = {
     conditions: string;
   };
   designs: DecorationDesign[];
+  /* Empty for a service that is a single thing. */
+  subServices: SubService[];
 };
 
 export type ComboPriceTier = {
@@ -129,6 +125,15 @@ const normalizeCategory = (category: ContentCategory): { id: CategoryId; label: 
   id: category.id as CategoryId,
   label: getLocalizedText(category.label, "en"),
 });
+
+/* An entry without a name has nothing to list under. */
+const normalizeSubServices = (items: ContentSubService[] = []): SubService[] =>
+  items
+    .map((item) => ({
+      name: getLocalizedText(item.name, "en"),
+      description: getLocalizedText(item.description, "en"),
+    }))
+    .filter((item) => item.name !== "");
 
 const normalizeDetails = (items: ContentDesignDetail[] = []): DetailRow[] =>
   items
@@ -246,6 +251,7 @@ export const services: Service[] = serviceCatalog.map((service: ContentService) 
     conditions: getLocalizedText(service.detail.conditions, "en"),
   },
   designs: normalizeDesigns(service.designs),
+  subServices: normalizeSubServices(service.subServices),
 }));
 
 export const serviceById = Object.fromEntries(

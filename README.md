@@ -45,8 +45,9 @@ through components.
 
 ### `src/data/services.ts` — services, combos, decorations
 
-All seven services, their categories, and the full content for each
-"View Service Details" modal (badge, subtitle, about text, highlights, tags,
+The three services — Decoration, Food & Catering, Photography &
+Videography — their categories, and the full content for each "View Service
+Details" modal (badge, subtitle, about text, sub-services, highlights, tags,
 inclusions, availability notes). Also the three combo packages, and the
 flattened view of the **decoration designs** described below.
 
@@ -56,6 +57,32 @@ strings with formatted prices. The content itself is edited in the CMA.
 > **All prices are dummy placeholders.** Replace the `price` strings in
 > `services[]` and `combos[]` — e.g. `"Starting ₹25,000"` — with real
 > pricing. Every price in the UI reads from these two arrays.
+
+### Services and sub-services
+
+There are **three top-level services**: Decoration, Food & Catering, and
+Photography & Videography. Photography, Videography, Album Design, Video
+Editing and Photo Editing are **not** services of their own; they are the
+`subServices` of Photography & Videography, so a visitor sees one media
+service that runs from the shoot through editing to the printed album:
+
+```jsonc
+// content/services.json → the photography-videography service
+"subServices": [
+  { "name": { "en": "Photography" },  "description": { "en": "Two photographers cover the full day…" } },
+  { "name": { "en": "Album Design" }, "description": { "en": "A printed album laid out by hand…" } }
+]
+```
+
+- The service's details dialog lists them under **Services Included**, name
+  and one-line description, in content order. Nothing about them is in the
+  React code: add, rename, reorder or remove entries in the content.
+- Any service can have `subServices`; a service without them simply has no
+  such section.
+- Packages list the service once (`"photography-videography"`). What a
+  Bronze/Silver/Gold tier adds on the media side (album, editing) is said in
+  that tier's blurb and about text, which the package page shows above its
+  service cards.
 
 ### Decoration designs
 
@@ -122,7 +149,7 @@ are never copied into a package:
 {
   "name": { "en": "Silver" },
   "decorationIds": ["design-001", "design-003", "design-009"],  // shown in this order
-  "services": ["decoration", "food", "photography"]            // unchanged: plain ids
+  "services": ["decoration", "food", "photography-videography"] // unchanged: plain ids
 }
 ```
 
@@ -179,7 +206,7 @@ folder the CMA uploads into.
 
 **Every photograph currently committed there is a sample**, not the
 business's own work. They are stock photographs, hand-matched to whatever
-each one sits next to — a mandap for Decoration, a camera for Photography, a
+each one sits next to — a mandap for Decoration, a camera for Photography & Videography, a
 sweets tray for the sweets counter — so the site can be looked at as it will
 actually appear. All are 1100x825 JPEGs, about 4MB for the set.
 
@@ -361,7 +388,7 @@ opens that tier's own Decorations page (see *Package decorations*). Both are dat
 checks, not hardcoded ids.
 
 **There are no filter pills above the grid.** They were removed at the
-client's request — seven cards do not need filtering.
+client's request — three cards do not need filtering.
 
 **Two headings are gradient-filled**: the hero (`.shimmer-text`, a slow
 looping sweep) and every section title (`.title-sheen`, one pass as it

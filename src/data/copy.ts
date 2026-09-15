@@ -52,6 +52,7 @@ export const ui = {
 
   /* -- Detail modals ----------------------------------------------- */
   aboutThisService: "About This Service",
+  servicesIncluded: "Services Included",
   serviceHighlights: "Service Highlights",
   covers: "Covers",
   whatsIncluded: "What's Included",

@@ -65,7 +65,7 @@
       }
     ],
     "image": "/images/gallery/gallery-02.jpg",
-    "serviceId": "photography"
+    "serviceId": "photography-videography"
   },
   {
     "id": 3,
@@ -129,7 +129,7 @@
       }
     ],
     "image": "/images/gallery/gallery-04.jpg",
-    "serviceId": "photography"
+    "serviceId": "photography-videography"
   },
   {
     "id": 5,
@@ -165,7 +165,7 @@
   },
   {
     "id": 6,
-    "category": "editing-design",
+    "category": "photo-video",
     "caption": {
       "en": "Album Spread",
       "ta": ""
@@ -193,7 +193,7 @@
       }
     ],
     "image": "/images/gallery/gallery-06.jpg",
-    "serviceId": "album"
+    "serviceId": "photography-videography"
   },
   {
     "id": 7,
@@ -225,7 +225,7 @@
       }
     ],
     "image": "/images/gallery/gallery-07.jpg",
-    "serviceId": "photography"
+    "serviceId": "photography-videography"
   },
   {
     "id": 8,

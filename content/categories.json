@@ -2,7 +2,7 @@
   {
     "id": "photo-video",
     "label": {
-      "en": "Photography & Video",
+      "en": "Photography & Videography",
       "ta": ""
     },
     "shortLabel": {
@@ -29,17 +29,6 @@
     },
     "shortLabel": {
       "en": "Food",
-      "ta": ""
-    }
-  },
-  {
-    "id": "editing-design",
-    "label": {
-      "en": "Editing & Design",
-      "ta": ""
-    },
-    "shortLabel": {
-      "en": "Editing",
       "ta": ""
     }
   }
