@@ -35,9 +35,9 @@ export function Services() {
         <Reveal
           as="ul"
           stagger={0.07}
-          /* Three services sit in one row at sm and up. On a phone's two
-             columns the third is left alone on its row, so it is centred
-             under the pair instead of stranded hard left. */
+          /* Four services: two rows of two on a phone. From sm the grid has
+             three columns, which leaves the fourth card alone on its row, so
+             it is centred under the three instead of stranded hard left. */
           className="dv-orphan-grid mt-10 grid grid-cols-2 items-stretch gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-6"
         >
           {services.map((service, i) => (

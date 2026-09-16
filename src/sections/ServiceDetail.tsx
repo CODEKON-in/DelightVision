@@ -99,56 +99,67 @@ function DetailBody({ service }: { service: Service }) {
           </section>
         )}
 
-        {/* Highlights / specs box */}
-        <section className="rounded-2xl border border-cream-dark bg-ivory-light p-5 sm:p-6">
-          <h3 className="label-gold text-gold-deep">{ui.serviceHighlights}</h3>
-          <dl className="mt-4 flex flex-col gap-4">
-            {d.highlights.map((h) => (
-              <div
-                key={h.label}
-                className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-cream-dark pb-4 last:border-0 last:pb-0"
-              >
-                <div>
-                  <dt className="text-base font-semibold text-ink">
-                    {h.label}
-                  </dt>
-                  <dd className="text-base text-muted">{h.value}</dd>
+        {/* Highlights / specs box. This and the two lists below are left
+            out when the content has nothing for them — a short promotional
+            service such as Tour Planning & Organizing only has its about
+            text, and an empty heading would read as missing content. */}
+        {d.highlights.length > 0 && (
+          <section className="rounded-2xl border border-cream-dark bg-ivory-light p-5 sm:p-6">
+            <h3 className="label-gold text-gold-deep">
+              {ui.serviceHighlights}
+            </h3>
+            <dl className="mt-4 flex flex-col gap-4">
+              {d.highlights.map((h) => (
+                <div
+                  key={h.label}
+                  className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-cream-dark pb-4 last:border-0 last:pb-0"
+                >
+                  <div>
+                    <dt className="text-base font-semibold text-ink">
+                      {h.label}
+                    </dt>
+                    <dd className="text-base text-muted">{h.value}</dd>
+                  </div>
+                  <LevelDots level={h.level} />
                 </div>
-                <LevelDots level={h.level} />
-              </div>
-            ))}
-          </dl>
-        </section>
+              ))}
+            </dl>
+          </section>
+        )}
 
         {/* Tag pills */}
-        <section>
-          <h3 className="label-gold text-gold-deep">{ui.covers}</h3>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {d.tags.map((tag) => (
-              <li
-                key={tag}
-                className="rounded-full border border-gold/40 bg-cream/50 px-4 py-2 text-base font-medium text-ink"
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-        </section>
+        {d.tags.length > 0 && (
+          <section>
+            <h3 className="label-gold text-gold-deep">{ui.covers}</h3>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {d.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="rounded-full border border-gold/40 bg-cream/50 px-4 py-2 text-base font-medium text-ink"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* What's included */}
-        <section>
-          <h3 className="label-gold text-gold-deep">{ui.whatsIncluded}</h3>
-          <ul className="mt-3 flex flex-col gap-3">
-            {d.includes.map((item) => (
-              <li key={item} className="flex gap-3">
-                <AnimatedIcon immediate delay={0.1} className="mt-1 shrink-0">
-                  <CheckIcon className="size-5 text-gold-deep" />
-                </AnimatedIcon>
-                <span className="text-base text-ink">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {d.includes.length > 0 && (
+          <section>
+            <h3 className="label-gold text-gold-deep">{ui.whatsIncluded}</h3>
+            <ul className="mt-3 flex flex-col gap-3">
+              {d.includes.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <AnimatedIcon immediate delay={0.1} className="mt-1 shrink-0">
+                    <CheckIcon className="size-5 text-gold-deep" />
+                  </AnimatedIcon>
+                  <span className="text-base text-ink">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* Footer info row */}
         <section className="flex flex-col gap-3 rounded-2xl bg-cream/60 p-5 sm:flex-row sm:gap-6">

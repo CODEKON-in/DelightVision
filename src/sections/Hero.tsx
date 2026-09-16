@@ -75,36 +75,16 @@ export function Hero() {
 
   return (
     <section id="top" className="hero-surface relative overflow-hidden">
-      {/* A whisper of champagne from above. The ground already lifts to
-          graphite from below, so this only has to suggest light falling on
-          the black — anything stronger reads as a glow. */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 80% at 50% 0%, rgba(184,148,79,0.10) 0%, rgba(184,148,79,0.03) 34%, rgba(8,8,8,0) 72%)",
-        }}
-        aria-hidden="true"
-      />
-
       {/* The same drifting gold specks the dark sections used to carry */}
       <GoldMotes />
 
       <HeroOrnament />
 
-      {/* Keeps the headline readable over the artwork behind it */}
+      {/* Fades the artwork out at the foot. It must end on the same colour
+          the ground ends on (.hero-surface in index.css) — any other colour
+          shows as a band across the bottom of the hero. */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[65%]"
-        style={{
-          background:
-            "radial-gradient(62% 50% at 50% 30%, rgba(8,8,8,0.78) 0%, rgba(8,8,8,0) 100%)",
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Fades the artwork out into the section below */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-charcoal"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-graphite"
         aria-hidden="true"
       />
 

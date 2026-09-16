@@ -15,9 +15,9 @@ import {
 } from "../content";
 import { formatPrice } from "../utils/formatPrice";
 
-export type ServiceId = "decoration" | "food" | "photography-videography";
+export type ServiceId = "decoration" | "food" | "photography-videography" | "tour-planning-organizing";
 
-export type CategoryId = "photo-video" | "decor-venue" | "food-catering";
+export type CategoryId = "photo-video" | "decor-venue" | "food-catering" | "tours-travel";
 
 export type Highlight = { label: string; value: string; level: number };
 

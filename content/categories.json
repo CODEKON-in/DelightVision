@@ -31,5 +31,16 @@
       "en": "Food",
       "ta": ""
     }
+  },
+  {
+    "id": "tours-travel",
+    "label": {
+      "en": "Tours & Travel",
+      "ta": ""
+    },
+    "shortLabel": {
+      "en": "Tours",
+      "ta": ""
+    }
   }
 ]

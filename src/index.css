@@ -9,7 +9,7 @@
    and champagne gold used only in small doses in between.
 
    Tailwind v4 defines theme tokens in CSS (this @theme block) rather than
-   in tailwind.config.js. Every token below is a normal utility, e.g.
+   in tailwind.config.js. Every token below is a normal utility, e.g.f
    bg-obsidian / text-gold-deep / border-cream-dark / font-display.
 
    Colours come in pairs: *-deep tones are for text on the light canvas,
@@ -20,7 +20,7 @@
   /* Dark — the brand's presence. The hero gradient runs across all three. */
   --color-obsidian: #080808;   /* dominant black: hero base, header, menu */
   --color-charcoal: #171717;   /* footer, primary buttons, body text */
-  --color-graphite: #2a2a2a;   /* the hero's grey, and button hover */
+  --color-graphite: #2d2d2d;   /* the hero's grey, and button hover */
   --color-dark-line: #302f2c;  /* hairline borders on dark */
 
   /* Light — the website's canvas. Three warm steps, so surfaces read
@@ -299,24 +299,15 @@
 
 
 
-/* The hero's ground: black at the top so it meets the header seamlessly,
-   warming to graphite at the foot. The radial sits low and centred, which
-   lifts the middle of the section just enough to feel lit rather than
-   flat. Soft and slow — no metallic banding, no glow. */
+/* The hero's ground: one linear gradient flowing from the bottom up —
+   grey at the foot, deepening to black towards the top, where it meets the
+   header. No radial, no banding, no glow. */
 .hero-surface {
-  background-color: var(--color-obsidian);
-  background-image:
-    radial-gradient(
-      120% 78% at 50% 112%,
-      var(--color-graphite) 0%,
-      transparent 62%
-    ),
-    linear-gradient(
-      180deg,
-      var(--color-obsidian) 0%,
-      var(--color-obsidian) 42%,
-      var(--color-charcoal) 100%
-    );
+  background-image: linear-gradient(
+    0deg,
+    var(--color-graphite) 10%,
+    var(--color-obsidian) 80%
+  );
 }
 
 /* A hairline of gold where a dark section meets the light page. The only

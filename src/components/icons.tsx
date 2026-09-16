@@ -49,6 +49,16 @@ export function FoodIcon(props: IconProps) {
   );
 }
 
+export function TourIcon(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      {/* Folded map with a route pin */}
+      <path d="M3 6.5 8.5 4.5l7 2 5.5-2v13l-5.5 2-7-2L3 19.5z" />
+      <path d="M8.5 4.5v13M15.5 6.5v13" />
+    </Stroke>
+  );
+}
+
 export function PhotographyIcon(props: IconProps) {
   return (
     <Stroke {...props}>

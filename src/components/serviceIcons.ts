@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 import type { ServiceId } from "../data/services";
-import { DecorationIcon, FoodIcon, PhotographyIcon } from "./icons";
+import { DecorationIcon, FoodIcon, PhotographyIcon, TourIcon } from "./icons";
 
 /* Kept out of icons.tsx so that file exports only components, which is
    what React Fast Refresh needs to hot-reload it. */
@@ -10,6 +10,7 @@ export const serviceIcons: Partial<Record<string, IconComponent>> = {
   decoration: DecorationIcon,
   food: FoodIcon,
   "photography-videography": PhotographyIcon,
+  "tour-planning-organizing": TourIcon,
 };
 
 /* Services added through the content manager get a generated id, which has no

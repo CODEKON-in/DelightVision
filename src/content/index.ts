@@ -14,8 +14,8 @@ export type PriceInfo = {
   label?: LocalizedText;
 };
 
-export type CategoryId = "photo-video" | "decor-venue" | "food-catering";
-export type ServiceId = "decoration" | "food" | "photography-videography";
+export type CategoryId = "photo-video" | "decor-venue" | "food-catering" | "tours-travel";
+export type ServiceId = "decoration" | "food" | "photography-videography" | "tour-planning-organizing";
 
 export type Category = {
   id: CategoryId;

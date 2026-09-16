@@ -899,5 +899,49 @@
         }
       }
     ]
+  },
+  {
+    "id": "tour-planning-organizing",
+    "name": {
+      "en": "Tour Planning & Organizing",
+      "ta": ""
+    },
+    "category": "tours-travel",
+    "description": {
+      "en": "Tours planned and organised from A to Z.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "custom",
+      "amount": 0,
+      "currency": "INR",
+      "unit": "service"
+    },
+    "image": "/images/services/tour-planning-organizing.jpg",
+    "detail": {
+      "badge": {
+        "en": "Also Available",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "Complete tour planning and organisation, from A to Z.",
+        "ta": ""
+      },
+      "about": {
+        "en": "Alongside weddings, we plan and organise complete tours. From planning the itinerary to the arrangements and coordination throughout the journey, we take care of the tour from A to Z, so you can simply enjoy the trip. Call or message us with your plans and we will work out the details with you.",
+        "ta": ""
+      },
+      "highlights": [],
+      "tags": [],
+      "includes": [],
+      "notice": {
+        "en": "Planned around your dates",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Every tour is planned to your requirements",
+        "ta": ""
+      }
+    }
   }
 ]

@@ -45,8 +45,8 @@ through components.
 
 ### `src/data/services.ts` — services, combos, decorations
 
-The three services — Decoration, Food & Catering, Photography &
-Videography — their categories, and the full content for each "View Service
+The four services — Decoration, Food & Catering, Photography &
+Videography, Tour Planning & Organizing — their categories, and the full content for each "View Service
 Details" modal (badge, subtitle, about text, sub-services, highlights, tags,
 inclusions, availability notes). Also the three combo packages, and the
 flattened view of the **decoration designs** described below.
@@ -60,8 +60,8 @@ strings with formatted prices. The content itself is edited in the CMA.
 
 ### Services and sub-services
 
-There are **three top-level services**: Decoration, Food & Catering, and
-Photography & Videography. Photography, Videography, Album Design, Video
+There are **four top-level services**: Decoration, Food & Catering,
+Photography & Videography, and Tour Planning & Organizing. Photography, Videography, Album Design, Video
 Editing and Photo Editing are **not** services of their own; they are the
 `subServices` of Photography & Videography, so a visitor sees one media
 service that runs from the shoot through editing to the printed album:
@@ -83,6 +83,14 @@ service that runs from the shoot through editing to the printed album:
   Bronze/Silver/Gold tier adds on the media side (album, editing) is said in
   that tier's blurb and about text, which the package page shows above its
   service cards.
+
+**Tour Planning & Organizing is a promotional card only.** It is an ordinary
+entry in `content/services.json` (id `tour-planning-organizing`, category
+`tours-travel`) and opens the normal service details dialog. It has no
+price (`"type": "custom"` shows "Custom quote"), no highlights, tags or
+inclusions — the dialog leaves those sections out when they are empty — and
+it is not part of any package. There is no tour booking, itinerary or
+package system behind it.
 
 ### Decoration designs
 
@@ -388,7 +396,7 @@ opens that tier's own Decorations page (see *Package decorations*). Both are dat
 checks, not hardcoded ids.
 
 **There are no filter pills above the grid.** They were removed at the
-client's request — three cards do not need filtering.
+client's request — four cards do not need filtering.
 
 **Two headings are gradient-filled**: the hero (`.shimmer-text`, a slow
 looping sweep) and every section title (`.title-sheen`, one pass as it
