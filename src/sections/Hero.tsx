@@ -102,9 +102,12 @@ export function Hero() {
             slogan below it in Warpen — the two brand moments on the page.
 
             Over There is roughly two and a half times as wide as the serif
-            this used to be set in, so it has its own sizes: one line from
-            `sm` up, sized to the column; two lines on a phone, sized so
-            "Delight" fits.
+            this used to be set in, so it has its own sizes: from `sm` up,
+            sized to the column; on a phone, sized to the screen so the name
+            still fits on one line (it is about 15.1em wide, so the width
+            inside the gutters divided by 15.5 keeps it clear down to 320px).
+            It used to wrap to two lines there, which left the slogan wider
+            than the name and no longer ending under "Vision".
 
             The gold shimmer only paints inside the heading's own box, and
             Over There's T breaks out of that box two ways: its crossbar
@@ -117,17 +120,17 @@ export function Hero() {
             The same crossbar reaches over the space and into the "V", so
             on one line the name ran together as "DELIGHTVISION"; the extra
             word spacing clears it. */}
-        {/* 7.25vw, not 9: at 9vw the painted box (the name plus the 0.75em
-            of padding the T's crossbar needs) came out 6px wider than a
-            390px phone on each side, and the section's own overflow-hidden
-            sliced the crossbar off — the name ended in a cut-short T. At
-            7.25vw the whole box, crossbar included, clears the gutter on
-            every phone from 320px up. */}
-        <h1 className="shimmer-text type-brand-name mx-[-0.75em] mt-[calc(0.75rem-0.5em)] mb-[-0.5em] px-[0.75em] py-[0.5em] text-[clamp(1.375rem,7.25vw,2.5rem)] leading-[1.2] [word-spacing:0.8em] sm:mt-[calc(1rem-0.5em)] sm:text-[clamp(2.25rem,6vw,2.875rem)] sm:whitespace-nowrap">
-          {business.name}
-        </h1>
-        <div className="flex justify-end">
-          <p className="mt-4 type-slogan text-[clamp(1.35rem,5.5vw,1.875rem)] leading-snug text-gold-soft sm:mt-5 justify-end">
+        {/* The name and the slogan share one box as wide as the name,
+            centred, with the slogan at its end — so the slogan finishes
+            exactly where "Vision" does, as in the footer. The painted box
+            (the name plus the 0.75em of padding the T's crossbar needs)
+            stays inside the page gutter at every width, so the section's
+            overflow-hidden never slices the crossbar off. */}
+        <div className="mx-auto flex w-fit max-w-full flex-col items-end">
+          <h1 className="shimmer-text type-brand-name mx-[-0.75em] mt-[calc(0.75rem-0.5em)] mb-[-0.5em] px-[0.75em] py-[0.5em] text-[clamp(1rem,calc((100vw_-_3rem)/15.5),2.5rem)] leading-[1.2] whitespace-nowrap [word-spacing:0.8em] sm:mt-[calc(1rem-0.5em)] sm:text-[clamp(2.25rem,6vw,2.875rem)]">
+            {business.name}
+          </h1>
+          <p className="mt-4 type-slogan text-[clamp(1.1rem,5.5vw,1.875rem)] leading-snug text-gold-soft sm:mt-5">
             {business.tagline}
           </p>
         </div>

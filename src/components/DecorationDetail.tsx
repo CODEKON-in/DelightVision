@@ -74,7 +74,7 @@ function DetailBody({
           src={design.image || undefined}
           alt={title}
           sizes="(min-width: 640px) 672px, 100vw"
-          className="aspect-4/3 w-full sm:aspect-16/10"
+          className="aspect-4/3 w-full sm:aspect-16/10 [@media(max-height:500px)]:max-h-[38svh]"
         />
         {design.badge && (
           <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 type-caption text-base text-ivory-light shadow-soft">

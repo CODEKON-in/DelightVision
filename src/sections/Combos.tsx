@@ -56,7 +56,9 @@ function TierSwitcher({
               onClick={() => onSelect(name)}
               aria-pressed={active}
               className={[
-                "rounded-full px-3.5 py-2 type-caption text-sm transition-colors sm:px-6 sm:py-2.5 sm:text-base",
+                /* min-h-11: a 44px target, comfortable for a finger —
+                   the padding alone made it 36px on a phone. */
+                "min-h-11 rounded-full px-3.5 py-2 type-caption text-sm transition-colors sm:px-6 sm:py-2.5 sm:text-base",
                 active ? "shadow-soft" : "text-ink hover:bg-cream",
               ].join(" ")}
               style={active ? { background: accent.bg, color: accent.text } : undefined}

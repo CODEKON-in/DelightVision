@@ -13,7 +13,9 @@ export const business = {
   whatsappMessage: "Hello Delight Vision! I found your website and I would like to know more about your wedding services.",
   addressLine1: addressParts[0] ?? "",
   addressLine2: addressParts.slice(1).join(", ") || "",
-  hours: companyData.hours,
+  /* A non-breaking space between a time and its AM/PM, so a narrow screen
+     wraps between the two times rather than leaving "PM" alone on a line. */
+  hours: (companyData.hours ?? "").replace(/(\d) (am|pm)\b/gi, "$1\u00a0$2"),
   mapQuery: companyData.mapQuery,
 };
 

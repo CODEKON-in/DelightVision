@@ -27,7 +27,7 @@ function DetailBody({ service }: { service: Service }) {
           src={service.image}
           alt={service.name}
           sizes="(min-width: 640px) 672px, 100vw"
-          className="aspect-4/3 w-full sm:aspect-16/9"
+          className="aspect-4/3 w-full sm:aspect-16/9 [@media(max-height:500px)]:max-h-[38svh]"
         />
         <span className="absolute top-4 left-4 rounded-full bg-charcoal px-4 py-2 type-caption text-base text-ivory-light shadow-soft">
           {d.badge}
