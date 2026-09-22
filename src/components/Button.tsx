@@ -29,7 +29,13 @@ const variants: Record<Variant, string> = {
 
 const base = [
   "type-button inline-flex items-center justify-center gap-3 rounded-full",
+<<<<<<< HEAD
+  /* One transition-property covering both, because two `transition-*`
+     utilities overwrite each other and the colour change stopped easing. */
+  "transition-[color,background-color,border-color,transform] duration-200 ease-out motion-safe:hover:-translate-y-0.5",
+=======
   "transition-transform transition-colors duration-200 ease-out motion-safe:hover:-translate-y-0.5",
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 ].join(" ");
 
 type Common = {

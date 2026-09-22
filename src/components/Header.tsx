@@ -26,7 +26,17 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-dark-line bg-obsidian sm:bg-obsidian/95 sm:backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-1.5 px-4 xs:gap-2 xs:px-5 sm:h-20 sm:gap-3 lg:px-8">
         <a href="#top" className="flex min-h-11 min-w-0 shrink-0 items-center">
+<<<<<<< HEAD
+          <img
+            src={logo}
+            alt={business.name}
+            width={1282}
+            height={811}
+            className="h-10 w-auto sm:h-12"
+          />
+=======
           <img src={logo} alt={business.name} className="h-10 w-auto sm:h-12" />
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label={ui.mainNavigation}>

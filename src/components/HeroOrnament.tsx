@@ -1,7 +1,11 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+<<<<<<< HEAD
+import { pauseWhileOffscreen, settleIfStalled } from "../lib/motion";
+=======
 import { settleIfStalled } from "../lib/motion";
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +25,10 @@ export function Rosette({ className = "" }: { className?: string }) {
     if (!el || prefersReducedMotion()) return;
 
     let settle = 0;
+<<<<<<< HEAD
+    let unobserve = () => {};
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
       tl.fromTo(
@@ -40,19 +48,31 @@ export function Rosette({ className = "" }: { className?: string }) {
         "-=0.3"
       );
 
+<<<<<<< HEAD
+      const spin = gsap.to("[data-spin]", {
+=======
       gsap.to("[data-spin]", {
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
         rotate: 360,
         transformOrigin: "center",
         duration: 110,
         ease: "none",
         repeat: -1,
       });
+<<<<<<< HEAD
+      unobserve = pauseWhileOffscreen(el, [spin]);
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
       settle = settleIfStalled(() => tl.progress(1), 1600);
     }, el);
 
     return () => {
       window.clearTimeout(settle);
+<<<<<<< HEAD
+      unobserve();
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
       ctx.revert();
     };
   }, []);
@@ -94,6 +114,10 @@ export function HeroOrnament() {
     if (!el || prefersReducedMotion()) return;
 
     let settle = 0;
+<<<<<<< HEAD
+    let unobserve = () => {};
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
     const ctx = gsap.context(() => {
       const strokes = gsap.utils.toArray<SVGPathElement>("[data-draw]");
@@ -122,7 +146,11 @@ export function HeroOrnament() {
       );
 
       /* Gentle, never-ending drift so the hero is not completely static */
+<<<<<<< HEAD
+      const float = gsap.to("[data-float]", {
+=======
       gsap.to("[data-float]", {
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
         y: -9,
         duration: 3.6,
         ease: "sine.inOut",
@@ -131,6 +159,13 @@ export function HeroOrnament() {
         stagger: { each: 0.5, from: "random" },
       });
 
+<<<<<<< HEAD
+      /* Ambient only: paused once the artwork has scrolled away, so it
+         costs a phone nothing for the rest of the visit. */
+      unobserve = pauseWhileOffscreen(el, [float]);
+
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
       /* The arch drifts a little slower than the page as you scroll, which
          gives the hero depth without moving anything the eye is reading.
          Transform only, and scrubbed so it costs nothing when still. */
@@ -151,6 +186,10 @@ export function HeroOrnament() {
 
     return () => {
       window.clearTimeout(settle);
+<<<<<<< HEAD
+      unobserve();
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
       ctx.revert();
     };
   }, []);

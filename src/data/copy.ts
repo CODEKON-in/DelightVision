@@ -22,7 +22,10 @@ export const ui = {
   skipToServices: "Skip to services",
 
   /* -- Hero -------------------------------------------------------- */
+<<<<<<< HEAD
+=======
   heroEyebrow: "Weddings, A to Z",
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
   whatsappUs: "WhatsApp Us",
 
   /* -- Services ---------------------------------------------------- */
@@ -97,6 +100,13 @@ export const ui = {
   openInMaps: "Open in Google Maps",
   mapTitle: "Map showing",
 
+<<<<<<< HEAD
+  /* -- If a page ever fails ---------------------------------------- */
+  somethingWentWrongTitle: "This page could not be shown",
+  somethingWentWrong: "Something went wrong at our end. Please call or message us and we will help you straight away.",
+
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
   /* -- Footer ------------------------------------------------------- */
   footerExplore: "Explore",
   footerReachUs: "Reach Us",

@@ -37,3 +37,34 @@ export function settleIfStalled(forceEnd: () => void, delay = 1500): number {
     if (!tickerAlive) forceEnd();
   }, delay);
 }
+<<<<<<< HEAD
+
+/* The hero's drifting motes, its slowly turning rosette and its floating
+   blooms never end — they are ambient. Left running, GSAP keeps redrawing
+   them for the whole visit, including the long stretch after the visitor
+   has scrolled past the hero, which is battery a phone should not be
+   spending. Pause them whenever their artwork is off screen.
+
+   Returns a cleanup function. Where IntersectionObserver is missing, the
+   animations simply keep running as before. */
+export function pauseWhileOffscreen(
+  element: Element,
+  animations: Array<{ pause: () => void; resume: () => void }>
+): () => void {
+  if (typeof IntersectionObserver === "undefined") return () => {};
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      for (const animation of animations) {
+        if (entry.isIntersecting) animation.resume();
+        else animation.pause();
+      }
+    },
+    { rootMargin: "100px" }
+  );
+
+  observer.observe(element);
+  return () => observer.disconnect();
+}
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2

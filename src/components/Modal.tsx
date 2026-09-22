@@ -19,6 +19,50 @@ type ModalProps = {
 const FOCUSABLE =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
+<<<<<<< HEAD
+/* Every open dialog, innermost last. A material opens inside a service's
+   dialog, and without this both listened for Escape and one press closed
+   the pair. Only the dialog on top of the stack answers. */
+const openModals: symbol[] = [];
+
+/* How many dialogs currently hold the page still, and the styles to put
+   back once the last of them closes. */
+let locks = 0;
+let unlocked: { htmlOverflow: string; bodyOverflow: string; bodyPad: string } | null = null;
+
+function lockPage() {
+  locks += 1;
+  if (locks > 1) return;
+
+  const html = document.documentElement;
+  const body = document.body;
+  unlocked = {
+    htmlOverflow: html.style.overflow,
+    bodyOverflow: body.style.overflow,
+    bodyPad: body.style.paddingRight,
+  };
+
+  /* Stop the page jumping sideways when the scrollbar disappears */
+  const barWidth = window.innerWidth - html.clientWidth;
+  html.style.overflow = "hidden";
+  body.style.overflow = "hidden";
+  if (barWidth > 0) body.style.paddingRight = `${barWidth}px`;
+}
+
+function unlockPage() {
+  locks = Math.max(0, locks - 1);
+  if (locks > 0 || !unlocked) return;
+
+  const html = document.documentElement;
+  const body = document.body;
+  html.style.overflow = unlocked.htmlOverflow;
+  body.style.overflow = unlocked.bodyOverflow;
+  body.style.paddingRight = unlocked.bodyPad;
+  unlocked = null;
+}
+
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 /* Full-screen on mobile, centred panel on desktop.
    Closes on the X button, a click outside the panel, or Escape. */
 export function Modal({
@@ -48,6 +92,29 @@ export function Modal({
      dialog simply stops rendering as soon as it is closed. */
   const visible = open || (mounted && !reduced);
 
+<<<<<<< HEAD
+  /* Identifies this dialog in the stack above */
+  const [id] = useState(() => Symbol("modal"));
+
+  /* Lock the page behind the modal. Counted, because a dialog can open
+     inside another one: the first to lock saves the page's own styles and
+     the last to close puts them back. */
+  useEffect(() => {
+    if (!visible) return;
+    lockPage();
+    return unlockPage;
+  }, [visible]);
+
+  /* Join the stack while open, leave it on close */
+  useEffect(() => {
+    if (!open) return;
+    openModals.push(id);
+    return () => {
+      const at = openModals.indexOf(id);
+      if (at !== -1) openModals.splice(at, 1);
+    };
+  }, [open, id]);
+=======
   /* Lock the page behind the modal and hide the sticky call bar, so the
      two sets of call buttons can never overlap. */
   useEffect(() => {
@@ -75,16 +142,26 @@ export function Modal({
       html.classList.remove("modal-open");
     };
   }, [visible]);
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   /* Escape to close */
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
+<<<<<<< HEAD
+      /* Only the dialog on top answers, so one press closes one dialog */
+      if (e.key === "Escape" && openModals[openModals.length - 1] === id) onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, onClose, id]);
+=======
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   /* Move focus in on open, and back to the trigger on close */
   useEffect(() => {
@@ -177,8 +254,22 @@ export function Modal({
         aria-hidden="true"
       />
 
+<<<<<<< HEAD
+      {/* Mobile: fills the screen. sm and up: a centred panel.
+
+          This layer covers the backdrop, so a click on the dimmed area
+          lands here rather than there — it closes the dialog itself, but
+          only for a click on the padding around the panel. */}
+      <div
+        className="relative flex h-full w-full items-stretch justify-center sm:items-center sm:p-6"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
+      >
+=======
       {/* Mobile: fills the screen. sm and up: a centred panel. */}
       <div className="relative flex h-full w-full items-stretch justify-center sm:items-center sm:p-6">
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
         <div
           ref={panelRef}
           onKeyDown={onKeyDown}
@@ -188,6 +279,23 @@ export function Modal({
             "h-full sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-3xl sm:border sm:border-gold/30",
           ].join(" ")}
         >
+<<<<<<< HEAD
+          {/* Sticky rather than absolute, and in a box of its own height so
+              it takes no space: on a phone the panel is the whole screen
+              with no backdrop to tap, and an absolute button scrolled away
+              with the content, leaving a long service with no way out. */}
+          <div className="sticky top-0 z-20 h-0">
+            <button
+              ref={closeRef}
+              type="button"
+              onClick={onClose}
+              aria-label={closeLabel}
+              className="absolute top-4 right-4 inline-flex size-12 items-center justify-center rounded-full bg-obsidian/90 text-ivory-light transition-colors hover:bg-obsidian"
+            >
+              <CloseIcon className="size-6" />
+            </button>
+          </div>
+=======
           <button
             ref={closeRef}
             type="button"
@@ -197,6 +305,7 @@ export function Modal({
           >
             <CloseIcon className="size-6" />
           </button>
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
           {children}
         </div>

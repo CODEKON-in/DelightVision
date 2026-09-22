@@ -1,6 +1,10 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+<<<<<<< HEAD
+import { pauseWhileOffscreen, settleIfStalled } from "../lib/motion";
+=======
 import { settleIfStalled } from "../lib/motion";
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -109,6 +113,10 @@ export function GoldMotes({ className = "" }: { className?: string }) {
     const el = root.current;
     if (!el || reduced()) return;
 
+<<<<<<< HEAD
+    let unobserve = () => {};
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     const ctx = gsap.context(() => {
       gsap.fromTo(
         "[data-mote]",
@@ -117,7 +125,11 @@ export function GoldMotes({ className = "" }: { className?: string }) {
       );
 
       /* Each mote drifts on its own loop so they never move in lockstep */
+<<<<<<< HEAD
+      const drifts = gsap.utils.toArray<HTMLElement>("[data-mote]").map((mote, i) =>
+=======
       gsap.utils.toArray<HTMLElement>("[data-mote]").forEach((mote, i) => {
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
         gsap.to(mote, {
           y: i % 2 === 0 ? -16 : 14,
           x: i % 3 === 0 ? 8 : -6,
@@ -126,11 +138,26 @@ export function GoldMotes({ className = "" }: { className?: string }) {
           repeat: -1,
           yoyo: true,
           delay: i * 0.35,
+<<<<<<< HEAD
+        })
+      );
+
+      /* Endless by design, so they stop while the section is out of view
+         rather than redrawing every frame for the whole visit. */
+      unobserve = pauseWhileOffscreen(el, drifts);
+    }, el);
+
+    return () => {
+      unobserve();
+      ctx.revert();
+    };
+=======
         });
       });
     }, el);
 
     return () => ctx.revert();
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
   }, []);
 
   /* Round dots as elements rather than SVG: a stretched viewBox would

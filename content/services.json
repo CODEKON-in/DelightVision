@@ -605,6 +605,8 @@
     ]
   },
   {
+<<<<<<< HEAD
+=======
     "id": "food",
     "name": {
       "en": "Food & Catering",
@@ -729,6 +731,7 @@
     }
   },
   {
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     "id": "photography-videography",
     "name": {
       "en": "Photography & Videography",
@@ -1017,6 +1020,309 @@
     ]
   },
   {
+<<<<<<< HEAD
+    "id": "food",
+    "name": {
+      "en": "Food & Catering",
+      "ta": ""
+    },
+    "category": "food-catering",
+    "description": {
+      "en": "Catering with menu planning.",
+      "ta": ""
+    },
+    "pricing": {
+      "type": "starting",
+      "amount": 250,
+      "currency": "INR",
+      "unit": "plate"
+    },
+    "image": "/images/services/food.jpg",
+    "detail": {
+      "badge": {
+        "en": "Most Booked",
+        "ta": ""
+      },
+      "subtitle": {
+        "en": "A full menu planned with you, cooked on site and served hot.",
+        "ta": ""
+      },
+      "about": {
+        "en": "We sit down with you to build the menu around the tastes of your family and the traditions of the function, rather than handing you a fixed list. Cooking happens at the venue on the day so nothing is reheated, and our serving team is briefed on the running order so food goes out at the right moment. Guest counts can be adjusted up to three days before the event.",
+        "ta": ""
+      },
+      "highlights": [
+        {
+          "label": {
+            "en": "Menu Planning",
+            "ta": ""
+          },
+          "value": {
+            "en": "Sit-down session included",
+            "ta": ""
+          },
+          "level": 5
+        },
+        {
+          "label": {
+            "en": "Serving Style",
+            "ta": ""
+          },
+          "value": {
+            "en": "Buffet or table service",
+            "ta": ""
+          },
+          "level": 4
+        },
+        {
+          "label": {
+            "en": "Minimum Guests",
+            "ta": ""
+          },
+          "value": {
+            "en": "100 plates",
+            "ta": ""
+          },
+          "level": 3
+        }
+      ],
+      "tags": [
+        {
+          "en": "Menu Planning",
+          "ta": ""
+        },
+        {
+          "en": "Live Counters",
+          "ta": ""
+        },
+        {
+          "en": "Buffet Setup",
+          "ta": ""
+        },
+        {
+          "en": "Sweets & Desserts",
+          "ta": ""
+        },
+        {
+          "en": "Serving Staff",
+          "ta": ""
+        }
+      ],
+      "includes": [
+        {
+          "en": "Menu planning session with tasting for the main dishes",
+          "ta": ""
+        },
+        {
+          "en": "On-site cooking team for the day of the function",
+          "ta": ""
+        },
+        {
+          "en": "Buffet counters with serving staff in uniform",
+          "ta": ""
+        },
+        {
+          "en": "Traditional sweets and dessert counter",
+          "ta": ""
+        },
+        {
+          "en": "Water, welcome drinks and buttermilk service",
+          "ta": ""
+        },
+        {
+          "en": "Crockery, serving vessels and full clean-up",
+          "ta": ""
+        }
+      ],
+      "notice": {
+        "en": "Final guest count needed 3 days before",
+        "ta": ""
+      },
+      "conditions": {
+        "en": "Live counters and speciality dishes available as add-ons",
+        "ta": ""
+      }
+    },
+    "subServices": [
+      {
+        "id": "menu-1-biryani",
+        "name": {
+          "en": "Menu 1 – Biryani Meal",
+          "ta": ""
+        },
+        "description": {
+          "en": "Biryani with thayir pachadi, one fried chicken piece and one egg on the side, finished with bread halwa for dessert.",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1644677859249-e0c8f5b4a74b?auto=format&fit=crop&w=800&q=80",
+        "pricing": [
+          {
+            "label": {
+              "en": "Per plate",
+              "ta": ""
+            },
+            "price": 250,
+            "unit": "plate"
+          }
+        ],
+        "includes": [
+          {
+            "en": "Biryani",
+            "ta": ""
+          },
+          {
+            "en": "Thayir pachadi",
+            "ta": ""
+          },
+          {
+            "en": "1 fried chicken piece",
+            "ta": ""
+          },
+          {
+            "en": "1 egg",
+            "ta": ""
+          },
+          {
+            "en": "Bread halwa (dessert)",
+            "ta": ""
+          }
+        ]
+      },
+      {
+        "id": "menu-2-palavu",
+        "name": {
+          "en": "Menu 2 – Palavu Meal",
+          "ta": ""
+        },
+        "description": {
+          "en": "Palavu with one appalam, one egg, kathirikai pachadi and one mutton piece on the side, finished with kesari for dessert.",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1789992252165-28c05878c442?auto=format&fit=crop&w=800&q=80",
+        "pricing": [
+          {
+            "label": {
+              "en": "Per plate",
+              "ta": ""
+            },
+            "price": 280,
+            "unit": "plate"
+          }
+        ],
+        "includes": [
+          {
+            "en": "Palavu",
+            "ta": ""
+          },
+          {
+            "en": "1 appalam",
+            "ta": ""
+          },
+          {
+            "en": "1 egg",
+            "ta": ""
+          },
+          {
+            "en": "Kathirikai pachadi",
+            "ta": ""
+          },
+          {
+            "en": "1 mutton piece",
+            "ta": ""
+          },
+          {
+            "en": "Kesari (dessert)",
+            "ta": ""
+          }
+        ]
+      },
+      {
+        "id": "cooking-team",
+        "name": {
+          "en": "Cooking Team",
+          "ta": ""
+        },
+        "description": {
+          "en": "Our cooks prepare the full menu at your venue on the day, bringing their own large cooking vessels and stoves, so everything is served fresh and hot.",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1574163783773-39f4681829b0?auto=format&fit=crop&w=800&q=80",
+        "includes": [
+          {
+            "en": "Head cook and kitchen helpers",
+            "ta": ""
+          },
+          {
+            "en": "Large cooking vessels and stoves",
+            "ta": ""
+          },
+          {
+            "en": "Fresh cooking at the venue on the day",
+            "ta": ""
+          }
+        ]
+      },
+      {
+        "id": "serving-staff",
+        "name": {
+          "en": "Serving Staff",
+          "ta": ""
+        },
+        "description": {
+          "en": "A uniformed serving team that serves every guest at the table, keeps refilling each item and looks after the dining hall until the last batch is done.",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1719573019827-d06944a0c2be?auto=format&fit=crop&w=800&q=80",
+        "includes": [
+          {
+            "en": "Uniformed servers",
+            "ta": ""
+          },
+          {
+            "en": "Table service for every batch",
+            "ta": ""
+          },
+          {
+            "en": "Refills until guests are done",
+            "ta": ""
+          }
+        ]
+      },
+      {
+        "id": "dining-hall-setup",
+        "name": {
+          "en": "Dining Hall Setup",
+          "ta": ""
+        },
+        "description": {
+          "en": "The dining area arranged before guests arrive: tables and chairs laid out, table covers, plates or banana leaves and serving vessels ready at each row.",
+          "ta": ""
+        },
+        "image": "https://images.unsplash.com/photo-1775918427144-51f0bf53f8c4?auto=format&fit=crop&w=800&q=80",
+        "includes": [
+          {
+            "en": "Tables and chairs arranged",
+            "ta": ""
+          },
+          {
+            "en": "Table covers",
+            "ta": ""
+          },
+          {
+            "en": "Plates or banana leaves",
+            "ta": ""
+          },
+          {
+            "en": "Serving vessels and spoons",
+            "ta": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     "id": "tour-planning-organizing",
     "name": {
       "en": "Tour Planning & Organizing",

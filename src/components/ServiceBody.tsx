@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+import { createElement } from "react";
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 import { AnimatedIcon } from "./AnimatedIcon";
 import { Button } from "./Button";
 import { LevelDots } from "./LevelDots";
@@ -34,7 +38,13 @@ export function ServiceBody({
   asPage?: boolean;
 }) {
   const whatsappHref = whatsappHrefFor(business.whatsappMessage);
+<<<<<<< HEAD
+  const icon = createElement(iconFor(service.id), {
+    className: "size-6 text-charcoal",
+  });
+=======
   const Icon = iconFor(service.id);
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
   const category = categories.find((c) => c.id === service.category);
   const d = service.detail;
   const photoIndex = Math.max(
@@ -82,9 +92,13 @@ export function ServiceBody({
         {/* Title block */}
         <div>
           <div className="flex items-center gap-3">
+<<<<<<< HEAD
+            <AnimatedIcon immediate>{icon}</AnimatedIcon>
+=======
             <AnimatedIcon immediate>
               <Icon className="size-6 text-charcoal" />
             </AnimatedIcon>
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
             <p className="label-gold text-gold-deep">
               {category ? category.label : ""}
             </p>
@@ -111,11 +125,35 @@ export function ServiceBody({
           )}
         </div>
 
+<<<<<<< HEAD
+        {/* The individual services this one is made up of — Candid
+            Photography, Album Design and so on for Photography &
+            Videography. Straight from the content, on the same cards the
+            Services section uses, so a service looks the same wherever a
+            visitor meets it. Tapping one swaps this dialog to that service.
+            Omitted for a service that is a single thing. */}
+        {service.subServices.length > 0 && (
+          <section>
+            <h3 className="label-gold text-gold-deep">{ui.servicesIncluded}</h3>
+            <ul className="dv-orphan-grid dv-orphan-grid-2 mt-4 grid grid-cols-2 items-stretch gap-3 sm:gap-4">
+              {service.subServices.map((sub, i) => (
+                <li key={sub.id} className="h-full">
+                  <ServiceCard
+                    service={sub}
+                    index={i}
+                    onOpen={onOpenSub}
+                    immediateIcon
+                  />
+                </li>
+              ))}
+            </ul>
+=======
         {/* About */}
         {d.about && (
           <section>
             <h3 className="label-gold text-gold-deep">{ui.aboutThisService}</h3>
             <p className="mt-3 text-lg leading-relaxed text-ink">{d.about}</p>
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
           </section>
         )}
 
@@ -143,6 +181,15 @@ export function ServiceBody({
           </section>
         )}
 
+<<<<<<< HEAD
+        {/* About, kept below the list: what the service is made up of is
+            what a visitor is looking for, and the paragraph reads as
+            background once they have seen it. */}
+        {d.about && (
+          <section>
+            <h3 className="label-gold text-gold-deep">{ui.aboutThisService}</h3>
+            <p className="mt-3 text-lg leading-relaxed text-ink">{d.about}</p>
+=======
         {/* The individual services this one is made up of — Candid
             Photography, Album Design and so on for Photography &
             Videography. Straight from the content, on the same cards the
@@ -164,6 +211,7 @@ export function ServiceBody({
                 </li>
               ))}
             </ul>
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
           </section>
         )}
 

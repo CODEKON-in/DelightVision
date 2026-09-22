@@ -177,7 +177,13 @@ const normalizeSubServices = (
           about: description,
           highlights: [],
           tags: [],
+<<<<<<< HEAD
+          includes: (item.includes ?? [])
+            .map((line) => getLocalizedText(line, "en"))
+            .filter((line) => line !== ""),
+=======
           includes: [],
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
           notice: "",
           conditions: "",
         },
@@ -205,7 +211,16 @@ const normalizePriceLines = (entries: ContentDesignPricingEntry[] = []): DesignP
     .filter((entry) => Number.isFinite(entry.price))
     .map((entry) => ({
       label: getLocalizedText(entry.label, "en"),
+<<<<<<< HEAD
+      price: formatPrice(
+        entry.unit
+          ? { type: `per_${entry.unit}`, amount: entry.price, unit: entry.unit }
+          : { type: "fixed", amount: entry.price },
+        "en"
+      ),
+=======
       price: formatPrice({ type: "fixed", amount: entry.price }, "en"),
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     }))
     .filter((entry) => entry.label !== "");
 
@@ -283,7 +298,14 @@ const normalizeComboPriceTiers = (
   items
     .map((item) => {
       const name = getLocalizedText(item.name, "en");
+<<<<<<< HEAD
+      const includes = knownServiceIds(
+        (item.services as ServiceId[] | undefined) ?? (combo.services as ServiceId[]),
+        `Package "${combo.id}", tier "${getLocalizedText(item.name, "en")}",`
+      );
+=======
       const includes = (item.services as ServiceId[] | undefined) ?? (combo.services as ServiceId[]);
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
       return {
         name,
         blurb: getLocalizedText(item.blurb, "en"),
@@ -346,6 +368,19 @@ const decorationDesignById: Record<string, DecorationDesign> = Object.fromEntrie
   decorationDesigns.map((design) => [design.id, design])
 );
 
+<<<<<<< HEAD
+/* A package names its services by id. One typo in the content used to
+   crash every page that rendered the package, so an id no service answers
+   to is dropped (and named in development) instead. */
+const knownServiceIds = (ids: ServiceId[] = [], owner: string): ServiceId[] =>
+  ids.filter((id) => {
+    const known = Boolean(serviceById[id]);
+    if (!known) warnInDev(`${owner} names service "${id}", which is not in content/services.json, so it is left out.`);
+    return known;
+  });
+
+=======
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => {
   const priceTiers = normalizeComboPriceTiers(combo.priceTiers, combo);
 
@@ -353,7 +388,11 @@ export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => {
     id: combo.id,
     name: getLocalizedText(combo.name, "en"),
     blurb: getLocalizedText(combo.blurb, "en"),
+<<<<<<< HEAD
+    includes: knownServiceIds(combo.services as ServiceId[], `Package "${combo.id}"`),
+=======
     includes: combo.services as ServiceId[],
+>>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     price: formatPrice(combo.pricing, "en"),
     popular: combo.popular,
     image: combo.image,
