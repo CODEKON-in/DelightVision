@@ -30,9 +30,6 @@
       "notice": { "en": "Booking notice: 6 weeks in advance", "ta": "" },
       "conditions": { "en": "Any service can be swapped out on a call", "ta": "" }
     },
-    "complimentaryItems": [
-      { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" } }
-    ],
     "priceTiers": [
       {
         "name": { "en": "Bronze", "ta": "" },
@@ -40,7 +37,10 @@
         "price": { "en": "₹85,000", "ta": "" },
         "about": { "en": "The essential four — your venue decorated, your guests fed, and the ceremony photographed and filmed, all run off one coordinated schedule. The printed album and video edit aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
         "decorationIds": ["design-007", "design-005", "design-008"],
-        "services": ["decoration", "food", "photography-videography"]
+        "services": ["decoration", "food", "photography-videography"],
+        "complimentaryItems": [
+          { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" }}
+        ]
       },
       {
         "name": { "en": "Silver", "ta": "" },
@@ -49,6 +49,10 @@
         "about": { "en": "Builds on the Bronze essentials by adding a professionally designed and printed photo album, so the day is kept in print as well as on screen — still all coordinated by one team.", "ta": "" },
         "decorationIds": ["design-001", "design-003", "design-009"],
         "services": ["decoration", "food", "photography-videography"],
+        "complimentaryItems": [
+          { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" }},
+          { "label": { "en": "Album Storage Box", "ta": "" }, "description": { "en": "A protective box for the printed album.", "ta": "" }}
+        ],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       },
       {
@@ -58,6 +62,11 @@
         "about": { "en": "Nothing left to arrange separately: decoration, catering, photography, videography, the printed album, and both photo and video editing, all run by one team on one schedule. Built for couples who want the entire day handled end to end.", "ta": "" },
         "decorationIds": ["design-002", "design-006", "design-004"],
         "services": ["decoration", "food", "photography-videography"],
+        "complimentaryItems": [
+          { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" }},
+          { "label": { "en": "Album Storage Box", "ta": "" }, "description": { "en": "A protective box for the printed album.", "ta": "" }},
+          { "label": { "en": "Travel Suitcase", "ta": "" }, "description": { "en": "A branded travel suitcase, included with the package.", "ta": "" }}
+        ],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       }
     ]
@@ -87,17 +96,16 @@
       "notice": { "en": "Booking notice: 4 weeks in advance", "ta": "" },
       "conditions": { "en": "Pre-wedding shoot and drone coverage available as add-ons", "ta": "" }
     },
-    "complimentaryItems": [
-      { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" } },
-      { "label": { "en": "Travel Suitcase", "ta": "" }, "description": { "en": "A branded travel suitcase, included with the package.", "ta": "" } }
-    ],
     "priceTiers": [
       {
         "name": { "en": "Bronze", "ta": "" },
         "blurb": { "en": "Photography and videography coverage for the day.", "ta": "" },
         "price": { "en": "₹55,000", "ta": "" },
         "about": { "en": "Just the shoot — one crew covering both photography and video for the ceremony and reception. Editing and the album aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
-        "services": ["traditional-photography", "traditional-videography", "album-design"]
+        "services": ["traditional-photography", "traditional-videography", "album-design"],
+        "complimentaryItems": [
+          { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" }}
+        ]
       },
       {
         "name": { "en": "Silver", "ta": "" },
@@ -105,6 +113,10 @@
         "price": { "en": "₹75,000", "ta": "" },
         "about": { "en": "Everything in Bronze, with both the photographs and the video professionally edited afterward — colour-corrected stills and a finished, edited film rather than raw footage.", "ta": "" },
         "services": ["candid-photography", "traditional-photography", "cinematic-videography", "album-design", "photo-editing", "video-editing"],
+        "complimentaryItems": [
+          { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" }},
+          { "label": { "en": "Framed Portrait", "ta": "" }, "description": { "en": "One framed portrait of the couple, printed and framed for the house.", "ta": "" }}
+        ],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       },
       {
@@ -113,6 +125,11 @@
         "price": { "en": "₹95,000", "ta": "" },
         "about": { "en": "The full photo-and-video experience: the shoot, complete editing for both photos and video, and a printed album to finish it off. Nothing from the day is left unedited or undelivered.", "ta": "" },
         "services": ["candid-photography", "traditional-photography", "cinematic-videography", "pre-wedding-photography", "album-design", "photo-editing", "video-editing"],
+        "complimentaryItems": [
+          { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" }},
+          { "label": { "en": "Framed Portrait", "ta": "" }, "description": { "en": "One framed portrait of the couple, printed and framed for the house.", "ta": "" }},
+          { "label": { "en": "Travel Suitcase", "ta": "" }, "description": { "en": "A branded travel suitcase, included with the package.", "ta": "" }}
+        ],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       }
     ]

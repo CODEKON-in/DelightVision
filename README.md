@@ -157,7 +157,7 @@ pen drive, a suitcase. They live in their own optional list on the package,
 never in `services`:
 
 ```jsonc
-// content/packages.json → a combo (or one of its priceTiers)
+// content/packages.json → one of a combo's priceTiers (or the combo itself)
 "complimentaryItems": [
   { "label": { "en": "Premium Pen Drive" }, "description": { "en": "Your photographs and films…" } },
   { "label": { "en": "Travel Suitcase" } }          // description is optional
@@ -167,8 +167,10 @@ never in `services`:
 - **The package page lists them** under **Complimentary Items**, between the
   services and the closing notes, in the same check-list style the service
   dialogs use for what's included. A package with none shows no section.
-- **A tier may name its own list**, which replaces the combo's for that
-  tier; otherwise every tier shows the combo's.
+- **Each tier names its own list**, which is where the samples put them, so
+  Bronze, Silver and Gold can throw in different things. A tier without one
+  falls back to a list on the combo itself, the same way `decorationIds`
+  does; a combo without tiers uses the combo-level list.
 - **Nothing else knows about them**: they are not services, have no ids, no
   prices and no pages, and an item without a label is skipped.
 - **The CMA keeps them.** Its package editor has no field for them (it does
@@ -176,8 +178,13 @@ never in `services`:
   as it does `priceTiers` and `decorationIds`. Editing the items themselves
   is a hand edit of `packages.json` until the CMA gains a field for them.
 
-Current samples: Complete Wedding Combo — a pen drive; Video & Photography
-Combo — a pen drive and a suitcase; Decor & Catering — none.
+Current samples, growing with the tier:
+
+| Combo | Bronze | Silver | Gold |
+|---|---|---|---|
+| Complete Wedding | Pen drive | + Album storage box | + Travel suitcase |
+| Video & Photography | Pen drive | + Framed portrait | + Travel suitcase |
+| Decor & Catering | — | — | — |
 
 ### Decoration designs
 
