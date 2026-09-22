@@ -30,6 +30,9 @@
       "notice": { "en": "Booking notice: 6 weeks in advance", "ta": "" },
       "conditions": { "en": "Any service can be swapped out on a call", "ta": "" }
     },
+    "complimentaryItems": [
+      { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" } }
+    ],
     "priceTiers": [
       {
         "name": { "en": "Bronze", "ta": "" },
@@ -84,20 +87,24 @@
       "notice": { "en": "Booking notice: 4 weeks in advance", "ta": "" },
       "conditions": { "en": "Pre-wedding shoot and drone coverage available as add-ons", "ta": "" }
     },
+    "complimentaryItems": [
+      { "label": { "en": "Premium Pen Drive", "ta": "" }, "description": { "en": "Your photographs and films delivered on a premium pen drive, in a presentation box.", "ta": "" } },
+      { "label": { "en": "Travel Suitcase", "ta": "" }, "description": { "en": "A branded travel suitcase, included with the package.", "ta": "" } }
+    ],
     "priceTiers": [
       {
         "name": { "en": "Bronze", "ta": "" },
         "blurb": { "en": "Photography and videography coverage for the day.", "ta": "" },
         "price": { "en": "₹55,000", "ta": "" },
         "about": { "en": "Just the shoot — one crew covering both photography and video for the ceremony and reception. Editing and the album aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
-        "services": ["photography-videography"]
+        "services": ["traditional-photography", "traditional-videography", "album-design"]
       },
       {
         "name": { "en": "Silver", "ta": "" },
         "blurb": { "en": "Adds full photo and video editing to the shoot.", "ta": "" },
         "price": { "en": "₹75,000", "ta": "" },
         "about": { "en": "Everything in Bronze, with both the photographs and the video professionally edited afterward — colour-corrected stills and a finished, edited film rather than raw footage.", "ta": "" },
-        "services": ["photography-videography"],
+        "services": ["candid-photography", "traditional-photography", "cinematic-videography", "album-design", "photo-editing", "video-editing"],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       },
       {
@@ -105,7 +112,7 @@
         "blurb": { "en": "The complete package — shoot, full editing, and a printed album.", "ta": "" },
         "price": { "en": "₹95,000", "ta": "" },
         "about": { "en": "The full photo-and-video experience: the shoot, complete editing for both photos and video, and a printed album to finish it off. Nothing from the day is left unedited or undelivered.", "ta": "" },
-        "services": ["photography-videography"],
+        "services": ["candid-photography", "traditional-photography", "cinematic-videography", "pre-wedding-photography", "album-design", "photo-editing", "video-editing"],
         "extras": [{ "en": "Tour Photography", "ta": "" }, { "en": "Tour Organizing", "ta": "" }]
       }
     ]

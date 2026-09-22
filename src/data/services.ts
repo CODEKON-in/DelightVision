@@ -9,13 +9,20 @@ import {
   type Combo as ContentPackage,
   type DecorationDesign as ContentDecorationDesign,
   type DesignDetail as ContentDesignDetail,
+  type ComplimentaryItem as ContentComplimentaryItem,
+  type DesignPricingEntry as ContentDesignPricingEntry,
   type Highlight as ContentHighlight,
   type Service as ContentService,
   type SubService as ContentSubService,
 } from "../content";
 import { formatPrice } from "../utils/formatPrice";
 
-export type ServiceId = "decoration" | "food" | "photography-videography" | "tour-planning-organizing";
+/* Service ids come from the content, so this is a plain string rather than
+   a closed union: the four top-level services ("decoration", "food",
+   "photography-videography", "tour-planning-organizing") and the individual
+   services inside them (e.g. "candid-photography"), which packages refer to
+   in exactly the same way. */
+export type ServiceId = string;
 
 export type CategoryId = "photo-video" | "decor-venue" | "food-catering" | "tours-travel";
 
@@ -45,10 +52,6 @@ export type DecorationDesign = {
   details: DetailRow[];
 };
 
-/* A capability inside a service, e.g. Album Design inside Photography &
-   Videography. */
-export type SubService = { name: string; description: string };
-
 export type Service = {
   id: ServiceId;
   name: string;
@@ -67,9 +70,20 @@ export type Service = {
     conditions: string;
   };
   designs: DecorationDesign[];
-  /* Empty for a service that is a single thing. */
-  subServices: SubService[];
+  /* The individual services this service is made up of — Candid
+     Photography, Album Design and so on inside Photography & Videography.
+     Each is an ordinary Service in its own right, so the same card and the
+     same details dialog render it, and a package can refer to it by id.
+     Empty for a service that is a single thing. */
+  subServices: Service[];
+  /* A service priced as generic label/price lines rather than one rate —
+     the individual services use this, exactly as the decoration designs do.
+     `price` holds the first line. */
+  priceLines: DesignPrice[];
 };
+
+/* A package's complimentary item, flattened for display. */
+export type ComplimentaryItem = { label: string; description: string };
 
 export type ComboPriceTier = {
   name: string;
@@ -88,6 +102,9 @@ export type ComboPriceTier = {
      when the tier includes no decoration or names no design that exists —
      its Decoration card then opens the service's own details instead. */
   decorations: DecorationDesign[];
+  /* What this tier throws in beyond its services — the combo's own list
+     unless the tier names a different one. Empty when there is nothing. */
+  complimentaryItems: ComplimentaryItem[];
 };
 
 export type Combo = {
@@ -109,6 +126,7 @@ export type Combo = {
   priceTiers: ComboPriceTier[];
   /* As on a tier — used by a combo that has no tiers. */
   decorations: DecorationDesign[];
+  complimentaryItems: ComplimentaryItem[];
 };
 
 const normalizeHighlights = (items: ContentHighlight[] = []): Highlight[] =>
@@ -126,13 +144,47 @@ const normalizeCategory = (category: ContentCategory): { id: CategoryId; label: 
   label: getLocalizedText(category.label, "en"),
 });
 
-/* An entry without a name has nothing to list under. */
-const normalizeSubServices = (items: ContentSubService[] = []): SubService[] =>
+/* Each individual service becomes a Service of its own, so everything that
+   renders a service — the card, the details dialog, a package's service list
+   — works on it unchanged. It inherits its parent's category, and its
+   description doubles as its "About this service" text. An entry without a
+   name has nothing to show, and one without an id of its own is given a slug
+   of its name so a package can still point at it. */
+const slug = (text: string): string =>
+  text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+const normalizeSubServices = (
+  items: ContentSubService[] = [],
+  parent: ContentService
+): Service[] =>
   items
-    .map((item) => ({
-      name: getLocalizedText(item.name, "en"),
-      description: getLocalizedText(item.description, "en"),
-    }))
+    .map((item) => {
+      const name = getLocalizedText(item.name, "en");
+      const description = getLocalizedText(item.description, "en");
+      const priceLines = normalizePriceLines(item.pricing);
+
+      return {
+        id: item.id || slug(name),
+        name,
+        category: parent.category as CategoryId,
+        description,
+        price: priceLines[0]?.price ?? "",
+        priceLines,
+        image: item.image ?? "",
+        detail: {
+          badge: "",
+          subtitle: "",
+          about: description,
+          highlights: [],
+          tags: [],
+          includes: [],
+          notice: "",
+          conditions: "",
+        },
+        designs: [],
+        subServices: [],
+      };
+    })
     .filter((item) => item.name !== "");
 
 const normalizeDetails = (items: ContentDesignDetail[] = []): DetailRow[] =>
@@ -144,19 +196,24 @@ const normalizeDetails = (items: ContentDesignDetail[] = []): DetailRow[] =>
     /* A half-filled row would print a label with nothing beside it. */
     .filter((row) => row.label !== "" && row.value !== "");
 
-/* A price line is shown as a plain amount — a design's price is fixed, so
-   nothing is prefixed with "Starting". Lines without a label or a usable
-   number are dropped rather than printed half-empty. */
+/* Generic label/price lines, shared by the decoration designs and the
+   individual services. A line is shown as a plain amount — these prices are
+   fixed, so nothing is prefixed with "Starting". Lines without a label or a
+   usable number are dropped rather than printed half-empty. */
+const normalizePriceLines = (entries: ContentDesignPricingEntry[] = []): DesignPrice[] =>
+  entries
+    .filter((entry) => Number.isFinite(entry.price))
+    .map((entry) => ({
+      label: getLocalizedText(entry.label, "en"),
+      price: formatPrice({ type: "fixed", amount: entry.price }, "en"),
+    }))
+    .filter((entry) => entry.label !== "");
+
+
 const normalizeDesigns = (items: ContentDecorationDesign[] = []): DecorationDesign[] =>
   items
     .map((item) => {
-      const pricing = (item.pricing ?? [])
-        .filter((entry) => Number.isFinite(entry.price))
-        .map((entry) => ({
-          label: getLocalizedText(entry.label, "en"),
-          price: formatPrice({ type: "fixed", amount: entry.price }, "en"),
-        }))
-        .filter((entry) => entry.label !== "");
+      const pricing = normalizePriceLines(item.pricing);
 
       return {
         id: item.id,
@@ -207,6 +264,18 @@ const resolveDecorations = (
   return designs;
 };
 
+/* An item without a label has nothing to show. The description is
+   optional — some items need no explaining. */
+const normalizeComplimentaryItems = (
+  items: ContentComplimentaryItem[] = []
+): ComplimentaryItem[] =>
+  items
+    .map((item) => ({
+      label: getLocalizedText(item.label, "en"),
+      description: getLocalizedText(item.description, "en"),
+    }))
+    .filter((item) => item.label !== "");
+
 const normalizeComboPriceTiers = (
   items: ContentComboPriceTier[] = [],
   combo: ContentPackage
@@ -226,6 +295,9 @@ const normalizeComboPriceTiers = (
           item.decorationIds ?? combo.decorationIds,
           includes,
           `Package "${combo.id}", tier "${name}",`
+        ),
+        complimentaryItems: normalizeComplimentaryItems(
+          item.complimentaryItems ?? combo.complimentaryItems
         ),
       };
     })
@@ -251,12 +323,20 @@ export const services: Service[] = serviceCatalog.map((service: ContentService) 
     conditions: getLocalizedText(service.detail.conditions, "en"),
   },
   designs: normalizeDesigns(service.designs),
-  subServices: normalizeSubServices(service.subServices),
+  subServices: normalizeSubServices(service.subServices, service),
+  /* A top-level service is priced by its own single rate, not by lines. */
+  priceLines: [],
 }));
 
-export const serviceById = Object.fromEntries(
-  services.map((service) => [service.id, service])
-) as Record<ServiceId, Service>;
+/* Every service a package can name: the top-level ones and the individual
+   services inside them, all in one lookup, so a package's plain list of ids
+   resolves whichever kind it holds. */
+export const serviceById: Record<ServiceId, Service> = Object.fromEntries(
+  services.flatMap((service) => [
+    [service.id, service] as const,
+    ...service.subServices.map((sub) => [sub.id, sub] as const),
+  ])
+);
 
 /* Every decoration design, in catalogue order — the one source packages
    look their designs up in. */
@@ -292,5 +372,6 @@ export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => {
       priceTiers.length > 0
         ? []
         : resolveDecorations(combo.decorationIds, combo.services as ServiceId[], `Package "${combo.id}"`),
+    complimentaryItems: normalizeComplimentaryItems(combo.complimentaryItems),
   };
 });

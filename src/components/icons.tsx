@@ -59,6 +59,51 @@ export function TourIcon(props: IconProps) {
   );
 }
 
+export function VideographyIcon(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <rect x="2.5" y="6.5" width="12.5" height="11" rx="2.5" />
+      <path d="M15 11l5.2-2.9a.6.6 0 0 1 .9.5v6.8a.6.6 0 0 1-.9.5L15 13z" />
+    </Stroke>
+  );
+}
+
+export function AlbumIcon(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      {/* Bound album with a photo on the cover */}
+      <path d="M5 3.5h13a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19V5A1.5 1.5 0 0 1 5 3.5z" />
+      <path d="M7.5 3.5v17" />
+      <path d="M10.5 14.5l2.2-2.6 1.6 1.8 1.2-1.3 1.5 2.1z" />
+      <circle cx="11.6" cy="8.6" r="1" />
+    </Stroke>
+  );
+}
+
+export function EditingIcon(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      {/* Film strip with an edit sparkle */}
+      <rect x="2.5" y="5.5" width="19" height="13" rx="2" />
+      <path d="M7 5.5v13M17 5.5v13" />
+      <path d="M2.5 12h4.5M17 12h4.5" />
+      <path d="M12 9.2l.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z" />
+    </Stroke>
+  );
+}
+
+export function PhotoEditingIcon(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      {/* Photograph with a retouch wand */}
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+      <path d="M2.5 15.5l4.6-4.6 3.4 3.4 3-3 3.4 3.4" />
+      <circle cx="8.4" cy="9.1" r="1.3" />
+      <path d="M17.6 4.2l.8 1.8 1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" />
+    </Stroke>
+  );
+}
+
 export function PhotographyIcon(props: IconProps) {
   return (
     <Stroke {...props}>

@@ -849,26 +849,112 @@
     },
     "subServices": [
       {
+        "id": "candid-photography",
         "name": {
-          "en": "Photography",
+          "en": "Candid Photography",
           "ta": ""
         },
         "description": {
-          "en": "Two photographers cover the full day, from the morning rituals to the send-off, with candid moments and the traditional family portraits.",
+          "en": "Natural moments captured through the day, with the emphasis on real expressions and the small things that happen between the rituals.",
           "ta": ""
-        }
+        },
+        "image": "/images/services/candid-photography.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Full Day",
+              "ta": ""
+            },
+            "price": 25000
+          }
+        ]
       },
       {
+        "id": "traditional-photography",
         "name": {
-          "en": "Videography",
+          "en": "Traditional Photography",
           "ta": ""
         },
         "description": {
-          "en": "Two camera operators film the celebration with stabilised cameras and clear audio of the vows, speeches and blessings.",
+          "en": "Classic coverage of the ceremonies, the posed family portraits and the moments every family wants framed.",
           "ta": ""
-        }
+        },
+        "image": "/images/services/traditional-photography.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Full Day",
+              "ta": ""
+            },
+            "price": 18000
+          }
+        ]
       },
       {
+        "id": "cinematic-videography",
+        "name": {
+          "en": "Cinematic Videography",
+          "ta": ""
+        },
+        "description": {
+          "en": "A wedding film shot and cut like a short film, with stabilised camera work and a highlight reel of the day.",
+          "ta": ""
+        },
+        "image": "/images/services/cinematic-videography.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Full Day",
+              "ta": ""
+            },
+            "price": 30000
+          }
+        ]
+      },
+      {
+        "id": "traditional-videography",
+        "name": {
+          "en": "Traditional Videography",
+          "ta": ""
+        },
+        "description": {
+          "en": "Complete video coverage of the ceremonies and celebrations, recorded in full with clear audio of the vows and speeches.",
+          "ta": ""
+        },
+        "image": "/images/services/traditional-videography.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Full Day",
+              "ta": ""
+            },
+            "price": 20000
+          }
+        ]
+      },
+      {
+        "id": "pre-wedding-photography",
+        "name": {
+          "en": "Pre-Wedding Photography",
+          "ta": ""
+        },
+        "description": {
+          "en": "A separate session for the couple before the wedding, at a location you choose.",
+          "ta": ""
+        },
+        "image": "/images/services/pre-wedding-photography.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Per Session",
+              "ta": ""
+            },
+            "price": 15000
+          }
+        ]
+      },
+      {
+        "id": "album-design",
         "name": {
           "en": "Album Design",
           "ta": ""
@@ -876,27 +962,57 @@
         "description": {
           "en": "A printed album laid out by hand from the photographs you shortlist with us, on thick lay-flat photographic paper.",
           "ta": ""
-        }
-      },
-      {
-        "name": {
-          "en": "Video Editing",
-          "ta": ""
         },
-        "description": {
-          "en": "A short highlight film and a full ceremony cut, colour graded, with cleaned-up audio and music you choose.",
-          "ta": ""
-        }
+        "image": "/images/services/album-design.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Per Album",
+              "ta": ""
+            },
+            "price": 8000
+          },
+          {
+            "label": {
+              "en": "Extra Parent Copy",
+              "ta": ""
+            },
+            "price": 3500
+          }
+        ]
       },
       {
+        "id": "photo-editing",
         "name": {
           "en": "Photo Editing",
           "ta": ""
         },
         "description": {
-          "en": "Every delivered photograph corrected by hand for exposure and colour, with natural retouching on portraits.",
+          "en": "Colour correction and natural retouching of the photographs, finished photo by photo rather than with one filter.",
           "ta": ""
-        }
+        },
+        "image": "/images/services/photo-editing.jpg"
+      },
+      {
+        "id": "video-editing",
+        "name": {
+          "en": "Video Editing",
+          "ta": ""
+        },
+        "description": {
+          "en": "The footage cut into a highlight film and a full-length version, colour graded and set to music you choose.",
+          "ta": ""
+        },
+        "image": "/images/services/video-editing.jpg",
+        "pricing": [
+          {
+            "label": {
+              "en": "Per Event",
+              "ta": ""
+            },
+            "price": 15000
+          }
+        ]
       }
     ]
   },

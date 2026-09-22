@@ -13,6 +13,21 @@ import { useSyncExternalStore } from "react";
 
 export const HOME_PATH = "/";
 export const DECORATIONS_PATH = "/decorations";
+/* A service's own page, e.g. "/services/photography-videography" — for a
+   service made up of individual services, which get a page rather than a
+   dialog because there is a set of them to look through. */
+export const SERVICES_PATH_PREFIX = "/services/";
+
+export function servicePathFor(serviceId: string): string {
+  return `${SERVICES_PATH_PREFIX}${encodeURIComponent(serviceId)}`;
+}
+
+/* null when the path is not a service page. */
+export function serviceIdFromPath(path: string): string | null {
+  if (!path.startsWith(SERVICES_PATH_PREFIX)) return null;
+  const id = path.slice(SERVICES_PATH_PREFIX.length);
+  return id ? decodeURIComponent(id) : null;
+}
 /* One combo package's own detail page, e.g. "/packages/complete" — the
    Combo Packages section's "View Package Details" button sends visitors
    here instead of opening a popup, so each package gets a real,
@@ -22,7 +37,7 @@ export const PACKAGES_PATH_PREFIX = "/packages/";
    "/packages/complete/Silver/decorations". */
 const DECORATIONS_SEGMENT = "decorations";
 
-export type RouteName = "home" | "decorations" | "package" | "package-decorations";
+export type RouteName = "home" | "decorations" | "service" | "package" | "package-decorations";
 
 const listeners = new Set<() => void>();
 
@@ -109,6 +124,7 @@ export function tierNameFromPath(path: string): string | null {
 
 export function routeName(path: string): RouteName {
   if (path === DECORATIONS_PATH) return "decorations";
+  if (serviceIdFromPath(path)) return "service";
   const segments = packageSegments(path);
   if (segments?.[0]) return isPackageDecorationsPath(segments) ? "package-decorations" : "package";
   return "home";

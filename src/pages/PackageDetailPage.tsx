@@ -3,6 +3,7 @@ import { Button } from "../components/Button";
 import { Reveal } from "../components/Reveal";
 import { ServiceCard } from "../components/ServiceCard";
 import { CheckIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
+import { AnimatedIcon } from "../components/AnimatedIcon";
 import { ui } from "../data/copy";
 import { business, telHref, whatsappHrefFor } from "../data/site";
 import { combos, serviceById, type Service } from "../data/services";
@@ -61,6 +62,11 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
      no tiers at all. */
   const tierServices = tier?.includes ?? combo?.includes ?? [];
   const tierExtras = tier?.extras ?? [];
+  /* What the package throws in beyond its services — the tier's own list,
+     or the combo's when it has no tiers. */
+  const complimentaryItems = tier
+    ? tier.complimentaryItems
+    : (combo?.complimentaryItems ?? []);
 
   /* The decoration designs this package offers — the selected tier's, or
      the combo's own when it has no tiers. Resolved from the shared
@@ -218,6 +224,31 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
                   ))}
                 </Reveal>
               )}
+            </Reveal>
+          )}
+
+          {/* What comes with the package beyond the services — a pen drive,
+              a suitcase. Straight from the content, in the same check-list
+              style the service dialogs use for what's included, and left out
+              entirely when the package throws in nothing. */}
+          {complimentaryItems.length > 0 && (
+            <Reveal key={`${tier?.name}-complimentary`} immediate className="mt-8 sm:mt-10">
+              <h2 className="label-gold text-gold-deep">{ui.complimentaryItems}</h2>
+              <ul className="mt-4 flex max-w-2xl flex-col gap-3">
+                {complimentaryItems.map((item) => (
+                  <li key={item.label} className="flex gap-3">
+                    <AnimatedIcon immediate delay={0.1} className="mt-1 shrink-0">
+                      <CheckIcon className="size-5 text-gold-deep" />
+                    </AnimatedIcon>
+                    <div>
+                      <p className="text-base font-semibold text-ink">{item.label}</p>
+                      {item.description && (
+                        <p className="mt-0.5 text-base text-muted">{item.description}</p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           )}
 

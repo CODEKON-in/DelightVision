@@ -58,31 +58,89 @@ strings with formatted prices. The content itself is edited in the CMA.
 > `services[]` and `combos[]` — e.g. `"Starting ₹25,000"` — with real
 > pricing. Every price in the UI reads from these two arrays.
 
-### Services and sub-services
+### Services and individual services
 
 There are **four top-level services**: Decoration, Food & Catering,
-Photography & Videography, and Tour Planning & Organizing. Photography, Videography, Album Design, Video
-Editing and Photo Editing are **not** services of their own; they are the
-`subServices` of Photography & Videography, so a visitor sees one media
-service that runs from the shoot through editing to the printed album:
+Photography & Videography, and Tour Planning & Organizing. Those four are
+what the Services section shows.
+
+A service can be made up of **individual services**, listed in its
+`subServices`. Photography & Videography is: Candid Photography, Album
+Design and so on are not services of their own in the Services section, they
+belong to it. Each carries an `id`, which is how a package points at one:
 
 ```jsonc
 // content/services.json → the photography-videography service
 "subServices": [
-  { "name": { "en": "Photography" },  "description": { "en": "Two photographers cover the full day…" } },
-  { "name": { "en": "Album Design" }, "description": { "en": "A printed album laid out by hand…" } }
+  {
+    "id": "candid-photography",                    // what a package refers to
+    "name": { "en": "Candid Photography" },
+    "description": { "en": "Natural moments captured through the day…" },
+    "image": "/images/services/candid-photography.jpg",   // optional
+    "pricing": [{ "label": { "en": "Full Day" }, "price": 25000 }]  // optional
+  }
 ]
 ```
 
-- The service's details dialog lists them under **Services Included**, name
-  and one-line description, in content order. Nothing about them is in the
-  React code: add, rename, reorder or remove entries in the content.
-- Any service can have `subServices`; a service without them simply has no
-  such section.
-- Packages list the service once (`"photography-videography"`). What a
-  Bronze/Silver/Gold tier adds on the media side (album, editing) is said in
-  that tier's blurb and about text, which the package page shows above its
-  service cards.
+- **An individual service is an ordinary service** as far as the site is
+  concerned: the same card renders it and the same details dialog opens it.
+  It inherits its parent's category, and its description doubles as its
+  "About this service" text.
+- **A service made up of individual services gets a page of its own**, at
+  `/services/<id>` — Photography & Videography is at
+  `/services/photography-videography`. Its card in the Services section goes
+  there instead of opening a dialog, exactly as the Decoration card goes to
+  the Decorations page. That is a data check (does it have `subServices`?),
+  not a hardcoded id.
+- **The page and the dialog show the same thing.** Both render
+  `ServiceBody` (`src/components/ServiceBody.tsx`) — photo, title, price,
+  about, the individual services as cards under **Services Included**, and
+  the usual call/WhatsApp buttons — so the two cannot drift apart. The page
+  passes `asPage`, which rounds the photo into the page and lets the buttons
+  end the content instead of sticking to the foot of a scrolling panel.
+- **A card on that page opens that individual service in the usual
+  dialog.** Inside a dialog (a package's Photography & Videography card, for
+  instance) the cards instead swap the dialog to that service, with a "Back
+  to …" link above the title, so a second dialog never opens on top of the
+  first.
+- **Pricing is the same generic label/price list the decoration designs
+  use**, so any label works and no code knows about "album" or "editing"
+  prices. The first line is the price on the card. **Pricing is optional**:
+  a service without it (Photo Editing in the samples) simply shows no price,
+  and the dialog leaves the pricing box out.
+- **Images are optional**: a service without one gets the drawn fallback
+  tile, like every other missing photo.
+- **`id` is optional in the content**: an entry saved without one (the CMA
+  does not ask for an id) is given a slug of its name, so it still works and
+  can still be referenced.
+- **Icons**: `src/components/serviceIcons.ts` maps the sample ids to the
+  camera/film/album marks. An id it does not know falls back to the neutral
+  mark — content, not layout, so nothing breaks.
+
+**Packages reference services by id, whichever kind they are.** A tier's
+`services` stays a plain list of ids, so a package can mix top-level and
+individual services:
+
+```jsonc
+// content/packages.json → Video & Photography Combo, Silver
+"services": ["candid-photography", "traditional-photography", "album-design"]
+
+// content/packages.json → Complete Wedding Combo, Silver
+"services": ["decoration", "food", "photography-videography"],
+"decorationIds": ["design-001", "design-003", "design-009"]
+```
+
+The package page resolves each id against the shared services data and
+renders the usual card, so nothing about a service is ever copied into a
+package. Decoration still works exactly as before: the card is found by the
+service id and the designs come from `decorationIds` (see *Package
+decorations*).
+
+**The sample individual services** are Candid Photography, Traditional
+Photography, Cinematic Videography, Traditional Videography, Pre-Wedding
+Photography, Album Design, Photo Editing and Video Editing, with sample
+prices. They are development samples, like every other price and photo on
+the site — replace them with the client's real list.
 
 **Tour Planning & Organizing is a promotional card only.** It is an ordinary
 entry in `content/services.json` (id `tour-planning-organizing`, category
@@ -91,6 +149,35 @@ price (`"type": "custom"` shows "Custom quote"), no highlights, tags or
 inclusions — the dialog leaves those sections out when they are empty — and
 it is not part of any package. There is no tour booking, itinerary or
 package system behind it.
+
+### Complimentary items
+
+A package can throw in things that are not services and are not priced — a
+pen drive, a suitcase. They live in their own optional list on the package,
+never in `services`:
+
+```jsonc
+// content/packages.json → a combo (or one of its priceTiers)
+"complimentaryItems": [
+  { "label": { "en": "Premium Pen Drive" }, "description": { "en": "Your photographs and films…" } },
+  { "label": { "en": "Travel Suitcase" } }          // description is optional
+]
+```
+
+- **The package page lists them** under **Complimentary Items**, between the
+  services and the closing notes, in the same check-list style the service
+  dialogs use for what's included. A package with none shows no section.
+- **A tier may name its own list**, which replaces the combo's for that
+  tier; otherwise every tier shows the combo's.
+- **Nothing else knows about them**: they are not services, have no ids, no
+  prices and no pages, and an item without a label is skipped.
+- **The CMA keeps them.** Its package editor has no field for them (it does
+  not need one), and saving a package carries the list through untouched —
+  as it does `priceTiers` and `decorationIds`. Editing the items themselves
+  is a hand edit of `packages.json` until the CMA gains a field for them.
+
+Current samples: Complete Wedding Combo — a pen drive; Video & Photography
+Combo — a pen drive and a suitcase; Decor & Catering — none.
 
 ### Decoration designs
 
@@ -254,7 +341,7 @@ src/
                         DecorationCard, DecorationDetail
   sections/             Hero, Services, ServiceDetail, Combos,
                         ComboDetail, Contact
-  pages/                DecorationsPage (catalogue + per-package), PackageDetailPage
+  pages/                DecorationsPage (catalogue + per-package), ServicePage, PackageDetailPage
   index.css             design system (colours, fonts, shadows)
 ```
 

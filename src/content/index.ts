@@ -66,12 +66,21 @@ export type DecorationDesign = {
   details?: DesignDetail[];
 };
 
-/* One capability inside a top-level service — Photography, Album Design and
-   so on inside Photography & Videography. Content, not code: the client adds,
-   renames or removes them without touching the site. */
+/* One individual service inside a top-level service — Candid Photography,
+   Album Design and so on inside Photography & Videography. Content, not
+   code: the client adds, renames or removes them without touching the site,
+   and a package refers to one by its `id`. */
 export type SubService = {
+  /* What a package points at, e.g. "candid-photography". Falls back to a
+     slug of the name, so an entry added without one still works. */
+  id?: string;
   name: LocalizedText;
   description: LocalizedText;
+  image?: string;
+  /* The same generic label/price lines the decoration designs use — the
+     site never reads a label, so any wording works. Optional: a service
+     does not have to carry a price. */
+  pricing?: DesignPricingEntry[];
 };
 
 export type Service = {
@@ -101,6 +110,15 @@ export type Service = {
 /* A Bronze/Silver/Gold pricing choice within one combo — the combo itself
    stays a single card in the Combo Packages grid, and its own detail
    dialog is where a customer picks which of the three to go with. */
+/* Something a package throws in beyond the services it books — a pen drive,
+   a suitcase. Not a service and not priced: just a label and, if it needs
+   one, a line saying what it is. A plain list, so the client adds, renames
+   or removes items without a code change. */
+export type ComplimentaryItem = {
+  label: LocalizedText;
+  description?: LocalizedText;
+};
+
 export type ComboPriceTier = {
   /* "Bronze" / "Silver" / "Gold" */
   name: LocalizedText;
@@ -127,6 +145,9 @@ export type ComboPriceTier = {
      when the tier includes the decoration service. Falls back to the
      combo's own `decorationIds` when a tier doesn't name any. */
   decorationIds?: string[];
+  /* What this tier throws in, when the tiers differ. Falls back to the
+     combo's own `complimentaryItems` when a tier doesn't name any. */
+  complimentaryItems?: ComplimentaryItem[];
 };
 
 export type Combo = {
@@ -152,6 +173,9 @@ export type Combo = {
   /* The decoration designs the combo offers, for a combo without tiers or
      as the default for tiers that don't name their own. */
   decorationIds?: string[];
+  /* What the package throws in beyond its services — the default for every
+     tier that doesn't name its own. */
+  complimentaryItems?: ComplimentaryItem[];
 };
 
 export function getLocalizedText(value: LocalizedText | undefined, language: Language = "en"): string {

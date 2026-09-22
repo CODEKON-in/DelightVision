@@ -38,6 +38,7 @@ export const ui = {
   backToPackage: "Back to Package",
   fullServiceDetails: "Full service details",
   decorationsFootnoteTitle: "Before you call",
+  serviceNotFound: "This service could not be found. Please call us and we will talk you through what we offer.",
   noDecorationsYet: "The decorations are being updated. Please call us and we will talk you through them.",
   /* Names a design that has no title of its own */
   decorationDesignTitle: "Decoration Design",
@@ -53,6 +54,9 @@ export const ui = {
   /* -- Detail modals ----------------------------------------------- */
   aboutThisService: "About This Service",
   servicesIncluded: "Services Included",
+  /* Above an individual service opened from the service it belongs to,
+     followed by that service's name */
+  backToService: "Back to",
   serviceHighlights: "Service Highlights",
   covers: "Covers",
   whatsIncluded: "What's Included",
@@ -74,6 +78,7 @@ export const ui = {
   aboutThisPackage: "About This Package",
   packageHighlights: "Package Highlights",
   servicesInPackage: "Services In This Package",
+  complimentaryItems: "Complimentary Items",
   combosFootnote: "Need a different mix of services? Just call — we will put a combo together for you.",
   pricingOptionsHeading: "Pricing Options",
   aboutThisPackageOption: "About This Option",

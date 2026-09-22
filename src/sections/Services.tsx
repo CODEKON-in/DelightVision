@@ -4,18 +4,24 @@ import { SectionHeading } from "../components/SectionHeading";
 import { ServiceCard } from "../components/ServiceCard";
 import { ui } from "../data/copy";
 import { services, type Service } from "../data/services";
-import { DECORATIONS_PATH, navigate } from "../lib/router";
+import { DECORATIONS_PATH, navigate, servicePathFor } from "../lib/router";
 import { ServiceDetail } from "./ServiceDetail";
 
 export function Services() {
   const [openService, setOpenService] = useState<Service | null>(null);
 
-  /* A service with a gallery of designs — today that is Decorations — has a
-     page of its own for browsing all of them, so its card goes there rather
-     than opening the details dialog. */
+  /* Two services have a page of their own rather than a dialog, because
+     each has a set of things to look through: the one with a gallery of
+     designs (Decorations) and the one made up of individual services
+     (Photography & Videography). Both are data checks, not hardcoded ids,
+     so the next service of either kind needs no change here. */
   const openCard = (service: Service) => {
     if (service.designs.length > 0) {
       navigate(DECORATIONS_PATH);
+      return;
+    }
+    if (service.subServices.length > 0) {
+      navigate(servicePathFor(service.id));
       return;
     }
     setOpenService(service);

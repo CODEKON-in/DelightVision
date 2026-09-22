@@ -17,6 +17,10 @@ type Props = {
      the whole Decorations catalogue from the Services section, the one
      design a package includes from a package page. */
   onOpen: (service: Service) => void;
+  /* Draw the card's icon on mount instead of waiting to be scrolled to.
+     Set inside a dialog, where a scroll-triggered icon would never be
+     reached and so would stay invisible. */
+  immediateIcon?: boolean;
 };
 
 /* One service as a card: photo with its icon, name, one-line description,
@@ -26,7 +30,7 @@ type Props = {
 
    Render it inside an `h-full` grid item — the card fills that height so a
    row of cards lines up. */
-export function ServiceCard({ service, index, onOpen }: Props) {
+export function ServiceCard({ service, index, onOpen, immediateIcon = false }: Props) {
   return (
     <Card flush className="flex h-full flex-col">
       <div className="relative">
@@ -36,7 +40,7 @@ export function ServiceCard({ service, index, onOpen }: Props) {
           alt={service.name}
           className="aspect-16/10 w-full sm:aspect-4/3"
         />
-        <AnimatedIcon className="absolute top-3 left-3 inline-flex size-9 items-center justify-center rounded-xl bg-ivory-light/95 text-charcoal shadow-soft ring-1 ring-gold/50 xs:size-10 sm:size-12 sm:backdrop-blur-sm">
+        <AnimatedIcon immediate={immediateIcon} className="absolute top-3 left-3 inline-flex size-9 items-center justify-center rounded-xl bg-ivory-light/95 text-charcoal shadow-soft ring-1 ring-gold/50 xs:size-10 sm:size-12 sm:backdrop-blur-sm">
           {/* createElement rather than `const Icon = iconFor(…)`: the lookup
               returns a stable component from a fixed map, but assigning it
               to a capitalised local reads to the linter as defining a new
@@ -63,9 +67,13 @@ export function ServiceCard({ service, index, onOpen }: Props) {
         </p>
 
         <div className="mt-auto border-t border-cream-dark pt-3 sm:pt-4">
-          <p className="type-price text-xl leading-tight text-charcoal xs:text-2xl sm:text-3xl">
-            {service.price}
-          </p>
+          {/* Not every service has a price — a card without one simply goes
+              straight from the description to the button. */}
+          {service.price && (
+            <p className="type-price text-xl leading-tight text-charcoal xs:text-2xl sm:text-3xl">
+              {service.price}
+            </p>
+          )}
 
           <Button
             variant="secondary"

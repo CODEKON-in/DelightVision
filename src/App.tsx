@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ui } from "./data/copy";
-import { combos } from "./data/services";
+import { combos, serviceById } from "./data/services";
 import {
   HOME_PATH,
   comboIdFromPath,
@@ -11,11 +11,13 @@ import {
   navigate,
   routeName,
   scrollToHash,
+  serviceIdFromPath,
   tierNameFromPath,
   useRoutePath,
 } from "./lib/router";
 import { DecorationsPage } from "./pages/DecorationsPage";
 import { PackageDetailPage } from "./pages/PackageDetailPage";
+import { ServicePage } from "./pages/ServicePage";
 import { Combos } from "./sections/Combos";
 import { Contact } from "./sections/Contact";
 import { Hero } from "./sections/Hero";
@@ -38,6 +40,7 @@ export default function App() {
   const onHome = route === "home";
   const comboId = comboIdFromPath(path);
   const tierName = tierNameFromPath(path);
+  const serviceId = serviceIdFromPath(path);
 
   /* Every `#services`-style link on the site goes through here: the header,
      the footer, the phone menu and the skip link.
@@ -119,10 +122,15 @@ export default function App() {
       document.title = `${ui.decorationsTitle} — ${ui.pageTitle}`;
       return;
     }
+    if (route === "service") {
+      const service = serviceId ? serviceById[serviceId] : undefined;
+      document.title = service ? `${service.name} — ${ui.pageTitle}` : ui.pageTitle;
+      return;
+    }
     const combo = comboId ? combos.find((c) => c.id === comboId) : undefined;
     const name = combo && route === "package-decorations" ? `${ui.decorationsTitle} — ${combo.name}` : combo?.name;
     document.title = name ? `${name} — ${ui.pageTitle}` : ui.pageTitle;
-  }, [onHome, route, comboId]);
+  }, [onHome, route, comboId, serviceId]);
 
   return (
     <div className="min-h-screen bg-ivory">
@@ -140,6 +148,8 @@ export default function App() {
           <Home />
         ) : route === "decorations" ? (
           <DecorationsPage />
+        ) : route === "service" ? (
+          <ServicePage key={path} serviceId={serviceId} />
         ) : route === "package-decorations" ? (
           /* Keyed on the path so moving from one tier's designs to
              another's starts the page afresh — reveals play again and no
