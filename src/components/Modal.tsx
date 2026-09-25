@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { settleIfStalled } from "../lib/motion";
 import { CloseIcon } from "./icons";
+import { ScrollCue } from "./ScrollCue";
 import { ui } from "../data/copy";
 
 type ModalProps = {
@@ -202,6 +203,23 @@ export function Modal({
     };
   }, [open, visible, reduced]);
 
+  /* The dialog's call buttons stick to its foot, so the cue has to ride
+     above them. Their height is whatever the buttons need — one row on a
+     wide screen, two stacked on a phone — so it is measured rather than
+     guessed, and kept on the panel as a custom property. */
+  useLayoutEffect(() => {
+    const panel = panelRef.current;
+    const bar = panel?.querySelector("[data-dialog-actions]");
+    if (!panel || !(bar instanceof HTMLElement)) return;
+
+    const measure = () => panel.style.setProperty("--dv-bar", `${bar.offsetHeight}px`);
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, [visible]);
+
   if (!visible) return null;
 
   return createPortal(
@@ -250,6 +268,19 @@ export function Modal({
           </div>
 
           {children}
+
+          {/* Rides above the call buttons at the foot — `--dv-bar` is their
+              measured height — and, like the close button, sits in a box of
+              its own height so it displaces nothing. */}
+          <div className="sticky bottom-0 z-30 h-0">
+            <ScrollCue
+              scroller={panelRef}
+              /* Over at the end rather than centred: the dialog's text runs
+                 the full width, and a cue in the middle of it sat on top of
+                 a word. */
+              className="absolute right-4 bottom-[calc(var(--dv-bar,0px)+0.75rem)]"
+            />
+          </div>
         </div>
       </div>
     </div>,

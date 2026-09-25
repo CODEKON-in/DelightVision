@@ -105,6 +105,8 @@ export type ComboPriceTier = {
   /* What this tier throws in beyond its services — the combo's own list
      unless the tier names a different one. Empty when there is nothing. */
   complimentaryItems: ComplimentaryItem[];
+  /* This tier's own photo, or the combo's when it has none of its own. */
+  image: string;
 };
 
 export type Combo = {
@@ -309,6 +311,7 @@ const normalizeComboPriceTiers = (
         complimentaryItems: normalizeComplimentaryItems(
           item.complimentaryItems ?? combo.complimentaryItems
         ),
+        image: item.image || combo.image,
       };
     })
     .filter((tier) => tier.name !== "" && tier.price !== "");
@@ -365,6 +368,23 @@ const knownServiceIds = (ids: ServiceId[] = [], owner: string): ServiceId[] =>
     if (!known) warnInDev(`${owner} names service "${id}", which is not in content/services.json, so it is left out.`);
     return known;
   });
+
+/* The package options (a combo's Bronze/Silver/Gold) to show on a service's
+   own page: those of a combo devoted to this service, meaning the combo
+   covers nothing outside it and the individual services inside it. The
+   Photo & Video combo is Photography & Videography's; the Complete Wedding
+   combo is nobody's, because it spans several services and belongs in the
+   Combo Packages section instead. */
+export function packagesForService(service: Service): { combo: Combo; tier: ComboPriceTier }[] {
+  const ids = new Set([service.id, ...service.subServices.map((sub) => sub.id)]);
+  const covers = (combo: Combo) => {
+    const named = [...combo.includes, ...combo.priceTiers.flatMap((tier) => tier.includes)];
+    return named.length > 0 && named.every((id) => ids.has(id));
+  };
+  return combos
+    .filter(covers)
+    .flatMap((combo) => combo.priceTiers.map((tier) => ({ combo, tier })));
+}
 
 export const combos: Combo[] = packageCatalog.map((combo: ContentPackage) => {
   const priceTiers = normalizeComboPriceTiers(combo.priceTiers, combo);

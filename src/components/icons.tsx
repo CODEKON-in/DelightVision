@@ -115,6 +115,14 @@ export function PhotographyIcon(props: IconProps) {
 
 /* -- Contact / UI icons --------------------------------------------- */
 
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M6 9.5 12 15.5 18 9.5" />
+    </Stroke>
+  );
+}
+
 export function PhoneIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>

@@ -101,6 +101,7 @@
         "name": { "en": "Bronze", "ta": "" },
         "blurb": { "en": "Photography and videography coverage for the day.", "ta": "" },
         "price": { "en": "₹55,000", "ta": "" },
+        "image": "/images/packages/photo-video-bronze.jpg",
         "about": { "en": "Just the shoot — one crew covering both photography and video for the ceremony and reception. Editing and the album aren't included at this level; add them separately, or step up to Silver or Gold to have them built in.", "ta": "" },
         "services": ["traditional-photography", "traditional-videography", "album-design"],
         "complimentaryItems": [
@@ -111,6 +112,7 @@
         "name": { "en": "Silver", "ta": "" },
         "blurb": { "en": "Adds full photo and video editing to the shoot.", "ta": "" },
         "price": { "en": "₹75,000", "ta": "" },
+        "image": "/images/packages/photo-video-silver.jpg",
         "about": { "en": "Everything in Bronze, with both the photographs and the video professionally edited afterward — colour-corrected stills and a finished, edited film rather than raw footage.", "ta": "" },
         "services": ["candid-photography", "traditional-photography", "cinematic-videography", "album-design", "photo-editing", "video-editing"],
         "complimentaryItems": [
@@ -123,6 +125,7 @@
         "name": { "en": "Gold", "ta": "" },
         "blurb": { "en": "The complete package — shoot, full editing, and a printed album.", "ta": "" },
         "price": { "en": "₹95,000", "ta": "" },
+        "image": "/images/packages/photo-video-gold.jpg",
         "about": { "en": "The full photo-and-video experience: the shoot, complete editing for both photos and video, and a printed album to finish it off. Nothing from the day is left unedited or undelivered.", "ta": "" },
         "services": ["candid-photography", "traditional-photography", "cinematic-videography", "pre-wedding-photography", "album-design", "photo-editing", "video-editing"],
         "complimentaryItems": [

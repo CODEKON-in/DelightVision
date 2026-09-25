@@ -154,6 +154,9 @@ export type ComboPriceTier = {
   /* What this tier throws in, when the tiers differ. Falls back to the
      combo's own `complimentaryItems` when a tier doesn't name any. */
   complimentaryItems?: ComplimentaryItem[];
+  /* A photo of this tier, for where the tiers are shown as cards. Falls
+     back to the combo's own image. */
+  image?: string;
 };
 
 export type Combo = {

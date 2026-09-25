@@ -159,7 +159,8 @@ function DetailBody({
       </div>
 
       {/* The same two actions as every other detail view on the site. */}
-      <div className="sticky bottom-0 mt-auto flex flex-col gap-3 border-t border-cream-dark bg-ivory-light p-4 sm:flex-row sm:bg-ivory-light/95 sm:p-5 sm:backdrop-blur-md">
+      <div data-dialog-actions
+        className="sticky bottom-0 mt-auto flex flex-col gap-3 border-t border-cream-dark bg-ivory-light p-4 sm:flex-row sm:bg-ivory-light/95 sm:p-5 sm:backdrop-blur-md">
         <Button
           href={enquiryHref}
           target="_blank"

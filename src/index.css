@@ -304,6 +304,25 @@
   );
 }
 
+/* The scroll cue's nudge: a slow, small bob, so it reads as an invitation
+   rather than something demanding attention. Transform only, so it costs
+   nothing to composite, and it stands still for anyone who has asked for
+   less motion. */
+@keyframes dv-scroll-bob {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(3px); }
+}
+
+.dv-scroll-cue {
+  animation: dv-scroll-bob 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-scroll-cue {
+    animation: none;
+  }
+}
+
 /* A hairline of gold where a dark section meets the light page. The only
    full-width gold on the site, and it is one pixel of it. */
 .gold-rule {

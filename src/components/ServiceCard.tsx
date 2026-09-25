@@ -7,8 +7,13 @@ import { iconFor } from "./serviceIcons";
 import { ui } from "../data/copy";
 import type { Service } from "../data/services";
 
-type Props = {
-  service: Service;
+/* All a card needs. A Service satisfies it, and so does a package's
+   Bronze/Silver/Gold option once the service page has given it a name, a
+   photo and a price — which is how the same card renders both. */
+export type CardItem = Pick<Service, "id" | "name" | "description" | "image" | "price">;
+
+type Props<T extends CardItem> = {
+  service: T;
   /* Position in its grid — picks the fallback tile palette if the photo
      is missing. */
   index: number;
@@ -16,11 +21,22 @@ type Props = {
      decoration service's card means different things in different places:
      the whole Decorations catalogue from the Services section, the one
      design a package includes from a package page. */
-  onOpen: (service: Service) => void;
+  onOpen: (service: T) => void;
   /* Draw the card's icon on mount instead of waiting to be scrolled to.
      Set inside a dialog, where a scroll-triggered icon would never be
      reached and so would stay invisible. */
   immediateIcon?: boolean;
+  /* The button's wording. Defaults to the service wording; a package option
+     says "View Package Details" instead. */
+  cta?: { short: string; long: string };
+  /* Which mark to draw. Defaults to the item's own id; a package option
+     borrows the icon of the service whose page it sits on, since its id
+     names no service. */
+  iconId?: string;
+  /* Leave the price off. Set inside a package, where a service's own rate
+     is not what the customer pays — the package price covers it, and
+     showing both reads as an extra charge. */
+  showPrice?: boolean;
 };
 
 /* One service as a card: photo with its icon, name, one-line description,
@@ -30,7 +46,15 @@ type Props = {
 
    Render it inside an `h-full` grid item — the card fills that height so a
    row of cards lines up. */
-export function ServiceCard({ service, index, onOpen, immediateIcon = false }: Props) {
+export function ServiceCard<T extends CardItem>({
+  service,
+  index,
+  onOpen,
+  immediateIcon = false,
+  cta = { short: ui.viewDetailsShort, long: ui.viewDetailsLong },
+  iconId,
+  showPrice = true,
+}: Props<T>) {
   return (
     <Card flush className="flex h-full flex-col">
       <div className="relative">
@@ -45,7 +69,7 @@ export function ServiceCard({ service, index, onOpen, immediateIcon = false }: P
               returns a stable component from a fixed map, but assigning it
               to a capitalised local reads to the linter as defining a new
               component on every render. */}
-          {createElement(iconFor(service.id), { className: "size-[1.15rem] xs:size-5 sm:size-6" })}
+          {createElement(iconFor(iconId ?? service.id), { className: "size-[1.15rem] xs:size-5 sm:size-6" })}
         </AnimatedIcon>
       </div>
 
@@ -68,8 +92,9 @@ export function ServiceCard({ service, index, onOpen, immediateIcon = false }: P
 
         <div className="mt-auto border-t border-cream-dark pt-3 sm:pt-4">
           {/* Not every service has a price — a card without one simply goes
-              straight from the description to the button. */}
-          {service.price && (
+              straight from the description to the button, as does a card
+              inside a package. */}
+          {showPrice && service.price && (
             <p className="type-price text-xl leading-tight text-charcoal xs:text-2xl sm:text-3xl">
               {service.price}
             </p>
@@ -82,8 +107,8 @@ export function ServiceCard({ service, index, onOpen, immediateIcon = false }: P
             className="mt-3 sm:mt-4"
             onClick={() => onOpen(service)}
           >
-            <span className="xs:hidden">{ui.viewDetailsShort}</span>
-            <span className="hidden xs:inline">{ui.viewDetailsLong}</span>
+            <span className="xs:hidden">{cta.short}</span>
+            <span className="hidden xs:inline">{cta.long}</span>
           </Button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "../components/Button";
 import { DecorationCard } from "../components/DecorationCard";
 import type { DecorationContext } from "../components/DecorationDetail";
+import { ScrollCue } from "../components/ScrollCue";
 import { Reveal } from "../components/Reveal";
 import { PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
@@ -81,6 +82,10 @@ export function DecorationsPage({ comboId, tierName }: Props) {
 
   return (
     <>
+      {/* The page carries on below the fold — said once, quietly, and only
+          while the reader is still at the top. */}
+      <ScrollCue className="fixed inset-x-0 bottom-6" />
+
       {/* No title band above this — the page opens straight on the
           designs grid, which is the reason anyone lands here. */}
       <section className="bg-ivory py-[clamp(2.5rem,7vw,4rem)]">

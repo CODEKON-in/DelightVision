@@ -19,6 +19,8 @@ export const ui = {
   callBusiness: "Call Delight Vision",
   openMenu: "Open menu",
   closeMenu: "Close menu",
+  /* The little chevron that says the page or dialog carries on below */
+  moreBelow: "More below",
   skipToServices: "Skip to services",
 
   /* -- Hero -------------------------------------------------------- */
@@ -77,6 +79,10 @@ export const ui = {
   aboutThisPackage: "About This Package",
   packageHighlights: "Package Highlights",
   servicesInPackage: "Services In This Package",
+  /* Above the package options shown on a service's own page */
+  packagesWithThisService: "Combo Packages",
+  /* Link from a package option's dialog to that package's own page */
+  viewPackagePage: "View the full package page",
   complimentaryItems: "Complimentary Items",
   combosFootnote: "Need a different mix of services? Just call — we will put a combo together for you.",
   pricingOptionsHeading: "Pricing Options",

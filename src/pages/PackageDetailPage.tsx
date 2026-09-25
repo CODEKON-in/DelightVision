@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
+import { ScrollCue } from "../components/ScrollCue";
 import { Reveal } from "../components/Reveal";
 import { ServiceCard } from "../components/ServiceCard";
 import { CheckIcon, PhoneIcon, WhatsAppIcon } from "../components/icons";
@@ -96,6 +97,10 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
 
   return (
     <>
+      {/* The page carries on below the fold — said once, quietly, and only
+          while the reader is still at the top. */}
+      <ScrollCue className="fixed inset-x-0 bottom-6" />
+
       <section className="bg-ivory py-[clamp(2.5rem,7vw,4rem)]">
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <Reveal immediate>
@@ -201,7 +206,14 @@ export function PackageDetailPage({ comboId, tierName }: Props) {
               >
                 {tierServices.map((id, i) => (
                   <li key={id} className="h-full">
-                    <ServiceCard service={serviceById[id]} index={i} onOpen={openCard} />
+                    <ServiceCard
+                      service={serviceById[id]}
+                      index={i}
+                      onOpen={openCard}
+                      /* The package's price covers these; a rate against
+                         each one would read as an extra charge. */
+                      showPrice={false}
+                    />
                   </li>
                 ))}
               </Reveal>

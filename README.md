@@ -117,6 +117,24 @@ belong to it. Each carries an `id`, which is how a package points at one:
   camera/film/album marks. An id it does not know falls back to the neutral
   mark — content, not layout, so nothing breaks.
 
+**A service's page also shows the packages devoted to it.** Below its
+individual services, a service page lists the Bronze/Silver/Gold options of
+any combo that covers nothing but that service and the individual services
+inside it — so Photography & Videography shows the Photo & Video combo's
+three options, and Food & Catering shows none, because the combos it belongs
+to (Complete Wedding, Decor & Catering) span several services and live in
+the Combo Packages section instead. `packagesForService` in
+`src/data/services.ts` is that rule; nothing is hardcoded to a combo.
+
+They sit directly below the service's individual services, so the two read
+as one run of cards. Each option uses the same `ServiceCard` as everything
+else (its price is the option's; its photo is the option's own `image` in
+`packages.json`, falling back to the combo's when a tier has none) and opens `PackageTierDetail` — a dialog
+with the option's price, its about text, every service it includes (read
+from the shared services data by id, with each service's own summary
+— but no price, since the option's price covers them), its extras, its complimentary items, the booking notes, the usual
+Call/WhatsApp actions and a link through to the package's own page.
+
 **Packages reference services by id, whichever kind they are.** A tier's
 `services` stays a plain list of ids, so a package can mix top-level and
 individual services:
@@ -131,7 +149,8 @@ individual services:
 ```
 
 The package page resolves each id against the shared services data and
-renders the usual card, so nothing about a service is ever copied into a
+renders the usual card **without its price** — the package price covers what
+it includes, so a rate against each service would read as an extra charge — so nothing about a service is ever copied into a
 package. Decoration still works exactly as before: the card is found by the
 service id and the designs come from `decorationIds` (see *Package
 decorations*).
@@ -549,6 +568,23 @@ Services section already does.
 `ComboDetail` and `DecorationDetail`. Each package card has its own "View Pack
 Details" view listing the bundled services with their one-line summaries,
 so someone can see exactly what a combo contains before calling.
+
+**A scroll cue appears only when it is needed.** `ScrollCue` watches
+whatever scrolls — the page on a service, package or decorations page, the
+panel inside a dialog — and shows a small bobbing chevron when there is more
+than 48px below *and* the reader is still on the first screenful of it (one
+`clientHeight`, page or dialog panel). Past that they know it scrolls, so it
+fades out, and it returns if they scroll back to the top — it hints rather
+than nags. The threshold is a screenful rather than a fixed number of
+pixels: 200px hid it a third of the way down the opening screen. It is decorative (`aria-hidden`, no pointer events), and
+it stands still for anyone who has asked for less motion.
+
+In a dialog the cue has to clear the call buttons stuck to the foot, whose
+height depends on whether they sit in a row or stack. `Modal` measures the
+bar — tagged `data-dialog-actions` in each detail view — with a
+`ResizeObserver` and publishes it as `--dv-bar` on the panel, which is what
+the cue offsets itself by. It sits at the end of the row there rather than
+centred, so it never lands on a word.
 
 **Every vector on the page animates.** `AnimatedIcon` wraps any icon and
 brings it in as it scrolls into view — outlined icons draw themselves

@@ -1,4 +1,4 @@
-import { createElement } from "react";
+import { createElement, type ReactNode } from "react";
 import { AnimatedIcon } from "./AnimatedIcon";
 import { Button } from "./Button";
 import { LevelDots } from "./LevelDots";
@@ -22,6 +22,7 @@ export function ServiceBody({
   onOpenSub,
   back,
   asPage = false,
+  afterServices,
 }: {
   service: Service;
   /* Opens one of the individual services listed below, in this same dialog */
@@ -33,6 +34,10 @@ export function ServiceBody({
      into the page, and the call buttons sit at the end of the content
      instead of sticking to the bottom of a scrolling panel. */
   asPage?: boolean;
+  /* Dropped in directly below the individual services, where it reads as
+     part of the same run of cards — the service page puts the packages
+     devoted to this service there. */
+  afterServices?: ReactNode;
 }) {
   const whatsappHref = whatsappHrefFor(business.whatsappMessage);
   const icon = createElement(iconFor(service.id), {
@@ -135,6 +140,8 @@ export function ServiceBody({
             </ul>
           </section>
         )}
+
+        {afterServices}
 
         {/* A service priced as lines rather than one rate — the same box the
             decoration designs use, and read straight from the content, so any
@@ -264,6 +271,7 @@ export function ServiceBody({
       {/* In the dialog the booking buttons stay reachable while it scrolls;
           on a page they simply end the content. */}
       <div
+        data-dialog-actions
         className={
           asPage
             ? "flex flex-col gap-3 sm:flex-row"
