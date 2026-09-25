@@ -47,12 +47,9 @@ export type DesignDetail = {
 export type DesignPricingEntry = {
   label: LocalizedText;
   price: number;
-<<<<<<< HEAD
   /* Optional: "plate", "kg", "hour"… prints the price as "₹400/plate".
      Left out, the price prints as a plain amount. */
   unit?: string;
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 };
 
 /* A decoration DESIGN — something the client shows a customer, adjusts
@@ -87,12 +84,9 @@ export type SubService = {
      site never reads a label, so any wording works. Optional: a service
      does not have to carry a price. */
   pricing?: DesignPricingEntry[];
-<<<<<<< HEAD
   /* Optional list shown under "What's Included" — the dishes in a menu, or
      what a service covers. */
   includes?: LocalizedText[];
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 };
 
 export type Service = {

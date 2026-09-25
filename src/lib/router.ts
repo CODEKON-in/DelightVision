@@ -18,7 +18,6 @@ export const DECORATIONS_PATH = "/decorations";
    dialog because there is a set of them to look through. */
 export const SERVICES_PATH_PREFIX = "/services/";
 
-<<<<<<< HEAD
 /* A hand-typed or truncated link can carry a broken %-escape, and
    decodeURIComponent throws on one. Thrown during render it would blank the
    whole site, so a bad segment reads as "no such page" instead. */
@@ -30,8 +29,6 @@ function decodeSegment(segment: string): string | null {
   }
 }
 
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 export function servicePathFor(serviceId: string): string {
   return `${SERVICES_PATH_PREFIX}${encodeURIComponent(serviceId)}`;
 }
@@ -40,11 +37,7 @@ export function servicePathFor(serviceId: string): string {
 export function serviceIdFromPath(path: string): string | null {
   if (!path.startsWith(SERVICES_PATH_PREFIX)) return null;
   const id = path.slice(SERVICES_PATH_PREFIX.length);
-<<<<<<< HEAD
   return id ? decodeSegment(id) : null;
-=======
-  return id ? decodeURIComponent(id) : null;
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 }
 /* One combo package's own detail page, e.g. "/packages/complete" — the
    Combo Packages section's "View Package Details" button sends visitors
@@ -79,25 +72,18 @@ let pendingScroll: string | null = null;
 function publish() {
   const next = normalize(window.location.pathname);
   if (next === currentPath) return;
-<<<<<<< HEAD
   /* A Back or Forward press has its own scroll position to restore, so
      drop any scroll a previous navigation left unused rather than letting
      it fire a page later. */
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
   currentPath = next;
   for (const listener of listeners) listener();
 }
 
 /* Back and forward buttons */
-<<<<<<< HEAD
 window.addEventListener("popstate", () => {
   pendingScroll = null;
   publish();
 });
-=======
-window.addEventListener("popstate", publish);
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
 function subscribe(listener: () => void) {
   listeners.add(listener);
@@ -150,11 +136,7 @@ export function tierNameFromPath(path: string): string | null {
   const segments = packageSegments(path);
   if (!segments || segments.length < 2) return null;
   if (segments.length === 2 && isPackageDecorationsPath(segments)) return null;
-<<<<<<< HEAD
   return segments[1] ? decodeSegment(segments[1]) : null;
-=======
-  return segments[1] ? decodeURIComponent(segments[1]) : null;
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 }
 
 export function routeName(path: string): RouteName {

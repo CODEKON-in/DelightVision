@@ -1,9 +1,6 @@
 import { useEffect, useLayoutEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-<<<<<<< HEAD
 import { ErrorBoundary } from "./components/ErrorBoundary";
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ui } from "./data/copy";
@@ -112,14 +109,10 @@ export default function App() {
      has rendered the page. An effect runs after that commit; a rAF callback
      would too, but rAF stops firing in a window that is not painting, and
      the visitor would land halfway down the previous page's scroll. */
-<<<<<<< HEAD
   /* Keyed on the path, not the route name: switching a package's tier
      stays on the "package" route, and the scroll it asked for used to sit
      unused until some later navigation spent it. */
   useLayoutEffect(consumePendingScroll, [path]);
-=======
-  useLayoutEffect(consumePendingScroll, [route]);
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   /* So a bookmarked or shared Decorations/package link is named properly,
      and the browser's own back button shows something meaningful in its
@@ -155,12 +148,9 @@ export default function App() {
       <Header />
 
       <main>
-<<<<<<< HEAD
         {/* Keyed on the path so a page that failed does not keep its error
             state after the visitor navigates somewhere else. */}
         <ErrorBoundary key={path}>
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
         {onHome ? (
           <Home />
         ) : route === "decorations" ? (
@@ -175,10 +165,7 @@ export default function App() {
         ) : (
           <PackageDetailPage comboId={comboId} tierName={tierName} />
         )}
-<<<<<<< HEAD
         </ErrorBoundary>
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
       </main>
 
       <Footer />

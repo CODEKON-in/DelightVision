@@ -19,7 +19,6 @@ type ModalProps = {
 const FOCUSABLE =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-<<<<<<< HEAD
 /* Every open dialog, innermost last. A material opens inside a service's
    dialog, and without this both listened for Escape and one press closed
    the pair. Only the dialog on top of the stack answers. */
@@ -61,8 +60,6 @@ function unlockPage() {
   unlocked = null;
 }
 
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 /* Full-screen on mobile, centred panel on desktop.
    Closes on the X button, a click outside the panel, or Escape. */
 export function Modal({
@@ -92,7 +89,6 @@ export function Modal({
      dialog simply stops rendering as soon as it is closed. */
   const visible = open || (mounted && !reduced);
 
-<<<<<<< HEAD
   /* Identifies this dialog in the stack above */
   const [id] = useState(() => Symbol("modal"));
 
@@ -114,54 +110,17 @@ export function Modal({
       if (at !== -1) openModals.splice(at, 1);
     };
   }, [open, id]);
-=======
-  /* Lock the page behind the modal and hide the sticky call bar, so the
-     two sets of call buttons can never overlap. */
-  useEffect(() => {
-    if (!visible) return;
-
-    const html = document.documentElement;
-    const body = document.body;
-    const barWidth = window.innerWidth - html.clientWidth;
-    const prev = {
-      htmlOverflow: html.style.overflow,
-      bodyOverflow: body.style.overflow,
-      bodyPad: body.style.paddingRight,
-    };
-
-    html.style.overflow = "hidden";
-    body.style.overflow = "hidden";
-    /* Stop the page jumping sideways when the scrollbar disappears */
-    if (barWidth > 0) body.style.paddingRight = `${barWidth}px`;
-    html.classList.add("modal-open");
-
-    return () => {
-      html.style.overflow = prev.htmlOverflow;
-      body.style.overflow = prev.bodyOverflow;
-      body.style.paddingRight = prev.bodyPad;
-      html.classList.remove("modal-open");
-    };
-  }, [visible]);
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   /* Escape to close */
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-<<<<<<< HEAD
       /* Only the dialog on top answers, so one press closes one dialog */
       if (e.key === "Escape" && openModals[openModals.length - 1] === id) onClose();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose, id]);
-=======
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   /* Move focus in on open, and back to the trigger on close */
   useEffect(() => {
@@ -254,7 +213,6 @@ export function Modal({
         aria-hidden="true"
       />
 
-<<<<<<< HEAD
       {/* Mobile: fills the screen. sm and up: a centred panel.
 
           This layer covers the backdrop, so a click on the dimmed area
@@ -266,10 +224,6 @@ export function Modal({
           if (e.target === e.currentTarget) onClose();
         }}
       >
-=======
-      {/* Mobile: fills the screen. sm and up: a centred panel. */}
-      <div className="relative flex h-full w-full items-stretch justify-center sm:items-center sm:p-6">
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
         <div
           ref={panelRef}
           onKeyDown={onKeyDown}
@@ -279,7 +233,6 @@ export function Modal({
             "h-full sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-3xl sm:border sm:border-gold/30",
           ].join(" ")}
         >
-<<<<<<< HEAD
           {/* Sticky rather than absolute, and in a box of its own height so
               it takes no space: on a phone the panel is the whole screen
               with no backdrop to tap, and an absolute button scrolled away
@@ -295,17 +248,6 @@ export function Modal({
               <CloseIcon className="size-6" />
             </button>
           </div>
-=======
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={onClose}
-            aria-label={closeLabel}
-            className="absolute top-4 right-4 z-10 inline-flex size-12 items-center justify-center rounded-full bg-obsidian/90 text-ivory-light transition-colors hover:bg-obsidian"
-          >
-            <CloseIcon className="size-6" />
-          </button>
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
           {children}
         </div>

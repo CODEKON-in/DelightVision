@@ -605,133 +605,6 @@
     ]
   },
   {
-<<<<<<< HEAD
-=======
-    "id": "food",
-    "name": {
-      "en": "Food & Catering",
-      "ta": ""
-    },
-    "category": "food-catering",
-    "description": {
-      "en": "Catering with menu planning.",
-      "ta": ""
-    },
-    "pricing": {
-      "type": "starting",
-      "amount": 350,
-      "currency": "INR",
-      "unit": "plate"
-    },
-    "image": "/images/services/food.jpg",
-    "detail": {
-      "badge": {
-        "en": "Most Booked",
-        "ta": ""
-      },
-      "subtitle": {
-        "en": "A full menu planned with you, cooked on site and served hot.",
-        "ta": ""
-      },
-      "about": {
-        "en": "We sit down with you to build the menu around the tastes of your family and the traditions of the function, rather than handing you a fixed list. Cooking happens at the venue on the day so nothing is reheated, and our serving team is briefed on the running order so food goes out at the right moment. Guest counts can be adjusted up to three days before the event.",
-        "ta": ""
-      },
-      "highlights": [
-        {
-          "label": {
-            "en": "Menu Planning",
-            "ta": ""
-          },
-          "value": {
-            "en": "Sit-down session included",
-            "ta": ""
-          },
-          "level": 5
-        },
-        {
-          "label": {
-            "en": "Serving Style",
-            "ta": ""
-          },
-          "value": {
-            "en": "Buffet or table service",
-            "ta": ""
-          },
-          "level": 4
-        },
-        {
-          "label": {
-            "en": "Minimum Guests",
-            "ta": ""
-          },
-          "value": {
-            "en": "100 plates",
-            "ta": ""
-          },
-          "level": 3
-        }
-      ],
-      "tags": [
-        {
-          "en": "Menu Planning",
-          "ta": ""
-        },
-        {
-          "en": "Live Counters",
-          "ta": ""
-        },
-        {
-          "en": "Buffet Setup",
-          "ta": ""
-        },
-        {
-          "en": "Sweets & Desserts",
-          "ta": ""
-        },
-        {
-          "en": "Serving Staff",
-          "ta": ""
-        }
-      ],
-      "includes": [
-        {
-          "en": "Menu planning session with tasting for the main dishes",
-          "ta": ""
-        },
-        {
-          "en": "On-site cooking team for the day of the function",
-          "ta": ""
-        },
-        {
-          "en": "Buffet counters with serving staff in uniform",
-          "ta": ""
-        },
-        {
-          "en": "Traditional sweets and dessert counter",
-          "ta": ""
-        },
-        {
-          "en": "Water, welcome drinks and buttermilk service",
-          "ta": ""
-        },
-        {
-          "en": "Crockery, serving vessels and full clean-up",
-          "ta": ""
-        }
-      ],
-      "notice": {
-        "en": "Final guest count needed 3 days before",
-        "ta": ""
-      },
-      "conditions": {
-        "en": "Live counters and speciality dishes available as add-ons",
-        "ta": ""
-      }
-    }
-  },
-  {
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     "id": "photography-videography",
     "name": {
       "en": "Photography & Videography",
@@ -1020,7 +893,6 @@
     ]
   },
   {
-<<<<<<< HEAD
     "id": "food",
     "name": {
       "en": "Food & Catering",
@@ -1321,8 +1193,6 @@
     ]
   },
   {
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     "id": "tour-planning-organizing",
     "name": {
       "en": "Tour Planning & Organizing",

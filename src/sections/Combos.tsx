@@ -15,17 +15,11 @@ import { navigate, packagePathFor } from "../lib/router";
    so the choice reads clearly even before it's tapped. Gold reuses the
    site's existing gold accent (the same colour as the "Most Popular"
    ribbon); Bronze and Silver are new, warm-neutral companions to it. */
-<<<<<<< HEAD
 /* Each fill is dark enough for its label to clear 4.5:1 — the lighter
    bronze and silver this started with read as grey-on-grey at 14px. */
 const TIER_ACCENTS: Record<string, { bg: string; text: string }> = {
   Bronze: { bg: "#8a5a2e", text: "#fff7ec" },
   Silver: { bg: "#66665f", text: "#fff" },
-=======
-const TIER_ACCENTS: Record<string, { bg: string; text: string }> = {
-  Bronze: { bg: "#a9713f", text: "#fff7ec" },
-  Silver: { bg: "#93938d", text: "#fff" },
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
   Gold: { bg: "#d4af37", text: "#2a1f08" },
 };
 
@@ -147,11 +141,7 @@ function ComboCard({
               key={id}
               className="rounded-full bg-cream/70 px-3 py-1 text-base text-ink"
             >
-<<<<<<< HEAD
               {serviceById[id]?.name ?? id}
-=======
-              {serviceById[id].name}
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
             </li>
           ))}
           {extraChips.map((label) => (

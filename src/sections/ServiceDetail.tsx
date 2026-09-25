@@ -20,12 +20,9 @@ export function ServiceDetail({ service, onClose }: Props) {
     setShown(service);
     setSub(null);
   }
-<<<<<<< HEAD
   /* Also on close, so reopening the same service starts at the service
      itself rather than on the individual one last looked at. */
   if (!service && sub) setSub(null);
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   const open = sub ?? shown;
 

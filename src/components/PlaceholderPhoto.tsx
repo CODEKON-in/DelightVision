@@ -54,7 +54,6 @@ export function PlaceholderPhoto({
 }: Props) {
   const p = palettes[index % palettes.length];
   const [imageSrc, setImageSrc] = useState<string | undefined>(src);
-<<<<<<< HEAD
   /* A tile reused for a different photo would otherwise keep showing the
      old one — and keep hiding a photo that failed once. */
   const [lastSrc, setLastSrc] = useState(src);
@@ -62,8 +61,6 @@ export function PlaceholderPhoto({
     setLastSrc(src);
     setImageSrc(src);
   }
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   return (
     <div

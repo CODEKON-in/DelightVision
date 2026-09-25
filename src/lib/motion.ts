@@ -37,7 +37,6 @@ export function settleIfStalled(forceEnd: () => void, delay = 1500): number {
     if (!tickerAlive) forceEnd();
   }, delay);
 }
-<<<<<<< HEAD
 
 /* The hero's drifting motes, its slowly turning rosette and its floating
    blooms never end — they are ambient. Left running, GSAP keeps redrawing
@@ -66,5 +65,3 @@ export function pauseWhileOffscreen(
   observer.observe(element);
   return () => observer.disconnect();
 }
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2

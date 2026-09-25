@@ -9,11 +9,7 @@
    and champagne gold used only in small doses in between.
 
    Tailwind v4 defines theme tokens in CSS (this @theme block) rather than
-<<<<<<< HEAD
-   in tailwind.config.js. Every token below is a normal utility, e.g.
-=======
    in tailwind.config.js. Every token below is a normal utility, e.g.f
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
    bg-obsidian / text-gold-deep / border-cream-dark / font-display.
 
    Colours come in pairs: *-deep tones are for text on the light canvas,
@@ -33,10 +29,6 @@
   --color-ivory-light: #ffffff;  /* cards */
   --color-cream: #f0eee9;        /* alternating sections, quiet panels */
   --color-cream-dark: #e5e1d9;   /* borders and dividers */
-<<<<<<< HEAD
-=======
-  --color-cream-strong: #d8d3c9; /* the border that needs to be seen */
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   /* Gold — the signature, and never more than a signature.
      `gold` is decorative only: rules, borders, small marks. Text needs
@@ -54,11 +46,6 @@
   --color-ink: #171717;        /* body on light — 16.5:1 */
   --color-muted: #6f6b64;      /* secondary on light — 4.9:1 */
   --color-muted-soft: #b3ada2; /* secondary on dark — 6.4:1 on graphite */
-<<<<<<< HEAD
-=======
-  --color-muted-faint: #918c83;/* the brand's muted grey. Decorative only:
-                                  it is 3.1:1 on ivory and fails as text. */
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 
   /* Phones vary from 320px to 430px; Tailwind's first stop is 640px.
      This adds a step for the larger phones. */
@@ -93,10 +80,6 @@
      comes from the three light surfaces, not from heavy shadows. */
   --shadow-soft: 0 1px 2px rgb(23 23 23 / 0.04), 0 8px 24px rgb(23 23 23 / 0.06);
   --shadow-lift: 0 2px 6px rgb(23 23 23 / 0.07), 0 16px 40px rgb(23 23 23 / 0.10);
-<<<<<<< HEAD
-=======
-  --shadow-glow: 0 0 0 1px rgb(184 148 79 / 0.45);
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
   --shadow-modal: 0 24px 70px rgb(8 8 8 / 0.45);
 }
 
@@ -139,7 +122,6 @@
     outline-offset: 3px;
     border-radius: 4px;
   }
-<<<<<<< HEAD
 
   /* The deep champagne is 2.4:1 on the near-black hero, header and footer,
      so the ring all but disappears there. On those the light gold takes
@@ -147,8 +129,6 @@
   :is(.hero-surface, header, footer) :focus-visible {
     outline-color: var(--color-gold-soft);
   }
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 }
 
 /* Scrollable panels (the detail dialogs) keep the scroll, lose the
@@ -169,11 +149,7 @@
    breakpoint steps already live, so applying a role changes how a line of
    text is set without moving anything on the page.
 
-<<<<<<< HEAD
    Weights are limited to what src/main.tsx imports: Cormorant 400/500/600 and
-=======
-   Weights are limited to what index.html loads: Cormorant 400/500/600 and
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
    Inter 400/500/600. Nothing is bold-700; a missing weight would be
    synthesised by the browser, and faux-bold is exactly the heavy look
    this system avoids.
@@ -212,21 +188,6 @@
   letter-spacing: 0;
 }
 
-<<<<<<< HEAD
-=======
-@utility type-body {
-  font-family: var(--font-body);
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-@utility type-body-small {
-  font-family: var(--font-body);
-  font-weight: 400;
-  letter-spacing: 0.005em;
-}
-
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 /* Small uppercase labels: section eyebrows, detail-view headings. */
 @utility type-label {
   font-family: var(--font-body);
@@ -311,29 +272,19 @@
   justify-self: center;
 }
 
-<<<<<<< HEAD
 /* The grid that stays two columns at every width — a service's "Services
    included" list — keeps the narrow rule right up, so its last odd card is
    centred on wide screens too rather than stranded in the left column. */
 @media (width >= 40rem) {
   /* Back to a normal cell first, whatever the narrow rule did … */
   .dv-orphan-grid:not(.dv-orphan-grid-2) > li:last-child:nth-child(odd) {
-=======
-@media (width >= 40rem) {
-  /* Back to a normal cell first, whatever the narrow rule did … */
-  .dv-orphan-grid > li:last-child:nth-child(odd) {
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     grid-column: auto;
     width: 100%;
     justify-self: stretch;
   }
 
   /* … then centre it only when three columns genuinely leave it alone. */
-<<<<<<< HEAD
   .dv-orphan-grid:not(.dv-orphan-grid-2) > li:last-child:nth-child(3n + 1) {
-=======
-  .dv-orphan-grid > li:last-child:nth-child(3n + 1) {
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
     grid-column: span 3 / span 3;
     width: calc(33.333% - 1rem);
     justify-self: center;

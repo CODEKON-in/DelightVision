@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-// import { useLayoutEffect, useRef } from "react";
-// import gsap from "gsap";
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 import { Button } from "../components/Button";
 import { HeroOrnament, Rosette } from "../components/HeroOrnament";
 import { GoldMotes } from "../components/Royal";
@@ -11,71 +6,6 @@ import { PhoneIcon, WhatsAppIcon } from "../components/icons";
 import { ui } from "../data/copy";
 import { business, telHref, whatsappHrefFor } from "../data/site";
 
-<<<<<<< HEAD
-=======
-/* Letter-by-letter reveal for the small tracked label above the headline */
-// function AnimatedLabel({
-//   text,
-//   className = "",
-//   splitLetters = true,
-// }: {
-//   text: string;
-//   className?: string;
-//   splitLetters?: boolean;
-// }) {
-//   const ref = useRef<HTMLParagraphElement>(null);
-
-//   useLayoutEffect(() => {
-//     const el = ref.current;
-//     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-//       return;
-
-//     let settle = 0;
-//     const ctx = gsap.context(() => {
-//       const targets = splitLetters ? "[data-letter]" : el;
-//       const tween = gsap.fromTo(
-//         targets,
-//         { opacity: 0, y: 8 },
-//         {
-//           opacity: 1,
-//           y: 0,
-//           duration: splitLetters ? 0.4 : 0.6,
-//           ease: "power2.out",
-//           stagger: splitLetters ? 0.035 : 0,
-//           delay: 0.15,
-//         },
-//       );
-//       settle = window.setTimeout(() => {
-//         if (tween.progress() === 0) tween.progress(1);
-//       }, 1600);
-//     }, el);
-
-//     return () => {
-//       window.clearTimeout(settle);
-//       ctx.revert();
-//     };
-//   }, [splitLetters]);
-
-//   if (!splitLetters) {
-//     return (
-//       <p ref={ref} className={className}>
-//         {text}
-//       </p>
-//     );
-//   }
-
-//   return (
-//     <p ref={ref} className={className} aria-label={text}>
-//       {text.split("").map((ch, i) => (
-//         <span key={i} data-letter aria-hidden="true" className="inline-block">
-//           {ch === " " ? " " : ch}
-//         </span>
-//       ))}
-//     </p>
-//   );
-// }
-
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 export function Hero() {
   const whatsappHref = whatsappHrefFor(business.whatsappMessage);
 

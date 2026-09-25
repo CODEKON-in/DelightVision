@@ -32,7 +32,6 @@ export const serviceIcons: Partial<Record<string, IconComponent>> = {
   "album-design": AlbumIcon,
   "video-editing": EditingIcon,
   "photo-editing": PhotoEditingIcon,
-<<<<<<< HEAD
 
   /* The individual services inside Food & Catering. */
   "menu-1-biryani": FoodIcon,
@@ -40,8 +39,6 @@ export const serviceIcons: Partial<Record<string, IconComponent>> = {
   "cooking-team": FoodIcon,
   "serving-staff": FoodIcon,
   "dining-hall-setup": FoodIcon,
-=======
->>>>>>> 34464e446a9a6e6edcf00c3f765c17317c75cca2
 };
 
 /* Services added through the content manager get a generated id, which has no
